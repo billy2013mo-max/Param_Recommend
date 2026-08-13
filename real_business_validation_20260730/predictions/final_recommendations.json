@@ -1,0 +1,280 @@
+{
+  "schema": "business_resource_recommendations/v6",
+  "generated_at_utc_date": "2026-07-30",
+  "assumptions": {
+    "hardware": "H800 139.83 GiB",
+    "dtype": "bf16",
+    "target_global_batch_size": 64,
+    "objective": "choose the minimum feasible GPU count, then use v4b only to rank safe configurations within that GPU count",
+    "selection_policy": [
+      "Find the minimum memory-feasible GPU count first.",
+      "Within each GPU count, choose the highest-ranked safe configuration.",
+      "Do not automatically expand to a higher GPU count in the temporary product policy.",
+      "Keep cross-GPU throughput ranking and scale-out ratios as diagnostic output only.",
+      "No GPU probe is run before recommendation.",
+      "An over-conservative P95 gate may be overridden only by explicit, versioned historical evidence; otherwise return no supported recommendation."
+    ],
+    "scope": "resource and memory-relevant parameters only",
+    "pre_recommendation_gpu_execution": false,
+    "gpu_training_started": false,
+    "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624"
+  },
+  "recommendations": [
+    {
+      "task_id": "qwen3-8b-lora-sft-business-yt0jrk-v2",
+      "dataset_id": "dataset-yt0jrk-1775555547-v2",
+      "dataset_path": "../datasets/dataset-yt0jrk-1775555547/2/publish/dataset-yt0jrk-1775555547-V2.jsonl",
+      "model_path": "/wanqing-models/Qwen3-8B",
+      "status": "minimum_gpu_shadow_candidate",
+      "configuration": {
+        "num_gpus": 1,
+        "zero_stage": 0,
+        "per_device_train_batch_size": 2,
+        "gradient_accumulation_steps": 32,
+        "global_batch_size": 64,
+        "cutoff_len": 4096,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "dtype": "bf16",
+        "template": "qwen3_nothink",
+        "lora_rank": 32,
+        "lora_alpha": 32,
+        "lora_dropout": 0.0,
+        "lora_target": "all",
+        "attention_kernel": "fa3_orig",
+        "enable_liger_kernel": true,
+        "optimizer": "adamw_torch_fused"
+      },
+      "dataset_evidence": {
+        "records": 4500,
+        "raw_token_mean": 2637.571111111111,
+        "raw_token_p95": 3571.250000000001,
+        "raw_token_p99": 4738.47000000001,
+        "sample_truncation_rate_at_cutoff": 0.02311111111111111,
+        "tokens_retained_ratio_at_cutoff": 0.992272941350923
+      },
+      "static_packing_evidence": {
+        "source": "static_packing_decisions_v1.json",
+        "policy_id": "h800_text_sft_static_packing/2026-07-30.v1",
+        "decision": "off",
+        "packing": false,
+        "automatic_action_allowed": true,
+        "pack_utilization": 0.657673921474516,
+        "sequence_reduction_ratio": 0.02822222222222226,
+        "mean_samples_per_pack": 1.0290418477018066,
+        "linear_token_efficiency_ratio": 0.7200553225573918,
+        "reason": "The dataset barely reduces physical sequences and packing would increase linear token work."
+      },
+      "predictor_evidence": {
+        "memory_operational_p95_gib": 80.70575039572297,
+        "memory_safety_limit_gib": 132.83927001953126,
+        "memory_headroom_to_safety_limit_gib": 52.13351962380828,
+        "selected_throughput_proxy_tokens_per_second": 9476.805772450514,
+        "rank_within_one_gpu_candidates": 1,
+        "best_safe_throughput_proxy_by_gpu_count": {
+          "1": 9476.805772450514,
+          "2": 21369.63108129544,
+          "4": 39432.23452113329
+        },
+        "absolute_throughput_scale_trusted": false
+      },
+      "historical_empirical_evidence": {
+        "source": "../../offline_experiments/artifacts/stage_decisions.json",
+        "comparable_scaling_family": "Qwen3-8B LoRA, multiturn_4096, GBS=64, packing=false",
+        "stage_c_minimum_incremental_gain": 0.7,
+        "observed_samples_per_second": {
+          "1": 6.926097922653803,
+          "2": 13.708266039404405,
+          "4": 24.545377556638197
+        },
+        "observed_incremental_gain": {
+          "1_to_2": 0.979219207191334,
+          "2_to_4": 0.7905530492392342
+        }
+      },
+      "scale_out_decision": {
+        "active_in_recommendation_policy": false,
+        "operational_threshold_incremental_gain": 0.7,
+        "predicted_incremental_gain": {
+          "1_to_2": 1.2549402820323579,
+          "2_to_4": 0.8452463859166857
+        },
+        "diagnostic_result": "four_gpu_would_be_a_candidate_under_the_legacy_70_percent_rule",
+        "strict_publication_rule": "Both endpoints memory-admitted and conservative-lower and measured T_2N/T_N each >= 1.8.",
+        "strict_publication_result": "not_publishable_current_v4b_has_no_conservative_lower_and_historical_2_to_4_ratio_is_1.790553",
+        "selected_gpu_count_under_current_policy": 1
+      }
+    },
+    {
+      "task_id": "qwen3-14b-full-sft-business-flieht-v4",
+      "dataset_id": "dataset-flieht-1763953980-v4",
+      "dataset_path": "../datasets/dataset-flieht-1763953980/4/publish/dataset-flieht-1763953980-V4.jsonl",
+      "model_path": "/wanqing-models/Qwen3-14B",
+      "status": "versioned_anchor_admitted_shadow_recommendation",
+      "configuration": {
+        "num_gpus": 2,
+        "zero_stage": 3,
+        "per_device_train_batch_size": 2,
+        "gradient_accumulation_steps": 16,
+        "global_batch_size": 64,
+        "cutoff_len": 4096,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "dtype": "bf16",
+        "template": "qwen3_nothink",
+        "attention_kernel": "fa3_orig",
+        "enable_liger_kernel": true,
+        "optimizer": "adamw_torch_fused"
+      },
+      "dataset_evidence": {
+        "records": 4500,
+        "raw_token_mean": 1041.318888888889,
+        "raw_token_p95": 2868.250000000001,
+        "raw_token_p99": 6281.590000000035,
+        "sample_truncation_rate_at_cutoff": 0.021555555555555557,
+        "tokens_retained_ratio_at_cutoff": 0.9371299431170087
+      },
+      "static_packing_evidence": {
+        "source": "static_packing_decisions_v1.json",
+        "policy_id": "h800_text_sft_static_packing/2026-07-30.v1",
+        "decision": "hold_off",
+        "packing": false,
+        "automatic_action_allowed": false,
+        "shadow_candidate_packing": true,
+        "pack_utilization": 0.9678160387546669,
+        "sequence_reduction_ratio": 0.7537777777777778,
+        "mean_samples_per_pack": 4.061371841155235,
+        "linear_token_efficiency_ratio": 1.278816770458799,
+        "reason": "All static benefit gates pass, but Full SFT is outside the released automatic-enablement evidence domain."
+      },
+      "predictor_evidence": {
+        "memory_reserved_center_gib": 129.57710370348337,
+        "memory_base_operational_p95_gib": 167.34572224703692,
+        "memory_admission_upper_gib": 130.8728747405182,
+        "memory_safety_limit_gib": 132.83927001953126,
+        "memory_headroom_after_admission_gib": 1.9663952790130566,
+        "admitted_by_base_p95_gate": false,
+        "admitted_by_versioned_historical_anchor": true,
+        "memory_admission_source": "versioned_historical_anchor",
+        "p95_gate_assessment": "The 29.16% global Full+ZeRO-3+GC tail multiplier is over-conservative for this exact repeated configuration.",
+        "throughput_prediction_available_after_admission": true,
+        "selected_throughput_proxy_tokens_per_second": 2821.8674780321226,
+        "rank_within_two_gpu_candidates": 1,
+        "absolute_throughput_scale_trusted": false
+      },
+      "historical_empirical_evidence": {
+        "source": "../../offline_experiments/artifacts/h800_memory_anchor_registry_v1.json",
+        "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+        "comparable_configuration": "Qwen3-14B Full, 2xH800, ZeRO-3, GC on, MBS=2, cutoff=4096, GBS=64",
+        "success_observations": 3,
+        "complete_calibration_eligible_success_observations": 2,
+        "legacy_corroborating_success_observations": 1,
+        "oom_observations": 0,
+        "observed_reserved_gib_per_gpu": 127.39,
+        "empirical_guard_gib_per_gpu": 129.942421875,
+        "model_center_guard_gib_per_gpu": 130.8728747405182,
+        "observed_effective_tokens_per_second_median": 4242.5,
+        "business_profile_mean_tokens_fraction_of_historical_profile": 0.8297813763131942
+      },
+      "scale_out_decision": {
+        "active_in_recommendation_policy": false,
+        "minimum_feasible_gpu_count": 2,
+        "operational_threshold_incremental_gain": 0.7,
+        "historical_stage_c_two_gpu_status": "measured",
+        "historical_stage_c_four_gpu_status": "pending_or_infeasible",
+        "two_to_four_incremental_gain": null,
+        "result": "two_gpus_selected_by_minimum_gpu_policy; cross_gpu_scaling_is_diagnostic_only"
+      },
+      "versioned_anchor_admission": {
+        "applied": true,
+        "basis": "Two runtime-complete calibration-eligible successes plus one legacy corroborating success and zero OOM for the same memory-sensitive configuration. The admission upper is max(observed peak × 1.02, physical center × 1.01).",
+        "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+        "pre_recommendation_gpu_execution": false,
+        "confidence": "medium",
+        "release_tier": "active_provisional_shadow_only"
+      },
+      "optional_high_retention_followup": {
+        "configuration_delta": {
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 32,
+          "cutoff_len": 8192
+        },
+        "tokens_retained_ratio": 0.9803221768974602,
+        "status": "not_selected_insufficient_exact_evidence"
+      }
+    },
+    {
+      "task_id": "qwen2.5-vl-7b-instruct-lora-sft-business-pzfj38-v113",
+      "dataset_id": "dataset-pzfj38-1774860803-v113",
+      "dataset_path": "../datasets/dataset-pzfj38-1774860803/113/publish/extracted/dataset-pzfj38-1774860803-V113.jsonl",
+      "model_path": "/wanqing-models/Qwen2.5-VL-7B-Instruct",
+      "status": "out_of_domain_static_heuristic_low_confidence",
+      "configuration": {
+        "num_gpus": 2,
+        "zero_stage": 3,
+        "per_device_train_batch_size": 1,
+        "gradient_accumulation_steps": 32,
+        "global_batch_size": 64,
+        "cutoff_len": 4608,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "dtype": "bf16",
+        "template": "qwen2_vl",
+        "image_max_pixels": 589824,
+        "image_min_pixels": 1024,
+        "lora_rank": 16,
+        "lora_alpha": 32,
+        "lora_dropout": 0.05,
+        "lora_target": "all-linear",
+        "freeze_language_model": false,
+        "freeze_vision_tower": true,
+        "freeze_multi_modal_projector": true,
+        "attention_kernel": "flash_attn",
+        "optimizer": "adamw_torch_fused"
+      },
+      "dataset_evidence": {
+        "records": 7108,
+        "images_per_record": 2,
+        "text_profile_records": 7108,
+        "visual_profile_sample_records": 512,
+        "visual_profile_successful_records": 512,
+        "estimated_total_token_mean": 3996.830078125,
+        "estimated_total_token_p95": 4080.0,
+        "estimated_total_token_p99": 4112.78,
+        "estimated_total_token_max": 4121,
+        "sample_truncation_rate_at_cutoff": 0.0,
+        "sample_tokens_retained_ratio_at_cutoff": 1.0
+      },
+      "static_packing_evidence": {
+        "source": "static_packing_decisions_v1.json",
+        "policy_id": "h800_text_sft_static_packing/2026-07-30.v1",
+        "decision": "off",
+        "packing": false,
+        "automatic_action_allowed": true,
+        "support_status": "unsupported_structural_off",
+        "reason": "The released neat-packing policy does not support multimodal records."
+      },
+      "predictor_evidence": {
+        "memory_prediction_available": false,
+        "throughput_ranking_available": false,
+        "reason": "The physical-shares and v4b models do not model vision-tower or image-token activation.",
+        "transfer_anchor": "A nearby Qwen3-VL-8B LoRA experiment at 2xH800, ZeRO-3, GC on, MBS=1 and cutoff=4096 completed, but it used a text-only proxy and is not a safety proof for this task."
+      },
+      "product_assessment": {
+        "pre_recommendation_gpu_execution": false,
+        "automatic_support_status": "unsupported_until_vl_memory_and_throughput_models_are_validated",
+        "recommendation_type": "static_transfer_heuristic",
+        "confidence": "low"
+      }
+    }
+  ],
+  "non_modeled_training_hyperparameters": {
+    "fields": [
+      "learning_rate",
+      "num_train_epochs",
+      "warmup_ratio",
+      "weight_decay"
+    ],
+    "reason": "They depend on task-quality objectives and are not outputs of the resource predictor."
+  }
+}

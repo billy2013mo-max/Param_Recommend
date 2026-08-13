@@ -1,0 +1,26 @@
+{
+  "schema": "baseline_2gpu_profile/v1",
+  "generated_at_utc": "2026-07-30T09:41:53.022863+00:00",
+  "dataset_id": "baseline_2gpu_case",
+  "source": {
+    "path": "/wanqing-develop/chengjin/2卡baseline/baseline_2gpu_lf.jsonl",
+    "sha256": "586c31f3d0254b886f2e10802d17d47d925f74b45fdbbfdff2b3a7df2f6c53b5",
+    "records": 4339,
+    "raw_text_copied_to_profile": false
+  },
+  "model": "/wanqing-models/Qwen3-14B",
+  "template": "qwen3",
+  "profile": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+    "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+    "minimum": 424,
+    "mean": 879.3832680341093,
+    "p50": 619.0,
+    "p90": 1349.999999999999,
+    "p95": 2273.1000000000004,
+    "p99": 4790.0,
+    "maximum": 28759,
+    "label_token_ratio": 0.0763066470561719,
+    "suggested_dataset_category": "longtail"
+  }
+}

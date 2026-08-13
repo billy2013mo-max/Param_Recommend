@@ -1,0 +1,4 @@
+{"log_stage": "prepare", "load_tokenizer": 0.723, "get_template": 0.001, "get_dataset": 2.441, "load_model": 14.001, "trainer_init": 0.047}
+{"log_stage": "loop_breakdown", "periodic_eval_time": 0.0, "periodic_eval_count": 0, "checkpoint_save_time": 0.0, "checkpoint_save_count": 0}
+{"log_stage": "train_summary", "train_runtime": 592.5186, "train_samples_per_second": 9.721, "train_steps_per_second": 0.076}
+{"log_stage": "postprocess", "final_save_model": 0.0}

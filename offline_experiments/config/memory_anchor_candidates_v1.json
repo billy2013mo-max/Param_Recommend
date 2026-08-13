@@ -1,0 +1,60 @@
+{
+  "schema": "sft_memory_anchor_candidates/v1",
+  "registry_id": "h800_memory_anchors/2026-07-30.v1",
+  "version": "2026-07-30.v1",
+  "frozen_at_utc": "2026-07-30T07:46:45.916656+00:00",
+  "previous_registry_sha256": null,
+  "governance": {
+    "minimum_complete_calibration_eligible_successes": 2,
+    "minimum_total_successes_with_corroboration": 3,
+    "maximum_exact_configuration_ooms": 0,
+    "observed_peak_relative_guard": 0.02,
+    "model_center_relative_guard": 0.01,
+    "safe_limit_fraction_of_physical_capacity": 0.95,
+    "require_distinct_complete_job_ids": true,
+    "allow_dataset_transfer_within_same_shape_envelope": true,
+    "online_gpu_execution_allowed": false
+  },
+  "candidates": [
+    {
+      "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+      "status": "candidate",
+      "job_match": {
+        "model_id": "qwen3_14b",
+        "train_type": "full",
+        "target_gbs": 64,
+        "gpu_count": 2,
+        "zero": "zero3",
+        "gc": true,
+        "mbs": 2,
+        "cutoff_len": 4096,
+        "packing": false
+      },
+      "runtime_match": {
+        "gpu_family": "H800",
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused",
+        "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624"
+      },
+      "model_binding": {
+        "model_parameters": 14768307200,
+        "model_geometry_sha256": "e6ff8b1635d6ff51c49d66996c47e41a16bdd896d16d4c13eab255cbfd31d3e8",
+        "model_config_path": "/wanqing-models/Qwen3-14B/config.json",
+        "model_config_sha256": "e73c3664ca09b10a673fef0c22e8a6b456201d49bd4713c9691f775720e8857a"
+      },
+      "source_dataset_profile": {
+        "dataset_id": "multiturn_4096",
+        "path": "offline_experiments/artifacts/dataset_profiles/multiturn_4096.qwen3_nothink.jsonl",
+        "sha256": "235de0e8ad4e8851da71bd5ed497c6ee132c380c3f5f43509d5f2e37613b3bf1"
+      },
+      "transfer_contract": {
+        "dataset_id_must_match": false,
+        "candidate_cutoff_len_must_not_exceed_anchor": true,
+        "candidate_physical_mbs_must_not_exceed_anchor": true,
+        "all_other_job_match_fields_must_equal": true,
+        "base_physical_center_must_fit_safe_limit": true,
+        "support_domain_must_not_be_unsupported": true
+      }
+    }
+  ]
+}

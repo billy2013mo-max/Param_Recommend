@@ -1,0 +1,251 @@
+{
+  "schema": "business_text_dataset_profile/v1",
+  "generated_at_utc": "2026-07-30T03:51:45.179951+00:00",
+  "dataset_id": "business_yt0jrk_v2",
+  "source": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/real_business_validation_20260730/datasets/dataset-yt0jrk-1775555547/2/publish/dataset-yt0jrk-1775555547-V2.jsonl",
+    "sha256": "0c3d67c6b490d47b9f270b6698f2290eed2dbfe401a42f1099fdb0df97c9e9f0",
+    "records": 4500,
+    "raw_text_copied_to_profile": false
+  },
+  "model_binding": {
+    "model_id": "qwen3_8b",
+    "model_path": "/wanqing-models/Qwen3-8B",
+    "template": "qwen3_nothink",
+    "model_config_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+    "tokenizer_config_sha256": "5a7303fcb1a27ede63134a2cbd61d5282c247ca6d769ce4746d4ffa124aedd63"
+  },
+  "profile": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/real_business_validation_20260730/profiles/business_yt0jrk_v2.qwen3_nothink.jsonl",
+    "sha256": "294848ccec1f90fbe41398860e89af48dddf2c0cd3327312aa0bb156dad5811b",
+    "length_tokens": {
+      "minimum": 1914,
+      "mean": 2637.571111111111,
+      "std": 565.5499974448559,
+      "p50": 2524.5,
+      "p90": 3213.1,
+      "p95": 3571.250000000001,
+      "p99": 4738.47000000001,
+      "maximum": 10972
+    },
+    "label_tokens": {
+      "mean": 9.850888888888889,
+      "ratio_of_total": 0.003734833478949909
+    },
+    "category": {
+      "suggested_dataset_category": "longtail",
+      "rule_reason": "P99/P50 is at least 1.75",
+      "p99_over_p50": 1.8769934640522916,
+      "requires_review": true
+    },
+    "cutoff_analysis": {
+      "512": {
+        "cutoff_len": 512,
+        "samples_truncated": 4500,
+        "sample_truncation_rate": 1.0,
+        "tokens_retained_ratio": 0.1941179890252564,
+        "mean_tokens_after_cutoff": 512.0,
+        "packing": {
+          "algorithm": "deterministic_best_fit_decreasing",
+          "capacity": 511,
+          "packs": 4500,
+          "fill_ratio": 0.998046875,
+          "mean_logical_samples_per_pack": 1.0
+        },
+        "by_mbs": {
+          "1": {
+            "unpacked_padding_utilization": 1.0,
+            "packing_fill_ratio": 0.998046875,
+            "theoretical_linear_token_efficiency_ratio": 0.998046875
+          },
+          "2": {
+            "unpacked_padding_utilization": 1.0,
+            "packing_fill_ratio": 0.998046875,
+            "theoretical_linear_token_efficiency_ratio": 0.998046875
+          },
+          "4": {
+            "unpacked_padding_utilization": 1.0,
+            "packing_fill_ratio": 0.998046875,
+            "theoretical_linear_token_efficiency_ratio": 0.998046875
+          },
+          "8": {
+            "unpacked_padding_utilization": 1.0,
+            "packing_fill_ratio": 0.998046875,
+            "theoretical_linear_token_efficiency_ratio": 0.998046875
+          },
+          "16": {
+            "unpacked_padding_utilization": 1.0,
+            "packing_fill_ratio": 0.998046875,
+            "theoretical_linear_token_efficiency_ratio": 0.998046875
+          }
+        }
+      },
+      "2048": {
+        "cutoff_len": 2048,
+        "samples_truncated": 4351,
+        "sample_truncation_rate": 0.9668888888888889,
+        "tokens_retained_ratio": 0.7760415938232734,
+        "mean_tokens_after_cutoff": 2046.8648888888888,
+        "packing": {
+          "algorithm": "deterministic_best_fit_decreasing",
+          "capacity": 2047,
+          "packs": 4500,
+          "fill_ratio": 0.9989735243055555,
+          "mean_logical_samples_per_pack": 1.0
+        },
+        "by_mbs": {
+          "1": {
+            "unpacked_padding_utilization": 1.0,
+            "packing_fill_ratio": 0.9989735243055555,
+            "theoretical_linear_token_efficiency_ratio": 0.9989735243055555
+          },
+          "2": {
+            "unpacked_padding_utilization": 0.9994546826969982,
+            "packing_fill_ratio": 0.9989735243055555,
+            "theoretical_linear_token_efficiency_ratio": 0.9995185790814004
+          },
+          "4": {
+            "unpacked_padding_utilization": 0.9994457465277777,
+            "packing_fill_ratio": 0.9989735243055555,
+            "theoretical_linear_token_efficiency_ratio": 0.9995275159018258
+          },
+          "8": {
+            "unpacked_padding_utilization": 0.9994457465277777,
+            "packing_fill_ratio": 0.9989735243055555,
+            "theoretical_linear_token_efficiency_ratio": 0.9995275159018258
+          },
+          "16": {
+            "unpacked_padding_utilization": 0.9994457465277777,
+            "packing_fill_ratio": 0.9989735243055555,
+            "theoretical_linear_token_efficiency_ratio": 0.9995275159018258
+          }
+        }
+      },
+      "4096": {
+        "cutoff_len": 4096,
+        "samples_truncated": 104,
+        "sample_truncation_rate": 0.02311111111111111,
+        "tokens_retained_ratio": 0.992272941350923,
+        "mean_tokens_after_cutoff": 2617.1904444444444,
+        "packing": {
+          "algorithm": "deterministic_best_fit_decreasing",
+          "capacity": 4095,
+          "packs": 4363,
+          "fill_ratio": 0.6590203777683074,
+          "mean_logical_samples_per_pack": 1.031400412560165
+        },
+        "by_mbs": {
+          "1": {
+            "unpacked_padding_utilization": 1.0,
+            "packing_fill_ratio": 0.6590203777683074,
+            "theoretical_linear_token_efficiency_ratio": 0.6590203777683074
+          },
+          "2": {
+            "unpacked_padding_utilization": 0.913142832160475,
+            "packing_fill_ratio": 0.6590203777683074,
+            "theoretical_linear_token_efficiency_ratio": 0.7217056900168403
+          },
+          "4": {
+            "unpacked_padding_utilization": 0.8367185151226636,
+            "packing_fill_ratio": 0.6590203777683074,
+            "theoretical_linear_token_efficiency_ratio": 0.7876249489611145
+          },
+          "8": {
+            "unpacked_padding_utilization": 0.7718498464050809,
+            "packing_fill_ratio": 0.6590203777683074,
+            "theoretical_linear_token_efficiency_ratio": 0.8538194065046706
+          },
+          "16": {
+            "unpacked_padding_utilization": 0.717523492095731,
+            "packing_fill_ratio": 0.6590203777683074,
+            "theoretical_linear_token_efficiency_ratio": 0.9184652280073107
+          }
+        }
+      },
+      "8192": {
+        "cutoff_len": 8192,
+        "samples_truncated": 2,
+        "sample_truncation_rate": 0.00044444444444444447,
+        "tokens_retained_ratio": 0.9997116876048419,
+        "mean_tokens_after_cutoff": 2636.8106666666667,
+        "packing": {
+          "algorithm": "deterministic_best_fit_decreasing",
+          "capacity": 8191,
+          "packs": 1580,
+          "fill_ratio": 0.9167361488825159,
+          "mean_logical_samples_per_pack": 2.848101265822785
+        },
+        "by_mbs": {
+          "1": {
+            "unpacked_padding_utilization": 1.0,
+            "packing_fill_ratio": 0.9167361488825159,
+            "theoretical_linear_token_efficiency_ratio": 0.9167361488825159
+          },
+          "2": {
+            "unpacked_padding_utilization": 0.9076463770366485,
+            "packing_fill_ratio": 0.9167361488825159,
+            "theoretical_linear_token_efficiency_ratio": 1.0100146621810404
+          },
+          "4": {
+            "unpacked_padding_utilization": 0.8227681710793124,
+            "packing_fill_ratio": 0.9167361488825159,
+            "theoretical_linear_token_efficiency_ratio": 1.1142095442023914
+          },
+          "8": {
+            "unpacked_padding_utilization": 0.744670118165935,
+            "packing_fill_ratio": 0.9167361488825159,
+            "theoretical_linear_token_efficiency_ratio": 1.2310634286499453
+          },
+          "16": {
+            "unpacked_padding_utilization": 0.669995194932776,
+            "packing_fill_ratio": 0.9167361488825159,
+            "theoretical_linear_token_efficiency_ratio": 1.3682727216789914
+          }
+        }
+      },
+      "32768": {
+        "cutoff_len": 32768,
+        "samples_truncated": 0,
+        "sample_truncation_rate": 0.0,
+        "tokens_retained_ratio": 1.0,
+        "mean_tokens_after_cutoff": 2637.571111111111,
+        "packing": {
+          "algorithm": "deterministic_best_fit_decreasing",
+          "capacity": 32767,
+          "packs": 370,
+          "fill_ratio": 0.9789601918813344,
+          "mean_logical_samples_per_pack": 12.162162162162161
+        },
+        "by_mbs": {
+          "1": {
+            "unpacked_padding_utilization": 1.0,
+            "packing_fill_ratio": 0.9789601918813344,
+            "theoretical_linear_token_efficiency_ratio": 0.9789601918813344
+          },
+          "2": {
+            "unpacked_padding_utilization": 0.9074330766457269,
+            "packing_fill_ratio": 0.9789601918813344,
+            "theoretical_linear_token_efficiency_ratio": 1.0788235706593408
+          },
+          "4": {
+            "unpacked_padding_utilization": 0.8222250537262866,
+            "packing_fill_ratio": 0.9789601918813344,
+            "theoretical_linear_token_efficiency_ratio": 1.1906231602220478
+          },
+          "8": {
+            "unpacked_padding_utilization": 0.7436072957958167,
+            "packing_fill_ratio": 0.9789601918813344,
+            "theoretical_linear_token_efficiency_ratio": 1.3165015962271327
+          },
+          "16": {
+            "unpacked_padding_utilization": 0.6681228603750389,
+            "packing_fill_ratio": 0.9789601918813344,
+            "theoretical_linear_token_efficiency_ratio": 1.4652397784021527
+          }
+        }
+      }
+    }
+  },
+  "packing_decision_is_validated": false,
+  "gpu_training_started": false
+}

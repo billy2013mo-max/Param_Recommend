@@ -1,0 +1,59 @@
+### ========================================================================
+### R3 · 继续加 MBS：2 → 4（ZeRO-2）
+### ------------------------------------------------------------------------
+### MBS 越大，单个 GEMM 越胖，kernel 启动和通信的固定开销被摊薄。
+### 但不开 CCE 时 logits 张量随 MBS 线性涨（vocab=151936，
+###   bf16 logits + fp32 上采 + 梯度），这是本组主要的 OOM 风险来源。
+###
+### 本轮前提：不开 CCE、不开 LoRA Fusion（由启动脚本 unset 环境变量实现，
+###   不是 yaml 参数；写进 yaml 会让参数解析直接报错）。
+### GBS 固定 32（4卡 × MBS × GAS），与其余各组严格一致。
+### ========================================================================
+
+model_name_or_path: /wanqing-models/Qwen3-14B
+trust_remote_code: true
+flash_attn: fa3                  # ★ 显式指定 FA3；不写会落到 AUTO→FA2
+enable_thinking: true
+use_unsloth_gc: false           # 激活值不卸载 CPU
+
+stage: sft
+do_train: true
+finetuning_type: full
+enable_liger_kernel: false
+disable_gradient_checkpointing: false   # 开梯度检查点
+
+dataset: baseline_2gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 4096                 # ★ 8192 → 4096（用户下限）
+max_samples: 100000
+packing: false
+preprocessing_num_workers: 4
+dataloader_num_workers: 4
+
+output_dir: /wanqing-develop/luowenjing/Param_Recommend/mfu_qwen3_14b/results/r3_mbs4_z2/save
+logging_steps: 1
+save_strategy: "no"
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: true
+
+max_steps: 20
+per_device_train_batch_size: 4   # GBS = 4卡 × 4 × 2 = 32
+gradient_accumulation_steps: 2
+learning_rate: 1.0e-6
+lr_scheduler_type: cosine
+lr_scheduler_kwargs: {"num_cycles": 0.5}
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-models/tangcan/llama-factory-local/llama-factory/examples/deepspeed/ds_z2_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+do_eval: false
+eval_strategy: "no"              # 必须显式写；只写 do_eval:false 关不掉 eval

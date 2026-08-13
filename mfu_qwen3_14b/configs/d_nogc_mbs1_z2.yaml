@@ -1,0 +1,59 @@
+### ========================================================================
+### D · 关梯度检查点，4 卡 ZeRO-2，MBS=1
+### ------------------------------------------------------------------------
+### 目的：把"4 卡关 GC 只能到 MBS1，而且悬"这个**估算**变成实测。
+### 我的显存模型（用 R2/R3 两点拟合 + 8B 关GC实测校准）预测：
+###   底座 82.5 GiB + 12.4 MiB/token × 4096 ≈ 132.1 GiB，安全线 133.4 —— 几乎贴脸。
+### 所以这一组的真正问题不是"快不快"，是"到底跑不跑得起来"。
+### 若跑通：对比 R2(MBS2 开GC) 看关 GC 换掉一半批量到底是正还是负收益。
+### 若 OOM：证明 4 卡关 GC 这条路直接封死，不必再试。
+### GBS 固定 32（4卡 × 1 × 8）。
+### ========================================================================
+
+model_name_or_path: /wanqing-models/Qwen3-14B
+trust_remote_code: true
+flash_attn: fa3                  # ★ 显式指定 FA3；不写会落到 AUTO→FA2
+enable_thinking: true
+use_unsloth_gc: false           # 激活值不卸载 CPU
+
+stage: sft
+do_train: true
+finetuning_type: full
+enable_liger_kernel: false
+disable_gradient_checkpointing: true    # ★ 本组唯一变量：关梯度检查点
+
+dataset: baseline_2gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 4096                 # ★ 8192 → 4096（用户下限）
+max_samples: 100000
+packing: false
+preprocessing_num_workers: 4
+dataloader_num_workers: 4
+
+output_dir: /wanqing-develop/luowenjing/Param_Recommend/mfu_qwen3_14b/results/d_nogc_mbs1_z2/save
+logging_steps: 1
+save_strategy: "no"
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: true
+
+max_steps: 20
+per_device_train_batch_size: 1   # GBS = 4卡 × 1 × 8 = 32
+gradient_accumulation_steps: 8
+learning_rate: 1.0e-6
+lr_scheduler_type: cosine
+lr_scheduler_kwargs: {"num_cycles": 0.5}
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-models/tangcan/llama-factory-local/llama-factory/examples/deepspeed/ds_z2_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+do_eval: false
+eval_strategy: "no"              # 必须显式写；只写 do_eval:false 关不掉 eval

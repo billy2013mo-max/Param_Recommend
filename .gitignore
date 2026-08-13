@@ -1,0 +1,75 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ---- 虚拟环境 ----
+qwen36_venv/
+qwen35_tilelang_venv*/
+*_venv/
+.venv/
+venv/
+
+# ---- 本地配置与密钥 ----
+.claude/settings.local.json
+.env
+.env.*
+*.token
+*.key
+*.pem
+
+# ---- 编辑器 / 工具 ----
+.codex/
+.idea/
+.vscode/
+*.swp
+
+# ---- 内网仓库（Kuaishou 独立仓库，不推到公共 GitHub）----
+finetuning-launcher/
+
+# ---- 散落文件 ----
+image.png
+
+# ---- 实验数据 / 结果（只留代码和文档）----
+# offline_experiments：提交 scripts/tests/config/dashboard/examples 与 md，其余是数据
+offline_experiments/results/
+offline_experiments/data/
+offline_experiments/artifacts/
+offline_experiments/campaigns/
+offline_experiments/diagnostics/
+offline_experiments/runtime/
+offline_experiments/matrix/
+offline_experiments/*_staging/
+offline_experiments/frozen_vl_staging/
+offline_experiments/qwen35_vl_staging/
+offline_experiments/glm_seed_tokenizer_20260811/
+
+# mfu：只提交 configs/scripts
+mfu_qwen3_8b/results/
+mfu_qwen3_14b/results/
+
+# real_business_validation：大体积数据不推，代码与小结提交
+real_business_validation_20260730/datasets/
+real_business_validation_20260730/recommendations/
+
+# 历史实验快照（整体不推）
+offline_experiments_genrun/
+offline_experiments_qgen_20260729/
+offline_experiments_qwen35_tilelang_20260729/
+single_gpu_mbs_ab_20260730/
+qwen35_tilelang_overlay_20260729/
+
+# ---- 模型权重 / 大二进制 ----
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.ckpt

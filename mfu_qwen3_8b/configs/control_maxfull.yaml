@@ -1,0 +1,76 @@
+### ========================================================================
+### 【control_maxfull】对照组 = 文档 hpo_fa3_cce_lorafusion 的精确复刻
+### ------------------------------------------------------------------------
+### 用途：本机(ad-wlf3-ge103-9)重跑文档最优配置，取本机基线。
+### 文档结果来自另一台机器(rack-wlf2-ge139-1)，跨机不可直接比较，
+### 故必须在同机同协议下先复刻，再与 best_tput.yaml 比较。
+###
+### 与 /wanqing-develop/chengjin/1卡任务逐步性能优化/configs/max_full.yaml 的差异：
+###   - save_strategy: steps → "no"（干净 per-step 窗口，20 步内不存盘）
+###   - plot_loss: true → false
+###   - output_dir 改到本目录
+###   计算相关旋钮（MBS/GAS/packing/GC/dropout/CCE/LoRAFusion/FA3）全部一致。
+###
+### 期望：per-step MFU 落在 37.779% 附近；若显著偏离说明跨机差异，
+###   届时一切结论都以本机对照组为基准，不引用文档数值。
+### ========================================================================
+
+### model
+model_name_or_path: /wanqing-models/Qwen3-8B
+trust_remote_code: true
+flash_attn: fa3
+enable_thinking: true
+use_unsloth_gc: true             # 【对照】与文档 max_full 一致
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_rank: 32
+lora_alpha: 32
+lora_dropout: 0.1                # 【对照】与文档 max_full 一致
+lora_target: all
+enable_liger_kernel: true
+enable_cce: true
+enable_fused_lora: true
+cce_impl: cce
+disable_gradient_checkpointing: false   # 保留 GC（全关已证 OOM）
+
+### dataset
+dataset: baseline_1gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 4096
+max_samples: 100000
+packing: true
+preprocessing_num_workers: 8
+dataloader_num_workers: 8
+
+### output
+output_dir: /wanqing-develop/luowenjing/Param_Recommend/mfu_qwen3_8b/results/control_maxfull/save
+logging_steps: 1
+save_strategy: "no"              # 干净 per-step 窗口：20 步内不存盘
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: false
+
+### train
+max_steps: 20
+per_device_train_batch_size: 8   # 【对照】与文档 max_full 一致
+gradient_accumulation_steps: 4   # GBS = 1 × 8 × 4 = 32
+learning_rate: 1.0e-6
+lr_scheduler_type: constant_with_warmup
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-develop/chengjin/1卡任务逐步性能优化/configs/ds_z0_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+### eval
+do_eval: false
+eval_strategy: "no"              # 真关 eval（do_eval:false 不够，见文档踩坑）

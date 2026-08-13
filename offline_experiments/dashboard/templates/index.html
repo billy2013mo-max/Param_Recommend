@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>多硬件 SFT 实验控制台</title>
+  <!-- Relative URLs keep assets behind Web VS Code/AccessProxy path prefixes. -->
+  <link rel="stylesheet" href="./static/styles.css?v=20260720-gpu-clock-1">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">Q</div>
+      <div><strong>训练效率实验</strong><small>H800 + RTX 4090</small></div>
+    </div>
+    <nav id="navigation">
+      <button class="nav-item active" data-page="overview"><span>◫</span>实验总览</button>
+      <button class="nav-item" data-page="runs"><span>▶</span>实时任务</button>
+      <div class="nav-caption">结果分析</div>
+      <button class="nav-item" data-page="memory"><span>▦</span>显存边界</button>
+      <button class="nav-item" data-page="throughput"><span>↗</span>吞吐与 MFU</button>
+      <button class="nav-item" data-page="scaling"><span>⤢</span>多卡扩展</button>
+      <button class="nav-item" data-page="packing"><span>⇥</span>Packing 对照</button>
+      <button class="nav-item" data-page="recommendations"><span>◆</span>推荐结果</button>
+      <div class="nav-caption">系统</div>
+      <button class="nav-item" data-page="system"><span>⚙</span>环境与设计</button>
+    </nav>
+    <div class="connection-card">
+      <span id="connection-dot" class="status-dot pending"></span>
+      <div><strong id="connection-label">正在连接</strong><small id="last-update">等待首个快照</small></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">实验总览</h1>
+        <p id="page-subtitle">实验实时进度、GPU 状态与异常概览</p>
+      </div>
+      <div class="top-actions">
+        <label>实验硬件
+          <select id="campaign-filter"><option value="">全部 campaign</option></select>
+        </label>
+        <span class="read-only">只读模式</span>
+        <button id="refresh-button" class="button secondary">立即刷新</button>
+      </div>
+    </header>
+
+    <section id="page-overview" class="page active">
+      <div id="overview-alerts"></div>
+      <div id="overview-kpis" class="kpi-grid"></div>
+      <div class="section-head"><div><h2>阶段进度</h2><p>自适应边界按实验族计数，正式任务按具体运行计数</p></div></div>
+      <div id="phase-grid" class="phase-grid"></div>
+      <div class="section-head"><div><h2 id="gpu-section-title">GPU 1–4</h2><p>读取训练进程已有的每秒采样，不额外查询 GPU</p></div></div>
+      <div id="gpu-grid" class="gpu-grid"></div>
+      <div class="two-column">
+        <article class="panel">
+          <div class="panel-head"><div><h3>当前运行任务</h3><p>点击任务查看 step、吞吐和 GPU 曲线</p></div><button class="link-button" data-goto="runs">查看全部</button></div>
+          <div id="running-jobs" class="table-wrap"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-head"><div><h3>最近调度事件</h3><p>启动、结束、OOM 与异常</p></div></div>
+          <div id="recent-events" class="event-list"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="page-runs" class="page">
+      <article class="panel filters-panel">
+        <div class="filters">
+          <label>搜索<input id="run-q" placeholder="任务 / 模型 / 数据集"></label>
+          <label>阶段<select id="run-phase"><option value="">全部</option><option value="memory">显存</option><option value="throughput">吞吐</option><option value="scaling">扩展</option><option value="packing">Packing</option><option value="profiler">Profiler</option><option value="validation">验证</option></select></label>
+          <label>状态<select id="run-status"><option value="">全部</option><option value="running">运行中</option><option value="success">成功</option><option value="oom">OOM</option><option value="failed">失败</option><option value="conditional_skipped">条件跳过</option><option value="planned">等待</option></select></label>
+          <label>训练<select id="run-train-type"><option value="">全部</option><option value="full">FULL</option><option value="lora">LoRA</option></select></label>
+          <label>卡数<select id="run-gpus"><option value="">全部</option><option value="1">1</option><option value="2">2</option><option value="4">4</option></select></label>
+          <label>硬件<select id="run-campaign"><option value="">全部</option></select></label>
+          <button id="apply-run-filters" class="button primary">筛选</button>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div><h3>实验任务</h3><p id="runs-count">正在读取</p></div></div>
+        <div id="runs-table" class="table-wrap large"></div>
+      </article>
+    </section>
+
+    <section id="page-memory" class="page">
+      <div id="memory-kpis" class="kpi-grid compact"></div>
+      <div class="two-column analysis-grid">
+        <article class="panel"><div class="panel-head"><div><h3>最大可行 MBS</h3><p>按模型与数据长度呈现显存边界</p></div></div><div id="memory-heatmap" class="heatmap-wrap"></div></article>
+        <article class="panel"><div class="panel-head"><div><h3>边界显存峰值</h3><p>按 H800 / RTX 4090 的设备显存上限</p></div></div><canvas id="memory-chart" class="chart" data-chart-width="480" data-chart-height="220" width="480" height="220"></canvas></article>
+      </div>
+      <article class="panel">
+        <div class="panel-head memory-table-head">
+          <div><h3>显存边界明细</h3><p>预期 OOM 仅用于确认边界 · <span id="memory-table-count">正在读取</span></p></div>
+          <div class="compact-filters" aria-label="显存边界筛选">
+            <label>模型<select id="memory-model-filter"><option value="">全部模型</option></select></label>
+            <label>训练类型<select id="memory-train-filter"><option value="">FULL + LoRA</option><option value="full">FULL</option><option value="lora">LoRA</option></select></label>
+          </div>
+        </div>
+        <div id="memory-table" class="table-wrap large"></div>
+      </article>
+    </section>
+
+    <section id="page-throughput" class="page">
+      <div id="throughput-alerts"></div>
+      <div id="throughput-kpis" class="kpi-grid compact"></div>
+      <div class="two-column analysis-grid">
+        <article class="panel"><div class="panel-head"><div><h3>样本吞吐</h3><p>同配置三次重复的中位数</p></div></div><canvas id="throughput-chart" class="chart" data-chart-width="480" data-chart-height="240" width="480" height="240"></canvas></article>
+        <article class="panel"><div class="panel-head"><div><h3>MFU 与 Padding 效率</h3><p>诊断计算效率，不作为唯一推荐依据</p></div></div><canvas id="efficiency-chart" class="chart" data-chart-width="480" data-chart-height="240" width="480" height="240"></canvas></article>
+      </div>
+      <article class="panel"><div class="panel-head"><div><h3>吞吐配置汇总</h3><p>主排序：预计 epoch 时间，其次 GPU-hours</p></div></div><div id="throughput-table" class="table-wrap large"></div></article>
+    </section>
+
+    <section id="page-scaling" class="page">
+      <div class="info-banner"><strong>扩卡规则：</strong>每次卡数翻倍要求吞吐至少提升 70%；首次未达到后停止继续加卡。</div>
+      <div id="scaling-grid" class="comparison-grid"></div>
+    </section>
+
+    <section id="page-packing" class="page">
+      <div class="info-banner"><strong>成对口径：</strong>模型、数据、GPU、GC、ZeRO、GBS 和 repeat 保持一致；比较预计 epoch 时间而非仅比较 tokens/s。</div>
+      <div id="packing-grid" class="comparison-grid"></div>
+    </section>
+
+    <section id="page-recommendations" class="page">
+      <div class="info-banner"><strong>推荐优先级：</strong>训练可行 → 最小资源 → 扩卡收益达到 70% → 同资源下训练时间最短。当前只使用已完成实测候选。</div>
+      <div id="recommendation-grid" class="recommendation-grid"></div>
+    </section>
+
+    <section id="page-system" class="page">
+      <div id="system-grid" class="two-column analysis-grid"></div>
+    </section>
+  </main>
+
+  <div id="detail-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <div class="modal-head"><div><h2 id="detail-title">任务详情</h2><p id="detail-subtitle"></p></div><button class="icon-button" data-close-modal>×</button></div>
+      <div id="detail-content"></div>
+    </div>
+  </div>
+
+  <script>window.DASHBOARD_VERSION = {{ app_version | tojson }};</script>
+  <script src="./static/app.js?v=20260720-gpu-clock-1" defer></script>
+</body>
+</html>

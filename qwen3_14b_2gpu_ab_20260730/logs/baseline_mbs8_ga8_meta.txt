@@ -1,0 +1,6 @@
+tag=baseline_mbs8_ga8
+yaml=qwen3_14b_2gpu_ab_20260730/baseline_mbs8_ga8.yaml
+cuda_visible_devices=4,5
+omp_num_threads=48
+master_port=29601
+start_utc=2026-07-30T09:44:48Z

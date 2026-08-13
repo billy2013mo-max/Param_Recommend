@@ -1,0 +1,89 @@
+### ========================================================================
+### 【best_tput】Qwen3-8B 单卡 FA3 · 吞吐最优候选
+### ------------------------------------------------------------------------
+### base：configs/max_full.yaml（= FA3 + packing + Liger + CCE + LoRAFusion）
+### 相对 max_full 的三处改动，全部依据《Qwen3-8B 单卡 FA3：MFU 实验配置与结果》：
+###
+###   1. use_unsloth_gc: true → false
+###      依据 §5.3：Unsloth GC 把 activation offload 到 CPU，双向 77.31 GB/step、
+###      copy engine 约 1.48s/step。这些搬运不产生任何分子 FLOPs，纯属分母开销。
+###      文档 §6.1 把它列为优先级 1。保留普通 GPU gradient checkpointing。
+###
+###   2. per_device_train_batch_size: 8 → 16，gradient_accumulation_steps: 4 → 2
+###      GBS 仍为 32、仍是 32 条 4096 序列 → 逻辑 FLOPs 逐位不变
+###      (4986491390394368 FLOPs/step)，故 MFU 可与 max_full 直接横比。
+###      收益：microbatch 数从 4 降到 2，省一半 optimizer/GAS 边界开销，GEMM 更大。
+###      文档 §5.4 明确「MBS=16+GC 尚无 OOM 证据」，本轮正是要取这个证据。
+###
+###   3. lora_dropout: 0.1 → 0.0
+###      依据 §5.3：LoRA seeded dropout 约 0.49s/step。dropout 不进 MFU 分子，
+###      关掉纯减分母。注意这改变了训练数学语义（正则化），故本配置定位为
+###      「吞吐上限探针」，不是可直接上线的训练配方。
+###
+### ⚠ 分子不变性：1、2 两项不改逻辑 FLOPs；第 3 项也不改（dropout 无 MAC 贡献）。
+###   因此本配置的 MFU 与文档 37.779% 严格同分子、可直接比较。
+###
+### ⚠ 显存风险：关 unsloth offload + MBS 翻倍会同时抬高 activation 峰值。
+###   已知 MBS=8+packing+**全关GC** 撞 OOM(138.01/139.83 GiB)，但本配置保留
+###   普通 GC，属未探测区间。启动器备有阶梯回退（见 run_best.sh）。
+### ========================================================================
+
+### model
+model_name_or_path: /wanqing-models/Qwen3-8B
+trust_remote_code: true
+flash_attn: fa3
+enable_thinking: true
+use_unsloth_gc: false            # 【改动1】去掉 CPU offload，保留普通 GPU GC
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_rank: 32
+lora_alpha: 32
+lora_dropout: 0.0                # 【改动3】省 ~0.49s/step 的 seeded dropout
+lora_target: all
+enable_liger_kernel: true
+enable_cce: true
+enable_fused_lora: true
+cce_impl: cce
+disable_gradient_checkpointing: false   # 保留 GC（全关已证 OOM）
+
+### dataset
+dataset: baseline_1gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 4096
+max_samples: 100000
+packing: true
+preprocessing_num_workers: 8
+dataloader_num_workers: 8
+
+### output
+output_dir: /wanqing-develop/luowenjing/Param_Recommend/mfu_qwen3_8b/results/best_tput/save
+logging_steps: 1
+save_strategy: "no"              # 干净 per-step 窗口：20 步内不存盘
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: false
+
+### train
+max_steps: 20
+per_device_train_batch_size: 16  # 【改动2】MBS 8→16
+gradient_accumulation_steps: 2   # GBS = 1 × 16 × 2 = 32（与文档一致）
+learning_rate: 1.0e-6
+lr_scheduler_type: constant_with_warmup
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-develop/chengjin/1卡任务逐步性能优化/configs/ds_z0_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+### eval
+do_eval: false
+eval_strategy: "no"              # 真关 eval（do_eval:false 不够，见文档踩坑）

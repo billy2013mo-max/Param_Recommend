@@ -1,0 +1,63 @@
+### ========================================================================
+### A · 开 neat_packing，4 卡 ZeRO-2（在 R2 推荐组上只加 packing）
+### ------------------------------------------------------------------------
+### R2 有 24.8% 算力花在补零上：数据中位长度只有 619 token，却被补到 4096。
+### neat_packing = 把多条短样本拼进一个 4096 序列，但**不让它们互相看见**
+###   （靠 position_ids 分段，不是靠因果掩码），所以语义上等价于分开训。
+### 预期：补零基本归零，标准 MFU 和有效 MFU 会一起涨 —— 这是唯一"两个口径
+###   同向"的改动，B(选择性GC)和C(8卡)都受显存墙硬约束。
+### 注意 packing 会让框架把 cutoff_len 减 1（避免 pad_to_multiple_of），
+###   所以实际是 4095，属框架行为不是笔误。
+### ★ 硬约束：collator 里有 assert bsz == 1，neat_packing 下单卡批量只能是 1。
+###   所以本组 MBS=1、GAS=8，GBS 仍是 32。但注意「一个 batch」现在装的是
+###   打包后的 4096 token（约 6~7 条样本），不是一条样本 —— 等效批量其实变大了。
+### ========================================================================
+
+model_name_or_path: /wanqing-models/Qwen3-14B
+trust_remote_code: true
+flash_attn: fa3                  # ★ 显式指定 FA3；不写会落到 AUTO→FA2
+enable_thinking: true
+use_unsloth_gc: false           # 激活值不卸载 CPU
+
+stage: sft
+do_train: true
+finetuning_type: full
+enable_liger_kernel: false
+disable_gradient_checkpointing: false   # 开梯度检查点
+
+dataset: baseline_2gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 4096                 # ★ 8192 → 4096（用户下限）
+max_samples: 100000
+packing: true
+neat_packing: true               # ★ 本组核心：打包但不让样本间互相注意
+preprocessing_num_workers: 4
+dataloader_num_workers: 4
+
+output_dir: /wanqing-develop/luowenjing/Param_Recommend/mfu_qwen3_14b/results/a_neatpack_z2/save
+logging_steps: 1
+save_strategy: "no"
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: true
+
+max_steps: 20
+per_device_train_batch_size: 1   # ★ neat_packing 强制 bsz=1（collator 里有 assert）
+gradient_accumulation_steps: 8   # GBS = 4卡 × 1 × 8 = 32
+learning_rate: 1.0e-6
+lr_scheduler_type: cosine
+lr_scheduler_kwargs: {"num_cycles": 0.5}
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-models/tangcan/llama-factory-local/llama-factory/examples/deepspeed/ds_z2_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+do_eval: false
+eval_strategy: "no"              # 必须显式写；只写 do_eval:false 关不掉 eval

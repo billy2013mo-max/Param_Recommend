@@ -1,0 +1,1024 @@
+{
+  "schema": "sft_h800_physical_shares_v4b_prediction/v3",
+  "implementation_version": "sft_h800_physical_shares_v4b_predictor/2026-07-30.v3",
+  "generated_at_utc": "2026-07-30T09:43:11.356642+00:00",
+  "hardware_id": "h800",
+  "runtime_binding": {
+    "runtime_cohort_id": "h800_static_inference_fa3_v1",
+    "gpu_family": "H800",
+    "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624"
+  },
+  "release": {
+    "mode": "shadow_only",
+    "automatic_execution_allowed": false,
+    "reason": "The frozen physical-shares and v4b artifacts still require prospective publication acceptance.",
+    "memory_publishable": false,
+    "throughput_publishable": false,
+    "memory_publication_blockers": [
+      "challenger_report_is_diagnostic_and_never_auto_publishes",
+      "holdout_was_previously_inspected_not_fresh_acceptance",
+      "prospective_unseen_scenario_acceptance_still_required"
+    ]
+  },
+  "model_artifacts": {
+    "memory": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_challenger_modeling.json",
+      "sha256": "0eda1ea69c39f4465d2c648c994a304a40bb59341e82fd9f2284076e7c6535c9",
+      "report_sha256": "cddda7208d537c773817b38a2c72bd7732780399acadc3347f1bc8229bbac242"
+    },
+    "throughput": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/joint_throughput_modeling.json",
+      "sha256": "b2cd58fe6ba6889398ccd13a20088416ce38e9e5595604a20bffb02b7c5c7bb2",
+      "report_sha256": "d4595fee61314922eb3b9d7c206899033f912f1a0efc6557fe4b5d4be289abb1"
+    },
+    "memory_anchors": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_memory_anchor_registry_v1.json",
+      "sha256": "d526e1b871fc9abdaadf45072de10097002ebb9ba26e29bb05ef43a9d4bbe8e5",
+      "report_sha256": "bc82fed707f8eee4b3fcebcdc20ad98eff4d94886bcea7a8429161b1c2dd9993",
+      "registry_id": "h800_memory_anchors/2026-07-30.v1"
+    }
+  },
+  "policy": "H800 physical-shares operational P95, followed only when needed by a tightly matched versioned historical anchor; then choose the minimum admitted GPU count and use frozen v4b ranking within that GPU count",
+  "selection_policy": {
+    "id": "minimum_admitted_gpu_count_then_v4b",
+    "primary_objective": "minimum_admitted_gpu_count",
+    "secondary_objective": "v4b_rank_within_gpu_count",
+    "cross_gpu_throughput_ranking": "diagnostic_only",
+    "scale_out_enabled": false
+  },
+  "absolute_throughput_scale_trusted": false,
+  "gpu_experiments_launched": false,
+  "queues_mutated": false,
+  "predictions": [
+    {
+      "input_index": 0,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs1-gc0",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 1,
+        "gradient_accumulation_steps": 64,
+        "zero_stage": 3,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 137145203200.0,
+        "reserved_center_bytes": 155064377229.80084,
+        "operational_p95_reserved_bytes": 195136223737.66043,
+        "admission_upper_reserved_bytes": 195136223737.66043,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -52501143648.060425,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.22985753028090786,
+        "oom_exact_selector_log_guard": -0.10906764097557382,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch",
+                "gc_mismatch"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 127.72642374038696,
+          "reserved_center": 144.4149550328039,
+          "operational_p95": 181.73477029209997,
+          "admission_upper": 181.73477029209997,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -48.89550027256871
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 1,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs1-gc1",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 1,
+        "gradient_accumulation_steps": 64,
+        "zero_stage": 3,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 124407101952.0,
+        "reserved_center_bytes": 139075176646.91406,
+        "operational_p95_reserved_bytes": 179612255695.03464,
+        "admission_upper_reserved_bytes": 179612255695.03464,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -36977175605.43463,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.2557857662601087,
+        "oom_exact_selector_log_guard": -0.0434914766225782,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 115.86314249038696,
+          "reserved_center": 129.52385157990648,
+          "operational_p95": 167.2769484063933,
+          "admission_upper": 167.2769484063933,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -34.437678386862046
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 2,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs2-gc0",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 2,
+        "gradient_accumulation_steps": 32,
+        "zero_stage": 3,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 152365611520.0,
+        "reserved_center_bytes": 171585788118.0005,
+        "operational_p95_reserved_bytes": 215927109362.95,
+        "admission_upper_reserved_bytes": 215927109362.95,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -73292029273.35,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.22985753028090786,
+        "oom_exact_selector_log_guard": -0.10906764097557382,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch",
+                "gc_mismatch"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 141.9015336036682,
+          "reserved_center": 159.8017179574822,
+          "operational_p95": 201.0977914211806,
+          "admission_upper": 201.0977914211806,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -68.25852140164935
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 3,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs2-gc1",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 2,
+        "gradient_accumulation_steps": 32,
+        "zero_stage": 3,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 126889409024.0,
+        "reserved_center_bytes": 137844364279.2842,
+        "operational_p95_reserved_bytes": 178022691036.42847,
+        "admission_upper_reserved_bytes": 178022691036.42847,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -35387610946.82846,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.2557857662601087,
+        "oom_exact_selector_log_guard": -0.0434914766225782,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 118.17497110366821,
+          "reserved_center": 128.37756823681687,
+          "operational_p95": 165.79655095602243,
+          "admission_upper": 165.79655095602243,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -32.95728093649117
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 4,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs4-gc0",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 4,
+        "gradient_accumulation_steps": 16,
+        "zero_stage": 3,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 182806428160.0,
+        "reserved_center_bytes": 206391145300.77084,
+        "operational_p95_reserved_bytes": 259726891671.56522,
+        "admission_upper_reserved_bytes": 259726891671.56522,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -117091811581.96521,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.22985753028090786,
+        "oom_exact_selector_log_guard": -0.10906764097557382,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch",
+                "gc_mismatch",
+                "physical_mbs_exceeds_anchor"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 170.2517533302307,
+          "reserved_center": 192.21673281935122,
+          "operational_p95": 241.8895174484376,
+          "admission_upper": 241.8895174484376,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -109.05024742890635
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 5,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs4-gc1",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 4,
+        "gradient_accumulation_steps": 16,
+        "zero_stage": 3,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 131854023168.0,
+        "reserved_center_bytes": 137771561318.39853,
+        "operational_p95_reserved_bytes": 177928667758.21863,
+        "admission_upper_reserved_bytes": 177928667758.21863,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -35293587668.61862,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.2557857662601087,
+        "oom_exact_selector_log_guard": -0.0434914766225782,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch",
+                "physical_mbs_exceeds_anchor"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 122.79862833023071,
+          "reserved_center": 128.3097651958452,
+          "operational_p95": 165.70898495448625,
+          "admission_upper": 165.70898495448625,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -32.869714934955
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 6,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs8-gc0",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 8,
+        "gradient_accumulation_steps": 8,
+        "zero_stage": 3,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 243688061440.0,
+        "reserved_center_bytes": 277187604443.503,
+        "operational_p95_reserved_bytes": 348818622073.5579,
+        "admission_upper_reserved_bytes": 348818622073.5579,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -206183541983.95792,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.22985753028090786,
+        "oom_exact_selector_log_guard": -0.10906764097557382,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch",
+                "gc_mismatch",
+                "physical_mbs_exceeds_anchor"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 226.9521927833557,
+          "reserved_center": 258.15107342182006,
+          "operational_p95": 324.86265718336955,
+          "admission_upper": 324.86265718336955,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -192.0233871638383
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 7,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs8-gc1",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 8,
+        "gradient_accumulation_steps": 8,
+        "zero_stage": 3,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 141783251456.0,
+        "reserved_center_bytes": 140056973764.7503,
+        "operational_p95_reserved_bytes": 180880223129.77786,
+        "admission_upper_reserved_bytes": 180880223129.77786,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -38245143040.17786,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.2557857662601087,
+        "oom_exact_selector_log_guard": -0.0434914766225782,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch",
+                "physical_mbs_exceeds_anchor"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 132.0459427833557,
+          "reserved_center": 130.43822139943978,
+          "operational_p95": 168.45783510224695,
+          "admission_upper": 168.45783510224695,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -35.61856508271569
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 8,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs16-gc0",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 16,
+        "gradient_accumulation_steps": 4,
+        "zero_stage": 3,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 365451328000.0,
+        "reserved_center_bytes": 418806834887.34235,
+        "operational_p95_reserved_bytes": 527035194642.57556,
+        "admission_upper_reserved_bytes": 527035194642.57556,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -384400114552.9756,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.22985753028090786,
+        "oom_exact_selector_log_guard": -0.10906764097557382,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch",
+                "gc_mismatch",
+                "physical_mbs_exceeds_anchor"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 340.3530716896057,
+          "reserved_center": 390.0442597338393,
+          "operational_p95": 490.8397743874933,
+          "admission_upper": 490.8397743874933,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -358.0005043679621
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 9,
+      "request_id": "qwen3-14b-full-baseline2-gpu2-z3-mbs16-gc1",
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "baseline_2gpu_case",
+        "dataset_category": "longtail",
+        "dataset_profile_sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "target_gbs": 128,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 16,
+        "gradient_accumulation_steps": 4,
+        "zero_stage": 3,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/profiles/baseline_2gpu_case.qwen3_nothink.jsonl",
+        "sha256": "911d144dc33bad0544d67e2a63450c002f44bf7e0573f8d7bb1a0682ec1ae07c",
+        "origin": "additional",
+        "tokenizer_id": "Qwen3-14B@local",
+        "template_id": "qwen3@llamafactory"
+      },
+      "support": {
+        "label": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 161641708032.0,
+        "reserved_center_bytes": 147275855715.92578,
+        "operational_p95_reserved_bytes": 190203236064.9951,
+        "admission_upper_reserved_bytes": 190203236064.9951,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -47568155975.39508,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector",
+        "success_log_residual_upper": 0.2557857662601087,
+        "oom_exact_selector_log_guard": -0.0434914766225782,
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "issues": [
+            "no_active_exact_or_monotonic_anchor_match"
+          ],
+          "match_diagnostics": [
+            {
+              "anchor_id": "h800-qwen3-14b-full-2gpu-z3-gc-mbs2-cutoff4096-v1",
+              "matched": false,
+              "issues": [
+                "target_gbs_mismatch",
+                "physical_mbs_exceeds_anchor"
+              ]
+            }
+          ]
+        },
+        "gib": {
+          "analytic_reference": 150.5405716896057,
+          "reserved_center": 137.16132912405374,
+          "operational_p95": 177.14056751224686,
+          "admission_upper": 177.14056751224686,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -44.301297492715605
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    }
+  ],
+  "ranking_groups": [
+    {
+      "comparison_group": "qwen3-14b-full-baseline2-cutoff2048-gbs128",
+      "requested_candidates": 10,
+      "physical_model_admitted_candidates": 0,
+      "policy_admitted_candidates": 0,
+      "rejected_by_memory": 10,
+      "rejected_by_support_domain": 0,
+      "admitted_by_historical_anchor": 0,
+      "status": "no_admitted_candidate",
+      "selection_policy": "minimum_admitted_gpu_count_then_v4b",
+      "minimum_admitted_gpu_count": null,
+      "selected_request_id": null,
+      "throughput_top_request_id": null,
+      "ranked_request_ids": [],
+      "automatic_execution_allowed": false
+    }
+  ],
+  "report_sha256": "ae347efba980d9e459e6b6d59300c4136975af983756c9d776ff84a833ecd549"
+}

@@ -1,0 +1,54 @@
+### ========================================================================
+### A3 · 打包 + cutoff 加长到 8192（实际生效 8191）
+### A 组装填率已 97.3%，留白仅 2.7%，预期收益很小（+1~2 点），用于否证。
+### 显存预测 117.2 GiB / 安全线 133.4，余量 16.2 GiB。
+### ========================================================================
+
+model_name_or_path: /wanqing-models/Qwen3-14B
+trust_remote_code: true
+flash_attn: fa3                  # ★ 显式指定 FA3；不写会落到 AUTO→FA2
+enable_thinking: true
+use_unsloth_gc: false           # 激活值不卸载 CPU
+
+stage: sft
+do_train: true
+finetuning_type: full
+enable_liger_kernel: false
+disable_gradient_checkpointing: false   # 开梯度检查点
+
+dataset: baseline_2gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 8192
+max_samples: 100000
+packing: true
+neat_packing: true               # ★ 本组核心：打包但不让样本间互相注意
+preprocessing_num_workers: 4
+dataloader_num_workers: 4
+
+output_dir: /root/scratch_saves/a3_neatpack_cut8192
+logging_steps: 1
+save_strategy: "no"
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: true
+
+max_steps: 20
+per_device_train_batch_size: 1   # ★ neat_packing 强制 bsz=1（collator 里有 assert）
+gradient_accumulation_steps: 8   # GBS = 4卡 × 1 × 8 = 32
+learning_rate: 1.0e-6
+lr_scheduler_type: cosine
+lr_scheduler_kwargs: {"num_cycles": 0.5}
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-models/tangcan/llama-factory-local/llama-factory/examples/deepspeed/ds_z2_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+do_eval: false
+eval_strategy: "no"              # 必须显式写；只写 do_eval:false 关不掉 eval

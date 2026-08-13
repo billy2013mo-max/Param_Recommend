@@ -1,0 +1,130 @@
+{
+  "schema": "business_vl_dataset_profile/v1",
+  "generated_at_utc": "2026-07-30T04:04:16.524735+00:00",
+  "dataset_id": "business_pzfj38_v113",
+  "source": {
+    "relative_path": "datasets/dataset-pzfj38-1774860803/113/publish/extracted/dataset-pzfj38-1774860803-V113.jsonl",
+    "sha256": "02d7de77c3333907805ec59c4262f557e64fbeae3e7e37e2a2b1b4034e0eed77",
+    "records": 7108
+  },
+  "model": {
+    "model_id": "qwen2_5_vl_7b_instruct",
+    "local_path": "/wanqing-models/Qwen2.5-VL-7B-Instruct",
+    "template": "qwen2_vl@llamafactory",
+    "tokenizer_local_only": true
+  },
+  "image_processing_assumptions": {
+    "image_max_pixels": 589824,
+    "image_min_pixels": 1024,
+    "processor_min_pixels": 3136,
+    "processor_max_pixels": 12845056,
+    "patch_size": 14,
+    "merge_size": 2,
+    "visual_token_formula": "(resized_height / patch_size) * (resized_width / patch_size) / merge_size^2"
+  },
+  "full_dataset_text_profile": {
+    "records": 7108,
+    "base_total_tokens_one_image_pad_each": {
+      "min": 2461,
+      "mean": 2489.916150815982,
+      "std": 28.428760656322382,
+      "p50": 2480.0,
+      "p90": 2528.0,
+      "p95": 2552.0,
+      "p99": 2569.0,
+      "max": 2580
+    },
+    "label_tokens": {
+      "min": 43,
+      "mean": 71.916150815982,
+      "std": 28.428760656322382,
+      "p50": 62.0,
+      "p90": 110.0,
+      "p95": 134.0,
+      "p99": 151.0,
+      "max": 162
+    }
+  },
+  "sample": {
+    "method": "deterministic_uniform_without_replacement",
+    "seed": 20260730,
+    "requested_records": 512,
+    "sampled_records": 512,
+    "complete_records": 512,
+    "unique_image_references": 985,
+    "successful_unique_image_headers": 985,
+    "failed_unique_image_headers": 0,
+    "estimated_total_tokens": {
+      "min": 3377,
+      "mean": 3996.830078125,
+      "std": 87.00696156590803,
+      "p50": 4016.0,
+      "p90": 4073.0,
+      "p95": 4080.0,
+      "p99": 4112.78,
+      "max": 4121
+    },
+    "visual_tokens_per_image_observation": {
+      "min": 187,
+      "mean": 755.4365234375,
+      "std": 50.41776521079661,
+      "p50": 777.0,
+      "p90": 777.0,
+      "p95": 777.0,
+      "p99": 777.0,
+      "max": 780
+    },
+    "cutoff_analysis": {
+      "4096": {
+        "cutoff_len": 4096,
+        "sample_records_truncated": 19,
+        "sample_truncation_rate": 0.037109375,
+        "truncation_rate_wilson_95": [
+          0.023883775518617995,
+          0.05722924497483205
+        ],
+        "sample_tokens_retained_ratio": 0.9998646388226607
+      },
+      "4608": {
+        "cutoff_len": 4608,
+        "sample_records_truncated": 0,
+        "sample_truncation_rate": 0.0,
+        "truncation_rate_wilson_95": [
+          0.0,
+          0.007446975722882739
+        ],
+        "sample_tokens_retained_ratio": 1.0
+      },
+      "6144": {
+        "cutoff_len": 6144,
+        "sample_records_truncated": 0,
+        "sample_truncation_rate": 0.0,
+        "truncation_rate_wilson_95": [
+          0.0,
+          0.007446975722882739
+        ],
+        "sample_tokens_retained_ratio": 1.0
+      },
+      "8192": {
+        "cutoff_len": 8192,
+        "sample_records_truncated": 0,
+        "sample_truncation_rate": 0.0,
+        "truncation_rate_wilson_95": [
+          0.0,
+          0.007446975722882739
+        ],
+        "sample_tokens_retained_ratio": 1.0
+      }
+    }
+  },
+  "privacy": {
+    "raw_text_written": false,
+    "raw_image_urls_written": false,
+    "image_reference_sha256_written": true
+  },
+  "limitations": [
+    "Visual-token statistics are sampled estimates; text-token statistics cover all records.",
+    "This is a token-shape profile, not a validated VL memory or throughput prediction."
+  ],
+  "gpu_training_started": false
+}

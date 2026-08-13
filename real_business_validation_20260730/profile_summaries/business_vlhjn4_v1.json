@@ -1,0 +1,94 @@
+{
+  "schema": "business_preference_dataset_profile/v1",
+  "generated_at_utc": "2026-07-30T13:16:38Z",
+  "dataset_id": "business_vlhjn4_v1",
+  "records": 54142,
+  "business_task": "short_video_share_copy_preference_learning",
+  "schema_profile": {
+    "system_variants": 1,
+    "unique_user_prompts": 43554,
+    "duplicate_prompt_rows_beyond_unique": 10588,
+    "unique_chosen": 54142,
+    "unique_rejected": 54142,
+    "identical_chosen_rejected_pairs": 0,
+    "unique_prompt_chosen_rejected_triples": 54142
+  },
+  "source_modalities_as_text": {
+    "records_with_ocr_text": 54142,
+    "records_with_asr_text": 54142,
+    "records_with_dense_video_description": 54142,
+    "records_with_video_type": 54142,
+    "video_type_count": 39
+  },
+  "character_lengths": {
+    "user_prompt": {
+      "minimum": 236,
+      "mean": 796.45,
+      "p50": 811,
+      "p90": 1123,
+      "p95": 1168,
+      "p99": 1282.59,
+      "maximum": 2185
+    },
+    "chosen": {
+      "minimum": 5,
+      "mean": 17.78,
+      "p50": 18,
+      "p95": 24,
+      "p99": 27,
+      "maximum": 243
+    },
+    "rejected": {
+      "minimum": 6,
+      "mean": 17.71,
+      "p50": 17,
+      "p95": 24,
+      "p99": 26,
+      "maximum": 240
+    }
+  },
+  "reference_token_profile": {
+    "tokenizer": "/wanqing-models/Qwen3-8B",
+    "chat_template_special_tokens_included": false,
+    "input_tokens": {
+      "minimum": 171,
+      "mean": 554.95,
+      "p50": 573,
+      "p90": 769,
+      "p95": 785,
+      "p99": 817,
+      "maximum": 1636
+    },
+    "chosen_tokens": {
+      "minimum": 4,
+      "mean": 13.6,
+      "p50": 13,
+      "p95": 19,
+      "p99": 22,
+      "maximum": 206
+    },
+    "input_plus_chosen_tokens": {
+      "minimum": 182,
+      "mean": 568.55,
+      "p50": 586.5,
+      "p90": 784,
+      "p95": 800,
+      "p99": 832,
+      "maximum": 1647
+    }
+  },
+  "quality_findings": {
+    "chosen_over_40_characters": 11,
+    "rejected_over_40_characters": 10,
+    "chosen_over_100_characters": 4,
+    "rejected_over_100_characters": 2,
+    "long_outliers_can_contain_multiple_candidates_or_explanations": true,
+    "preference_reason_or_score_present": false
+  },
+  "limitations": [
+    "The tokenizer profile is a Qwen3-8B reference profile, not a binding to the final training model.",
+    "Prompt duplicates must be grouped when splitting train and validation data.",
+    "Preference correctness was not manually relabeled."
+  ],
+  "gpu_training_started": false
+}

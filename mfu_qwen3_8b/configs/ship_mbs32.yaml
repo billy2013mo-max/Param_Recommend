@@ -1,0 +1,57 @@
+# 用户要求组：lora_dropout=0.1 + MBS=32。开普通 GPU 梯度检查点。
+# GBS = 1 x 32 x 1 = 32（不变，故 MFU 与其它组可直接比）
+# 显存预估 ~73 GiB / 安全线 133 GiB —— 应能跑下
+# 注意 GAS=1：优化器边界开销被摊到最少，但也失去了梯度累积的重叠机会
+model_name_or_path: /wanqing-models/Qwen3-8B
+trust_remote_code: true
+flash_attn: fa3
+enable_thinking: true
+use_unsloth_gc: false            # 不用 CPU offload（这是上一轮 4.6 点的主要来源）
+
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_rank: 32
+lora_alpha: 32
+lora_dropout: 0.1
+lora_target: all
+enable_liger_kernel: true
+enable_cce: true
+enable_fused_lora: true
+cce_impl: cce
+disable_gradient_checkpointing: false   # 保留 GC（全关已证 OOM）
+
+dataset: baseline_1gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 4096
+max_samples: 100000
+packing: true
+preprocessing_num_workers: 8
+dataloader_num_workers: 8
+
+output_dir: /wanqing-develop/luowenjing/Param_Recommend/mfu_qwen3_8b/results/ship_mbs32/save
+logging_steps: 1
+save_strategy: "no"              # 干净 per-step 窗口：20 步内不存盘
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: false
+
+max_steps: 20
+per_device_train_batch_size: 32
+gradient_accumulation_steps: 1   # GBS = 1 x 32 x 1 = 32
+learning_rate: 1.0e-6
+lr_scheduler_type: constant_with_warmup
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-develop/chengjin/1卡任务逐步性能优化/configs/ds_z0_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+do_eval: false
+eval_strategy: "no"              # 真关 eval（do_eval:false 不够，见文档踩坑）

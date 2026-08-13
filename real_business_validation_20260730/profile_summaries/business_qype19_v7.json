@@ -1,0 +1,114 @@
+{
+  "schema": "business_vl_multilabel_dataset_profile/v1",
+  "generated_at_utc": "2026-07-30T13:16:38Z",
+  "dataset_id": "business_qype19_v7",
+  "records": 2011,
+  "business_task": "ecommerce_model_image_quality_audit",
+  "schema_profile": {
+    "system_variants": 1,
+    "user_variants": 1,
+    "images_per_record": 2,
+    "unique_answers": 88,
+    "unique_image_pairs": 2011,
+    "unique_image_references": 2425,
+    "unique_evaluation_images": 1964,
+    "unique_reference_product_images": 461,
+    "evaluation_reference_role_overlap": 0,
+    "maximum_reference_reuse": 140
+  },
+  "label_profile": {
+    "no_issue_records": 171,
+    "labels_per_record": {
+      "zero": 171,
+      "one": 728,
+      "two": 552,
+      "three": 350,
+      "four": 196,
+      "five": 14
+    },
+    "frequency": {
+      "拼接图": 153,
+      "模糊": 195,
+      "无模特": 388,
+      "商品不一致": 451,
+      "合成元素": 652,
+      "存在边框": 433,
+      "拍摄问题": 291,
+      "营销感/AI感": 149,
+      "未露脸": 982,
+      "纯色背景": 42
+    },
+    "unknown_labels_after_normalizing_ai_space": 0,
+    "order_violations": 0,
+    "exclusive_rule_violations": 0,
+    "taxonomy_string_mismatch": {
+      "instruction": "营销感/AI 感",
+      "targets": "营销感/AI感",
+      "affected_records": 149
+    }
+  },
+  "reference_token_profile": {
+    "tokenizer": "/wanqing-models/Qwen2.5-VL-7B-Instruct",
+    "base_text_tokens_with_one_image_pad_per_image": 1086,
+    "label_tokens": {
+      "minimum": 1,
+      "mean": 5.89,
+      "p50": 5,
+      "p90": 12,
+      "p95": 13,
+      "p99": 15,
+      "maximum": 19
+    }
+  },
+  "sampled_image_profile": {
+    "method": "deterministic_uniform_without_replacement",
+    "seed": 20260730,
+    "sampled_records": 256,
+    "unique_image_references": 392,
+    "successful_image_headers": 392,
+    "complete_records": 256,
+    "same_original_dimensions_pairs": 4,
+    "content_types": {
+      "image/jpeg": 297,
+      "image/png": 215
+    },
+    "orientation": {
+      "square": 311,
+      "portrait": 192,
+      "landscape": 9
+    },
+    "original_megapixels": {
+      "minimum": 0.18216,
+      "mean": 1.026896,
+      "p50": 0.7225,
+      "p95": 2.0736,
+      "maximum": 8.2944
+    },
+    "visual_tokens_per_image": {
+      "minimum": 234,
+      "mean": 721.2,
+      "p50": 729,
+      "p95": 777,
+      "maximum": 780
+    },
+    "estimated_total_tokens": {
+      "minimum": 2047,
+      "mean": 2526.4,
+      "p50": 2581,
+      "p95": 2590,
+      "maximum": 2593
+    },
+    "image_processing_assumptions": {
+      "image_max_pixels": 589824,
+      "image_min_pixels": 1024,
+      "patch_size": 14,
+      "merge_size": 2
+    }
+  },
+  "limitations": [
+    "Image dimensions and visual tokens are sampled estimates.",
+    "Image payloads are remote references and are not embedded in the archive.",
+    "Train and validation splits must be grouped by reference product image."
+  ],
+  "gpu_training_started": false
+}

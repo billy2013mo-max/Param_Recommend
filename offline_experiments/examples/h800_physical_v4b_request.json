@@ -1,0 +1,68 @@
+{
+  "candidates": [
+    {
+      "request_id": "qwen3-14b-full-gpu4-z3-mbs8",
+      "comparison_group": "qwen3-14b-full-short512-gbs64",
+      "hardware_id": "h800",
+      "model_id": "qwen3_14b",
+      "training_mode": "full",
+      "dataset_id": "short_512",
+      "dataset_category": "short",
+      "target_gbs": 64,
+      "cutoff_len": 512,
+      "gpu_count": 4,
+      "physical_mbs": 8,
+      "zero_stage": 3,
+      "gradient_checkpointing": false,
+      "packing": false
+    },
+    {
+      "request_id": "qwen3-14b-full-gpu4-z2-mbs8-gc",
+      "comparison_group": "qwen3-14b-full-short512-gbs64",
+      "hardware_id": "h800",
+      "model_id": "qwen3_14b",
+      "training_mode": "full",
+      "dataset_id": "short_512",
+      "dataset_category": "short",
+      "target_gbs": 64,
+      "cutoff_len": 512,
+      "gpu_count": 4,
+      "physical_mbs": 8,
+      "zero_stage": 2,
+      "gradient_checkpointing": true,
+      "packing": false
+    },
+    {
+      "request_id": "qwen3-14b-full-gpu4-z3-mbs4",
+      "comparison_group": "qwen3-14b-full-short512-gbs64",
+      "hardware_id": "h800",
+      "model_id": "qwen3_14b",
+      "training_mode": "full",
+      "dataset_id": "short_512",
+      "dataset_category": "short",
+      "target_gbs": 64,
+      "cutoff_len": 512,
+      "gpu_count": 4,
+      "physical_mbs": 4,
+      "zero_stage": 3,
+      "gradient_checkpointing": false,
+      "packing": false
+    },
+    {
+      "request_id": "qwen3-14b-full-gpu4-z2-mbs4-memory-reject",
+      "comparison_group": "qwen3-14b-full-short512-gbs64",
+      "hardware_id": "h800",
+      "model_id": "qwen3_14b",
+      "training_mode": "full",
+      "dataset_id": "short_512",
+      "dataset_category": "short",
+      "target_gbs": 64,
+      "cutoff_len": 512,
+      "gpu_count": 4,
+      "physical_mbs": 4,
+      "zero_stage": 2,
+      "gradient_checkpointing": false,
+      "packing": false
+    }
+  ]
+}

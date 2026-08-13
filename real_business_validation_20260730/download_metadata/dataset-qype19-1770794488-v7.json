@@ -1,0 +1,67 @@
+{
+  "schema": "business_dataset_download_manifest/v1",
+  "downloaded_at_utc": "2026-07-30T13:16:38Z",
+  "source": {
+    "halo_url": "https://halo.corp.kuaishou.com/bs/bucket/infra-ai-infra-storage/object?path=datasets/dataset-qype19-1770794488/7/publish/",
+    "bucket": "infra-ai-infra-storage",
+    "prefix": "datasets/dataset-qype19-1770794488/7/publish/",
+    "endpoint_environment": "idc",
+    "idc_endpoint_result": "success",
+    "discovered_publish_versions": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7
+    ],
+    "selected_version": 7
+  },
+  "download_tool": {
+    "path": "/wanqing-develop/luowenjing/tianmu-video-intelligence-model-factory/model_factory_evq/blob_download.sh",
+    "credentials_recorded_here": false
+  },
+  "objects": [
+    {
+      "key": "datasets/dataset-qype19-1770794488/7/publish/dataset-qype19-1770794488-V7.zip",
+      "local_path": "/wanqing-develop/luowenjing/Param_Recommend/real_business_validation_20260730/datasets/dataset-qype19-1770794488/7/publish/dataset-qype19-1770794488-V7.zip",
+      "size_bytes": 92150,
+      "sha256": "ca5a8c32be87553bb0c7e8250e36e2d38ef1e25a274c0cd9c0da00ff81e6b7aa"
+    }
+  ],
+  "extraction": {
+    "archive_type": "zip",
+    "safe_member_paths": true,
+    "symlink_members": 0,
+    "members": 1,
+    "uncompressed_size_bytes": 8684568,
+    "extracted_file": {
+      "local_path": "/wanqing-develop/luowenjing/Param_Recommend/real_business_validation_20260730/datasets/dataset-qype19-1770794488/7/publish/extracted/dataset-qype19-1770794488-V7.jsonl",
+      "size_bytes": 8684568,
+      "sha256": "4861ea910d567465ad301384c949be4f4eaf370be08135b6ce8e15ca4d79346a"
+    }
+  },
+  "validation": {
+    "json_records": 2011,
+    "empty_records": 0,
+    "invalid_json_records": 0,
+    "top_level_type": "object",
+    "top_level_fields": [
+      "images",
+      "messages"
+    ],
+    "images_per_record": 2,
+    "messages_per_record": 3,
+    "message_roles": [
+      "system",
+      "user",
+      "assistant"
+    ],
+    "image_placeholders_match_references": true,
+    "image_references": 4022,
+    "unique_image_references": 2425,
+    "image_payloads_embedded_in_archive": false,
+    "has_trailing_newline": false
+  },
+  "gpu_training_started": false
+}

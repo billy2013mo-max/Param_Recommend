@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "training_scope": {
+    "phase_id": "h800_hybrid_attention_dense_stage1_formal_v1",
+    "model_ids": [
+      "qwen3_8b",
+      "qwen3p5_4b",
+      "qwen3p5_9b",
+      "qwen3p6_27b"
+    ],
+    "gpu_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "exclusive_node_gpu_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "max_gpu_count": 4,
+    "stage": "sft",
+    "precision": "bf16",
+    "gpu_type": "NVIDIA H800 140GB HBM3",
+    "gpu_counts": [
+      1,
+      2,
+      4
+    ],
+    "global_batch_sizes": [
+      64
+    ],
+    "gradient_checkpointing": [
+      false,
+      true
+    ],
+    "zero_by_gpu_count": {
+      "1": [
+        "none"
+      ],
+      "2": [
+        "zero2",
+        "zero3"
+      ],
+      "4": [
+        "zero2",
+        "zero3"
+      ]
+    },
+    "objective": "calibrate architecture-aware dense full/linear-attention memory features across exact token length, ZeRO, GC and MBS"
+  },
+  "fixed_runtime": {
+    "python": "/fine-tuning-launcher/.venv/bin/python",
+    "torchrun": "/fine-tuning-launcher/.venv/bin/torchrun",
+    "llamafactory_source": "/fine-tuning-launcher/.venv/lib/python3.11/site-packages/llamafactory",
+    "flash_attn": "fa3",
+    "fa3_variant": "orig",
+    "enable_cce": false,
+    "enable_liger_kernel": true,
+    "optimizer": "adamw_torch_fused",
+    "torch_compile": false,
+    "dataloader_num_workers": 0,
+    "preprocessing_num_workers": 8,
+    "seed": 20260716,
+    "data_seed": 20260716,
+    "ddp_timeout": 180000000
+  },
+  "measurement": {
+    "memory_probe_max_steps": 5,
+    "throughput_warmup_steps": 3,
+    "throughput_measure_steps": 12,
+    "throughput_screen_warmup_steps": 2,
+    "throughput_screen_measure_steps": 4,
+    "scaling_warmup_steps": 2,
+    "scaling_measure_steps": 8,
+    "packing_warmup_steps": 2,
+    "packing_measure_steps": 8,
+    "packing_memory_probe_steps": 3,
+    "profiler_warmup_steps": 1,
+    "profiler_measure_steps": 3,
+    "throughput_repeats": 3,
+    "rerun_on_unhealthy_result": false,
+    "nvidia_smi_interval_seconds": 1.0,
+    "performance_parallelism": "disjoint_gpu_masks",
+    "scheduler_order_policy": "strict_homogeneous_card_count_waves",
+    "formal_throughput_requires_exclusive_node": false
+  },
+  "datasets": [
+    {
+      "id": "packing_config_rank_pf02_v1",
+      "workload_id": "PF02",
+      "runtime_records": 11690,
+      "distribution_preserving_repetition": false
+    },
+    {
+      "id": "packing_config_rank_pf04_v1",
+      "workload_id": "PF04",
+      "runtime_records": 10330,
+      "distribution_preserving_repetition": true
+    },
+    {
+      "id": "packing_config_rank_pf06_v1",
+      "workload_id": "PF06",
+      "runtime_records": 8500,
+      "distribution_preserving_repetition": true
+    },
+    {
+      "id": "packing_config_rank_ph02_v1",
+      "workload_id": "PH02",
+      "runtime_records": 8973,
+      "distribution_preserving_repetition": true
+    },
+    {
+      "id": "packing_config_rank_ph03_v1",
+      "workload_id": "PH03",
+      "runtime_records": 9380,
+      "distribution_preserving_repetition": true
+    },
+    {
+      "id": "packing_config_rank_ph06_v1",
+      "workload_id": "PH06",
+      "runtime_records": 8274,
+      "distribution_preserving_repetition": true
+    }
+  ],
+  "packing_static_gate": {
+    "virtual_mbs_source": "upload_time samples_per_pack.mean",
+    "maximum_expected_gbs_relative_error": 0.1,
+    "pack_count_p99_gbs_epsilon": 0.15,
+    "recommendation_time_raw_rows_required": false
+  }
+}

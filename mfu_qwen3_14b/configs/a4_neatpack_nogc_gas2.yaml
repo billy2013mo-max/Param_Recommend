@@ -1,0 +1,61 @@
+### ========================================================================
+### A4 · 打包 + 关梯度检查点 · GAS=2（严格同批量对照组）
+### ------------------------------------------------------------------------
+### 为什么有这一组：A/A2 名义 GBS=32 但那是「行数」，打包后每行平均装 4.72 条
+###   真实样本，实际每步喂 150.9 条 —— 是 R3 等不打包组（32 条）的 4.72 倍。
+###   所以 A2 的 38.38% 里混着「批量变大」的贡献，无法与 R3 公平对照。
+### 本组把 GAS 从 8 降到 2 → 每步 8 行 × 4.72 = 37.7 条样本，落回 32 条附近
+###   （1.18×，粒度受每行 4.72 条限制，取不到更准的值）。
+### 预期：每步 token 少了 4 倍，固定开销占比上升，MFU 应低于 GAS=8 那版。
+###   两组之差即「批量效应」，剩下的才是打包本身的贡献。
+### ★ MBS 仍必须是 1（collator 硬断言），所以只能靠 GAS 调批量。
+### ========================================================================
+
+model_name_or_path: /wanqing-models/Qwen3-14B
+trust_remote_code: true
+flash_attn: fa3                  # ★ 显式指定 FA3；不写会落到 AUTO→FA2
+enable_thinking: true
+use_unsloth_gc: false           # 激活值不卸载 CPU
+
+stage: sft
+do_train: true
+finetuning_type: full
+enable_liger_kernel: false
+disable_gradient_checkpointing: true
+
+dataset: baseline_2gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 4096                 # ★ 8192 → 4096（用户下限）
+max_samples: 100000
+packing: true
+neat_packing: true               # ★ 本组核心：打包但不让样本间互相注意
+preprocessing_num_workers: 4
+dataloader_num_workers: 4
+
+output_dir: /root/scratch_saves/a4_neatpack_nogc_gas2
+logging_steps: 1
+save_strategy: "no"
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: true
+
+max_steps: 20
+per_device_train_batch_size: 1   # ★ neat_packing 强制 bsz=1（collator 里有 assert）
+gradient_accumulation_steps: 2
+learning_rate: 1.0e-6
+lr_scheduler_type: cosine
+lr_scheduler_kwargs: {"num_cycles": 0.5}
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-models/tangcan/llama-factory-local/llama-factory/examples/deepspeed/ds_z2_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+do_eval: false
+eval_strategy: "no"              # 必须显式写；只写 do_eval:false 关不掉 eval

@@ -1,0 +1,49 @@
+{
+  "candidates": [
+    {
+      "request_id": "h800-1gpu-mbs4",
+      "model_id": "qwen3_4b",
+      "dataset_id": "multiturn_2048",
+      "hardware_id": "h800",
+      "training_mode": "lora",
+      "gpu_count": 1,
+      "physical_mbs": 4,
+      "target_gbs": 64,
+      "cutoff_len": 2048,
+      "gradient_checkpointing": false,
+      "zero_stage": 0,
+      "packing": false,
+      "planned_steps": 1000
+    },
+    {
+      "request_id": "h800-2gpu-zero2",
+      "model_id": "qwen3_4b",
+      "dataset_id": "multiturn_2048",
+      "hardware_id": "h800",
+      "training_mode": "lora",
+      "gpu_count": 2,
+      "physical_mbs": 2,
+      "target_gbs": 64,
+      "cutoff_len": 2048,
+      "gradient_checkpointing": false,
+      "zero_stage": 2,
+      "packing": false,
+      "planned_steps": 1000
+    },
+    {
+      "request_id": "h800-2gpu-zero3-gc",
+      "model_id": "qwen3_4b",
+      "dataset_id": "multiturn_2048",
+      "hardware_id": "h800",
+      "training_mode": "lora",
+      "gpu_count": 2,
+      "physical_mbs": 4,
+      "target_gbs": 64,
+      "cutoff_len": 2048,
+      "gradient_checkpointing": true,
+      "zero_stage": 3,
+      "packing": false,
+      "planned_steps": 1000
+    }
+  ]
+}

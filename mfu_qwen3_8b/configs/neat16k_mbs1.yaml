@@ -1,0 +1,84 @@
+# ============================================================================
+# B 组：neat_packing + cutoff_len=16384 + MBS=1，不开梯度检查点
+# ----------------------------------------------------------------------------
+# 为什么是 16384：数据集实测长度分布（4500 条，qwen3 模板 + 真实 tokenizer）
+#     中位 2524 / p90 3213 / p99 4784 / 最长 10971，变异系数 0.215
+#   按 LLaMA-Factory 真实的 greedy_knapsack 模拟各 cutoff 的装箱结果：
+#     cutoff  截断条数  每包条数  填充率
+#      4096      104     1.03    65.9%   ← 现在用的，packing 几乎没生效
+#      8192        2     2.85    91.7%
+#     16384        0     5.92    95.3%   ← 本组，填充率最优且零截断
+#     32768        0    12.16    97.9%   ← 边际收益小，注意力平方项代价大
+#
+# 为什么 MBS=1：不是选择，是 neat_packing 的硬约束。
+#   collator.py:528 `assert features["input_ids"].shape[0] == 1,
+#   "bsz should be 1 for neat packing"`。
+#
+# ★ 与前五组不是同一口径，不能直接比 MFU ★
+#   neat_packing 会裁掉填充位（collator.py `_unpad_packed_features`），
+#   所以每步真实 token 数不再固定为 131072，逐步都不同。
+#   前五组分子恒为 4986491390394368 故严格可比；本组分子逐步变化。
+#   compute_mfu.py 按每步真实长度计算，数字是对的，但对比时必须声明口径不同。
+#
+# 另两个负面因素（净效果只能实测）：
+#   1. neat_packing 用块对角注意力，每条数据只能看到自己，比普通 packing 多开销
+#   2. 序列 4096→16384，注意力 core 是 ΣS² 平方增长
+#
+# 显存：不预测。上一轮我用线性外推估显存错了 70%（估 77 实测 131.3 GiB），
+#   所以这次直接测。GBS 与前五组一致仍为 32 条（1 x 1 x 32）。
+# ============================================================================
+
+model_name_or_path: /wanqing-models/Qwen3-8B
+trust_remote_code: true
+flash_attn: fa3
+enable_thinking: true
+use_unsloth_gc: false
+
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_rank: 32
+lora_alpha: 32
+lora_dropout: 0.1
+lora_target: all
+enable_liger_kernel: true
+enable_cce: true
+enable_fused_lora: true
+cce_impl: cce
+disable_gradient_checkpointing: true    # 沿用 57.547% 那组：不开梯度检查点
+
+dataset: baseline_1gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 16384                # ★ 4096 → 16384，填充率 65.9% → 95.3%
+max_samples: 100000
+packing: true
+neat_packing: true               # ★ 块对角注意力，不跨条 attention
+preprocessing_num_workers: 8
+dataloader_num_workers: 8
+
+output_dir: /wanqing-develop/luowenjing/Param_Recommend/mfu_qwen3_8b/results/neat16k_mbs1/save
+logging_steps: 1
+save_strategy: "no"
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: false
+
+max_steps: 20
+per_device_train_batch_size: 1   # ★ neat_packing 强制为 1（见文件头）
+gradient_accumulation_steps: 32  # GBS = 1 x 1 x 32 = 32（包数，与前五组的样本数不同义）
+learning_rate: 1.0e-6
+lr_scheduler_type: constant_with_warmup
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-develop/chengjin/1卡任务逐步性能优化/configs/ds_z0_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+do_eval: false
+eval_strategy: "no"

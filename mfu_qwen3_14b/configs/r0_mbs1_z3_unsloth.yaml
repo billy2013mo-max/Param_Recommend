@@ -1,0 +1,62 @@
+### ========================================================================
+### R0 · 对照组：原 2 卡配置原样搬到 4 卡
+### ------------------------------------------------------------------------
+### 唯一改动：卡数 2→4，cutoff 8192→4096（用户要求 ≥4096），
+###           GBS 固定 32（1×8×4），去掉 eval/save 以纯化计时。
+### 目的：给后面所有优化一个同机同口径的起点。
+###
+### 本轮全部实验的前提（用户指定）：不开 CCE、不开 LoRA Fusion。
+###   这两项不是 yaml 参数，是 venv sitecustomize 按 ENABLE_CCE / ENABLE_FUSED_LORA
+###   环境变量注入的；run_mfu_4gpu.sh 里显式 unset，所以此处无需（也不能）写。
+###   LoRA Fusion 在 finetuning_type=full 下本来就是死代码（它改 peft 的
+###   LoRALinear.forward，全参模型没有 LoRA 层），所以"不开"零代价。
+###   CCE 不开是真代价：vocab=151936，logits 要实打实地物化。
+### ========================================================================
+
+model_name_or_path: /wanqing-models/Qwen3-14B
+trust_remote_code: true
+flash_attn: fa3                  # ★ 显式指定 FA3；不写会落到 AUTO→FA2
+enable_thinking: true
+use_unsloth_gc: true             # 原配置就是它：激活值卸载到 CPU
+
+stage: sft
+do_train: true
+finetuning_type: full
+enable_liger_kernel: false
+disable_gradient_checkpointing: false   # 开梯度检查点
+
+dataset: baseline_2gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 4096                 # ★ 8192 → 4096（用户下限）
+max_samples: 100000
+packing: false
+preprocessing_num_workers: 4
+dataloader_num_workers: 4
+
+output_dir: /wanqing-develop/luowenjing/Param_Recommend/mfu_qwen3_14b/results/r0_mbs1_z3_unsloth/save
+logging_steps: 1
+save_strategy: "no"
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: true
+
+max_steps: 20
+per_device_train_batch_size: 1   # GBS = 4卡 × 1 × 8 = 32
+gradient_accumulation_steps: 8
+learning_rate: 1.0e-6
+lr_scheduler_type: cosine
+lr_scheduler_kwargs: {"num_cycles": 0.5}
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch_fused
+ddp_timeout: 180000000
+deepspeed: /wanqing-models/tangcan/llama-factory-local/llama-factory/examples/deepspeed/ds_z3_config.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+do_eval: false
+eval_strategy: "no"              # 必须显式写；只写 do_eval:false 关不掉 eval

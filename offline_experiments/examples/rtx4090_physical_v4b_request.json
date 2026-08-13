@@ -1,0 +1,34 @@
+{
+  "candidates": [
+    {
+      "request_id": "qwen3-0p6b-full-gpu1-mbs1",
+      "comparison_group": "qwen3-0p6b-full-short512-gbs16",
+      "hardware_id": "rtx4090",
+      "model_id": "qwen3_0p6b",
+      "training_mode": "full",
+      "dataset_id": "short_512",
+      "target_gbs": 16,
+      "cutoff_len": 512,
+      "gpu_count": 1,
+      "mbs": 1,
+      "zero": "none",
+      "gc": false,
+      "packing": false
+    },
+    {
+      "request_id": "qwen3-0p6b-full-gpu1-mbs2",
+      "comparison_group": "qwen3-0p6b-full-short512-gbs16",
+      "hardware_id": "rtx4090",
+      "model_id": "qwen3_0p6b",
+      "training_mode": "full",
+      "dataset_id": "short_512",
+      "target_gbs": 16,
+      "cutoff_len": 512,
+      "gpu_count": 1,
+      "mbs": 2,
+      "zero": "none",
+      "gc": false,
+      "packing": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+tag=no_offload_mbs2_ga32
+yaml=qwen3_14b_2gpu_ab_20260730/no_offload_mbs2_ga32.yaml
+cuda_visible_devices=6,7
+omp_num_threads=48
+master_port=29603
+start_utc=2026-07-30T09:49:28Z
+end_utc=2026-07-30T10:16:17Z
+exit_code=0

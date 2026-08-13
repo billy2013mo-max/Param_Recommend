@@ -1,0 +1,46 @@
+{
+  "schema": "business_dataset_download_manifest/v1",
+  "downloaded_at_utc": "2026-07-30T13:16:38Z",
+  "source": {
+    "halo_url": "https://halo.corp.kuaishou.com/bs/bucket/infra-ai-infra-storage/object?path=datasets/dataset-vlhjn4-1760676139/1/publish/",
+    "bucket": "infra-ai-infra-storage",
+    "prefix": "datasets/dataset-vlhjn4-1760676139/1/publish/",
+    "endpoint_environment": "idc",
+    "idc_endpoint_result": "success",
+    "discovered_publish_versions": [
+      1
+    ],
+    "selected_version": 1
+  },
+  "download_tool": {
+    "path": "/wanqing-develop/luowenjing/tianmu-video-intelligence-model-factory/model_factory_evq/blob_download.sh",
+    "credentials_recorded_here": false
+  },
+  "objects": [
+    {
+      "key": "datasets/dataset-vlhjn4-1760676139/1/publish/dataset-vlhjn4-1760676139-V1.jsonl",
+      "local_path": "/wanqing-develop/luowenjing/Param_Recommend/real_business_validation_20260730/datasets/dataset-vlhjn4-1760676139/1/publish/dataset-vlhjn4-1760676139-V1.jsonl",
+      "size_bytes": 140701046,
+      "sha256": "5fa3110daaea683d4d1672d04a3719c2a48b31ab091c604555260bb20689b044"
+    }
+  ],
+  "validation": {
+    "json_records": 54142,
+    "empty_records": 0,
+    "invalid_json_records": 0,
+    "top_level_type": "object",
+    "top_level_fields": [
+      "chosen",
+      "messages",
+      "rejected"
+    ],
+    "message_roles": [
+      "system",
+      "user"
+    ],
+    "chosen_role": "assistant",
+    "rejected_role": "assistant",
+    "has_trailing_newline": false
+  },
+  "gpu_training_started": false
+}

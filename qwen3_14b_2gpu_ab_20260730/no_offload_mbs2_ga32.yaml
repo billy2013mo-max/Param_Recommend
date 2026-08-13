@@ -1,0 +1,56 @@
+# Exploratory no-offload route requested during the A/B.
+# It preserves the effective global batch: 2 GPUs * 2 MBS * 32 GA = 128.
+
+model_name_or_path: /wanqing-models/Qwen3-14B
+trust_remote_code: true
+enable_thinking: true
+use_unsloth_gc: true
+flash_attn: fa3
+
+stage: sft
+do_train: true
+finetuning_type: full
+enable_liger_kernel: true
+enable_cce: true
+cce_impl: cce
+disable_gradient_checkpointing: false
+
+dataset: baseline_2gpu
+dataset_dir: /wanqing-develop/chengjin
+template: qwen3
+cutoff_len: 2048
+max_samples: 100000
+packing: true
+neat_packing: false
+preprocessing_num_workers: 4
+dataloader_num_workers: 4
+
+output_dir: /wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/outputs/no_offload_mbs2_ga32
+logging_steps: 1
+logging_nan_inf_filter: false
+save_strategy: steps
+save_steps: 100000
+save_total_limit: 1
+plot_loss: true
+overwrite_output_dir: true
+report_to: none
+disable_tqdm: false
+
+max_steps: 45
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 32
+learning_rate: 1.0e-6
+lr_scheduler_type: cosine
+lr_scheduler_kwargs: {"num_cycles": 0.5}
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+seed: 42
+optim: adamw_torch
+ddp_timeout: 180000000
+deepspeed: /wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_2gpu_ab_20260730/ds_z3_no_offload.json
+include_num_input_tokens_seen: true
+resume_from_checkpoint: null
+
+do_eval: false
+enable_torch_profiler: false

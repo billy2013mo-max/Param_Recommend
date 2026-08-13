@@ -1,0 +1,56 @@
+{
+  "schema": "sft_static_packing_requests/v1",
+  "requests": [
+    {
+      "request_id": "business-yt0jrk-v2-qwen3-8b-lora",
+      "gpu_family": "H800",
+      "modality": "text",
+      "stage": "sft",
+      "dtype": "bf16",
+      "model_id": "qwen3_8b",
+      "train_type": "lora",
+      "profile_path": "profiles/business_yt0jrk_v2.qwen3_nothink.jsonl",
+      "cutoff_len": 4096,
+      "no_packing_mbs": 2,
+      "gpu_count": 1,
+      "data_parallel": 1,
+      "target_gbs": 64,
+      "preprocessing_num_workers": 8,
+      "packing_algorithm_id": "llamafactory_neat_packing_greedy_knapsack"
+    },
+    {
+      "request_id": "business-flieht-v4-qwen3-14b-full",
+      "gpu_family": "H800",
+      "modality": "text",
+      "stage": "sft",
+      "dtype": "bf16",
+      "model_id": "qwen3_14b",
+      "train_type": "full",
+      "profile_path": "profiles/business_flieht_v4.qwen3_nothink.jsonl",
+      "cutoff_len": 4096,
+      "no_packing_mbs": 2,
+      "gpu_count": 2,
+      "data_parallel": 2,
+      "target_gbs": 64,
+      "preprocessing_num_workers": 8,
+      "packing_algorithm_id": "llamafactory_neat_packing_greedy_knapsack"
+    },
+    {
+      "request_id": "business-pzfj38-v113-qwen2p5-vl-7b-lora",
+      "gpu_family": "H800",
+      "modality": "vision_language",
+      "stage": "sft",
+      "dtype": "bf16",
+      "model_id": "qwen2_5_vl_7b_instruct",
+      "train_type": "lora",
+      "cutoff_len": 4608,
+      "no_packing_mbs": 1,
+      "gpu_count": 2,
+      "data_parallel": 2,
+      "target_gbs": 64,
+      "preprocessing_num_workers": 8,
+      "packing_algorithm_id": "llamafactory_neat_packing_greedy_knapsack",
+      "profile_summary_path": "profile_summaries/business_pzfj38_v113.json"
+    }
+  ]
+}

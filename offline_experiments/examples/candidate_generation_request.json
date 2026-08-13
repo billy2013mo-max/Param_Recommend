@@ -1,0 +1,26 @@
+{
+  "_comment": "Input for scripts/candidate_generator.py. Each scenario is one fixed user question: model, train type, dataset profile, target GBS, cutoff and packing are held constant while gpu_count / zero_stage / physical_mbs / gradient_checkpointing are searched. The generator emits legal candidates only; the frozen memory gate decides safety and the ranking head decides speed.",
+  "scenarios": [
+    {
+      "model_id": "qwen3_8b",
+      "training_mode": "lora",
+      "dataset_id": "short_512",
+      "dataset_category": "short",
+      "target_gbs": 64,
+      "cutoff_len": 512,
+      "actual_parameters": 8190735360,
+      "packing": false,
+      "lora_rank": 32
+    },
+    {
+      "model_id": "qwen3_14b",
+      "training_mode": "full",
+      "dataset_id": "multiturn_4096",
+      "dataset_category": "multiturn",
+      "target_gbs": 64,
+      "cutoff_len": 4096,
+      "actual_parameters": 14768307200,
+      "packing": false
+    }
+  ]
+}

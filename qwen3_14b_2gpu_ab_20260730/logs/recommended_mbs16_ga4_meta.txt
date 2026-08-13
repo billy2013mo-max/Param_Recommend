@@ -1,0 +1,8 @@
+tag=recommended_mbs16_ga4
+yaml=qwen3_14b_2gpu_ab_20260730/recommended_mbs16_ga4.yaml
+cuda_visible_devices=4,5
+omp_num_threads=48
+master_port=29605
+start_utc=2026-07-30T10:16:45Z
+end_utc=2026-07-30T10:44:24Z
+exit_code=0

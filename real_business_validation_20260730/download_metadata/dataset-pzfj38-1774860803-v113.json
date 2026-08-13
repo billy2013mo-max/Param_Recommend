@@ -1,0 +1,57 @@
+{
+  "schema": "business_dataset_download_manifest/v1",
+  "downloaded_at_utc_date": "2026-07-30",
+  "source": {
+    "halo_url": "https://halo.corp.kuaishou.com/bs/bucket/infra-ai-infra-storage/object?path=datasets/dataset-pzfj38-1774860803/113/publish/",
+    "bucket": "infra-ai-infra-storage",
+    "prefix": "datasets/dataset-pzfj38-1774860803/113/publish/",
+    "endpoint_environment": "idc",
+    "idc_endpoint_result": "success"
+  },
+  "download_tool": {
+    "path": "/wanqing-develop/luowenjing/tianmu-video-intelligence-model-factory/model_factory_evq/blob_download.sh",
+    "credentials_recorded_here": false
+  },
+  "objects": [
+    {
+      "key": "datasets/dataset-pzfj38-1774860803/113/publish/dataset-pzfj38-1774860803-V113.zip",
+      "local_path": "/wanqing-develop/luowenjing/Param_Recommend/real_business_validation_20260730/datasets/dataset-pzfj38-1774860803/113/publish/dataset-pzfj38-1774860803-V113.zip",
+      "size_bytes": 1469857,
+      "sha256": "d67bc5424a857993b60d6aa18d7f9cdb0648aa733b0078d0270e42cf5b2c0d57"
+    }
+  ],
+  "extraction": {
+    "archive_type": "zip",
+    "safe_member_paths": true,
+    "symlink_members": 0,
+    "members": 1,
+    "uncompressed_size_bytes": 85626441,
+    "extracted_file": {
+      "local_path": "/wanqing-develop/luowenjing/Param_Recommend/real_business_validation_20260730/datasets/dataset-pzfj38-1774860803/113/publish/extracted/dataset-pzfj38-1774860803-V113.jsonl",
+      "size_bytes": 85626441,
+      "sha256": "02d7de77c3333907805ec59c4262f557e64fbeae3e7e37e2a2b1b4034e0eed77"
+    }
+  },
+  "validation": {
+    "json_records": 7108,
+    "empty_records": 0,
+    "invalid_json_records": 0,
+    "top_level_type": "object",
+    "item_fields": [
+      "images",
+      "messages"
+    ],
+    "images_per_record": 2,
+    "messages_per_record": 3,
+    "message_roles": [
+      "system",
+      "user",
+      "assistant"
+    ],
+    "image_placeholders_match_references": true,
+    "image_references": 14216,
+    "unique_image_references": 10337,
+    "image_payloads_embedded_in_archive": false
+  },
+  "gpu_training_started": false
+}

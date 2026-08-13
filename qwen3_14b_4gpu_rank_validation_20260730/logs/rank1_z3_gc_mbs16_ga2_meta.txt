@@ -1,0 +1,11 @@
+tag=rank1_z3_gc_mbs16_ga2
+yaml=/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_4gpu_rank_validation_20260730/rank1_z3_gc_mbs16_ga2.yaml
+cuda_visible_devices=4,5,6,7
+omp_num_threads=8
+master_port=29671
+benchmark_no_save=1
+start_utc=2026-07-30T12:25:16Z
+8dadc4027078be810676e66d186e69acde3d9c093f93579d4d250331dc528543  /wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_4gpu_rank_validation_20260730/rank1_z3_gc_mbs16_ga2.yaml
+end_utc=2026-07-30T12:33:45Z
+exit_code=1
+9.5K	/wanqing-develop/luowenjing/Param_Recommend/qwen3_14b_4gpu_rank_validation_20260730/outputs/rank1_z3_gc_mbs16_ga2

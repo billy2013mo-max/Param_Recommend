@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "selection_policy": "Use one dense Qwen3 family wherever available; use Qwen2.5 only for the missing dense 72B endpoint.",
+  "tokenizer_policy": "Use Qwen3 tokenizers and the qwen3_nothink template for every experiment; the 72B endpoint uses the Qwen3-8B tokenizer with Qwen2.5-72B weights.",
+  "fixed_lora": {
+    "rank": 32,
+    "alpha": 32,
+    "dropout": 0.0,
+    "target": "all"
+  },
+  "models": [
+    {
+      "id": "qwen3_0p6b",
+      "nominal_scale_b": 0.5,
+      "path": "/wanqing-models/Qwen3-0.6B",
+      "tokenizer_path": "/wanqing-models/Qwen3-0.6B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ]
+    },
+    {
+      "id": "qwen3_1p7b",
+      "nominal_scale_b": 1.5,
+      "path": "/wanqing-models/Qwen3-1.7B",
+      "tokenizer_path": "/wanqing-models/Qwen3-1.7B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ]
+    },
+    {
+      "id": "qwen3_4b",
+      "nominal_scale_b": 4,
+      "path": "/wanqing-models/Qwen3-4B",
+      "tokenizer_path": "/wanqing-models/Qwen3-4B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ]
+    },
+    {
+      "id": "qwen3_8b",
+      "nominal_scale_b": 7,
+      "path": "/wanqing-models/Qwen3-8B",
+      "tokenizer_path": "/wanqing-models/Qwen3-8B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ]
+    },
+    {
+      "id": "qwen3_14b",
+      "nominal_scale_b": 14,
+      "path": "/wanqing-models/Qwen3-14B",
+      "tokenizer_path": "/wanqing-models/Qwen3-14B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ]
+    },
+    {
+      "id": "qwen3_32b",
+      "nominal_scale_b": 32,
+      "path": "/wanqing-models/Qwen3-32B",
+      "tokenizer_path": "/wanqing-models/Qwen3-32B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ]
+    },
+    {
+      "id": "qwen2p5_72b",
+      "nominal_scale_b": 72,
+      "path": "/wanqing-models/Qwen2.5-72B",
+      "tokenizer_path": "/wanqing-models/Qwen3-8B",
+      "family": "qwen2.5",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "lora"
+      ]
+    },
+    {
+      "id": "qwen3_vl_8b",
+      "nominal_scale_b": 8,
+      "path": "/wanqing-models/Qwen3-VL-8B-Instruct",
+      "tokenizer_path": "/wanqing-models/Qwen3-VL-8B-Instruct",
+      "family": "qwen3_vl",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "generalization_role": "holdout_generalization_text_only_proxy"
+    },
+    {
+      "id": "qwen3_6_27b",
+      "nominal_scale_b": 27,
+      "path": "/wanqing-models/Qwen3.6-27B",
+      "tokenizer_path": "/wanqing-models/Qwen3.6-27B",
+      "family": "qwen3_5",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "generalization_role": "holdout_generalization_out_of_domain_hybrid_attention"
+    }
+  ]
+}

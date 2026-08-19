@@ -42,7 +42,6 @@ image.png
 # offline_experiments：提交 scripts/tests/config/dashboard/examples 与 md，其余是数据
 offline_experiments/results/
 offline_experiments/data/
-offline_experiments/artifacts/
 offline_experiments/campaigns/
 offline_experiments/diagnostics/
 offline_experiments/runtime/
@@ -51,6 +50,26 @@ offline_experiments/*_staging/
 offline_experiments/frozen_vl_staging/
 offline_experiments/qwen35_vl_staging/
 offline_experiments/glm_seed_tokenizer_20260811/
+
+# artifacts：默认全忽略，只白名单放行「冻结参数 / 冻结预测 / 发布产物」
+# 原始观测（canonical_*.jsonl 约 1.9GB）、历史 recovery 快照、.bak 备份都不进库
+offline_experiments/artifacts/*
+!offline_experiments/artifacts/*frozen*.json
+!offline_experiments/artifacts/*frozen*.md
+!offline_experiments/artifacts/*_release_*.json
+!offline_experiments/artifacts/*_peak_v*.json
+!offline_experiments/artifacts/*safety_upper*.json
+!offline_experiments/artifacts/*model_inventory*.json
+!offline_experiments/artifacts/*candidate_predictions*.json
+!offline_experiments/artifacts/model_inventory.json
+# 白名单里也要排掉体积过大的观测类文件
+offline_experiments/artifacts/*observations*
+offline_experiments/artifacts/*recovery*
+offline_experiments/artifacts/*.bak-*
+
+# blind_data：只提交构建脚本与数据画像摘要，图片与数据集本体不进库
+offline_experiments/blind_data/vl/
+offline_experiments/blind_data/**/*.jsonl
 
 # mfu：只提交 configs/scripts
 mfu_qwen3_8b/results/

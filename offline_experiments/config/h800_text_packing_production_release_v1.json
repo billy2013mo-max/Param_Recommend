@@ -1,0 +1,98 @@
+{
+  "schema": "sft_h800_text_packing_production_release/v1",
+  "release_id": "h800_text_packing_limited_production/2026-08-18.v1",
+  "status": "active_limited_production",
+  "activated_at_utc": "2026-08-18T00:00:00+00:00",
+  "authorization": "explicit_user_acceptance_2026-08-18",
+  "automatic_execution_allowed": true,
+  "fail_closed": true,
+  "vl_packing_allowed": false,
+  "scope": {
+    "hardware_ids": [
+      "h800"
+    ],
+    "modalities": [
+      "text"
+    ],
+    "stages": [
+      "sft"
+    ],
+    "dtypes": [
+      "bf16"
+    ],
+    "model_ids": [
+      "qwen3_1p7b",
+      "qwen3_4b",
+      "qwen3_8b",
+      "qwen3_14b",
+      "qwen3_32b"
+    ],
+    "training_modes": [
+      "full",
+      "lora"
+    ],
+    "lora_ranks": [
+      32
+    ],
+    "cutoff_lens": [
+      512,
+      1024,
+      2048,
+      4096,
+      8192,
+      16384
+    ],
+    "gpu_counts": [
+      1,
+      2,
+      4
+    ],
+    "target_gbs_values": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "packed_physical_mbs": 1,
+    "offload_allowed": false,
+    "required_kernel_substring": "fa3"
+  },
+  "required_runtime_gates": {
+    "packing_request_source": "explicit packing=true request, or static policy decision=on",
+    "packing_profile_sha256_match": true,
+    "unified_v3_memory_upper_below_safe_limit": true,
+    "structured_v5_prediction_available": true
+  },
+  "evidence_bindings": {
+    "static_policy": {
+      "path": "artifacts/static_packing_policy_v1.json",
+      "sha256": "696c68aff8f6b0cfcb096c31e44652e387179d120f2df24f227a0f32a3494353",
+      "policy_id": "h800_text_sft_static_packing/2026-07-30.v1"
+    },
+    "packing_ranking_acceptance": {
+      "path": "artifacts/h800_packing_ranking_acceptance_v1.json",
+      "sha256": "76467acb3d9f2595b802732162934f9faf0396b0157592ce4be5968e95f1a38f"
+    },
+    "transfer_validation": {
+      "path": "artifacts/h800_packing_transfer_validation_results_v1.json",
+      "sha256": "7c7b491f9503534d6c9eb3b5b312a6fae0764701e22a6843e19f5f3ac5661397",
+      "report_sha256": "2ff8c9dc801b3e80824da6eb39c9e571db74b640e60628feeaefe8ae88bf0754"
+    }
+  },
+  "observed_acceptance": {
+    "transfer_jobs": 24,
+    "successful_jobs": 24,
+    "scenario_count": 6,
+    "pairwise_correct": 32,
+    "pairwise_total": 33,
+    "pairwise_accuracy": 0.9696969696969697,
+    "hit90_hits": 6,
+    "hit90_total": 6,
+    "mean_top1_regret": 0.0,
+    "worst_top1_regret": 0.0,
+    "observed_oom_count": 0
+  },
+  "engineering_assumption": "The six prospective scenes validate transfer across the listed dense Qwen model scales, Full/LoRA modes, three business data profiles, and 1/2/4 GPUs. The production scope treats those axes as transferable rather than limiting admission to the six exact scene tuples.",
+  "known_limitation": "The 24 transfer jobs validate ranking and successful execution, but contain no OOM boundary case. Production admission therefore still requires the unified V3 memory upper and fails closed outside the exact release scope. Automatic on/off selection still requires the static policy; an explicit packing=true request may enter the validated Packing parameter-recommendation path directly.",
+  "rollback": "Set status to disabled or automatic_execution_allowed to false; unpacked recommendation remains available."
+}

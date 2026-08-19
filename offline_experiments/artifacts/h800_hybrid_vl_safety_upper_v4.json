@@ -1,0 +1,364 @@
+{
+  "schema": "sft_h800_hybrid_vl_safety_upper/v4",
+  "generated_at_utc": "2026-08-18T16:30:11.821116+00:00",
+  "center_source": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_hybrid_memory_artifact_v3.json",
+    "sha256": "208cc2f7f6b83917db4086f23910decfec1c93521cf309adea29434458be3613"
+  },
+  "development_source": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_hybrid_attention_dense_stage1_observations_v1.jsonl",
+    "sha256": "968c3533f38f6f3fa2f72cee8b1e430861301ec1abd9c2e6a313bf8e908a054b",
+    "role": "stage1_development_only"
+  },
+  "data_role": {
+    "prospective_acceptance_data_used": false,
+    "may_be_used_as_future_acceptance": true,
+    "reason": "all multipliers derive from old stage-1 rows plus a fixed margin"
+  },
+  "hybrid_memory": {
+    "center_policy": "stage3_center_v3_unchanged",
+    "source_drift_margin": 1.15,
+    "global_guard_multiplier": 1.2953321392540604,
+    "conditional_by_model_mechanism": {
+      "qwen3p5_4b::g1_z0_gc0": {
+        "development_exact_rows": 6,
+        "development_max_ratio": 1.1032370807967093,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 1,
+        "zero": "none",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_4b::g1_z0_gc1": {
+        "development_exact_rows": 6,
+        "development_max_ratio": 1.0382678933503793,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 1,
+        "zero": "none",
+        "gradient_checkpointing": true
+      },
+      "qwen3p5_4b::g2_z2_gc0": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.030717321678598,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 2,
+        "zero": "zero2",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_4b::g2_z2_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.0625781485292525,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 2,
+        "zero": "zero2",
+        "gradient_checkpointing": true
+      },
+      "qwen3p5_4b::g2_z3_gc0": {
+        "development_exact_rows": 3,
+        "development_max_ratio": 1.0137325234866235,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 2,
+        "zero": "zero3",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_4b::g2_z3_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.1128380300554104,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 2,
+        "zero": "zero3",
+        "gradient_checkpointing": true
+      },
+      "qwen3p5_4b::g4_z2_gc0": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.0080055792495015,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 4,
+        "zero": "zero2",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_4b::g4_z2_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.058063594402052,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 4,
+        "zero": "zero2",
+        "gradient_checkpointing": true
+      },
+      "qwen3p5_4b::g4_z3_gc0": {
+        "development_exact_rows": 3,
+        "development_max_ratio": 0.9999625273746772,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 4,
+        "zero": "zero3",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_4b::g4_z3_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.0005426232054082,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_4b",
+        "gpu_count": 4,
+        "zero": "zero3",
+        "gradient_checkpointing": true
+      },
+      "qwen3p5_9b::g1_z0_gc0": {
+        "development_exact_rows": 6,
+        "development_max_ratio": 1.053856183614624,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 1,
+        "zero": "none",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_9b::g1_z0_gc1": {
+        "development_exact_rows": 6,
+        "development_max_ratio": 1.0417170426054887,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 1,
+        "zero": "none",
+        "gradient_checkpointing": true
+      },
+      "qwen3p5_9b::g2_z2_gc0": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 0.9716737308388371,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 2,
+        "zero": "zero2",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_9b::g2_z2_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.0204408236557385,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 2,
+        "zero": "zero2",
+        "gradient_checkpointing": true
+      },
+      "qwen3p5_9b::g2_z3_gc0": {
+        "development_exact_rows": 3,
+        "development_max_ratio": 1.0331675614593685,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 2,
+        "zero": "zero3",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_9b::g2_z3_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.1263757732644004,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 2,
+        "zero": "zero3",
+        "gradient_checkpointing": true
+      },
+      "qwen3p5_9b::g4_z2_gc0": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 0.9752314810181666,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 4,
+        "zero": "zero2",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_9b::g4_z2_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.0296133453279723,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 4,
+        "zero": "zero2",
+        "gradient_checkpointing": true
+      },
+      "qwen3p5_9b::g4_z3_gc0": {
+        "development_exact_rows": 3,
+        "development_max_ratio": 1.0236374683975384,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 4,
+        "zero": "zero3",
+        "gradient_checkpointing": false
+      },
+      "qwen3p5_9b::g4_z3_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.088283234294625,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p5_9b",
+        "gpu_count": 4,
+        "zero": "zero3",
+        "gradient_checkpointing": true
+      },
+      "qwen3p6_27b::g1_z0_gc0": {
+        "development_exact_rows": 1,
+        "development_max_ratio": 1.0135785112451783,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 1,
+        "zero": "none",
+        "gradient_checkpointing": false
+      },
+      "qwen3p6_27b::g1_z0_gc1": {
+        "development_exact_rows": 6,
+        "development_max_ratio": 1.0607357009373748,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 1,
+        "zero": "none",
+        "gradient_checkpointing": true
+      },
+      "qwen3p6_27b::g2_z2_gc0": {
+        "development_exact_rows": 1,
+        "development_max_ratio": 0.9700725538042843,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 2,
+        "zero": "zero2",
+        "gradient_checkpointing": false
+      },
+      "qwen3p6_27b::g2_z2_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.055118613760362,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 2,
+        "zero": "zero2",
+        "gradient_checkpointing": true
+      },
+      "qwen3p6_27b::g2_z3_gc0": {
+        "development_exact_rows": 1,
+        "development_max_ratio": 1.0766545555727571,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 2,
+        "zero": "zero3",
+        "gradient_checkpointing": false
+      },
+      "qwen3p6_27b::g2_z3_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.0074758875126388,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 2,
+        "zero": "zero3",
+        "gradient_checkpointing": true
+      },
+      "qwen3p6_27b::g4_z2_gc0": {
+        "development_exact_rows": 1,
+        "development_max_ratio": 0.9662023502185735,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 4,
+        "zero": "zero2",
+        "gradient_checkpointing": false
+      },
+      "qwen3p6_27b::g4_z2_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 1.056319428563028,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 4,
+        "zero": "zero2",
+        "gradient_checkpointing": true
+      },
+      "qwen3p6_27b::g4_z3_gc0": {
+        "development_exact_rows": 1,
+        "development_max_ratio": 1.0889987293182497,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 4,
+        "zero": "zero3",
+        "gradient_checkpointing": false
+      },
+      "qwen3p6_27b::g4_z3_gc1": {
+        "development_exact_rows": 5,
+        "development_max_ratio": 0.9937988006528016,
+        "source_drift_margin": 1.15,
+        "upper_multiplier": 1.2953321392540604,
+        "selected_source": "global_guard_floor",
+        "model_id": "qwen3p6_27b",
+        "gpu_count": 4,
+        "zero": "zero3",
+        "gradient_checkpointing": true
+      }
+    },
+    "development_coverage": {
+      "exact_rows": 127,
+      "covered_rows": 127
+    }
+  },
+  "release": {
+    "mode": "shadow_only",
+    "automatic_admission_allowed": false
+  },
+  "report_sha256": "3065fea4bdb0686ef81653cbec1c283af968d85c94d255634ffc37454c543ee3"
+}

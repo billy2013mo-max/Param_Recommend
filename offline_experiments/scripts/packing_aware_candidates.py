@@ -8,15 +8,13 @@ today, and this module handles both explicitly instead of hiding them:
 1. The packing decision is owned by a frozen, purely static policy.  This module
    never re-derives it, never overrides an ``off``, and never invents a gate.  It
    asks :mod:`static_packing_predictor` and then obeys the answer.
-2. The frozen H800 memory and ranking heads have no ``packing=true`` training
-   rows, so a packed candidate cannot be admitted or ranked yet.  Packed
-   candidates are therefore emitted as an explicitly labelled *shadow* branch.
+2. A bounded production release decides whether a policy-positive packed branch
+   may enter the active memory and ranking heads.  The release is fail-closed:
+   policy-positive rows outside its exact scope remain shadow-only.
 
-The resulting contract is deliberately asymmetric, and that asymmetry is the
-point: unpacked candidates are ``rankable``; packed candidates are
-``shadow_only`` and carry the reason why.  This keeps packing visible in the
-candidate space -- so it stops being silently swallowed as an unknown field --
-without letting an uncalibrated branch reach a recommendation.
+The resulting contract keeps released and shadow Packing branches visibly
+separate.  A released branch still has to pass the active V3 memory upper and
+V5 ranking path before automatic execution is allowed.
 
 One structural detail matters for callers.  The frozen predictor includes
 ``packing`` in its ``scenario_material`` and refuses a ``comparison_group`` that
@@ -40,21 +38,26 @@ from typing import Any
 import candidate_generator as cg
 import static_packing_predictor as sp
 from common import ARTIFACT_DIR, read_json, sha256_file, sha256_json, write_json
+from packing_production_release import (
+    DEFAULT_RELEASE_PATH,
+    load_packing_release,
+    scope_mismatches,
+)
 
 SCHEMA = "sft_packing_aware_candidate_space/v1"
-IMPLEMENTATION_VERSION = "sft_packing_aware_candidates_impl/2026-08-01.v1"
+IMPLEMENTATION_VERSION = "sft_packing_aware_candidates_impl/2026-08-18.v2"
 
 DEFAULT_POLICY_PATH = ARTIFACT_DIR / "static_packing_policy_v1.json"
 DEFAULT_OUTPUT = ARTIFACT_DIR / "packing_aware_candidate_space_v1.json"
 
 BRANCH_UNPACKED = "packing_off"
+BRANCH_PACKED_RELEASED = "packing_on_released"
 BRANCH_PACKED_SHADOW = "packing_on_shadow"
 
-# The frozen H800 heads were fitted without any packing=true row, so a packed
-# candidate has no calibrated memory bound and no ranking score.  Until the
-# packing calibration stage closes, packed candidates may only be carried as
-# shadow evidence.
-PACKED_SHADOW_REASON = "packing_memory_and_throughput_heads_not_calibrated"
+# Policy-positive rows outside the bounded release remain visible but cannot
+# reach automatic execution.
+PACKED_SHADOW_REASON = "outside_bounded_packing_production_release"
+PACKED_RELEASE_REASON = "bounded_pure_text_packing_production_release"
 
 
 def _packing_request(
@@ -171,10 +174,11 @@ def build_candidate_space(
     capacity_bytes: int,
     profile_path: str,
     policy_path: Path = DEFAULT_POLICY_PATH,
+    release_path: Path = DEFAULT_RELEASE_PATH,
     request_base: Path = Path("."),
     **generator_kwargs: Any,
 ) -> dict[str, Any]:
-    """Build the unpacked candidate set plus a labelled packed shadow branch."""
+    """Build unpacked, released Packing, and shadow Packing branches."""
 
     if scenario.get("packing"):
         raise ValueError(
@@ -200,6 +204,7 @@ def build_candidate_space(
         }
     )
     policy = sp.load_policy(policy_path)
+    release = load_packing_release(release_path)
     decisions = _decide_packing(
         scenario,
         baseline_shapes=baseline_shapes,
@@ -220,7 +225,8 @@ def build_candidate_space(
         if not row["packing"] and row.get("shadow_candidate_packing")
     }
 
-    packed: list[dict[str, Any]] = []
+    released_packed: list[dict[str, Any]] = []
+    shadow_packed: list[dict[str, Any]] = []
     if enabled_shapes or shadow_shapes:
         # Packing fixes the physical micro batch at one, so the packed branch has
         # one candidate per (gpu_count, zero_stage, gc) -- the replaced baseline
@@ -239,19 +245,38 @@ def build_candidate_space(
             )
             if not replaced:
                 continue
-            candidate["candidate_branch"] = BRANCH_PACKED_SHADOW
-            # Asymmetric on purpose: the frozen heads cannot price this branch.
-            candidate["eligibility"] = "shadow_only"
-            candidate["shadow_reason"] = PACKED_SHADOW_REASON
             candidate["replaces_no_packing_mbs"] = replaced
             candidate["policy_enabled"] = any(
                 (gpu_count, mbs) in enabled_shapes for mbs in replaced
             )
-            packed.append(candidate)
+            enabled_baselines = sorted(
+                mbs for mbs in replaced if (gpu_count, mbs) in enabled_shapes
+            )
+            candidate["packing_profile_path"] = str(Path(profile_path).resolve())
+            candidate["packing_profile_sha256"] = sha256_file(
+                Path(profile_path).resolve()
+            )
+            candidate["packing_release_id"] = release["release_id"]
+            candidate["packing_policy_enabled_baseline_mbs"] = enabled_baselines
+            release_mismatches = scope_mismatches(candidate, release)
+            if enabled_baselines and not release_mismatches:
+                candidate["candidate_branch"] = BRANCH_PACKED_RELEASED
+                candidate["eligibility"] = "rankable"
+                candidate["automatic_execution_allowed_after_runtime_gates"] = True
+                candidate["release_reason"] = PACKED_RELEASE_REASON
+                released_packed.append(candidate)
+            else:
+                candidate["candidate_branch"] = BRANCH_PACKED_SHADOW
+                candidate["eligibility"] = "shadow_only"
+                candidate["automatic_execution_allowed_after_runtime_gates"] = False
+                candidate["shadow_reason"] = PACKED_SHADOW_REASON
+                candidate["release_scope_mismatches"] = release_mismatches
+                shadow_packed.append(candidate)
 
     branch_counts = {
         BRANCH_UNPACKED: len(unpacked["candidates"]),
-        BRANCH_PACKED_SHADOW: len(packed),
+        BRANCH_PACKED_RELEASED: len(released_packed),
+        BRANCH_PACKED_SHADOW: len(shadow_packed),
     }
     decision_summary = {
         "queried_baseline_shapes": len(baseline_shapes),
@@ -277,35 +302,53 @@ def build_candidate_space(
             "status": policy.get("status"),
             "packed_physical_mbs": policy.get("packed_physical_mbs"),
         },
+        "production_release_binding": {
+            "path": str(release_path),
+            "file_sha256": sha256_file(release_path),
+            "release_id": release.get("release_id"),
+            "status": release.get("status"),
+            "automatic_execution_allowed": release.get(
+                "automatic_execution_allowed"
+            ),
+        },
         "profile_binding": {"path": profile_path},
         "guarantees": {
             "derives_packing_decision_itself": False,
             "overrides_policy_off": False,
             "predicts_memory": False,
             "ranks_candidates": False,
-            "admits_packed_candidates": False,
+            "releases_packed_candidates_for_runtime_admission": True,
+            "final_memory_admission_still_required": True,
             "creates_gpu_queue": False,
         },
         "branch_policy": {
             BRANCH_UNPACKED: "rankable by the frozen memory gate and ranking head",
+            BRANCH_PACKED_RELEASED: (
+                "rankable and eligible for automatic execution only after the "
+                "active V3 memory upper and V5 availability gates pass"
+            ),
             BRANCH_PACKED_SHADOW: (
-                "emitted for visibility and future pairing only; not admissible "
+                "emitted for visibility only; not automatically executable "
                 f"because {PACKED_SHADOW_REASON}"
             ),
         },
         "packing_decisions": decisions,
         "decision_summary": decision_summary,
         "branch_counts": branch_counts,
-        "rankable_candidates": unpacked["candidates"],
-        "shadow_candidates": packed,
+        "rankable_candidates": [*unpacked["candidates"], *released_packed],
+        "released_packing_candidates": released_packed,
+        "shadow_candidates": shadow_packed,
+        "automatic_candidate_groups": sorted(
+            {candidate["comparison_group"] for candidate in released_packed}
+        ),
         "statically_rejected": unpacked["statically_rejected"],
         "gpu_counts_with_at_least_two_rankable": unpacked[
             "gpu_counts_with_at_least_two_candidates"
         ],
         "next_step": (
-            "Send only 'rankable_candidates' to the frozen predictor. The shadow "
-            "branch becomes admissible after packing-aware memory and throughput "
-            "calibration passes its own acceptance."
+            "Send rankable_candidates to the active predictor. Only a selected "
+            "Packing row whose verified production-release, V3 memory, and V5 "
+            "availability gates all pass may be executed automatically."
         ),
     }
     report["report_sha256"] = sha256_json(report)
@@ -319,6 +362,7 @@ def main() -> None:
     parser.add_argument("--hardware", type=Path, default=None)
     parser.add_argument("--capacity-bytes", type=int, default=None)
     parser.add_argument("--policy", type=Path, default=DEFAULT_POLICY_PATH)
+    parser.add_argument("--release", type=Path, default=DEFAULT_RELEASE_PATH)
     parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args()
 
@@ -339,6 +383,7 @@ def main() -> None:
         capacity_bytes=capacity_bytes,
         profile_path=args.profile,
         policy_path=args.policy,
+        release_path=args.release,
     )
     if args.output is not None:
         write_json(args.output, report)

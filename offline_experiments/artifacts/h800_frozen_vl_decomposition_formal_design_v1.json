@@ -1,0 +1,70 @@
+{
+  "schema": "sft_h800_frozen_vl_decomposition_design/v1",
+  "campaign_id": "h800_frozen_vl_decomposition_20260811_v1",
+  "phase_id": "h800_frozen_vl_decomposition_formal_v1",
+  "generated_at_utc": "2026-08-11T08:22:53.264834+00:00",
+  "queue": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_frozen_vl_decomposition_formal_v1.jsonl",
+    "sha256": "2102e184ae49412f7e38a5fe81badb472ad4efa6b0cc63e6698aee5361d2809e"
+  },
+  "jobs": 45,
+  "by_model": {
+    "qwen2p5_vl_3b": 15,
+    "qwen3_vl_4b": 15,
+    "qwen3p5_4b": 15
+  },
+  "by_arm": {
+    "real_image": 18,
+    "text_base": 9,
+    "text_length_matched": 18
+  },
+  "by_mechanism": {
+    "NOGC": 9,
+    "PRESSURE": 15,
+    "SAFE": 21
+  },
+  "fixed_semantics": {
+    "train_type": "lora",
+    "train_scope_id": "language_only",
+    "freeze_vision_tower": true,
+    "freeze_multi_modal_projector": true,
+    "target_gbs": 64,
+    "cutoff_len": 8192,
+    "packing": false,
+    "offload": false,
+    "dtype": "bf16"
+  },
+  "hypotheses": {
+    "memory": "At matched post-processor total sequence lengths, the real-image minus text-control residual is a bounded family/grid/mechanism correction; visual and full-step peaks are compared as phase maxima, never summed.",
+    "throughput": "Real-image step time equals a text-like mixed-sequence component plus a family/grid-dependent frozen-vision forward component.",
+    "packing": "Outside product V1 and fixed false in every arm."
+  },
+  "pairing": {
+    "text_base": "original prompt with image placeholders removed",
+    "text_length_matched": "no media; total token count matched record-by-record to real image",
+    "real_image": "same source task with two decoded images"
+  },
+  "decision_metrics": {
+    "data_quality": [
+      "recordwise total-token equality for text_length_matched vs real_image",
+      "real image/pixel/grid evidence on every real-image rank",
+      "vision phase observed only on real-image measured steps",
+      "repeat throughput CV <= 5%"
+    ],
+    "memory": [
+      "max allocated/reserved bytes per rank and per phase",
+      "OOM mismatch inside each paired arm",
+      "family/tier/mechanism real-image-to-matched-text peak ratio",
+      "leave-family-out correction MAPE target <= 10% as an engineering gate"
+    ],
+    "throughput": [
+      "effective and computed tokens/s",
+      "real-image minus matched-text step-time residual",
+      "mechanism pairwise order accuracy target >= 90%",
+      "top-1 regret target < 10%"
+    ]
+  },
+  "usage": "fit_and_hypothesis_diagnostic_only_never_prospective_acceptance",
+  "gpu_training_started": false,
+  "report_sha256": "7df5a55d8b675f0cce3de2200ff75998addf4f99e301c422615a5a6f557fffb2"
+}

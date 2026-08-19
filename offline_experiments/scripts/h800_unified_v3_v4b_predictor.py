@@ -24,6 +24,7 @@ from typing import Any
 from analyze_h800_fresh_memory_residual_v2 import profile_padding_statistics
 from common import ROOT, read_json, sha256_file, sha256_json
 from fit_h800_unified_resource_partial_v1 import _current_features
+from hybrid_memory_bridge import hybrid_memory_design
 from h800_physical_v4b_predictor import (
     DEFAULT_MEMORY_ANCHOR_REGISTRY,
     DEFAULT_THROUGHPUT_ARTIFACT,
@@ -69,9 +70,13 @@ from throughput_predictor import (
 )
 
 SCHEMA = "sft_h800_unified_v3_v4b_prediction/v1"
-IMPLEMENTATION_VERSION = "sft_h800_unified_v3_v4b_predictor/2026-08-11.v1"
+IMPLEMENTATION_VERSION = "sft_h800_unified_v3_v4b_predictor/2026-08-16.v1"
 MEMORY_GATE_ID = "unified_v3_shared_center_independent_risk"
 ADMISSION_SOURCE = "unified_v3_center_risk_upper"
+DEFAULT_HYBRID_MEMORY_ARTIFACT = (
+    ROOT / "artifacts" / "h800_hybrid_memory_artifact_v1.json"
+)
+HYBRID_MEMORY_ARTIFACT_SCHEMA = "sft_h800_hybrid_memory_artifact/v1"
 DEFAULT_MEMORY_ARTIFACT = (
     ROOT / "artifacts" / "h800_unified_bounded_memory_candidate_v3.json"
 )
@@ -80,7 +85,23 @@ DEFAULT_MEMORY_FEATURE_INVENTORY = (
 )
 V3_FEATURE_BUILDER = ROOT / "scripts" / "fit_h800_unified_resource_partial_v1.py"
 V3_FEATURE_BUILDER_SHA256 = (
-    "c21ca67a4275e9c0a0d5f0cec896f7b88e8f840d606fba89a9a1c5efdf25726d"
+    "a558653db3a9cd63d5e8f9576504f3518e26164986e9e0a29d5953bba368ee8b"
+)
+THEORY_BASIS_MODULE = ROOT / "scripts" / "h800_theory_basis.py"
+THEORY_BASIS_SHA256 = (
+    "64b10f2f49df649d81c0341e3c6bdb15b2240fbc5e9c0c6cf6df9a3f74850e53"
+)
+PROFILE_STATISTICS_MODULE = (
+    ROOT / "scripts" / "analyze_h800_fresh_memory_residual_v2.py"
+)
+PROFILE_PADDING_STATISTICS_FINGERPRINT = (
+    "47c17441d1050e5ab7afd7b94d868f5ec1587e80cedc0171bdcdf5f9c94151eb"
+)
+COMBINATION_MODEL_MODULE = (
+    ROOT / "scripts" / "h800_unified_bounded_memory_model.py"
+)
+COMBINATION_MODEL_SHA256 = (
+    "ecbb309f7d15ae76ebbba0c4874c1a592b36a4974cef2f23d00c67ba0c1a8bf0"
 )
 GIB = float(1 << 30)
 FROZEN_STRUCTURED_IMPLEMENTATION = (
@@ -112,6 +133,23 @@ def _validate_inventory(report: Mapping[str, Any]) -> None:
         raise ValueError("H800 V3 memory feature inventory LoRA rank drifted")
 
 
+def _function_fingerprint(path: Path, function_name: str) -> str:
+    """Hash a single top-level function's AST (caller-agnostic binding)."""
+
+    tree = ast.parse(path.read_text(encoding="utf-8"))
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and (
+            node.name == function_name
+        ):
+            material = ast.dump(
+                node, annotate_fields=True, include_attributes=False
+            )
+            return hashlib.sha256(material.encode("utf-8")).hexdigest()
+    raise ValueError(
+        f"function {function_name!r} not found in {str(path)!r}"
+    )
+
+
 def _runtime_prefix_fingerprint(path: Path) -> str:
     """Hash inference code while excluding release/build-only declarations."""
 
@@ -120,6 +158,15 @@ def _runtime_prefix_fingerprint(path: Path) -> str:
     tree = ast.parse(prefix)
     kept = []
     for node in tree.body:
+        # Dependency loading is not part of the frozen inference math.  The
+        # current runtime makes fitting-only SciPy imports optional, while the
+        # frozen source imports them eagerly.
+        if isinstance(node, (ast.Import, ast.ImportFrom)):
+            continue
+        if isinstance(node, ast.Try) and node.body and all(
+            isinstance(item, (ast.Import, ast.ImportFrom)) for item in node.body
+        ):
+            continue
         if isinstance(node, (ast.Assign, ast.AnnAssign)):
             targets = node.targets if isinstance(node, ast.Assign) else [node.target]
             if any(
@@ -375,7 +422,7 @@ def validate_prediction_report(report: Mapping[str, Any]) -> None:
         or report.get("queues_mutated") is not False
         or release.get("mode") != "active_recommendation"
         or release.get("automatic_execution_allowed") is not False
-        or activation.get("authorization") != "explicit_user_acceptance_2026-08-11"
+        or activation.get("authorization") != "explicit_user_acceptance_2026-08-16"
     ):
         raise ValueError("H800 unified-V3 release safety contract drifted")
     gate = report.get("memory_gate") or {}
@@ -430,8 +477,12 @@ def validate_prediction_report(report: Mapping[str, Any]) -> None:
         policy_admitted = bool(base_admitted and support.get("label") != "unsupported")
         if memory.get("admitted") is not policy_admitted:
             raise ValueError("H800 unified-V3 policy admission drifted")
+        hybrid_only = memory.get("hybrid_model") is True
         if (throughput.get("prediction_available") is True) is not policy_admitted:
-            raise ValueError("H800 v4b availability no longer follows V3 admission")
+            if not (hybrid_only and policy_admitted):
+                raise ValueError(
+                    "H800 v4b availability no longer follows V3 admission"
+                )
 
     # Reuse the mature frozen validator for all ranking and group invariants.
     validate_legacy_prediction_report(_legacy_validation_projection(report))
@@ -451,6 +502,7 @@ class H800UnifiedV3V4BPredictor(H800PhysicalV4BPredictor):
         model_inventory: Path = DEFAULT_MODEL_INVENTORY,
         strict_model_inventory_binding: bool = True,
         additional_dataset_profile_dir: Path | None = None,
+        hybrid_memory_artifact: Path = DEFAULT_HYBRID_MEMORY_ARTIFACT,
     ) -> None:
         # The legacy memory artifact is loaded solely to satisfy the immutable
         # source binding of the frozen v4b throughput model.
@@ -475,6 +527,19 @@ class H800UnifiedV3V4BPredictor(H800PhysicalV4BPredictor):
                 raise ValueError(f"unified V3 source binding drifted: {binding_name}")
         if sha256_file(V3_FEATURE_BUILDER) != V3_FEATURE_BUILDER_SHA256:
             raise ValueError("unified V3 runtime feature builder drifted")
+        if sha256_file(THEORY_BASIS_MODULE) != THEORY_BASIS_SHA256:
+            raise ValueError(
+                "unified V3 memory reference basis (theory basis) drifted"
+            )
+        if (
+            _function_fingerprint(
+                PROFILE_STATISTICS_MODULE, "profile_padding_statistics"
+            )
+            != PROFILE_PADDING_STATISTICS_FINGERPRINT
+        ):
+            raise ValueError("unified V3 profile padding statistics drifted")
+        if sha256_file(COMBINATION_MODEL_MODULE) != COMBINATION_MODEL_SHA256:
+            raise ValueError("unified V3 memory combination model drifted")
         self.memory_feature_inventory_path = Path(memory_feature_inventory)
         self.memory_feature_inventory = read_json(self.memory_feature_inventory_path)
         _validate_inventory(self.memory_feature_inventory)
@@ -502,6 +567,17 @@ class H800UnifiedV3V4BPredictor(H800PhysicalV4BPredictor):
         ):
             raise ValueError("unified V3 safe-limit binding drifted")
         self._memory_profile_cache: dict[tuple[str, int, int], dict[str, Any]] = {}
+        self.hybrid_memory_artifact_path = Path(hybrid_memory_artifact)
+        self.hybrid_memory_artifact = read_json(self.hybrid_memory_artifact_path)
+        if self.hybrid_memory_artifact.get("schema") != HYBRID_MEMORY_ARTIFACT_SCHEMA:
+            raise ValueError("active hybrid memory artifact schema mismatch")
+        self.hybrid_model_ids = set(self.hybrid_memory_artifact["model_ids"])
+        # The throughput registry must recognise hybrid models so the shared
+        # predict() _record stage can normalise them; throughput prediction
+        # itself stays unavailable until the V5 training domain is extended.
+        for hybrid_id in self.hybrid_model_ids:
+            if hybrid_id in self.memory_models and hybrid_id not in self.base.models:
+                self.base.models[hybrid_id] = dict(self.memory_models[hybrid_id])
 
     @staticmethod
     def _mechanism_id(record: Mapping[str, Any]) -> str:
@@ -519,6 +595,42 @@ class H800UnifiedV3V4BPredictor(H800PhysicalV4BPredictor):
         model_id = str(scenario["model_id"])
         if model_id not in self.memory_models:
             raise ValueError(f"model {model_id!r} is absent from V3 inventory")
+        if model_id in getattr(self, "hybrid_model_ids", ()):
+            mbs = int(scenario["physical_mbs"])
+            cutoff = int(scenario["cutoff_len"])
+            zero_stage = int(selector["zero_stage"])
+            job = {
+                "model_id": model_id,
+                "gpu_count": int(scenario["gpu_count"]),
+                "mbs": mbs,
+                "cutoff_len": cutoff,
+                "zero": "none" if zero_stage == 0 else f"zero{zero_stage}",
+                "gc": bool(selector["gradient_checkpointing"]),
+                "train_type": str(selector["training_mode"]),
+            }
+            design = hybrid_memory_design(
+                model_row=self.memory_models[model_id],
+                job=job,
+                fixed_lora=self.memory_fixed_lora,
+                capacity_bytes=self.memory_capacity_bytes,
+            )
+            return {
+                "record_id": str(record["observation_id"]),
+                "hybrid": True,
+                "design_bytes": design,
+                "reference_bytes": float(
+                    sum(v for k, v in design.items() if k != "intercept")
+                ),
+                "model_id": model_id,
+                "train_type": str(selector["training_mode"]),
+                "gpu_count": int(scenario["gpu_count"]),
+                "zero_stage": zero_stage,
+                "gc": bool(selector["gradient_checkpointing"]),
+                "mbs": mbs,
+                "cutoff_len": cutoff,
+                "packing": bool(selector["packing"]),
+                "effective_sequence_tokens": cutoff,
+            }
         profile_path = Path(str(record["dataset_profile_binding"]["path"]))
         cutoff = int(scenario["cutoff_len"])
         mbs = int(scenario["physical_mbs"])
@@ -634,19 +746,28 @@ class H800UnifiedV3V4BPredictor(H800PhysicalV4BPredictor):
         )
         try:
             inference_record = self._v3_inference_record(record)
-            prediction = predict_records(
-                [inference_record], self.unified_memory_artifact
-            )[0]
+            if inference_record.get("hybrid"):
+                design = inference_record["design_bytes"]
+                coefs = self.hybrid_memory_artifact["coefficients_by_name"]
+                center = float(sum(float(coefs[k]) * v for k, v in design.items()))
+                center = max(center, 0.0)
+                risk_guard = center
+                risk_multiplier = 1.0
+                upper = center
+            else:
+                prediction = predict_records(
+                    [inference_record], self.unified_memory_artifact
+                )[0]
+                center = float(prediction["center_bytes"])
+                risk_guard = float(prediction["risk_guard_bytes"])
+                risk_multiplier = float(prediction["risk_guard_multiplier"])
+                upper = float(prediction["admission_upper_bytes"])
         except (KeyError, OSError, TypeError, ValueError) as exc:
             return self._unavailable_memory_result(
                 record,
                 safe_limit=safe_limit,
                 issue=f"v3_feature_construction_failed:{type(exc).__name__}:{exc}",
             )
-        center = float(prediction["center_bytes"])
-        risk_guard = float(prediction["risk_guard_bytes"])
-        risk_multiplier = float(prediction["risk_guard_multiplier"])
-        upper = float(prediction["admission_upper_bytes"])
         base_admitted = upper <= safe_limit
         policy_admitted = bool(base_admitted and support.get("label") != "unsupported")
         if not base_admitted:
@@ -662,6 +783,7 @@ class H800UnifiedV3V4BPredictor(H800PhysicalV4BPredictor):
         # active report relabels its source and states the exact semantics.
         return {
             "prediction_available": True,
+            "hybrid_model": bool(inference_record.get("hybrid")),
             "analytic_reference_bytes": reference,
             "legacy_cutoff_reference_bytes": float(
                 record["memory"]["analytic_reference_bytes"]
@@ -688,7 +810,11 @@ class H800UnifiedV3V4BPredictor(H800PhysicalV4BPredictor):
             "tail_source": "unified_v3_independent_risk_head",
             "success_log_residual_upper": None,
             "oom_exact_selector_log_guard": None,
-            "issues": list(prediction.get("issues") or []),
+            "issues": (
+                []
+                if inference_record.get("hybrid")
+                else list(prediction.get("issues") or [])
+            ),
             "historical_anchor": {
                 "matched": False,
                 "override_allowed": False,
@@ -730,8 +856,8 @@ class H800UnifiedV3V4BPredictor(H800PhysicalV4BPredictor):
             "acceptance_monitoring_continues": True,
         }
         report["activation_record"] = {
-            "activated_at_utc": "2026-08-11T00:00:00+00:00",
-            "authorization": "explicit_user_acceptance_2026-08-11",
+            "activated_at_utc": "2026-08-16T00:00:00+00:00",
+            "authorization": "explicit_user_acceptance_2026-08-16",
             "scope": "recommendation_memory_gate_only",
             "rollback_memory_gate": "legacy_physical_v1",
         }

@@ -1,0 +1,395 @@
+{
+  "schema_version": 1,
+  "training_started": false,
+  "design_purpose": "h800_frozen_vl_combined_canary_20260811_v1:h800_frozen_vl_combined_canary_v1",
+  "campaign_design": {
+    "path": "artifacts/h800_frozen_vl_combined_canary_design_v1.json",
+    "sha256": "1afb8f32322d5e0797d6f1cc3a460605ea395f803a01c67051ff0deaba0f3d18",
+    "report_sha256": "ad2707a829969cfce68f33ebe37482a77db84fb557eb650ab68d65f9c402ae79"
+  },
+  "stage": "canary",
+  "stage_prerequisite": null,
+  "file_sha256": {
+    "artifacts/h800_frozen_video_decomposition_canary_design_v1.json": "ecf048fba5de81eaf24b05732fa751d5048b3e9fd60f0b6b69db53b12ad2d20c",
+    "artifacts/h800_frozen_video_decomposition_profiles_manifest_v1.json": "a713b5cd59acfc80963dd8d254009484601d5a16a23ea10804f2880a90df5043",
+    "artifacts/h800_frozen_video_decomposition_profiles_v1/qwen2p5_vl_3b.native_16.text_matched.jsonl": "afb6f98d3fe6a57d236c2207fca8668fc29c0b6ef804fadffc71a87db37ad621",
+    "artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3_vl_4b.native_16.text_matched.jsonl": "037671e49b3c630912254a0244436f9942c71f7790700bef1270e4a315d3891d",
+    "artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3p5_4b.native_16.text_matched.jsonl": "fa1952ea4f4cf6eb0c154a67b7858392e1c5223a8495c441e06ecc0efe32009e",
+    "artifacts/h800_frozen_vl_combined_canary_design_v1.json": "1afb8f32322d5e0797d6f1cc3a460605ea395f803a01c67051ff0deaba0f3d18",
+    "artifacts/h800_frozen_vl_decomposition_canary_design_v1.json": "c92d804bcc80e6b5ee78939aaf1bc0e93890a30384d56e39eadbc0df3c0faab0",
+    "artifacts/h800_frozen_vl_decomposition_profiles_manifest_v1.json": "39a6f14cb197ee801aa4c653b8d34e203eab4dab1d79cf73b0efadb53dc2db75",
+    "artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen2p5_vl_3b.high.text_matched.jsonl": "61cd515bad738a07164e578ed96ee48251ec63755a0e48dedcd3d0fc30992e2d",
+    "artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen3_vl_4b.high.text_matched.jsonl": "c7f8a8da98639b3192a0fc2588cd16ed965212a4e8b54b155b1e405351fee5c7",
+    "artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen3p5_4b.high.text_matched.jsonl": "d218d374af608e17fb657ecf64b909e3970f0c51b5e4d5833730f35aaf75065b",
+    "artifacts/h800_qwen35_runtime_contract_v1.json": "2b3a567dd4b8a1fcbda7e3d8758eea8303c710e380e2a092b525bd0fc1f9bc7b",
+    "artifacts/h800_qwen35_vl_supplement_model_inventory_v1.json": "9bfc7facb5f7ee2128ca6e73fbed75dcbb8d08d59754fdf37c83d2fd9cb9cb77",
+    "artifacts/h800_qwen35_vl_supplement_profiles_v1/qwen2p5_vl_3b.high.json": "bbae69e57424dc3dac57291777a02f37c30b63a8a314135e717a92ccf0a26409",
+    "artifacts/h800_qwen35_vl_supplement_profiles_v1/qwen3_vl_4b.high.json": "26bcef68e73da78c25574f66093fe095b7c16d5e528c962af49f42fe9dbe5ba1",
+    "artifacts/h800_qwen35_vl_supplement_profiles_v1/qwen3p5_4b.high.json": "7ebd521f0535e51bfa71aada3baadd93a8c6c44d3e6efa71063ad7bfc6252d75",
+    "artifacts/h800_vl_business_workload_profiles_v2/qwen2p5_vl_3b.zltbjg.native_16.json": "1e2408218d7032278cc6a6f2cbe0b4b6a9452b4423abef450d61c28e46f39610",
+    "artifacts/h800_vl_business_workload_profiles_v2/qwen3_vl_4b.zltbjg.native_16.json": "65a0372b95d9bb88ed0d3df41cc8da85a56d0fbef5b2c52189667724fbe613ff",
+    "artifacts/h800_vl_business_workload_profiles_v2/qwen3p5_4b.zltbjg.native_16.json": "e65bf2203f53c8264a798b84aaea6c319e447f5c67647b7d04d7d52ca27b4e99",
+    "artifacts/h800_vl_calibration_media_manifest_v1.json": "ce45e75f4168558ad1cb31966a4690f7ee81fefe05c12b43de4a64b99a133363",
+    "artifacts/h800_vl_media_business_download_manifest_v1.json": "33b74e736f99eb5cb69ec5e0e16fc50cd6301efaccf396b83af0acdbe89da5e0",
+    "artifacts/h800_vl_video_full_decode_validation_v1.json": "a301e76bf408eefc54d2957cfd20ae2eb986fc66cf0c4e0f855ed31102ab2f03",
+    "artifacts/model_inventory.json": "46d38c6790446d9b758002d511da07ec6fb7f4d0c722c0460cf7c0ea90b495dd",
+    "artifacts/provenance.json": "e55bbc664e01c892d6b79184c66cc348d037b3441b2bb2ce4b632dc41cd1fe52",
+    "config/experiment.json": "26fc0d1ea92e760e1983c6d492c715dfab16333f56afc6f043e8aaffdb0b2370",
+    "config/hardware.json": "78013bf1c25a8b0efe832ee47f66c50d85958cfc311853e3e04a4ad1b4bafdaa",
+    "config/models.json": "e5518ea368b1eacf815b11c5ad3002e4f61df758e670896919ec6cb41fec31b3",
+    "data/frozen_video_decomposition_v1/qwen2p5_vl_3b.native_16.text_matched.jsonl": "c2d46296fd0fa073dca6a63eff7834bec5ce86e5334a12a2542226b195de8a16",
+    "data/frozen_video_decomposition_v1/qwen3_vl_4b.native_16.text_matched.jsonl": "4143ba14c2812d2840efd2829bf863099e86dad5cd0ce5c7e22ad6612df904ad",
+    "data/frozen_video_decomposition_v1/qwen3p5_4b.native_16.text_matched.jsonl": "2108235fae15a59684fe157eec2395232abe4b5e7939483313d710a7e3724195",
+    "data/frozen_video_decomposition_v1/registry/dataset_info.json": "da60d377e9225eca36441381d24fc35335f45f654f34702f5d24726ff2c349ae",
+    "data/frozen_video_decomposition_v1/zltbjg_v2_videos_trainable.jsonl": "883c151443c1ad5405dcbb7d965f5dc60587898eb9ff6ff1f4e11bf9f718405e",
+    "data/frozen_vl_decomposition_v1/qwen2p5_vl_3b.high.text_matched.jsonl": "8091651c5f0b6f06d42e4f421e1c1f06b2ecd33e0d8c0806a68e9a8a3b9db0da",
+    "data/frozen_vl_decomposition_v1/qwen3_vl_4b.high.text_matched.jsonl": "7a35fba9a0759bf83389306d2c559622ea32d93e9044235ef267cf7ba68d778c",
+    "data/frozen_vl_decomposition_v1/qwen3p5_4b.high.text_matched.jsonl": "592444f1e300ccb91638010d58ea37cdf14a2515f855ea9208300c4edc21bc46",
+    "data/frozen_vl_decomposition_v1/registry/dataset_info.json": "5f8fd4486823db4be3dd48282421e267fb51de7beea28ca6b2ab37426116e26d",
+    "data/vl_calibration_v1/vl_pzfj38_calibration_v1.jsonl": "92c09ffb74a462f83f383430a89169fa3d0bfa7fdefe0e1c9f9dfdd1be3df615",
+    "matrix/h800_frozen_vl_combined_canary_v1.jsonl": "7582f0a3fadec795630a48b2b89522c050f02d2e980fe8b411d8b20083b76187",
+    "scripts/approval_gate.py": "f874dc68715bef55aa21aa600c842805ed4e2228221bc072a47dfcb238e41752",
+    "scripts/collect_results.py": "3a28b8e61d61009c623fb46364bdd896ca77d5a4d00d723bdb6123704065b315",
+    "scripts/common.py": "1107dcc74177f0ce7ae71fe88d7897d785f30af4df765a79e420b5b15fd678e0",
+    "scripts/evaluate_h800_frozen_vl_combined_canary_v1.py": "2b7e9fba727c417220645a00eafee0b9575ac2747c191ca84b574851370ab8b2",
+    "scripts/freeze_h800_frozen_vl_combined_canary_v1.py": "2c386bd839ec3f1d359d1d84ae93c1676359a52d950de1ac7b8ab2da94398fe0",
+    "scripts/gpu_telemetry.py": "fbf7d6bc52ee91e6921b9072210d293b8094fcbe693118b3f9836ef25c23bcaf",
+    "scripts/metrics_callback.py": "a0f7c1e3f0d2fb69166f22fd3fa312aa79ca9343fcd2b57e2f7bd0c974724809",
+    "scripts/model_structure_manifest.py": "0aa3f2502c2a38eb11e82ec7dd18c8ef68ea5b8f4098b438b4bb6af8a2140ec3",
+    "scripts/prepare_h800_frozen_video_decomposition_v1.py": "6316dc1cb25735688348637546ad3c914468d3c1365b9441e4afe0d443ea8b98",
+    "scripts/prepare_h800_frozen_vl_combined_canary_v1.py": "33bc2d0fae1c528a30a6a7478a9226661adb3a3ea82fd717814b141bdf00c5cd",
+    "scripts/prepare_h800_frozen_vl_decomposition_v1.py": "db74b27df650a5bc0d903ea9f386eecd3e4609f34902165e37af034a1cd6457a",
+    "scripts/promote_approval_candidate.py": "e8c90b0048995ce7205a688a6f9a10932014479eb8b891aded8216ae31d595f0",
+    "scripts/run_job.py": "bb320ba91bc6095eee5618a4d4c9549f9ea3e723cef6281fae11342b0d37ebb7",
+    "scripts/runtime_evidence.py": "2b032c422870b5096d7a9709ded840f3e0a419c22df30893508b5c51d1cc2d56",
+    "scripts/scheduler.py": "8ee8bcd072e0e04e0b964efb9521ba5e1d0880e8a04c7b83b58303c3d7f56043",
+    "scripts/train_entry.py": "6aeaf2bab3ff6284e39faaf7d5ca78c24a58add91b1d5c1c6d4b68f45e562bf0",
+    "scripts/validate_h800_frozen_video_decomposition_v1.py": "b0bd261a42a77d3a590e5a9d7c8bae06c485af8f19341f449366b648832888e8",
+    "scripts/validate_h800_frozen_vl_decomposition_v1.py": "d97b6ddd5684b2dc7ff28e33aa9dba40a2b475b9b97084d87f99ade3da0a528a",
+    "scripts/validate_h800_vl_video_full_decode_v1.py": "1226cafce77fbf0578f9bb63ff55082411b92cead2e8cbfa6ecbeb1ec03301c0"
+  },
+  "execution_order": [
+    "h800_frozen_vl_combined_canary_v1"
+  ],
+  "allowed_job_ids": [
+    "h800vlfix-72998c7af30bf23d",
+    "h800vlfix-88cb3815b4547ed0",
+    "h800vlfix-8ea22310d4a43dfb",
+    "h800vlfix-aef0f311b308a0e8",
+    "h800vlfix-ba1c3c9fb0cfc4ab",
+    "h800vlfix-efde080cabccaed4",
+    "h800vidfix-d0d632b2d3badd0a",
+    "h800vidfix-1e069de637fa7099",
+    "h800vidfix-57dcfd30feefb1b8",
+    "h800vidfix-e2c9a266464ffb75",
+    "h800vidfix-627eb84f1ae180c9",
+    "h800vidfix-4e1057cfeae6e268"
+  ],
+  "authorized_gpu_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "max_gpu_count": 1,
+  "scheduler_execution": {
+    "join_busy_pool": true,
+    "preemption_allowed": false,
+    "policy": "use only idle physical GPUs 0-6; GPU7 and every external process are excluded"
+  },
+  "hardware_preflight": {
+    "required_gpu_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "expected_gpu_name": "H800",
+    "gpu_query": {
+      "command": [
+        "nvidia-smi",
+        "--query-gpu=index,uuid,name,memory.total",
+        "--format=csv,noheader,nounits"
+      ],
+      "return_code": 0,
+      "stdout": "0, GPU-1674c1b0-7157-00bb-db08-6ede534624b7, NVIDIA H800, 143771\n1, GPU-7392977d-59ea-095e-ada2-04df7995b8d4, NVIDIA H800, 143771\n2, GPU-047b4c52-b580-5354-b9d0-6d4a95c46a9e, NVIDIA H800, 143771\n3, GPU-b0c2d78e-28e7-8913-5ff9-3d606dcde874, NVIDIA H800, 143771\n4, GPU-796d69f9-87fb-da06-dfc4-02cfa1801d63, NVIDIA H800, 143771\n5, GPU-ed1bcdc5-cbc7-10b0-ce96-3cf0183cd77d, NVIDIA H800, 143771\n6, GPU-66ee239c-c4f0-044e-9888-d0492f71d8f8, NVIDIA H800, 143771\n7, GPU-22678760-94f2-b8b8-5ee4-c426a4b4904a, NVIDIA H800, 143771",
+      "stderr": "",
+      "passed": true
+    },
+    "process_query": {
+      "command": [
+        "nvidia-smi",
+        "--query-compute-apps=gpu_uuid,pid,process_name",
+        "--format=csv,noheader,nounits"
+      ],
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "passed": true
+    },
+    "selected_gpu_rows": [
+      {
+        "index": 0,
+        "uuid": "GPU-1674c1b0-7157-00bb-db08-6ede534624b7",
+        "name": "NVIDIA H800",
+        "memory_total_mib": 143771.0
+      },
+      {
+        "index": 1,
+        "uuid": "GPU-7392977d-59ea-095e-ada2-04df7995b8d4",
+        "name": "NVIDIA H800",
+        "memory_total_mib": 143771.0
+      },
+      {
+        "index": 2,
+        "uuid": "GPU-047b4c52-b580-5354-b9d0-6d4a95c46a9e",
+        "name": "NVIDIA H800",
+        "memory_total_mib": 143771.0
+      },
+      {
+        "index": 3,
+        "uuid": "GPU-b0c2d78e-28e7-8913-5ff9-3d606dcde874",
+        "name": "NVIDIA H800",
+        "memory_total_mib": 143771.0
+      },
+      {
+        "index": 4,
+        "uuid": "GPU-796d69f9-87fb-da06-dfc4-02cfa1801d63",
+        "name": "NVIDIA H800",
+        "memory_total_mib": 143771.0
+      },
+      {
+        "index": 5,
+        "uuid": "GPU-ed1bcdc5-cbc7-10b0-ce96-3cf0183cd77d",
+        "name": "NVIDIA H800",
+        "memory_total_mib": 143771.0
+      },
+      {
+        "index": 6,
+        "uuid": "GPU-66ee239c-c4f0-044e-9888-d0492f71d8f8",
+        "name": "NVIDIA H800",
+        "memory_total_mib": 143771.0
+      }
+    ],
+    "missing_gpu_ids": [],
+    "selected_gpu_compute_processes": [],
+    "exact_h800_pool": true,
+    "selected_pool_idle": true
+  },
+  "runtime_identity": {
+    "schema_version": 1,
+    "python_executable": "/fine-tuning-launcher/.venv/bin/python",
+    "python_prefix": "/fine-tuning-launcher/.venv",
+    "python_version": "3.11.11 | packaged by conda-forge | (main, Dec  5 2024, 14:17:24) [GCC 13.3.0]",
+    "packages": {
+      "torch": "2.8.0+cu126",
+      "transformers": "4.57.1",
+      "accelerate": "1.11.0",
+      "deepspeed": "0.19.2",
+      "peft": "0.18.1",
+      "llamafactory": "0.9.5.dev0",
+      "triton": "3.4.0",
+      "flash-attn-3": "3.0.0b1+20260105.cu126torch280cxx11abitrue.9b6dba",
+      "liger-kernel": "0.8.0",
+      "cut-cross-entropy": "25.9.3"
+    },
+    "cuda_runtime_version": "12.6",
+    "cudnn_version": 91002,
+    "nccl_version": [
+      2,
+      27,
+      3
+    ],
+    "framework_source_sha256": {
+      "deepspeed_zero_partition_parameters": "aa39d9fa75ef28cbc4db82d5a527170801f559eb3ed426c12b54fc01b8892e48",
+      "llamafactory_adapter": "98a0abfbad9155d4ab18307fa6a7be7dfd64e47758aacbb75422e90ddc3d682f"
+    },
+    "launcher_patch_sha256": "13a010e3dc10ad69c567593221e1bcd6720b4bb6fcf750072c239b738e913318"
+  },
+  "runtime_fingerprint_sha256": "321c54f2a774679031b5f8ad7f7aa42d8a8d585963559e18fe8436c07679da9f",
+  "runtime_patch": {
+    "missing": [],
+    "installed_deepspeed_source_sha256": "aa39d9fa75ef28cbc4db82d5a527170801f559eb3ed426c12b54fc01b8892e48",
+    "runtime_patcher_sha256": "13a010e3dc10ad69c567593221e1bcd6720b4bb6fcf750072c239b738e913318",
+    "build_patcher_sha256": "13a010e3dc10ad69c567593221e1bcd6720b4bb6fcf750072c239b738e913318",
+    "patchers_match": true,
+    "unsafe_first_parameter_dtype_absent": true,
+    "safe_per_parameter_dtype_present": true,
+    "fine_tune_only_entrypoint": true,
+    "dockerfiles_apply_patch": true,
+    "build_files_sha256": {
+      "/fine-tuning-launcher/dev/finetuning-launcher/hack/entrypoint.sh": "55de18e2675b786f3328da7c0faac83bc1a420e9503bf9a0878aa5943ee51486",
+      "/fine-tuning-launcher/dev/finetuning-launcher/Dockerfile": "81efa33309319e907ed2ae067487691d15964c731cd8131e9c2c74e7bf94add3",
+      "/fine-tuning-launcher/dev/finetuning-launcher/Dockerfile.qwen36": "787c05a711603cc80e5be1c5c5b63ea3ff579225e4fd89369b0f6c691d1859c1"
+    },
+    "all_passed": true
+  },
+  "provenance_binding": {
+    "path": "artifacts/provenance.json",
+    "sha256": "e55bbc664e01c892d6b79184c66cc348d037b3441b2bb2ce4b632dc41cd1fe52",
+    "project_source_paths": [
+      "config/experiment.json",
+      "config/hardware.json",
+      "config/models.json",
+      "scripts/approval_gate.py",
+      "scripts/collect_results.py",
+      "scripts/common.py",
+      "scripts/evaluate_h800_frozen_vl_combined_canary_v1.py",
+      "scripts/freeze_h800_frozen_vl_combined_canary_v1.py",
+      "scripts/gpu_telemetry.py",
+      "scripts/metrics_callback.py",
+      "scripts/model_structure_manifest.py",
+      "scripts/prepare_h800_frozen_video_decomposition_v1.py",
+      "scripts/prepare_h800_frozen_vl_combined_canary_v1.py",
+      "scripts/prepare_h800_frozen_vl_decomposition_v1.py",
+      "scripts/promote_approval_candidate.py",
+      "scripts/run_job.py",
+      "scripts/runtime_evidence.py",
+      "scripts/scheduler.py",
+      "scripts/train_entry.py",
+      "scripts/validate_h800_frozen_video_decomposition_v1.py",
+      "scripts/validate_h800_frozen_vl_decomposition_v1.py",
+      "scripts/validate_h800_vl_video_full_decode_v1.py"
+    ],
+    "project_source_manifest_sha256": "7e81c18b39d8e2b1700b0d1c5020e9caf69106dae1c7ea83b0dcc3a8548ec7db",
+    "runtime_fingerprint_sha256": "d4d095ab839fd2bc5fd791b736247d4316756c34d5676d6da2e3997a1f1a39be",
+    "source_validation_policy": "approval_file_manifest_scoped_v1",
+    "scoped_source_manifest": {
+      "config/experiment.json": "26fc0d1ea92e760e1983c6d492c715dfab16333f56afc6f043e8aaffdb0b2370",
+      "config/hardware.json": "78013bf1c25a8b0efe832ee47f66c50d85958cfc311853e3e04a4ad1b4bafdaa",
+      "config/models.json": "e5518ea368b1eacf815b11c5ad3002e4f61df758e670896919ec6cb41fec31b3",
+      "scripts/approval_gate.py": "f874dc68715bef55aa21aa600c842805ed4e2228221bc072a47dfcb238e41752",
+      "scripts/collect_results.py": "3a28b8e61d61009c623fb46364bdd896ca77d5a4d00d723bdb6123704065b315",
+      "scripts/common.py": "1107dcc74177f0ce7ae71fe88d7897d785f30af4df765a79e420b5b15fd678e0",
+      "scripts/evaluate_h800_frozen_vl_combined_canary_v1.py": "2b7e9fba727c417220645a00eafee0b9575ac2747c191ca84b574851370ab8b2",
+      "scripts/freeze_h800_frozen_vl_combined_canary_v1.py": "2c386bd839ec3f1d359d1d84ae93c1676359a52d950de1ac7b8ab2da94398fe0",
+      "scripts/gpu_telemetry.py": "fbf7d6bc52ee91e6921b9072210d293b8094fcbe693118b3f9836ef25c23bcaf",
+      "scripts/metrics_callback.py": "a0f7c1e3f0d2fb69166f22fd3fa312aa79ca9343fcd2b57e2f7bd0c974724809",
+      "scripts/model_structure_manifest.py": "0aa3f2502c2a38eb11e82ec7dd18c8ef68ea5b8f4098b438b4bb6af8a2140ec3",
+      "scripts/prepare_h800_frozen_video_decomposition_v1.py": "6316dc1cb25735688348637546ad3c914468d3c1365b9441e4afe0d443ea8b98",
+      "scripts/prepare_h800_frozen_vl_combined_canary_v1.py": "33bc2d0fae1c528a30a6a7478a9226661adb3a3ea82fd717814b141bdf00c5cd",
+      "scripts/prepare_h800_frozen_vl_decomposition_v1.py": "db74b27df650a5bc0d903ea9f386eecd3e4609f34902165e37af034a1cd6457a",
+      "scripts/promote_approval_candidate.py": "e8c90b0048995ce7205a688a6f9a10932014479eb8b891aded8216ae31d595f0",
+      "scripts/run_job.py": "bb320ba91bc6095eee5618a4d4c9549f9ea3e723cef6281fae11342b0d37ebb7",
+      "scripts/runtime_evidence.py": "2b032c422870b5096d7a9709ded840f3e0a419c22df30893508b5c51d1cc2d56",
+      "scripts/scheduler.py": "8ee8bcd072e0e04e0b964efb9521ba5e1d0880e8a04c7b83b58303c3d7f56043",
+      "scripts/train_entry.py": "6aeaf2bab3ff6284e39faaf7d5ca78c24a58add91b1d5c1c6d4b68f45e562bf0",
+      "scripts/validate_h800_frozen_video_decomposition_v1.py": "b0bd261a42a77d3a590e5a9d7c8bae06c485af8f19341f449366b648832888e8",
+      "scripts/validate_h800_frozen_vl_decomposition_v1.py": "d97b6ddd5684b2dc7ff28e33aa9dba40a2b475b9b97084d87f99ade3da0a528a",
+      "scripts/validate_h800_vl_video_full_decode_v1.py": "1226cafce77fbf0578f9bb63ff55082411b92cead2e8cbfa6ecbeb1ec03301c0"
+    }
+  },
+  "queue_binding": {
+    "schema_version": 1,
+    "path": "matrix/h800_frozen_vl_combined_canary_v1.jsonl",
+    "sha256": "7582f0a3fadec795630a48b2b89522c050f02d2e980fe8b411d8b20083b76187",
+    "ordered_job_ids": [
+      "h800vlfix-72998c7af30bf23d",
+      "h800vlfix-88cb3815b4547ed0",
+      "h800vlfix-8ea22310d4a43dfb",
+      "h800vlfix-aef0f311b308a0e8",
+      "h800vlfix-ba1c3c9fb0cfc4ab",
+      "h800vlfix-efde080cabccaed4",
+      "h800vidfix-d0d632b2d3badd0a",
+      "h800vidfix-1e069de637fa7099",
+      "h800vidfix-57dcfd30feefb1b8",
+      "h800vidfix-e2c9a266464ffb75",
+      "h800vidfix-627eb84f1ae180c9",
+      "h800vidfix-4e1057cfeae6e268"
+    ],
+    "ordered_job_payload_sha256": [
+      "891408d73323558282b6eb3f8fdb8fb404dd02686c622b0bb16c2e52ddea361d",
+      "24e2c3c9b5940ad92327622bc446477d76daa4d532a4351a3fce0510f793540d",
+      "f751b1d5140d4339d3af7720b6fcf42d97ec3189f1070e1203e05f34b53485ff",
+      "d335d1cbffd2ea546060b025b8671f26293331e0a44f31328e21e274f6f581f8",
+      "973bd0bacf39bf372a54fbd4efebe0ec2da3588ba332894b665bc1b24ef7c4c9",
+      "0701d1aa635ccfc5183c61497182b64b770a98fcb61994c0ffbe9f22a75773dd",
+      "7a07f5af34c59e99ab6b5ac6b0c355de4256f27c02b25feed07e0d1a6dc7c7e5",
+      "ad836699b367663b3a97f680adcbc1209935e477ba0d77390157e56e829be717",
+      "7e6eeba6ef9372f64bc10a2d862ff03fe6bf36bab667b8a725272d6c963e82a7",
+      "0199266735661eb354313314083b40e8dd1a91aa3b334fa718b586783b69b947",
+      "6d6543e997a049ed7d1f1b4841874d02fd5a05191aaf7f67714e6065766d9956",
+      "2320606229fdff29941244c3f0b57e7143cd01341ad465df3d90fa8aeb76e106"
+    ],
+    "job_payload_sha256": {
+      "h800vlfix-72998c7af30bf23d": "891408d73323558282b6eb3f8fdb8fb404dd02686c622b0bb16c2e52ddea361d",
+      "h800vlfix-88cb3815b4547ed0": "24e2c3c9b5940ad92327622bc446477d76daa4d532a4351a3fce0510f793540d",
+      "h800vlfix-8ea22310d4a43dfb": "f751b1d5140d4339d3af7720b6fcf42d97ec3189f1070e1203e05f34b53485ff",
+      "h800vlfix-aef0f311b308a0e8": "d335d1cbffd2ea546060b025b8671f26293331e0a44f31328e21e274f6f581f8",
+      "h800vlfix-ba1c3c9fb0cfc4ab": "973bd0bacf39bf372a54fbd4efebe0ec2da3588ba332894b665bc1b24ef7c4c9",
+      "h800vlfix-efde080cabccaed4": "0701d1aa635ccfc5183c61497182b64b770a98fcb61994c0ffbe9f22a75773dd",
+      "h800vidfix-d0d632b2d3badd0a": "7a07f5af34c59e99ab6b5ac6b0c355de4256f27c02b25feed07e0d1a6dc7c7e5",
+      "h800vidfix-1e069de637fa7099": "ad836699b367663b3a97f680adcbc1209935e477ba0d77390157e56e829be717",
+      "h800vidfix-57dcfd30feefb1b8": "7e6eeba6ef9372f64bc10a2d862ff03fe6bf36bab667b8a725272d6c963e82a7",
+      "h800vidfix-e2c9a266464ffb75": "0199266735661eb354313314083b40e8dd1a91aa3b334fa718b586783b69b947",
+      "h800vidfix-627eb84f1ae180c9": "6d6543e997a049ed7d1f1b4841874d02fd5a05191aaf7f67714e6065766d9956",
+      "h800vidfix-4e1057cfeae6e268": "2320606229fdff29941244c3f0b57e7143cd01341ad465df3d90fa8aeb76e106"
+    }
+  },
+  "throughput_screen_delta": {
+    "allowed_job_ids": [
+      "h800vlfix-72998c7af30bf23d",
+      "h800vlfix-88cb3815b4547ed0",
+      "h800vlfix-8ea22310d4a43dfb",
+      "h800vlfix-aef0f311b308a0e8",
+      "h800vlfix-ba1c3c9fb0cfc4ab",
+      "h800vlfix-efde080cabccaed4",
+      "h800vidfix-d0d632b2d3badd0a",
+      "h800vidfix-1e069de637fa7099",
+      "h800vidfix-57dcfd30feefb1b8",
+      "h800vidfix-e2c9a266464ffb75",
+      "h800vidfix-627eb84f1ae180c9",
+      "h800vidfix-4e1057cfeae6e268"
+    ],
+    "queue_path": "matrix/h800_frozen_vl_combined_canary_v1.jsonl",
+    "queue_sha256": "7582f0a3fadec795630a48b2b89522c050f02d2e980fe8b411d8b20083b76187",
+    "ordered_job_ids": [
+      "h800vlfix-72998c7af30bf23d",
+      "h800vlfix-88cb3815b4547ed0",
+      "h800vlfix-8ea22310d4a43dfb",
+      "h800vlfix-aef0f311b308a0e8",
+      "h800vlfix-ba1c3c9fb0cfc4ab",
+      "h800vlfix-efde080cabccaed4",
+      "h800vidfix-d0d632b2d3badd0a",
+      "h800vidfix-1e069de637fa7099",
+      "h800vidfix-57dcfd30feefb1b8",
+      "h800vidfix-e2c9a266464ffb75",
+      "h800vidfix-627eb84f1ae180c9",
+      "h800vidfix-4e1057cfeae6e268"
+    ],
+    "ordered_job_payload_sha256": [
+      "891408d73323558282b6eb3f8fdb8fb404dd02686c622b0bb16c2e52ddea361d",
+      "24e2c3c9b5940ad92327622bc446477d76daa4d532a4351a3fce0510f793540d",
+      "f751b1d5140d4339d3af7720b6fcf42d97ec3189f1070e1203e05f34b53485ff",
+      "d335d1cbffd2ea546060b025b8671f26293331e0a44f31328e21e274f6f581f8",
+      "973bd0bacf39bf372a54fbd4efebe0ec2da3588ba332894b665bc1b24ef7c4c9",
+      "0701d1aa635ccfc5183c61497182b64b770a98fcb61994c0ffbe9f22a75773dd",
+      "7a07f5af34c59e99ab6b5ac6b0c355de4256f27c02b25feed07e0d1a6dc7c7e5",
+      "ad836699b367663b3a97f680adcbc1209935e477ba0d77390157e56e829be717",
+      "7e6eeba6ef9372f64bc10a2d862ff03fe6bf36bab667b8a725272d6c963e82a7",
+      "0199266735661eb354313314083b40e8dd1a91aa3b334fa718b586783b69b947",
+      "6d6543e997a049ed7d1f1b4841874d02fd5a05191aaf7f67714e6065766d9956",
+      "2320606229fdff29941244c3f0b57e7143cd01341ad465df3d90fa8aeb76e106"
+    ],
+    "job_payload_sha256": {
+      "h800vlfix-72998c7af30bf23d": "891408d73323558282b6eb3f8fdb8fb404dd02686c622b0bb16c2e52ddea361d",
+      "h800vlfix-88cb3815b4547ed0": "24e2c3c9b5940ad92327622bc446477d76daa4d532a4351a3fce0510f793540d",
+      "h800vlfix-8ea22310d4a43dfb": "f751b1d5140d4339d3af7720b6fcf42d97ec3189f1070e1203e05f34b53485ff",
+      "h800vlfix-aef0f311b308a0e8": "d335d1cbffd2ea546060b025b8671f26293331e0a44f31328e21e274f6f581f8",
+      "h800vlfix-ba1c3c9fb0cfc4ab": "973bd0bacf39bf372a54fbd4efebe0ec2da3588ba332894b665bc1b24ef7c4c9",
+      "h800vlfix-efde080cabccaed4": "0701d1aa635ccfc5183c61497182b64b770a98fcb61994c0ffbe9f22a75773dd",
+      "h800vidfix-d0d632b2d3badd0a": "7a07f5af34c59e99ab6b5ac6b0c355de4256f27c02b25feed07e0d1a6dc7c7e5",
+      "h800vidfix-1e069de637fa7099": "ad836699b367663b3a97f680adcbc1209935e477ba0d77390157e56e829be717",
+      "h800vidfix-57dcfd30feefb1b8": "7e6eeba6ef9372f64bc10a2d862ff03fe6bf36bab667b8a725272d6c963e82a7",
+      "h800vidfix-e2c9a266464ffb75": "0199266735661eb354313314083b40e8dd1a91aa3b334fa718b586783b69b947",
+      "h800vidfix-627eb84f1ae180c9": "6d6543e997a049ed7d1f1b4841874d02fd5a05191aaf7f67714e6065766d9956",
+      "h800vidfix-4e1057cfeae6e268": "2320606229fdff29941244c3f0b57e7143cd01341ad465df3d90fa8aeb76e106"
+    }
+  }
+}

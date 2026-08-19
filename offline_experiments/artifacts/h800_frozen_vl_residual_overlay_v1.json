@@ -1,0 +1,92 @@
+{
+  "schema": "sft_h800_frozen_vl_residual_overlay/v1",
+  "generated_at_utc": "2026-08-12T06:29:49.050219+00:00",
+  "hardware": "NVIDIA H800 140GB HBM3",
+  "memory_center_head": {
+    "form": "vl_peak_center_bytes = text_matched_peak_center_bytes + coefficient * vision_dynamic_microbatch_bytes",
+    "coefficient_bytes_per_proxy_byte": 29.847896387013094,
+    "coefficient_constraint": "nonnegative_scalar_nnls",
+    "target": "max(real_media_peak - matched_text_peak, 0) bytes",
+    "feature": "vision_dynamic_microbatch_bytes",
+    "feature_definition": "physical_mbs * 2 bytes * (pixel_elements + raw_patch_units * vision_hidden + visual_tokens * language_hidden)",
+    "phase_semantics": "the nonnegative residual approximates max(language_phase, vision_phase); the two phase peaks are never added independently"
+  },
+  "throughput_head": {
+    "form": "vl_step_seconds = text_matched_step_seconds + family_coefficient * vision_forward_pflop",
+    "family_coefficients_seconds_per_pflop": {
+      "qwen2p5_vl": 76.7010793847271,
+      "qwen3_5": 2.873452120253014,
+      "qwen3_vl": 10.563903561218714
+    },
+    "coefficient_constraint": "nonnegative_scalar_nnls_per_model_family",
+    "target": "max(real_media_seconds - matched_text_seconds, 0) seconds",
+    "feature": "vision_forward_flops_per_sample * logical_samples / 1e15",
+    "ranking_policy": "apply memory admission first, then rank predicted tokens/s"
+  },
+  "input_contract": {
+    "required_base_predictions": [
+      "text_memory_center_bytes",
+      "text_step_seconds",
+      "effective_tokens_per_step"
+    ],
+    "required_workload_aggregates": [
+      "mean_visual_tokens_per_sample",
+      "mean_raw_patch_units_per_sample",
+      "mean_pixel_value_elements_per_sample",
+      "mean_sampled_video_frames_per_sample",
+      "mean_media_per_sample"
+    ],
+    "required_model_fields": [
+      "model_family",
+      "vision_depth",
+      "vision_hidden_size",
+      "vision_intermediate_size",
+      "vision_output_hidden_size",
+      "vision_parameter_elements",
+      "projector_parameter_elements"
+    ],
+    "required_training_fields": [
+      "physical_mbs",
+      "logical_samples_per_step",
+      "freeze_vision_tower=true",
+      "freeze_multi_modal_projector=true",
+      "packing=false"
+    ],
+    "raw_images_or_videos_required_at_recommendation_time": false,
+    "aggregate_profile_only": true
+  },
+  "fit_scope": {
+    "model_ids": [
+      "qwen2p5_vl_3b",
+      "qwen3_vl_4b",
+      "qwen3p5_4b"
+    ],
+    "model_families": [
+      "qwen2p5_vl",
+      "qwen3_5",
+      "qwen3_vl"
+    ],
+    "modalities": [
+      "image",
+      "video"
+    ],
+    "train_type": "lora",
+    "gpu_count": 1,
+    "zero_stage": 0,
+    "packing": false,
+    "vision_tower_frozen": true,
+    "multimodal_projector_frozen": true
+  },
+  "release_contract": {
+    "mode": "shadow_only",
+    "automatic_admission_allowed": false,
+    "automatic_ranking_allowed": false,
+    "reason": "source-disjoint prospective acceptance has not run"
+  },
+  "source_bindings": {
+    "queue_sha256": "d7bff914db605f70c41a1150b2dd8d66e89d487ea040d8822def8fe8d3294813",
+    "formal_results_sha256": "22d458bb03ea2f87b785445156a2dd7f5f37ce661e94da523dbec911911245c9",
+    "model_inventory_sha256": "9bfc7facb5f7ee2128ca6e73fbed75dcbb8d08d59754fdf37c83d2fd9cb9cb77"
+  },
+  "artifact_sha256": "efa479df5f63650b1a1b1e08183f267ffe5e46d0425150e2441f8eb7561f1bad"
+}

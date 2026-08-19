@@ -1,0 +1,1072 @@
+{
+  "schema": "sft_h800_vl_vision_peak/v1",
+  "generated_at_utc": "2026-08-18T16:19:01.501805+00:00",
+  "fit": {
+    "coefficients": [
+      -22473618116.48195,
+      14.75968306336772,
+      1205888.1379560796,
+      -1808832.7012228384,
+      602944.442308331
+    ],
+    "coefficient_names": [
+      "intercept",
+      "params",
+      "saved_gc_aware",
+      "saved_sqrt_mbs",
+      "saved_lin_mbs"
+    ],
+    "mape": 1.1918300356415343,
+    "mae_bytes": 30005647574.496536,
+    "rmse_bytes": 38833149690.99446,
+    "rows": 93,
+    "worst": [
+      {
+        "job_id": "h800vlacc-01a2bbcd78f2afec",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 144862871552.0,
+        "peak_predicted": 99255577878.14467,
+        "abs_pct_error": 0.3148307995364025
+      },
+      {
+        "job_id": "h800vlacc-096f432fcca58d1f",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 47399829504.0,
+        "peak_predicted": 29552370277.536167,
+        "abs_pct_error": 0.37653003002801333
+      },
+      {
+        "job_id": "h800vlacc-0cc0e30c33e2e8cf",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 86276833280.0,
+        "peak_predicted": 62801352070.89257,
+        "abs_pct_error": 0.27209484071953444
+      },
+      {
+        "job_id": "h800vlacc-1ee4286c1e7d2102",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 19931332608.0,
+        "peak_predicted": 27777238700.46475,
+        "abs_pct_error": 0.3936468397158539
+      },
+      {
+        "job_id": "h800vlacc-27e7ce7cef66e148",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 11590959104.0,
+        "peak_predicted": 46156427535.92885,
+        "abs_pct_error": 2.982105977752991
+      },
+      {
+        "job_id": "h800vlacc-32806c313796896d",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 45933920256.0,
+        "peak_predicted": 54501256401.859,
+        "abs_pct_error": 0.18651436886099254
+      },
+      {
+        "job_id": "h800vlacc-391aea077253646f",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 22087204864.0,
+        "peak_predicted": 42879050538.67885,
+        "abs_pct_error": 0.9413525071507595
+      },
+      {
+        "job_id": "h800vlacc-4eb77382db857896",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 11330912256.0,
+        "peak_predicted": 32484487664.464375,
+        "abs_pct_error": 1.866890761356221
+      },
+      {
+        "job_id": "h800vlacc-5c935f08e6ed2e43",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 33166458880.0,
+        "peak_predicted": 42606050252.673004,
+        "abs_pct_error": 0.2846125782323194
+      },
+      {
+        "job_id": "h800vlacc-6dbd63e0e962c8fc",
+        "model_id": "qwen3p5_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 53603205120.0,
+        "peak_predicted": 66078729078.89257,
+        "abs_pct_error": 0.2327383956045905
+      },
+      {
+        "job_id": "h800vlacc-763263b94898885a",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 9760145408.0,
+        "peak_predicted": 32781983646.139523,
+        "abs_pct_error": 2.3587597597951198
+      },
+      {
+        "job_id": "h800vlacc-9f1ec0a3318ddc04",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12859736064.0,
+        "peak_predicted": 45883427249.673004,
+        "abs_pct_error": 2.567991366332991
+      },
+      {
+        "job_id": "h800vlacc-a1495dd1250894b0",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 20105396224.0,
+        "peak_predicted": 41565756429.723145,
+        "abs_pct_error": 1.067393050434177
+      },
+      {
+        "job_id": "h800vlacc-d14aebd52c1e55da",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 25864175616.0,
+        "peak_predicted": 32829747269.536167,
+        "abs_pct_error": 0.26931349975937957
+      },
+      {
+        "job_id": "h800vlacc-ddea83de0f29c57b",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 31681675264.0,
+        "peak_predicted": 38288379429.723145,
+        "abs_pct_error": 0.20853392728352235
+      },
+      {
+        "job_id": "h800vlacc-e5f2594901da94ea",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 22779265024.0,
+        "peak_predicted": 18257367278.860043,
+        "abs_pct_error": 0.19850937861145793
+      },
+      {
+        "job_id": "h800vlacc-ecd03fe00522c8cc",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 74293706752.0,
+        "peak_predicted": 94226437051.44017,
+        "abs_pct_error": 0.2682963493257601
+      },
+      {
+        "job_id": "h800vlacc-efb6469190a710ce",
+        "model_id": "qwen3p5_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 78066483200.0,
+        "peak_predicted": 102532954902.14467,
+        "abs_pct_error": 0.31340558328295065
+      },
+      {
+        "job_id": "h800vlfix-0348215225ff65c1",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 77177290752.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.44248967171620796
+      },
+      {
+        "job_id": "h800vlfix-0b4cbd3007854880",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 47288680448.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.09011762866770896
+      },
+      {
+        "job_id": "h800vlfix-130724c9f880e7d3",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 33764147200.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.27434394976222554
+      },
+      {
+        "job_id": "h800vlfix-1bf8726ec8834976",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 10051649536.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.2774150067339316
+      },
+      {
+        "job_id": "h800vlfix-2cbcf765028aadff",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 14514388992.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.1902489127149734
+      },
+      {
+        "job_id": "h800vlfix-2e86fc5b3323b703",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 42203086848.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 0.09718310101870063
+      },
+      {
+        "job_id": "h800vlfix-443ea8be4d6b5220",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 9900654592.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.3273988831340255
+      },
+      {
+        "job_id": "h800vlfix-45b1af738f50e956",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 14514388992.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.1902489127149734
+      },
+      {
+        "job_id": "h800vlfix-476c711032cbc1a7",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 144573464576.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.7023856568050737
+      },
+      {
+        "job_id": "h800vlfix-4b80bb3ac1b59955",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 35817259008.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 0.2927989182563576
+      },
+      {
+        "job_id": "h800vlfix-558967f5f8e88c38",
+        "model_id": "qwen3p5_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 90951385088.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 0.4908872068781772
+      },
+      {
+        "job_id": "h800vlfix-585cc03b30f71b6b",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12178161664.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.802258089357729
+      },
+      {
+        "job_id": "h800vlfix-595e60c9b0cb0245",
+        "model_id": "qwen3p5_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 110398275584.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 0.5805685056627725
+      },
+      {
+        "job_id": "h800vlfix-5b18ecaa06c93f5a",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 54031024128.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.20365868688201247
+      },
+      {
+        "job_id": "h800vlfix-602b75160783c579",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 142713290752.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.6985064497043125
+      },
+      {
+        "job_id": "h800vlfix-60e556ef7a8a31ac",
+        "model_id": "qwen3p5_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 124572925952.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 0.6282939222420442
+      },
+      {
+        "job_id": "h800vlfix-6245a1f91f53f67c",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 92421488640.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 0.6435523002660374
+      },
+      {
+        "job_id": "h800vlfix-65c75bc53d1a82f5",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12438208512.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 1.6485668735922667
+      },
+      {
+        "job_id": "h800vlfix-662b41db36106616",
+        "model_id": "qwen3p5_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 140521766912.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 0.6704815579962939
+      },
+      {
+        "job_id": "h800vlfix-66367731fd42a74e",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 33581694976.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.2812675695479817
+      },
+      {
+        "job_id": "h800vlfix-678d186fb925f8f0",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 84840284160.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 0.6117006519027133
+      },
+      {
+        "job_id": "h800vlfix-6dc164448031e76d",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 53791948800.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.20011939215704364
+      },
+      {
+        "job_id": "h800vlfix-701d7def8f18baf4",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 54031024128.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.20365868688201247
+      },
+      {
+        "job_id": "h800vlfix-70306b40647f89be",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 142572781568.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.6982093199698189
+      },
+      {
+        "job_id": "h800vlfix-72998c7af30bf23d",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 10496245760.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.1385914340211256
+      },
+      {
+        "job_id": "h800vlfix-72998c7af30bf23d",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 10496245760.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.1385914340211256
+      },
+      {
+        "job_id": "h800vlfix-72998c7af30bf23d",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 10496245760.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.1385914340211256
+      },
+      {
+        "job_id": "h800vlfix-72998c7af30bf23d",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 10496245760.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.1385914340211256
+      },
+      {
+        "job_id": "h800vlfix-72998c7af30bf23d",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 10496245760.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.1385914340211256
+      },
+      {
+        "job_id": "h800vlfix-735427359394eb55",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 30716985344.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.4007604008446665
+      },
+      {
+        "job_id": "h800vlfix-7eff4bf0a65e9b09",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12614369280.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.670775182859573
+      },
+      {
+        "job_id": "h800vlfix-808f3c242aad74f7",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 53791948800.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.20011939215704364
+      },
+      {
+        "job_id": "h800vlfix-88cb3815b4547ed0",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12396265472.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 1.6575283585308296
+      },
+      {
+        "job_id": "h800vlfix-88cb3815b4547ed0",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12396265472.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 1.6575283585308296
+      },
+      {
+        "job_id": "h800vlfix-88cb3815b4547ed0",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12396265472.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 1.6575283585308296
+      },
+      {
+        "job_id": "h800vlfix-88cb3815b4547ed0",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12396265472.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 1.6575283585308296
+      },
+      {
+        "job_id": "h800vlfix-88cb3815b4547ed0",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12396265472.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 1.6575283585308296
+      },
+      {
+        "job_id": "h800vlfix-89d1f2143d2162e3",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 28714205184.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 0.1472867460762295
+      },
+      {
+        "job_id": "h800vlfix-8d065c0334b47b52",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12614369280.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.670775182859573
+      },
+      {
+        "job_id": "h800vlfix-8ea22310d4a43dfb",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 32889634816.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.308227864003815
+      },
+      {
+        "job_id": "h800vlfix-8ea22310d4a43dfb",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 32889634816.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.308227864003815
+      },
+      {
+        "job_id": "h800vlfix-8ea22310d4a43dfb",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 32889634816.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.308227864003815
+      },
+      {
+        "job_id": "h800vlfix-8ea22310d4a43dfb",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 32889634816.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.308227864003815
+      },
+      {
+        "job_id": "h800vlfix-8ea22310d4a43dfb",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 32889634816.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.308227864003815
+      },
+      {
+        "job_id": "h800vlfix-919b7f90c89343f1",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 27854372864.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 0.6623786120238165
+      },
+      {
+        "job_id": "h800vlfix-9588b59556bb6e7a",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 142484701184.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.6980227607198518
+      },
+      {
+        "job_id": "h800vlfix-9854f70da1f4a304",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 147528351744.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.7083466588316228
+      },
+      {
+        "job_id": "h800vlfix-9e3d39f1c1f8e959",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 108928172032.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 0.6975674298285414
+      },
+      {
+        "job_id": "h800vlfix-aef0f311b308a0e8",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 26638024704.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.615252526466055
+      },
+      {
+        "job_id": "h800vlfix-aef0f311b308a0e8",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 26638024704.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.615252526466055
+      },
+      {
+        "job_id": "h800vlfix-aef0f311b308a0e8",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 26638024704.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.615252526466055
+      },
+      {
+        "job_id": "h800vlfix-aef0f311b308a0e8",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 26638024704.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.615252526466055
+      },
+      {
+        "job_id": "h800vlfix-aef0f311b308a0e8",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 26638024704.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.615252526466055
+      },
+      {
+        "job_id": "h800vlfix-af74155852db83fb",
+        "model_id": "qwen3_vl_4b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 78427193344.0,
+        "peak_predicted": 43027136703.20119,
+        "abs_pct_error": 0.4513747736136099
+      },
+      {
+        "job_id": "h800vlfix-b301f619a36cd036",
+        "model_id": "qwen3p5_4b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 113481089024.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 0.5919627305422026
+      },
+      {
+        "job_id": "h800vlfix-b79b6e870192135c",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 35011952640.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 0.05908055541924324
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-bb0f8560ea310546",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 113598529536.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 0.7100012899262345
+      },
+      {
+        "job_id": "h800vlfix-cef1524a20aa2bc3",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12492734464.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.7065154817694026
+      },
+      {
+        "job_id": "h800vlfix-d39e9a3d1318d475",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12438208512.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 1.6485668735922667
+      },
+      {
+        "job_id": "h800vlfix-d9f1402f43bbb29a",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 4,
+        "gc_off": true,
+        "mechanism": "PRESSURE",
+        "peak_actual": 96181682176.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 0.6574875143955752
+      },
+      {
+        "job_id": "h800vlfix-ebae5db0b2461d4f",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 10622074880.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.101411673697085
+      },
+      {
+        "job_id": "h800vlfix-edd3dfbb6b34186c",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 11934892032.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.879759747829965
+      },
+      {
+        "job_id": "h800vlfix-efde080cabccaed4",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 13411287040.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.4526524980297624
+      },
+      {
+        "job_id": "h800vlfix-efde080cabccaed4",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 13411287040.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.4526524980297624
+      },
+      {
+        "job_id": "h800vlfix-efde080cabccaed4",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 13411287040.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.4526524980297624
+      },
+      {
+        "job_id": "h800vlfix-efde080cabccaed4",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 13411287040.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.4526524980297624
+      },
+      {
+        "job_id": "h800vlfix-efde080cabccaed4",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 13411287040.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.4526524980297624
+      },
+      {
+        "job_id": "h800vlfix-f28b2a2db492dfaa",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": true,
+        "mechanism": "NOGC",
+        "peak_actual": 24136122368.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 0.36490139258630067
+      },
+      {
+        "job_id": "h800vlfix-f91cbd39326ca439",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 10479468544.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.14361619517225
+      },
+      {
+        "job_id": "h800vlfix-fc1c054199483b92",
+        "model_id": "qwen2p5_vl_3b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 10622074880.0,
+        "peak_predicted": 32943427031.71656,
+        "abs_pct_error": 2.101411673697085
+      }
+    ],
+    "sorted_worst": [
+      {
+        "job_id": "h800vlacc-27e7ce7cef66e148",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 11590959104.0,
+        "peak_predicted": 46156427535.92885,
+        "abs_pct_error": 2.982105977752991
+      },
+      {
+        "job_id": "h800vlfix-edd3dfbb6b34186c",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 11934892032.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.879759747829965
+      },
+      {
+        "job_id": "h800vlfix-585cc03b30f71b6b",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12178161664.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.802258089357729
+      },
+      {
+        "job_id": "h800vlfix-cef1524a20aa2bc3",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12492734464.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.7065154817694026
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-ba1c3c9fb0cfc4ab",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12612272128.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.671385554522835
+      },
+      {
+        "job_id": "h800vlfix-7eff4bf0a65e9b09",
+        "model_id": "qwen3p5_4b",
+        "mbs": 1,
+        "gc_off": false,
+        "mechanism": "SAFE",
+        "peak_actual": 12614369280.0,
+        "peak_predicted": 46304513700.45018,
+        "abs_pct_error": 2.670775182859573
+      }
+    ],
+    "by_mechanism": {}
+  },
+  "data_source": {
+    "job_prefixes": [
+      "h800vlfix",
+      "h800vlacc"
+    ],
+    "role": "development_only_old_vl_jobs",
+    "note": "V2/new prospective rows are excluded from this fit."
+  },
+  "release": {
+    "mode": "shadow_only",
+    "automatic_admission_allowed": false
+  },
+  "report_sha256": "df13b2d8be3fb54626b2e61d61dc3478256e9f457f0370618a9bce5e356712e0"
+}

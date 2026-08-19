@@ -1,0 +1,251 @@
+{
+  "schema": "sft_h800_vl_calibration_frozen_predictions/v1",
+  "campaign_id": "h800_vl_calibration_20260803_v1",
+  "generated_before_gpu": true,
+  "prediction_rows": [
+    {
+      "scenario_id": "pzfj38-qwen2p5_vl_7b-low",
+      "model_id": "qwen2p5_vl_7b",
+      "media_tier": "low",
+      "candidate_id": "C1",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen2p5_vl_7b-low",
+      "model_id": "qwen2p5_vl_7b",
+      "media_tier": "low",
+      "candidate_id": "C3",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen2p5_vl_7b-low",
+      "model_id": "qwen2p5_vl_7b",
+      "media_tier": "low",
+      "candidate_id": "C4",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen2p5_vl_7b-low",
+      "model_id": "qwen2p5_vl_7b",
+      "media_tier": "low",
+      "candidate_id": "C5",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen2p5_vl_7b-high",
+      "model_id": "qwen2p5_vl_7b",
+      "media_tier": "high",
+      "candidate_id": "C1",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen2p5_vl_7b-high",
+      "model_id": "qwen2p5_vl_7b",
+      "media_tier": "high",
+      "candidate_id": "C3",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen2p5_vl_7b-high",
+      "model_id": "qwen2p5_vl_7b",
+      "media_tier": "high",
+      "candidate_id": "C4",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen2p5_vl_7b-high",
+      "model_id": "qwen2p5_vl_7b",
+      "media_tier": "high",
+      "candidate_id": "C5",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen3_vl_8b-low",
+      "model_id": "qwen3_vl_8b",
+      "media_tier": "low",
+      "candidate_id": "C1",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen3_vl_8b-low",
+      "model_id": "qwen3_vl_8b",
+      "media_tier": "low",
+      "candidate_id": "C3",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen3_vl_8b-low",
+      "model_id": "qwen3_vl_8b",
+      "media_tier": "low",
+      "candidate_id": "C4",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen3_vl_8b-low",
+      "model_id": "qwen3_vl_8b",
+      "media_tier": "low",
+      "candidate_id": "C5",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen3_vl_8b-high",
+      "model_id": "qwen3_vl_8b",
+      "media_tier": "high",
+      "candidate_id": "C1",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen3_vl_8b-high",
+      "model_id": "qwen3_vl_8b",
+      "media_tier": "high",
+      "candidate_id": "C3",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen3_vl_8b-high",
+      "model_id": "qwen3_vl_8b",
+      "media_tier": "high",
+      "candidate_id": "C4",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    },
+    {
+      "scenario_id": "pzfj38-qwen3_vl_8b-high",
+      "model_id": "qwen3_vl_8b",
+      "media_tier": "high",
+      "candidate_id": "C5",
+      "memory_prediction": {
+        "available": false,
+        "reason": "real_image_vl_memory_head_not_calibrated"
+      },
+      "throughput_prediction": {
+        "available": false,
+        "reason": "real_image_vl_ranker_not_calibrated"
+      },
+      "automatic_execution_from_prediction": false
+    }
+  ],
+  "all_predictions_unavailable": true,
+  "execution_basis": "preregistered_calibration_matrix_not_model_recommendation",
+  "publication_allowed": false,
+  "report_sha256": "d58ead0ae02f4e22d38dc596d3be54de5870747e809717fd17936f7a5180e137"
+}

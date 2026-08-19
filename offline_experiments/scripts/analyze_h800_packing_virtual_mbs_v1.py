@@ -31,8 +31,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-import fit_h800_packing_phase_b_challengers_v1 as phase_b_fit
-import fit_h800_packing_phase_c_models_v1 as phase_c_fit
 import numpy as np
 from common import (
     ARTIFACT_DIR,
@@ -51,8 +49,21 @@ from h800_challenger_modeling import (
     _job,
     throughput_admission_reason,
 )
-from sklearn.linear_model import Ridge
-from sklearn.preprocessing import StandardScaler
+# The frozen predictor adapter below does not need scikit-learn.  Keep the
+# optional refit dependencies lazy so prediction-only commands can run in the
+# production launcher environment, where sklearn is intentionally absent.
+try:
+    import fit_h800_packing_phase_b_challengers_v1 as phase_b_fit
+    import fit_h800_packing_phase_c_models_v1 as phase_c_fit
+    from sklearn.linear_model import Ridge
+    from sklearn.preprocessing import StandardScaler
+except ModuleNotFoundError as error:
+    if error.name != "sklearn":
+        raise
+    phase_b_fit = None  # type: ignore[assignment]
+    phase_c_fit = None  # type: ignore[assignment]
+    Ridge = None  # type: ignore[assignment,misc]
+    StandardScaler = None  # type: ignore[assignment,misc]
 from structured_throughput_modeling import (
     StaticDatasetProfiles,
     _predict_log_throughput,

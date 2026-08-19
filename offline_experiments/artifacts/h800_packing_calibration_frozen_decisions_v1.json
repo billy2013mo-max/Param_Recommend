@@ -1,0 +1,629 @@
+{
+  "schema": "sft_h800_packing_calibration_frozen_decisions/v1",
+  "campaign_id": "h800_packing_calibration_20260803_v1",
+  "generated_before_gpu": true,
+  "policy": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/static_packing_policy_v1.json",
+    "sha256": "696c68aff8f6b0cfcb096c31e44652e387179d120f2df24f227a0f32a3494353"
+  },
+  "observed_decision_map": {
+    "C1": "off",
+    "C2": "on",
+    "C3": "off",
+    "C4": "off"
+  },
+  "draft_expectation_correction": {
+    "original_labels_not_used_as_ground_truth": true,
+    "reason": "the product comparison uses the fastest justified unpacked MBS; static decisions are recomputed from that baseline"
+  },
+  "families": [
+    {
+      "family_id": "C1",
+      "decision": {
+        "schema": "sft_static_packing_decision/v1",
+        "decision_id": "packing-2b7ab256a1b68bfe",
+        "request_id": "h800-packing-calibration-c1-v1",
+        "policy": {
+          "policy_id": "h800_text_sft_static_packing/2026-07-30.v1",
+          "version": "2026-07-30.v1",
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/static_packing_policy_v1.json",
+          "sha256": "696c68aff8f6b0cfcb096c31e44652e387179d120f2df24f227a0f32a3494353",
+          "status": "frozen_shadow_release"
+        },
+        "profile_binding": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/bounded_memory_v2_fresh_holdout_v1/profiles/fresh_s3_rare_tail_short_v1.qwen3_nothink.jsonl",
+          "sha256": "0b7de10dab0f223530a3a92881a65d819b17c868e86dcd5a795d8b93381bcc8d",
+          "length_field": "total_tokens"
+        },
+        "recommendation": {
+          "packing": false,
+          "decision": "off",
+          "support_status": "released_off",
+          "confidence": "medium",
+          "automatic_action_allowed": true,
+          "shadow_candidate_packing": null,
+          "reason_codes": [
+            "linear_token_efficiency_ratio"
+          ]
+        },
+        "features": {
+          "records": 1000,
+          "raw_length_tokens": {
+            "minimum": 420,
+            "mean": 594.301,
+            "p50": 566.0,
+            "p90": 664.0,
+            "p95": 722.0999999999999,
+            "p99": 1079.3299999999988,
+            "maximum": 5892
+          },
+          "cutoff_len": 4096,
+          "packing_capacity": 4095,
+          "samples_truncated_without_packing": 1,
+          "sample_truncation_rate_without_packing": 0.001,
+          "tokens_retained_ratio_without_packing": 0.99697796234568,
+          "preprocessing_num_workers": 8,
+          "packs": 154,
+          "pack_utilization": 0.9395429966858538,
+          "model_facing_pack_fill_ratio": 0.9393136160714286,
+          "sequence_reduction_ratio": 0.846,
+          "mean_samples_per_pack": 6.4935064935064934,
+          "samples_per_pack": {
+            "minimum": 1,
+            "p50": 7.0,
+            "p90": 8.0,
+            "p99": 8.0,
+            "maximum": 8
+          },
+          "used_tokens_per_pack": {
+            "minimum": 978,
+            "maximum": 4095
+          },
+          "no_packing_mbs": 2,
+          "no_packing_padding_utilization": {
+            "mean": 0.9180395149063466,
+            "minimum": 0.9166341786408247,
+            "maximum": 0.9195019677952003,
+            "seeds": [
+              17,
+              43,
+              97,
+              193,
+              389
+            ]
+          },
+          "linear_token_efficiency_ratio": 1.0231734046515986,
+          "cutoff_tokens_per_no_packing_mbs": 2048.0,
+          "packed_batch_geometry": {
+            "target_gbs": 64.0,
+            "data_parallel": 1,
+            "raw_gradient_accumulation_steps": 9.856,
+            "gradient_accumulation_steps": 10,
+            "expected_sample_gbs": 64.93506493506493,
+            "relative_error": 0.014610389610389518
+          }
+        },
+        "gate_evaluations": [
+          {
+            "name": "minimum_records",
+            "actual": 1000,
+            "comparator": ">=",
+            "threshold": 1000,
+            "passed": true
+          },
+          {
+            "name": "pack_utilization",
+            "actual": 0.9395429966858538,
+            "comparator": ">=",
+            "threshold": 0.9,
+            "passed": true
+          },
+          {
+            "name": "sequence_reduction_ratio",
+            "actual": 0.846,
+            "comparator": ">=",
+            "threshold": 0.15,
+            "passed": true
+          },
+          {
+            "name": "mean_samples_per_pack",
+            "actual": 6.4935064935064934,
+            "comparator": ">=",
+            "threshold": 1.5,
+            "passed": true
+          },
+          {
+            "name": "expected_gbs_relative_error",
+            "actual": 0.014610389610389518,
+            "comparator": "<=",
+            "threshold": 0.05,
+            "passed": true
+          },
+          {
+            "name": "cutoff_tokens_per_no_packing_mbs",
+            "actual": 2048.0,
+            "comparator": ">=",
+            "threshold": 1024.0,
+            "passed": true
+          },
+          {
+            "name": "linear_token_efficiency_ratio",
+            "actual": 1.0231734046515986,
+            "comparator": ">=",
+            "threshold": 1.1,
+            "passed": false
+          }
+        ],
+        "released_domain_mismatches": [],
+        "operational_contract": {
+          "prediction_kind": "pure_static",
+          "pre_recommendation_gpu_execution": false,
+          "runtime_measurements_consumed": false,
+          "fail_closed": true
+        },
+        "report_sha256": "3ed61db25f3159987a56f3cf9a595f26ec3910ebc8563c1b822d08409a4af5a7"
+      }
+    },
+    {
+      "family_id": "C2",
+      "decision": {
+        "schema": "sft_static_packing_decision/v1",
+        "decision_id": "packing-f32a33448f44c5d1",
+        "request_id": "h800-packing-calibration-c2-v1",
+        "policy": {
+          "policy_id": "h800_text_sft_static_packing/2026-07-30.v1",
+          "version": "2026-07-30.v1",
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/static_packing_policy_v1.json",
+          "sha256": "696c68aff8f6b0cfcb096c31e44652e387179d120f2df24f227a0f32a3494353",
+          "status": "frozen_shadow_release"
+        },
+        "profile_binding": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/bounded_memory_v2_fresh_holdout_v1/profiles/fresh_s3_broad_nontruncated_longtail_v1.qwen3_nothink.jsonl",
+          "sha256": "ca7d0214286eb0d78e7a22c72ad590ca24aceb288c8746b21c3efbace6d774d2",
+          "length_field": "total_tokens"
+        },
+        "recommendation": {
+          "packing": true,
+          "decision": "on",
+          "support_status": "released_on",
+          "confidence": "medium",
+          "automatic_action_allowed": true,
+          "shadow_candidate_packing": null,
+          "reason_codes": [
+            "all_static_gates_passed"
+          ]
+        },
+        "features": {
+          "records": 1000,
+          "raw_length_tokens": {
+            "minimum": 1193,
+            "mean": 2382.078,
+            "p50": 1997.0,
+            "p90": 3692.5,
+            "p95": 4660.5,
+            "p99": 7266.819999999998,
+            "maximum": 12513
+          },
+          "cutoff_len": 8192,
+          "packing_capacity": 8191,
+          "samples_truncated_without_packing": 8,
+          "sample_truncation_rate_without_packing": 0.008,
+          "tokens_retained_ratio_without_packing": 0.9939338678246472,
+          "preprocessing_num_workers": 8,
+          "packs": 303,
+          "pack_utilization": 0.953965009490816,
+          "model_facing_pack_fill_ratio": 0.9538485586839934,
+          "sequence_reduction_ratio": 0.6970000000000001,
+          "mean_samples_per_pack": 3.3003300330033003,
+          "samples_per_pack": {
+            "minimum": 1,
+            "p50": 3.0,
+            "p90": 5.0,
+            "p99": 6.0,
+            "maximum": 6
+          },
+          "used_tokens_per_pack": {
+            "minimum": 1229,
+            "maximum": 8191
+          },
+          "no_packing_mbs": 1,
+          "no_packing_padding_utilization": {
+            "mean": 1.0,
+            "minimum": 1.0,
+            "maximum": 1.0,
+            "seeds": [
+              17,
+              43,
+              97,
+              193,
+              389
+            ]
+          },
+          "linear_token_efficiency_ratio": 0.9538485586839934,
+          "cutoff_tokens_per_no_packing_mbs": 8192.0,
+          "packed_batch_geometry": {
+            "target_gbs": 64.0,
+            "data_parallel": 2,
+            "raw_gradient_accumulation_steps": 9.696,
+            "gradient_accumulation_steps": 10,
+            "expected_sample_gbs": 66.006600660066,
+            "relative_error": 0.03135313531353123
+          }
+        },
+        "gate_evaluations": [
+          {
+            "name": "minimum_records",
+            "actual": 1000,
+            "comparator": ">=",
+            "threshold": 1000,
+            "passed": true
+          },
+          {
+            "name": "pack_utilization",
+            "actual": 0.953965009490816,
+            "comparator": ">=",
+            "threshold": 0.9,
+            "passed": true
+          },
+          {
+            "name": "sequence_reduction_ratio",
+            "actual": 0.6970000000000001,
+            "comparator": ">=",
+            "threshold": 0.15,
+            "passed": true
+          },
+          {
+            "name": "mean_samples_per_pack",
+            "actual": 3.3003300330033003,
+            "comparator": ">=",
+            "threshold": 1.5,
+            "passed": true
+          },
+          {
+            "name": "expected_gbs_relative_error",
+            "actual": 0.03135313531353123,
+            "comparator": "<=",
+            "threshold": 0.05,
+            "passed": true
+          },
+          {
+            "name": "cutoff_tokens_per_no_packing_mbs",
+            "actual": 8192.0,
+            "comparator": ">=",
+            "threshold": 1024.0,
+            "passed": true
+          },
+          {
+            "name": "linear_token_efficiency_ratio",
+            "actual": 0.9538485586839934,
+            "comparator": ">=",
+            "threshold": 0.9,
+            "passed": true
+          }
+        ],
+        "released_domain_mismatches": [],
+        "operational_contract": {
+          "prediction_kind": "pure_static",
+          "pre_recommendation_gpu_execution": false,
+          "runtime_measurements_consumed": false,
+          "fail_closed": true
+        },
+        "report_sha256": "c002b3e9d81a418c64b5b6d5f267e73ea6548462a61e97c2ec05e700fe546d0f"
+      }
+    },
+    {
+      "family_id": "C3",
+      "decision": {
+        "schema": "sft_static_packing_decision/v1",
+        "decision_id": "packing-63f71efb3ba1b7dc",
+        "request_id": "h800-packing-calibration-c3-v1",
+        "policy": {
+          "policy_id": "h800_text_sft_static_packing/2026-07-30.v1",
+          "version": "2026-07-30.v1",
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/static_packing_policy_v1.json",
+          "sha256": "696c68aff8f6b0cfcb096c31e44652e387179d120f2df24f227a0f32a3494353",
+          "status": "frozen_shadow_release"
+        },
+        "profile_binding": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/bounded_memory_v2_fresh_holdout_v1/profiles/fresh_s3_rare_tail_short_v1.qwen3_nothink.jsonl",
+          "sha256": "0b7de10dab0f223530a3a92881a65d819b17c868e86dcd5a795d8b93381bcc8d",
+          "length_field": "total_tokens"
+        },
+        "recommendation": {
+          "packing": false,
+          "decision": "off",
+          "support_status": "fail_closed_off_outside_enablement_domain",
+          "confidence": "medium",
+          "automatic_action_allowed": true,
+          "shadow_candidate_packing": null,
+          "reason_codes": [
+            "linear_token_efficiency_ratio"
+          ]
+        },
+        "features": {
+          "records": 1000,
+          "raw_length_tokens": {
+            "minimum": 420,
+            "mean": 594.301,
+            "p50": 566.0,
+            "p90": 664.0,
+            "p95": 722.0999999999999,
+            "p99": 1079.3299999999988,
+            "maximum": 5892
+          },
+          "cutoff_len": 4096,
+          "packing_capacity": 4095,
+          "samples_truncated_without_packing": 1,
+          "sample_truncation_rate_without_packing": 0.001,
+          "tokens_retained_ratio_without_packing": 0.99697796234568,
+          "preprocessing_num_workers": 8,
+          "packs": 154,
+          "pack_utilization": 0.9395429966858538,
+          "model_facing_pack_fill_ratio": 0.9393136160714286,
+          "sequence_reduction_ratio": 0.846,
+          "mean_samples_per_pack": 6.4935064935064934,
+          "samples_per_pack": {
+            "minimum": 1,
+            "p50": 7.0,
+            "p90": 8.0,
+            "p99": 8.0,
+            "maximum": 8
+          },
+          "used_tokens_per_pack": {
+            "minimum": 978,
+            "maximum": 4095
+          },
+          "no_packing_mbs": 2,
+          "no_packing_padding_utilization": {
+            "mean": 0.9180395149063466,
+            "minimum": 0.9166341786408247,
+            "maximum": 0.9195019677952003,
+            "seeds": [
+              17,
+              43,
+              97,
+              193,
+              389
+            ]
+          },
+          "linear_token_efficiency_ratio": 1.0231734046515986,
+          "cutoff_tokens_per_no_packing_mbs": 2048.0,
+          "packed_batch_geometry": {
+            "target_gbs": 64.0,
+            "data_parallel": 2,
+            "raw_gradient_accumulation_steps": 4.928,
+            "gradient_accumulation_steps": 5,
+            "expected_sample_gbs": 64.93506493506493,
+            "relative_error": 0.014610389610389518
+          }
+        },
+        "gate_evaluations": [
+          {
+            "name": "minimum_records",
+            "actual": 1000,
+            "comparator": ">=",
+            "threshold": 1000,
+            "passed": true
+          },
+          {
+            "name": "pack_utilization",
+            "actual": 0.9395429966858538,
+            "comparator": ">=",
+            "threshold": 0.9,
+            "passed": true
+          },
+          {
+            "name": "sequence_reduction_ratio",
+            "actual": 0.846,
+            "comparator": ">=",
+            "threshold": 0.15,
+            "passed": true
+          },
+          {
+            "name": "mean_samples_per_pack",
+            "actual": 6.4935064935064934,
+            "comparator": ">=",
+            "threshold": 1.5,
+            "passed": true
+          },
+          {
+            "name": "expected_gbs_relative_error",
+            "actual": 0.014610389610389518,
+            "comparator": "<=",
+            "threshold": 0.05,
+            "passed": true
+          },
+          {
+            "name": "cutoff_tokens_per_no_packing_mbs",
+            "actual": 2048.0,
+            "comparator": ">=",
+            "threshold": 1024.0,
+            "passed": true
+          },
+          {
+            "name": "linear_token_efficiency_ratio",
+            "actual": 1.0231734046515986,
+            "comparator": ">=",
+            "threshold": 1.1,
+            "passed": false
+          }
+        ],
+        "released_domain_mismatches": [
+          {
+            "dimension": "train_type",
+            "actual": "full",
+            "allowed": [
+              "lora"
+            ]
+          }
+        ],
+        "operational_contract": {
+          "prediction_kind": "pure_static",
+          "pre_recommendation_gpu_execution": false,
+          "runtime_measurements_consumed": false,
+          "fail_closed": true
+        },
+        "report_sha256": "d8ea2b95510ce9be3d6bf2c8c8010e9e5cbedd119ef76478141413931bd0ae41"
+      }
+    },
+    {
+      "family_id": "C4",
+      "decision": {
+        "schema": "sft_static_packing_decision/v1",
+        "decision_id": "packing-c6babe3c2c74f8cb",
+        "request_id": "h800-packing-calibration-c4-v1",
+        "policy": {
+          "policy_id": "h800_text_sft_static_packing/2026-07-30.v1",
+          "version": "2026-07-30.v1",
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/static_packing_policy_v1.json",
+          "sha256": "696c68aff8f6b0cfcb096c31e44652e387179d120f2df24f227a0f32a3494353",
+          "status": "frozen_shadow_release"
+        },
+        "profile_binding": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/bounded_memory_v2_fresh_holdout_v1/profiles/fresh_s3_concentrated_truncated_long_v1.qwen3_nothink.jsonl",
+          "sha256": "ca3640f800114cbbce91c0888a986eae42b806e465ea16a66174f9560f4daa1c",
+          "length_field": "total_tokens"
+        },
+        "recommendation": {
+          "packing": false,
+          "decision": "off",
+          "support_status": "fail_closed_off_outside_enablement_domain",
+          "confidence": "medium",
+          "automatic_action_allowed": true,
+          "shadow_candidate_packing": null,
+          "reason_codes": [
+            "sequence_reduction_ratio",
+            "mean_samples_per_pack",
+            "cutoff_tokens_per_no_packing_mbs",
+            "linear_token_efficiency_ratio"
+          ]
+        },
+        "features": {
+          "records": 1000,
+          "raw_length_tokens": {
+            "minimum": 2413,
+            "mean": 2651.941,
+            "p50": 2623.0,
+            "p90": 2734.1,
+            "p95": 2791.05,
+            "p99": 2907.4399999999996,
+            "maximum": 7639
+          },
+          "cutoff_len": 2048,
+          "packing_capacity": 2047,
+          "samples_truncated_without_packing": 1000,
+          "sample_truncation_rate_without_packing": 1.0,
+          "tokens_retained_ratio_without_packing": 0.7722645413302935,
+          "preprocessing_num_workers": 8,
+          "packs": 1000,
+          "pack_utilization": 1.0,
+          "model_facing_pack_fill_ratio": 0.99951171875,
+          "sequence_reduction_ratio": 0.0,
+          "mean_samples_per_pack": 1.0,
+          "samples_per_pack": {
+            "minimum": 1,
+            "p50": 1.0,
+            "p90": 1.0,
+            "p99": 1.0,
+            "maximum": 1
+          },
+          "used_tokens_per_pack": {
+            "minimum": 2047,
+            "maximum": 2047
+          },
+          "no_packing_mbs": 4,
+          "no_packing_padding_utilization": {
+            "mean": 1.0,
+            "minimum": 1.0,
+            "maximum": 1.0,
+            "seeds": [
+              17,
+              43,
+              97,
+              193,
+              389
+            ]
+          },
+          "linear_token_efficiency_ratio": 0.99951171875,
+          "cutoff_tokens_per_no_packing_mbs": 512.0,
+          "packed_batch_geometry": {
+            "target_gbs": 64.0,
+            "data_parallel": 2,
+            "raw_gradient_accumulation_steps": 32.0,
+            "gradient_accumulation_steps": 32,
+            "expected_sample_gbs": 64.0,
+            "relative_error": 0.0
+          }
+        },
+        "gate_evaluations": [
+          {
+            "name": "minimum_records",
+            "actual": 1000,
+            "comparator": ">=",
+            "threshold": 1000,
+            "passed": true
+          },
+          {
+            "name": "pack_utilization",
+            "actual": 1.0,
+            "comparator": ">=",
+            "threshold": 0.9,
+            "passed": true
+          },
+          {
+            "name": "sequence_reduction_ratio",
+            "actual": 0.0,
+            "comparator": ">=",
+            "threshold": 0.15,
+            "passed": false
+          },
+          {
+            "name": "mean_samples_per_pack",
+            "actual": 1.0,
+            "comparator": ">=",
+            "threshold": 1.5,
+            "passed": false
+          },
+          {
+            "name": "expected_gbs_relative_error",
+            "actual": 0.0,
+            "comparator": "<=",
+            "threshold": 0.05,
+            "passed": true
+          },
+          {
+            "name": "cutoff_tokens_per_no_packing_mbs",
+            "actual": 512.0,
+            "comparator": ">=",
+            "threshold": 1024.0,
+            "passed": false
+          },
+          {
+            "name": "linear_token_efficiency_ratio",
+            "actual": 0.99951171875,
+            "comparator": ">=",
+            "threshold": 1.1,
+            "passed": false
+          }
+        ],
+        "released_domain_mismatches": [
+          {
+            "dimension": "train_type",
+            "actual": "full",
+            "allowed": [
+              "lora"
+            ]
+          }
+        ],
+        "operational_contract": {
+          "prediction_kind": "pure_static",
+          "pre_recommendation_gpu_execution": false,
+          "runtime_measurements_consumed": false,
+          "fail_closed": true
+        },
+        "report_sha256": "c0e8c2e3dc182e7996a2bed33ed5cea9895e79f45e92a5b87fee78c112a4df4f"
+      }
+    }
+  ],
+  "report_sha256": "1477a0e464b867082b3e233f4f145b0aa9362b465be84c2a5a40083ac379cb4c"
+}

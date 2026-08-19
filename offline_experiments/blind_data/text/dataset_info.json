@@ -1,0 +1,44 @@
+{
+ "business_0105_datatest": {
+  "file_name": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/blind_data/text/0105_datatest.sft.jsonl",
+  "formatting": "sharegpt",
+  "columns": {
+   "messages": "messages"
+  },
+  "tags": {
+   "role_tag": "role",
+   "content_tag": "content",
+   "user_tag": "user",
+   "assistant_tag": "assistant",
+   "system_tag": "system"
+  }
+ },
+ "business_0105_inference2": {
+  "file_name": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/blind_data/text/0105_inference2.sft.jsonl",
+  "formatting": "sharegpt",
+  "columns": {
+   "messages": "messages"
+  },
+  "tags": {
+   "role_tag": "role",
+   "content_tag": "content",
+   "user_tag": "user",
+   "assistant_tag": "assistant",
+   "system_tag": "system"
+  }
+ },
+ "business_0105_inference": {
+  "file_name": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/blind_data/text/0105_inference.sft.jsonl",
+  "formatting": "sharegpt",
+  "columns": {
+   "messages": "messages"
+  },
+  "tags": {
+   "role_tag": "role",
+   "content_tag": "content",
+   "user_tag": "user",
+   "assistant_tag": "assistant",
+   "system_tag": "system"
+  }
+ }
+}

@@ -1,0 +1,1695 @@
+{
+  "schema": "sft_h800_hybrid_vl_safety_upper/v1",
+  "generated_at_utc": "2026-08-17T04:11:27.788518+00:00",
+  "target_coverage": 0.95,
+  "safe_limit_fraction": 0.95,
+  "safe_limit_bytes": 142635080089.6,
+  "hybrid_memory": {
+    "exact_rows": 122,
+    "target_coverage": 0.95,
+    "finite_sample_rank": 117,
+    "selected_rank": 117,
+    "rank_capped_at_sample_maximum": false,
+    "exact_log_residual_quantile": 0.14203897499372908,
+    "censored_rows": 28,
+    "censored_lower_log_residual_max": -0.0442446832875296,
+    "selected_log_guard": 0.14203897499372908,
+    "upper_multiplier": 1.1526215710800762,
+    "form": "upper_bytes = center_bytes * exp(selected_log_guard)",
+    "oof_exact_coverage": 0.9590163934426229,
+    "oof_censor_lower_bound_satisfaction": 1.0,
+    "oof_predictions": [
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 21675213206.534637,
+        "peak_reserved_bytes": 23800578048.0,
+        "log_residual_or_lower_bound": 0.09354050897702952
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 56218505575.55267,
+        "peak_reserved_bytes": 61211672576.0,
+        "log_residual_or_lower_bound": 0.08509191629551448
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 102276228734.2434,
+        "peak_reserved_bytes": 110742208512.0,
+        "log_residual_or_lower_bound": 0.07952777664761101
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 102276228734.2434,
+        "peak_reserved_bytes": 111660761088.0,
+        "log_residual_or_lower_bound": 0.08778807821265412
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 11420480293.413546,
+        "peak_reserved_bytes": 11538530304.0,
+        "log_residual_or_lower_bound": 0.010283635736878242
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 15199573923.068289,
+        "peak_reserved_bytes": 14539554816.0,
+        "log_residual_or_lower_bound": -0.04439454232732729
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 20238365429.274612,
+        "peak_reserved_bytes": 18910019584.0,
+        "log_residual_or_lower_bound": -0.06788816342250886
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 20238365429.274612,
+        "peak_reserved_bytes": 18882756608.0,
+        "log_residual_or_lower_bound": -0.06933092489579266
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 21229384680.988487,
+        "peak_reserved_bytes": 23192403968.0,
+        "log_residual_or_lower_bound": 0.08843851805999897
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 55772677050.00652,
+        "peak_reserved_bytes": 54926508032.0,
+        "log_residual_or_lower_bound": -0.015288016765635855
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 101830400208.69724,
+        "peak_reserved_bytes": 98270445568.0,
+        "log_residual_or_lower_bound": -0.03558535985646747
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 101830400208.69724,
+        "peak_reserved_bytes": 98746499072.0,
+        "log_residual_or_lower_bound": -0.030752735623468905
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 10974651767.867395,
+        "peak_reserved_bytes": 12941524992.0,
+        "log_residual_or_lower_bound": 0.1648529042549465
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 14753745397.522139,
+        "peak_reserved_bytes": 15009316864.0,
+        "log_residual_or_lower_bound": 0.017174156743031983
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 19792536903.728462,
+        "peak_reserved_bytes": 18677235712.0,
+        "log_residual_or_lower_bound": -0.057999501898557
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 19792536903.728462,
+        "peak_reserved_bytes": 18845007872.0,
+        "log_residual_or_lower_bound": -0.049056898150099455
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 26431810842.861332,
+        "peak_reserved_bytes": 28114419712.0,
+        "log_residual_or_lower_bound": 0.06171436078612778
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 82729440770.72417,
+        "peak_reserved_bytes": 82696994816.0,
+        "log_residual_or_lower_bound": -0.0003922704980633473
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "censored",
+        "center_bytes": 157792947341.20795,
+        "censor_lower_bytes": 149701001216.0,
+        "log_residual_or_lower_bound": -0.05264373420492351
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "censored",
+        "center_bytes": 157792947341.20795,
+        "censor_lower_bytes": 149776498688.0,
+        "log_residual_or_lower_bound": -0.052139539575119576
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 9256465078.352203,
+        "peak_reserved_bytes": 12578717696.0,
+        "log_residual_or_lower_bound": 0.30668407934363245
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 14028057712.687634,
+        "peak_reserved_bytes": 16169041920.0,
+        "log_residual_or_lower_bound": 0.14203897499372908
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 20390181225.134872,
+        "peak_reserved_bytes": 18366857216.0,
+        "log_residual_or_lower_bound": -0.1045056703149593
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 20390181225.134872,
+        "peak_reserved_bytes": 18507366400.0,
+        "log_residual_or_lower_bound": -0.09688463587480542
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 21006470418.215412,
+        "peak_reserved_bytes": 22431137792.0,
+        "log_residual_or_lower_bound": 0.06561956817540726
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 55549762787.23345,
+        "peak_reserved_bytes": 54871982080.0,
+        "log_residual_or_lower_bound": -0.012276372200949336
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 101607485945.92416,
+        "peak_reserved_bytes": 98243182592.0,
+        "log_residual_or_lower_bound": -0.03367135303492588
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 101607485945.92416,
+        "peak_reserved_bytes": 98719236096.0,
+        "log_residual_or_lower_bound": -0.02883739096060313
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 10751737505.09432,
+        "peak_reserved_bytes": 11886657536.0,
+        "log_residual_or_lower_bound": 0.10034918572893198
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 14530831134.749063,
+        "peak_reserved_bytes": 14766047232.0,
+        "log_residual_or_lower_bound": 0.016057762094944264
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 19569622640.955387,
+        "peak_reserved_bytes": 18616418304.0,
+        "log_residual_or_lower_bound": -0.049934602814763314
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 19569622640.955387,
+        "peak_reserved_bytes": 18784190464.0,
+        "log_residual_or_lower_bound": -0.04096291540788736
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 25184386734.550552,
+        "peak_reserved_bytes": 25360859136.0,
+        "log_residual_or_lower_bound": 0.006982778121412501
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 81482016662.41339,
+        "peak_reserved_bytes": 80184606720.0,
+        "log_residual_or_lower_bound": -0.016050781159361156
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "censored",
+        "center_bytes": 156545523232.89716,
+        "censor_lower_bytes": 149770207232.0,
+        "log_residual_or_lower_bound": -0.0442446832875296
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "censored",
+        "center_bytes": 156545523232.89716,
+        "censor_lower_bytes": 149673738240.0,
+        "log_residual_or_lower_bound": -0.044889004181614504
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 8009040970.041419,
+        "peak_reserved_bytes": 9919528960.0,
+        "log_residual_or_lower_bound": 0.2139344114697183
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 12780633604.376848,
+        "peak_reserved_bytes": 12194938880.0,
+        "log_residual_or_lower_bound": -0.04691000576250989
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 19142757116.82409,
+        "peak_reserved_bytes": 16800284672.0,
+        "log_residual_or_lower_bound": -0.13052859461385663
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 19142757116.82409,
+        "peak_reserved_bytes": 16517169152.0,
+        "log_residual_or_lower_bound": -0.14752403106995735
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 34107838898.27533,
+        "peak_reserved_bytes": 35913728000.0,
+        "log_residual_or_lower_bound": 0.05159238035686931
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 75543460506.45059,
+        "peak_reserved_bytes": 79431729152.0,
+        "log_residual_or_lower_bound": 0.05018977342858571
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 130790955984.01762,
+        "peak_reserved_bytes": 136774156288.0,
+        "log_residual_or_lower_bound": 0.044730778538702935
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 130790955984.01762,
+        "peak_reserved_bytes": 137321512960.0,
+        "log_residual_or_lower_bound": 0.048724693518035905
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 21842843290.40004,
+        "peak_reserved_bytes": 21839740928.0,
+        "log_residual_or_lower_bound": -0.000142041157168926
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 26483478074.949436,
+        "peak_reserved_bytes": 25776095232.0,
+        "log_residual_or_lower_bound": -0.027073548657385642
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 32670991121.0153,
+        "peak_reserved_bytes": 31111249920.0,
+        "log_residual_or_lower_bound": -0.04891807495904497
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 32670991121.0153,
+        "peak_reserved_bytes": 30840717312.0,
+        "log_residual_or_lower_bound": -0.05765175492779962
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 33513513361.949238,
+        "peak_reserved_bytes": 34873540608.0,
+        "log_residual_or_lower_bound": 0.03977965146797905
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 74949134970.12451,
+        "peak_reserved_bytes": 70837600256.0,
+        "log_residual_or_lower_bound": -0.0564197462657399
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 130196630447.69153,
+        "peak_reserved_bytes": 120053563392.0,
+        "log_residual_or_lower_bound": -0.08110784482920189
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 130196630447.69153,
+        "peak_reserved_bytes": 120972115968.0,
+        "log_residual_or_lower_bound": -0.0734857771271418
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 21248517754.073948,
+        "peak_reserved_bytes": 22944940032.0,
+        "log_residual_or_lower_bound": 0.07681029410110178
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 25889152538.623344,
+        "peak_reserved_bytes": 25509756928.0,
+        "log_residual_or_lower_bound": -0.014763056463252367
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 32076665584.68921,
+        "peak_reserved_bytes": 29972496384.0,
+        "log_residual_or_lower_bound": -0.06784866301347672
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 32076665584.68921,
+        "peak_reserved_bytes": 30031216640.0,
+        "log_residual_or_lower_bound": -0.06589144164214049
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 35858326795.706024,
+        "peak_reserved_bytes": 39564869632.0,
+        "log_residual_or_lower_bound": 0.09836578628391632
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 104110030886.5976,
+        "peak_reserved_bytes": 106484989952.0,
+        "log_residual_or_lower_bound": 0.022555706639401894
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "censored",
+        "center_bytes": 195112303007.78635,
+        "censor_lower_bytes": 149984116736.0,
+        "log_residual_or_lower_bound": -0.26304590558700897
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "censored",
+        "center_bytes": 195112303007.78635,
+        "censor_lower_bytes": 149803761664.0,
+        "log_residual_or_lower_bound": -0.26424912364053016
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 15183969829.421665,
+        "peak_reserved_bytes": 20279459840.0,
+        "log_residual_or_lower_bound": 0.28936828839222867
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 21412603021.460163,
+        "peak_reserved_bytes": 23542628352.0,
+        "log_residual_or_lower_bound": 0.09483307539932244
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 29717447277.51149,
+        "peak_reserved_bytes": 26753368064.0,
+        "log_residual_or_lower_bound": -0.1050739493977334
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 29717447277.51149,
+        "peak_reserved_bytes": 26789019648.0,
+        "log_residual_or_lower_bound": -0.10374223481448888
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 33216350593.78619,
+        "peak_reserved_bytes": 34678505472.0,
+        "log_residual_or_lower_bound": 0.04307781371925458
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 74651972201.96146,
+        "peak_reserved_bytes": 70749519872.0,
+        "log_residual_or_lower_bound": -0.0536911927136747
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 129899467679.52849,
+        "peak_reserved_bytes": 119980163072.0,
+        "log_residual_or_lower_bound": -0.07943440435916606
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 129899467679.52849,
+        "peak_reserved_bytes": 120500256768.0,
+        "log_residual_or_lower_bound": -0.07510894195983824
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 20951354985.9109,
+        "peak_reserved_bytes": 22764584960.0,
+        "log_residual_or_lower_bound": 0.08300271571637609
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 25591989770.460297,
+        "peak_reserved_bytes": 25170018304.0,
+        "log_residual_or_lower_bound": -0.016625866568932467
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 31779502816.52616,
+        "peak_reserved_bytes": 29901193216.0,
+        "log_residual_or_lower_bound": -0.060923129956410305
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 31779502816.52616,
+        "peak_reserved_bytes": 29959913472.0,
+        "log_residual_or_lower_bound": -0.05896124591906639
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 32264223663.96865,
+        "peak_reserved_bytes": 33424408576.0,
+        "log_residual_or_lower_bound": 0.03532743891561148
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 100515927754.86021,
+        "peak_reserved_bytes": 101544099840.0,
+        "log_residual_or_lower_bound": 0.010176985239812468
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "censored",
+        "center_bytes": 191518199876.04898,
+        "censor_lower_bytes": 150023962624.0,
+        "log_residual_or_lower_bound": -0.2441878104579361
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "censored",
+        "center_bytes": 191518199876.04898,
+        "censor_lower_bytes": 149847801856.0,
+        "log_residual_or_lower_bound": -0.24536271792926762
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 11589866697.684294,
+        "peak_reserved_bytes": 15237906432.0,
+        "log_residual_or_lower_bound": 0.2736550118020912
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 17818499889.72279,
+        "peak_reserved_bytes": 18276679680.0,
+        "log_residual_or_lower_bound": 0.025388675539911306
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 26123344145.77412,
+        "peak_reserved_bytes": 23318233088.0,
+        "log_residual_or_lower_bound": -0.11359373578062502
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 26123344145.77412,
+        "peak_reserved_bytes": 21864906752.0,
+        "log_residual_or_lower_bound": -0.1779464061558229
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 94593023197.57556,
+        "peak_reserved_bytes": 102290685952.0,
+        "log_residual_or_lower_bound": 0.07823489961613518
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 203875010753.70483,
+        "censor_lower_bytes": 150059614208.0,
+        "log_residual_or_lower_bound": -0.3064744704917576
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 349584327495.2106,
+        "censor_lower_bytes": 149692612608.0,
+        "log_residual_or_lower_bound": -0.848160870725323
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 349584327495.2106,
+        "censor_lower_bytes": 149663252480.0,
+        "log_residual_or_lower_bound": -0.8483570260809932
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 60861293813.57512,
+        "peak_reserved_bytes": 61733863424.0,
+        "log_residual_or_lower_bound": 0.014235217196691314
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 68948093217.70314,
+        "peak_reserved_bytes": 69830967296.0,
+        "log_residual_or_lower_bound": 0.012723619625903397
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 79730492423.20717,
+        "peak_reserved_bytes": 80262201344.0,
+        "log_residual_or_lower_bound": 0.006646689492868436
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 79730492423.20717,
+        "peak_reserved_bytes": 79173779456.0,
+        "log_residual_or_lower_bound": -0.007006926099177854
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 92990042965.30023,
+        "peak_reserved_bytes": 96609501184.0,
+        "log_residual_or_lower_bound": 0.038184669791716065
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 202272030521.4295,
+        "censor_lower_bytes": 150075342848.0,
+        "log_residual_or_lower_bound": -0.29847602353650476
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 347981347262.93524,
+        "censor_lower_bytes": 149738749952.0,
+        "log_residual_or_lower_bound": -0.8432567698745216
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 347981347262.93524,
+        "censor_lower_bytes": 150088974336.0,
+        "log_residual_or_lower_bound": -0.8409205980337314
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 59258313581.2998,
+        "peak_reserved_bytes": 61513662464.0,
+        "log_residual_or_lower_bound": 0.037353220245488046
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 67345112985.427826,
+        "peak_reserved_bytes": 68807557120.0,
+        "log_residual_or_lower_bound": 0.02148324200750588
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 78127512190.93185,
+        "peak_reserved_bytes": 78433484800.0,
+        "log_residual_or_lower_bound": 0.003908674631564825
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 78127512190.93185,
+        "peak_reserved_bytes": 78997618688.0,
+        "log_residual_or_lower_bound": 0.01107544523933413
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 93220030246.88248,
+        "peak_reserved_bytes": 104402518016.0,
+        "log_residual_or_lower_bound": 0.11329117867260512
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 276002772218.3959,
+        "censor_lower_bytes": 150041788416.0,
+        "log_residual_or_lower_bound": -0.6094970651988334
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 519713094847.0804,
+        "censor_lower_bytes": 149791178752.0,
+        "log_residual_or_lower_bound": -1.2440347361184432
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 519713094847.0804,
+        "censor_lower_bytes": 149919105024.0,
+        "log_residual_or_lower_bound": -1.2431810698500918
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 36311381397.32826,
+        "peak_reserved_bytes": 40537948160.0,
+        "log_residual_or_lower_bound": 0.11010729777002072
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 48368176820.17903,
+        "peak_reserved_bytes": 47963963392.0,
+        "log_residual_or_lower_bound": -0.008392127479113965
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 64443904050.64673,
+        "peak_reserved_bytes": 58703478784.0,
+        "log_residual_or_lower_bound": -0.09329615188812442
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 64443904050.64673,
+        "peak_reserved_bytes": 59909341184.0,
+        "log_residual_or_lower_bound": -0.0729627014745294
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 92188552849.16258,
+        "peak_reserved_bytes": 95361695744.0,
+        "log_residual_or_lower_bound": 0.03384101850366592
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 201470540405.29187,
+        "censor_lower_bytes": 149875064832.0,
+        "log_residual_or_lower_bound": -0.2958411233142944
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 347179857146.7976,
+        "censor_lower_bytes": 150057517056.0,
+        "log_residual_or_lower_bound": -0.8388242983338341
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 347179857146.7976,
+        "censor_lower_bytes": 149879259136.0,
+        "log_residual_or_lower_bound": -0.8400129351075629
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 58456823465.16214,
+        "peak_reserved_bytes": 60882419712.0,
+        "log_residual_or_lower_bound": 0.04065603704894521
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 66543622869.29017,
+        "peak_reserved_bytes": 68012736512.0,
+        "log_residual_or_lower_bound": 0.02183727368854846
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 77326022074.79419,
+        "peak_reserved_bytes": 77579943936.0,
+        "log_residual_or_lower_bound": 0.003278402958551762
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 77326022074.79419,
+        "peak_reserved_bytes": 77886128128.0,
+        "log_residual_or_lower_bound": 0.007217327816031679
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 80283408035.63858,
+        "peak_reserved_bytes": 89911197696.0,
+        "log_residual_or_lower_bound": 0.11325951607130391
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 263066150007.15198,
+        "censor_lower_bytes": 149864579072.0,
+        "log_residual_or_lower_bound": -0.5626734413567799
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 506776472635.8365,
+        "censor_lower_bytes": 149954756608.0,
+        "log_residual_or_lower_bound": -1.2177363980132245
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 506776472635.8365,
+        "censor_lower_bytes": 149982019584.0,
+        "log_residual_or_lower_bound": -1.2175546065275573
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 23374759186.084385,
+        "peak_reserved_bytes": 26040336384.0,
+        "log_residual_or_lower_bound": 0.10798996230719822
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 35431554608.93515,
+        "peak_reserved_bytes": 32411484160.0,
+        "log_residual_or_lower_bound": -0.08908998685772253
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 51507281839.40284,
+        "peak_reserved_bytes": 44147146752.0,
+        "log_residual_or_lower_bound": -0.1541948938813904
+      },
+      {
+        "held_out_source": "业务短样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 51507281839.40284,
+        "peak_reserved_bytes": 43132125184.0,
+        "log_residual_or_lower_bound": -0.1774551092523292
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 56648929697.52162,
+        "peak_reserved_bytes": 61211672576.0,
+        "log_residual_or_lower_bound": 0.07746480565004779
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 15423835172.82787,
+        "peak_reserved_bytes": 14539554816.0,
+        "log_residual_or_lower_bound": -0.05904119764717745
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 56384910836.24277,
+        "peak_reserved_bytes": 54926508032.0,
+        "log_residual_or_lower_bound": -0.026205510247076916
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 15159816311.549019,
+        "peak_reserved_bytes": 15009316864.0,
+        "log_residual_or_lower_bound": -0.009977130937341115
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 80937137790.27902,
+        "peak_reserved_bytes": 82696994816.0,
+        "log_residual_or_lower_bound": 0.021510486283881757
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 14328118669.367292,
+        "peak_reserved_bytes": 14896070656.0,
+        "log_residual_or_lower_bound": 0.038873516746154
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 56162417465.766594,
+        "peak_reserved_bytes": 54871982080.0,
+        "log_residual_or_lower_bound": -0.023244931215205343
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 14937322941.072844,
+        "peak_reserved_bytes": 14766047232.0,
+        "log_residual_or_lower_bound": -0.01153253697260556
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 79692068987.5087,
+        "peak_reserved_bytes": 80184606720.0,
+        "log_residual_or_lower_bound": 0.00616149026784957
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_4b",
+        "state": "exact",
+        "center_bytes": 13083049866.596954,
+        "peak_reserved_bytes": 12194938880.0,
+        "log_residual_or_lower_bound": -0.07029646931301957
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 76000936213.37726,
+        "peak_reserved_bytes": 79431729152.0,
+        "log_residual_or_lower_bound": 0.044152241108304055
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 26694376250.93723,
+        "peak_reserved_bytes": 25839009792.0,
+        "log_residual_or_lower_bound": -0.03256755847832732
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 75648977685.96465,
+        "peak_reserved_bytes": 70837600256.0,
+        "log_residual_or_lower_bound": -0.06571398961797656
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 26342417723.52462,
+        "peak_reserved_bytes": 25509756928.0,
+        "log_residual_or_lower_bound": -0.03211947754109381
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 101853536350.9301,
+        "peak_reserved_bytes": 106484989952.0,
+        "log_residual_or_lower_bound": 0.04446817256099874
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 21702512291.442398,
+        "peak_reserved_bytes": 23542628352.0,
+        "log_residual_or_lower_bound": 0.08138472267025125
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 75352376001.32532,
+        "peak_reserved_bytes": 70749519872.0,
+        "log_residual_or_lower_bound": -0.06302970720082222
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 26045816038.885296,
+        "peak_reserved_bytes": 25170018304.0,
+        "log_residual_or_lower_bound": -0.0342036062271376
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 98266219372.32437,
+        "peak_reserved_bytes": 101544099840.0,
+        "log_residual_or_lower_bound": 0.03281286550979551
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p5_9b",
+        "state": "exact",
+        "center_bytes": 18115195312.83669,
+        "peak_reserved_bytes": 17599299584.0,
+        "log_residual_or_lower_bound": -0.02889200122958393
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 204715648197.80222,
+        "censor_lower_bytes": 150059614208.0,
+        "log_residual_or_lower_bound": -0.3105892910917979
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 69110582310.85744,
+        "peak_reserved_bytes": 69830967296.0,
+        "log_residual_or_lower_bound": 0.010369704994166238
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 203766366150.27197,
+        "censor_lower_bytes": 150036545536.0,
+        "log_residual_or_lower_bound": -0.30609517223075944
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 68161300263.32719,
+        "peak_reserved_bytes": 68748836864.0,
+        "log_residual_or_lower_bound": 0.008582859089320662
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 269405722705.3896,
+        "censor_lower_bytes": 150057517056.0,
+        "log_residual_or_lower_bound": -0.5851998385219229
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 48790674506.222664,
+        "peak_reserved_bytes": 47963963392.0,
+        "log_residual_or_lower_bound": -0.0170892321361379
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 202966389355.9457,
+        "censor_lower_bytes": 149875064832.0,
+        "log_residual_or_lower_bound": -0.30323834973707503
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 67361323469.000916,
+        "peak_reserved_bytes": 68012736512.0,
+        "log_residual_or_lower_bound": 0.009623971844399531
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "censored",
+        "center_bytes": 256493526587.69785,
+        "censor_lower_bytes": 149864579072.0,
+        "log_residual_or_lower_bound": -0.5373713466828542
+      },
+      {
+        "held_out_source": "业务长尾样本",
+        "model_id": "qwen3p6_27b",
+        "state": "exact",
+        "center_bytes": 35878478388.53093,
+        "peak_reserved_bytes": 32411484160.0,
+        "log_residual_or_lower_bound": -0.10162481856627234
+      }
+    ]
+  },
+  "vl_memory_by_modality": {
+    "text_base_scale_by_model_mechanism": {
+      "qwen2p5_vl_3b::NOGC": 0.9266423478656102,
+      "qwen2p5_vl_3b::PRESSURE": 1.0637697911957924,
+      "qwen2p5_vl_3b::SAFE": 0.8607336310778682,
+      "qwen3_vl_4b::NOGC": 2.0249715416365874,
+      "qwen3_vl_4b::PRESSURE": 1.640605513299883,
+      "qwen3_vl_4b::SAFE": 3.174401205864373,
+      "qwen3p5_4b::NOGC": 0.7772715207690363,
+      "qwen3p5_4b::PRESSURE": 0.6317679234632172,
+      "qwen3p5_4b::SAFE": 0.8524852512490169
+    },
+    "text_base_scale_form": "corrected_text_center_bytes = raw_text_center_bytes * median(control_peak / raw_text_center) by model and mechanism",
+    "text_base_scale_oof_policy": "leave-one-pair-out within model and mechanism; model-level median fallback",
+    "image": {
+      "exact_rows": 15,
+      "target_coverage": 0.95,
+      "finite_sample_rank": 16,
+      "selected_rank": 15,
+      "rank_capped_at_sample_maximum": true,
+      "exact_log_residual_quantile": 0.44893229378282934,
+      "censored_rows": 0,
+      "censored_lower_log_residual_max": null,
+      "selected_log_guard": 0.44893229378282934,
+      "upper_multiplier": 1.566638582436441,
+      "form": "upper_bytes = center_bytes * exp(selected_log_guard)",
+      "oof_exact_coverage": 1.0,
+      "oof_censor_lower_bound_satisfaction": null,
+      "oof_predictions": [
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::NOGC",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 32763767963.269066,
+          "text_base_scale_oof": 0.976883507192984,
+          "text_center_bytes": 32006384556.815414,
+          "oof_visual_residual_bytes": 1539958100.6024961,
+          "center_bytes": 33546342657.41791,
+          "peak_reserved_bytes": 35011952640.0,
+          "log_residual": 0.04276166141611535
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::PRESSURE",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 106788640245.46416,
+          "text_base_scale_oof": 1.0028365638510526,
+          "text_center_bytes": 107091553042.0875,
+          "oof_visual_residual_bytes": 6159832402.409985,
+          "center_bytes": 113251385444.49748,
+          "peak_reserved_bytes": 108928172032.0,
+          "log_residual": -0.03892130496575525
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::SAFE",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 12194692049.749083,
+          "text_base_scale_oof": 0.8504264161330146,
+          "text_center_bytes": 10370688255.713879,
+          "oof_visual_residual_bytes": 1539958100.6024961,
+          "center_bytes": 11910646356.316376,
+          "peak_reserved_bytes": 12438208512.0,
+          "log_residual": 0.043340414704771346
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::low::PRESSURE",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 81558711240.7413,
+          "text_base_scale_oof": 0.9450745614487137,
+          "text_center_bytes": 77079063258.16586,
+          "oof_visual_residual_bytes": 2065396725.7061512,
+          "center_bytes": 79144459983.87201,
+          "peak_reserved_bytes": 92421488640.0,
+          "log_residual": 0.1550847226577837
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::low::SAFE",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 11219954904.320099,
+          "text_base_scale_oof": 0.8504264161330146,
+          "text_center_bytes": 9541746038.454983,
+          "oof_visual_residual_bytes": 516349181.4265378,
+          "center_bytes": 10058095219.881521,
+          "peak_reserved_bytes": 10479468544.0,
+          "log_residual": 0.04104016137259137
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::NOGC",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 31284981845.611317,
+          "text_base_scale_oof": 1.5430791275569329,
+          "text_center_bytes": 48275202491.960396,
+          "oof_visual_residual_bytes": 987781081.4261628,
+          "center_bytes": 49262983573.38656,
+          "peak_reserved_bytes": 77177290752.0,
+          "log_residual": 0.44893229378282934
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::PRESSURE",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 99741179529.74768,
+          "text_base_scale_oof": 1.8317248138075746,
+          "text_center_bytes": 182698393503.07495,
+          "oof_visual_residual_bytes": 3951124325.7046514,
+          "center_bytes": 186649517828.7796,
+          "peak_reserved_bytes": 144611213312.0,
+          "log_residual": -0.25518376823918637
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::SAFE",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 13453664880.108637,
+          "text_base_scale_oof": 2.662996851349704,
+          "text_center_bytes": 35827067214.8434,
+          "oof_visual_residual_bytes": 987781081.4261628,
+          "center_bytes": 36814848296.26956,
+          "peak_reserved_bytes": 54031024128.0,
+          "log_residual": 0.38365715237137604
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::low::PRESSURE",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 80540674358.90404,
+          "text_base_scale_oof": 1.4494862127921913,
+          "text_center_bytes": 116742597052.21696,
+          "oof_visual_residual_bytes": 1334367875.351468,
+          "center_bytes": 118076964927.56844,
+          "peak_reserved_bytes": 143967387648.0,
+          "log_residual": 0.19825014226494297
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::low::SAFE",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 12679003800.882113,
+          "text_base_scale_oof": 3.6858055603790416,
+          "text_center_bytes": 46732342709.35829,
+          "oof_visual_residual_bytes": 333591968.837867,
+          "center_bytes": 47065934678.19616,
+          "peak_reserved_bytes": 33581694976.0,
+          "log_residual": -0.3375683579722077
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::NOGC",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 56604673152.657074,
+          "text_base_scale_oof": 0.9217815218062214,
+          "text_center_bytes": 52177141760.0,
+          "oof_visual_residual_bytes": 501411731.7958693,
+          "center_bytes": 52678553491.79587,
+          "peak_reserved_bytes": 42203086848.0,
+          "log_residual": -0.22171505168028635
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::PRESSURE",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 188403056039.1849,
+          "text_base_scale_oof": 0.6023314664301289,
+          "text_center_bytes": 113481089024.0,
+          "oof_visual_residual_bytes": 2005646927.1834772,
+          "center_bytes": 115486735951.18347,
+          "peak_reserved_bytes": 140521766912.0,
+          "log_residual": 0.19620671829707886
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::SAFE",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 15426941607.179115,
+          "text_base_scale_oof": 0.8872861162338276,
+          "text_center_bytes": 13688111104.0,
+          "oof_visual_residual_bytes": 501411731.7958693,
+          "center_bytes": 14189522835.79587,
+          "peak_reserved_bytes": 14514388992.0,
+          "log_residual": 0.02263663784155339
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::low::PRESSURE",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 188403056039.1849,
+          "text_base_scale_oof": 0.6612043804963056,
+          "text_center_bytes": 124572925952.0,
+          "oof_visual_residual_bytes": 677344119.8800358,
+          "center_bytes": 125250270071.88004,
+          "peak_reserved_bytes": 110398275584.0,
+          "log_residual": -0.1262193822143036
+        },
+        {
+          "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::low::SAFE",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 15426941607.179115,
+          "text_base_scale_oof": 0.8872861162338276,
+          "text_center_bytes": 13688111104.0,
+          "oof_visual_residual_bytes": 169336029.97000894,
+          "center_bytes": 13857447133.970009,
+          "peak_reserved_bytes": 12492734464.0,
+          "log_residual": -0.10367555488741276
+        }
+      ]
+    },
+    "video": {
+      "exact_rows": 16,
+      "target_coverage": 0.95,
+      "finite_sample_rank": 17,
+      "selected_rank": 16,
+      "rank_capped_at_sample_maximum": true,
+      "exact_log_residual_quantile": 0.36957407059551445,
+      "censored_rows": 2,
+      "censored_lower_log_residual_max": 0.1933111532485938,
+      "selected_log_guard": 0.36957407059551445,
+      "upper_multiplier": 1.4471181132234137,
+      "form": "upper_bytes = center_bytes * exp(selected_log_guard)",
+      "oof_exact_coverage": 1.0,
+      "oof_censor_lower_bound_satisfaction": 1.0,
+      "oof_predictions": [
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_128::SAFE",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 14398409991.202168,
+          "text_base_scale_oof": 0.8710408460227218,
+          "text_center_bytes": 12541603220.118746,
+          "oof_visual_residual_bytes": 2698790225.370812,
+          "center_bytes": 15240393445.489557,
+          "peak_reserved_bytes": 13457424384.0,
+          "log_residual": -0.12441841399547411
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_16::SAFE",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 12214100666.383047,
+          "text_base_scale_oof": 0.8710408460227218,
+          "text_center_bytes": 10638980577.85298,
+          "oof_visual_residual_bytes": 531406410.73560524,
+          "center_bytes": 11170386988.588585,
+          "peak_reserved_bytes": 10752098304.0,
+          "log_residual": -0.03816533123743594
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::NOGC",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 43779243298.81363,
+          "text_base_scale_oof": 0.8764011885382363,
+          "text_center_bytes": 38368180860.38488,
+          "oof_visual_residual_bytes": 1734984681.9453983,
+          "center_bytes": 40103165542.33028,
+          "peak_reserved_bytes": 46674214912.0,
+          "log_residual": 0.15173659657359015
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::PRESSURE",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 136526385605.12144,
+          "text_base_scale_oof": 1.1215317935981313,
+          "text_center_bytes": 153118682121.18195,
+          "oof_visual_residual_bytes": 6939938727.781593,
+          "center_bytes": 160058620848.96353,
+          "peak_reserved_bytes": 105539174400.0,
+          "log_residual": -0.41645792311854124
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::SAFE",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 13437873484.712091,
+          "text_base_scale_oof": 0.8710408460227218,
+          "text_center_bytes": 11704936688.86992,
+          "oof_visual_residual_bytes": 1734984681.9453983,
+          "center_bytes": 13439921370.81532,
+          "peak_reserved_bytes": 12658409472.0,
+          "log_residual": -0.059907709991945154
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::upscaled_64::SAFE",
+          "model_id": "qwen2p5_vl_3b",
+          "state": "exact",
+          "raw_text_center_bytes": 13671075374.97625,
+          "text_base_scale_oof": 0.8504264161330146,
+          "text_center_bytes": 11626243635.825361,
+          "oof_visual_residual_bytes": 7860006362.146576,
+          "center_bytes": 19486249997.97194,
+          "peak_reserved_bytes": 19193135104.0,
+          "log_residual": -0.015156420108657621
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_128::SAFE",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 16092479390.014345,
+          "text_base_scale_oof": 2.662996851349704,
+          "text_center_bytes": 42854221946.01821,
+          "oof_visual_residual_bytes": 2085730587.8375561,
+          "center_bytes": 44939952533.85577,
+          "peak_reserved_bytes": 60865642496.0,
+          "log_residual": 0.30334164234384126
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_16::SAFE",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 13861249033.049673,
+          "text_base_scale_oof": 3.6858055603790416,
+          "text_center_bytes": 51089868759.8131,
+          "oof_visual_residual_bytes": 410691648.066841,
+          "center_bytes": 51500560407.879944,
+          "peak_reserved_bytes": 28147974144.0,
+          "log_residual": -0.6041173037862668
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::NOGC",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 45840060010.39645,
+          "text_base_scale_oof": 2.5068639557162418,
+          "text_center_bytes": 114914794167.93234,
+          "oof_visual_residual_bytes": 1340863986.5908523,
+          "center_bytes": 116255658154.5232,
+          "peak_reserved_bytes": 70982303744.0,
+          "log_residual": -0.49336111264712884
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::SAFE",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 15176211471.263773,
+          "text_base_scale_oof": 3.6858055603790416,
+          "text_center_bytes": 55936564626.27221,
+          "oof_visual_residual_bytes": 1340863986.5908523,
+          "center_bytes": 57277428612.86306,
+          "peak_reserved_bytes": 41406169088.0,
+          "log_residual": -0.3244767485919684
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::upscaled_64::SAFE",
+          "model_id": "qwen3_vl_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 15247792342.512583,
+          "text_base_scale_oof": 2.662996851349704,
+          "text_center_bytes": 40604822998.14514,
+          "oof_visual_residual_bytes": 4916501284.166458,
+          "center_bytes": 45521324282.3116,
+          "peak_reserved_bytes": 63615008768.0,
+          "log_residual": 0.33466854771096305
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_128::SAFE",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 15426941607.179115,
+          "text_base_scale_oof": 0.8176843862642061,
+          "text_center_bytes": 12614369280.0,
+          "oof_visual_residual_bytes": 1058746523.6703062,
+          "center_bytes": 13673115803.670307,
+          "peak_reserved_bytes": 17400070144.0,
+          "log_residual": 0.24104268267125337
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_16::SAFE",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 15426941607.179115,
+          "text_base_scale_oof": 0.8872861162338276,
+          "text_center_bytes": 13688111104.0,
+          "oof_visual_residual_bytes": 208472924.17665875,
+          "center_bytes": 13896584028.176659,
+          "peak_reserved_bytes": 13008633856.0,
+          "log_residual": -0.06602977678019503
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::NOGC",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 56604673152.657074,
+          "text_base_scale_oof": 0.6327615197318511,
+          "text_center_bytes": 35817259008.0,
+          "oof_visual_residual_bytes": 680641638.3765182,
+          "center_bytes": 36497900646.37652,
+          "peak_reserved_bytes": 52816773120.0,
+          "log_residual": 0.36957407059551445
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::SAFE",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 15426941607.179115,
+          "text_base_scale_oof": 0.8176843862642061,
+          "text_center_bytes": 12614369280.0,
+          "oof_visual_residual_bytes": 680641638.3765182,
+          "center_bytes": 13295010918.376518,
+          "peak_reserved_bytes": 15456010240.0,
+          "log_residual": 0.15060909406187492
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::upscaled_64::SAFE",
+          "model_id": "qwen3p5_4b",
+          "state": "exact",
+          "raw_text_center_bytes": 15426941607.179115,
+          "text_base_scale_oof": 0.8176843862642061,
+          "text_center_bytes": 12614369280.0,
+          "oof_visual_residual_bytes": 2495686007.380567,
+          "center_bytes": 15110055287.380568,
+          "peak_reserved_bytes": 21485322240.0,
+          "log_residual": 0.3520095802147288
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::PRESSURE",
+          "model_id": "qwen3_vl_4b",
+          "state": "right_censored",
+          "raw_text_center_bytes": 139845298478.88538,
+          "text_base_scale": 1.640605513299883,
+          "visual_residual_bytes": 4724009846.350586,
+          "center_bytes": 234154977539.87766,
+          "censor_lower_bytes": 150142189568.0,
+          "log_residual_lower_bound": -0.4444004177674341
+        },
+        {
+          "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::PRESSURE",
+          "model_id": "qwen3p5_4b",
+          "state": "right_censored",
+          "raw_text_center_bytes": 188403056039.1849,
+          "text_base_scale": 0.6317679234632172,
+          "visual_residual_bytes": 4724009846.350586,
+          "center_bytes": 123751017334.35057,
+          "censor_lower_bytes": 150142189568.0,
+          "log_residual_lower_bound": 0.1933111532485938
+        }
+      ]
+    }
+  },
+  "source_bindings": {
+    "hybrid_observations": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_hybrid_attention_dense_stage1_observations_v1.jsonl",
+      "sha256": "968c3533f38f6f3fa2f72cee8b1e430861301ec1abd9c2e6a313bf8e908a054b"
+    },
+    "hybrid_center_artifact": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_hybrid_memory_artifact_v1.json",
+      "sha256": "252b45ce6e51212024af648674bfb4bb9999154f82d8945e804aa51ecf61cfda"
+    },
+    "vl_evaluation": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_modeling_formal_evaluation_v1.json",
+      "sha256": "a029488b807c572ba6697aa98cb2a5c41420b55c478faff6ac074a26edb7b6c4"
+    },
+    "vl_center_artifact": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_residual_overlay_v1.json",
+      "sha256": "1ee7c0f774c2851e2ad160008e0b247363b6d226220319fe4111a9dadfeee2b5"
+    },
+    "implementation": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/scripts/fit_h800_hybrid_vl_safety_upper_v1.py",
+      "sha256": "7e528ba094c72b82f2096fcf8c3a49dbf2bf99da245a284908ad5c646fc84c1d"
+    }
+  },
+  "release_contract": {
+    "mode": "candidate_pending_prospective_acceptance",
+    "automatic_admission_allowed": false,
+    "automatic_ranking_allowed": false
+  },
+  "report_sha256": "e7cc1925550a575d8448a6717f221e95a4d8135e4217711d5b7954e186156ed6"
+}

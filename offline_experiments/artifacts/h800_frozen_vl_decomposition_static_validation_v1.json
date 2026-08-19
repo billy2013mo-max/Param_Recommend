@@ -1,0 +1,25 @@
+{
+  "schema": "sft_h800_frozen_vl_decomposition_static_validation/v1",
+  "all_passed": true,
+  "gpu_training_started": false,
+  "profiles": 9,
+  "canary_jobs": 6,
+  "formal_jobs": 45,
+  "formal_by_model": {
+    "qwen2p5_vl_3b": 15,
+    "qwen3_vl_4b": 15,
+    "qwen3p5_4b": 15
+  },
+  "formal_by_arm": {
+    "real_image": 18,
+    "text_base": 9,
+    "text_length_matched": 18
+  },
+  "formal_by_mechanism": {
+    "NOGC": 9,
+    "PRESSURE": 15,
+    "SAFE": 21
+  },
+  "packing_enabled_jobs": 0,
+  "exact_text_image_pairs": 18
+}

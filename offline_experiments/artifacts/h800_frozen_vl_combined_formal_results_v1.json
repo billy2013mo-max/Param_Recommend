@@ -1,0 +1,4672 @@
+{
+  "schema": "sft_h800_frozen_vl_combined_formal_results/v1",
+  "campaign_id": "h800_frozen_vl_combined_formal_20260811_v1",
+  "phase_id": "h800_frozen_vl_combined_formal_v1",
+  "queue": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_frozen_vl_combined_formal_v1.jsonl",
+    "sha256": "d7bff914db605f70c41a1150b2dd8d66e89d487ea040d8822def8fe8d3294813"
+  },
+  "hardware": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/config/hardware.json",
+    "sha256": "78013bf1c25a8b0efe832ee47f66c50d85958cfc311853e3e04a4ad1b4bafdaa",
+    "device_capacity_bytes": 150142189568
+  },
+  "checks": {
+    "queue_exact": true,
+    "all_jobs_terminal_success_or_oom": true,
+    "no_software_or_infrastructure_failure": true,
+    "all_success_artifacts_and_semantics_complete": true,
+    "every_model_has_real_image_and_video_success": true,
+    "all_repeat_cv_at_most_5_percent": true
+  },
+  "all_passed": true,
+  "classifications": {
+    "oom": 4,
+    "success": 83
+  },
+  "repeat_cv": [
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        5300.346826859139,
+        5275.626624580502
+      ],
+      "coefficient_of_variation": 0.0033055723416453645
+    },
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        5105.091984471859,
+        5101.103331430817
+      ],
+      "coefficient_of_variation": 0.0005526846245489151
+    },
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        10600.205116446281,
+        10556.916052631028
+      ],
+      "coefficient_of_variation": 0.0028935874905061634
+    },
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        11509.224669419926,
+        11608.163636935937
+      ],
+      "coefficient_of_variation": 0.006052622720788238
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        7393.289857895006,
+        7428.38582362287
+      ],
+      "coefficient_of_variation": 0.0033486895667820416
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        6709.246352813019,
+        6713.746706502168
+      ],
+      "coefficient_of_variation": 0.00047414620528717473
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        7424.072907365116,
+        7450.096853534674
+      ],
+      "coefficient_of_variation": 0.0024743174382883333
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        7391.25955909798,
+        7392.126898020235
+      ],
+      "coefficient_of_variation": 8.297168382798893e-05
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        8090.096826536483,
+        8109.79008427395
+      ],
+      "coefficient_of_variation": 0.0017191769506150149
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        7993.496622187646,
+        8028.254698387466
+      ],
+      "coefficient_of_variation": 0.00306803805528167
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        8103.403695142244,
+        8081.955650509302
+      ],
+      "coefficient_of_variation": 0.0018740464736384608
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "repeats": 2,
+      "effective_tokens_per_second": [
+        7998.457535367593,
+        7977.465430302952
+      ],
+      "coefficient_of_variation": 0.0018582538078688018
+    }
+  ],
+  "rows": [
+    {
+      "job_id": "h800vlfix-443ea8be4d6b5220",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_base",
+      "media_tier": null,
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 9900654592,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 9900654592,
+        "max_allocated_bytes": 9456163328,
+        "measured_seconds": 185.39102454297245,
+        "effective_tokens": 1271227,
+        "computed_tokens": 1275800,
+        "effective_tokens_per_second": 6857.00401696274,
+        "computed_tokens_per_second": 6881.670799032009
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-443ea8be4d6b5220/attempts/a76a20ae530f0332b5a7/status.json",
+      "status_sha256": "50f8aaed5401cf4b44c98d6ef38da8d3b6b36a5cc458ee99a35ec9ff7f0a012e"
+    },
+    {
+      "job_id": "h800vlfix-f28b2a2db492dfaa",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_base",
+      "media_tier": null,
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 24136122368,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 24136122368,
+        "max_allocated_bytes": 19066945024,
+        "measured_seconds": 135.8316686246544,
+        "effective_tokens": 1271227,
+        "computed_tokens": 1275800,
+        "effective_tokens_per_second": 9358.841077869696,
+        "computed_tokens_per_second": 9392.507748141094
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-f28b2a2db492dfaa/attempts/58d6a5b22a80c7b6c541/status.json",
+      "status_sha256": "bc9b278b2a03c61284030a8134a0a799db6e49c50091f6325fc1f2d24a81b216"
+    },
+    {
+      "job_id": "h800vlfix-678d186fb925f8f0",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_base",
+      "media_tier": null,
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 84840284160,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 84840284160,
+        "max_allocated_bytes": 49895825920,
+        "measured_seconds": 60.49609795585275,
+        "effective_tokens": 1271227,
+        "computed_tokens": 1290048,
+        "effective_tokens_per_second": 21013.371819909487,
+        "computed_tokens_per_second": 21324.4827945997
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-678d186fb925f8f0/attempts/8d103d4fecd74f01ecc3/status.json",
+      "status_sha256": "22dd9ac78c053f0c928809be722a0c971bf63a54d9e3d5d1d4fd0d8c32ba39d8"
+    },
+    {
+      "job_id": "h800vlfix-1bf8726ec8834976",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "low",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 10051649536,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 10051649536,
+        "max_allocated_bytes": 9632696320,
+        "measured_seconds": 187.20352415181696,
+        "effective_tokens": 1532326,
+        "computed_tokens": 1537360,
+        "effective_tokens_per_second": 8185.34804268602,
+        "computed_tokens_per_second": 8212.238562096956
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-1bf8726ec8834976/attempts/c313cac9f30bdb9e0bac/status.json",
+      "status_sha256": "4d8d6469db25afaf3bb76e347780ef7e9e9502bf3febe30b8a7a4d03a83df494"
+    },
+    {
+      "job_id": "h800vlfix-f91cbd39326ca439",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_image",
+      "media_tier": "low",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 10479468544,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 10479468544,
+        "max_allocated_bytes": 9942523904,
+        "measured_seconds": 244.68945368938148,
+        "effective_tokens": 1532326,
+        "computed_tokens": 1534080,
+        "effective_tokens_per_second": 6262.329564661972,
+        "computed_tokens_per_second": 6269.497834375085
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-f91cbd39326ca439/attempts/ab0b10e4658bf163d806/status.json",
+      "status_sha256": "5f9aa05c8c8647a27f76b1e46904cda5173dbf85775b95da8d3491420b365a88"
+    },
+    {
+      "job_id": "h800vlfix-d9f1402f43bbb29a",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "low",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 96181682176,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 96181682176,
+        "max_allocated_bytes": 57910303232,
+        "measured_seconds": 70.74040138348937,
+        "effective_tokens": 1532326,
+        "computed_tokens": 1552096,
+        "effective_tokens_per_second": 21661.256792891778,
+        "computed_tokens_per_second": 21940.729337765042
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-d9f1402f43bbb29a/attempts/b0714d7b233e34919874/status.json",
+      "status_sha256": "2c7527075e256931f19e884c3772d4dd4bde9340c54754ff01c4b895b918f717"
+    },
+    {
+      "job_id": "h800vlfix-6245a1f91f53f67c",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_image",
+      "media_tier": "low",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 92421488640,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 92421488640,
+        "max_allocated_bytes": 58159645696,
+        "measured_seconds": 135.7094750907272,
+        "effective_tokens": 1532326,
+        "computed_tokens": 1551136,
+        "effective_tokens_per_second": 11291.22339450196,
+        "computed_tokens_per_second": 11429.82830758872
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-6245a1f91f53f67c/attempts/6ec2216091b3130b642b/status.json",
+      "status_sha256": "c7a26b691ea31c2a3e9ad3c6478220cbcd37a46ca934d84e60f87bc8452e6208"
+    },
+    {
+      "job_id": "h800vlfix-ebae5db0b2461d4f",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 10622074880,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 10622074880,
+        "max_allocated_bytes": 9997545984,
+        "measured_seconds": 193.0989049281925,
+        "effective_tokens": 2046888,
+        "computed_tokens": 2051776,
+        "effective_tokens_per_second": 10600.205116446281,
+        "computed_tokens_per_second": 10625.51856916533
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-ebae5db0b2461d4f/attempts/36e46462bb079ba69c56/status.json",
+      "status_sha256": "e557c69b067e0219caf706c2f62e80bc47f8b464733b3731efb8394e5c008857"
+    },
+    {
+      "job_id": "h800vlfix-d39e9a3d1318d475",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 12438208512,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 12438208512,
+        "max_allocated_bytes": 10917026816,
+        "measured_seconds": 386.18001177348197,
+        "effective_tokens": 2046888,
+        "computed_tokens": 2048424,
+        "effective_tokens_per_second": 5300.346826859139,
+        "computed_tokens_per_second": 5304.324246593905
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-d39e9a3d1318d475/attempts/ac844444e9eefc2df23a/status.json",
+      "status_sha256": "99b8afb80f6422e48f090191254908583fed115a2a55a6420cff2c325b277433"
+    },
+    {
+      "job_id": "h800vlfix-89d1f2143d2162e3",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 28714205184,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 28714205184,
+        "max_allocated_bytes": 25265891328,
+        "measured_seconds": 142.8998249359429,
+        "effective_tokens": 2046888,
+        "computed_tokens": 2051776,
+        "effective_tokens_per_second": 14323.936372333206,
+        "computed_tokens_per_second": 14358.14215251657
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-89d1f2143d2162e3/attempts/71b9a7b9064f37680bd4/status.json",
+      "status_sha256": "73bee29521dfe04c2377b109590001d9e3a8db0db9a2a9a35240661851c8a348"
+    },
+    {
+      "job_id": "h800vlfix-b79b6e870192135c",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 35011952640,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 35011952640,
+        "max_allocated_bytes": 26162845696,
+        "measured_seconds": 338.7801139950752,
+        "effective_tokens": 2046888,
+        "computed_tokens": 2048424,
+        "effective_tokens_per_second": 6041.936688260737,
+        "computed_tokens_per_second": 6046.470602550708
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-b79b6e870192135c/attempts/ef9ccefc286231bc46aa/status.json",
+      "status_sha256": "f986d0f3fe1c35202841884880fd6aed5e678c7871a377c09de11dbf7c8c382d"
+    },
+    {
+      "job_id": "h800vlfix-bb0f8560ea310546",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 113598529536,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 113598529536,
+        "max_allocated_bytes": 74690675200,
+        "measured_seconds": 92.34567856416106,
+        "effective_tokens": 2046888,
+        "computed_tokens": 2079296,
+        "effective_tokens_per_second": 22165.49850329854,
+        "computed_tokens_per_second": 22516.440750991085
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-bb0f8560ea310546/attempts/53d6df7fd9838761a3ec/status.json",
+      "status_sha256": "f31bd1063bda086c998002f4cf08df78b8a98c2e8d0f6bcc0a17df601db87c06"
+    },
+    {
+      "job_id": "h800vlfix-9e3d39f1c1f8e959",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 108928172032,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 108928172032,
+        "max_allocated_bytes": 75518049792,
+        "measured_seconds": 291.9143633171916,
+        "effective_tokens": 2046888,
+        "computed_tokens": 2078720,
+        "effective_tokens_per_second": 7011.94684886358,
+        "computed_tokens_per_second": 7120.992528008226
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-9e3d39f1c1f8e959/attempts/38f8bddef6edf8ad6558/status.json",
+      "status_sha256": "51c2d28b49cf038450d467778e1382e9617aac629742dddbbb91fde9a4e5412d"
+    },
+    {
+      "job_id": "h800vlfix-fc1c054199483b92",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 10622074880,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 10622074880,
+        "max_allocated_bytes": 9997545984,
+        "measured_seconds": 193.89071484468877,
+        "effective_tokens": 2046888,
+        "computed_tokens": 2051776,
+        "effective_tokens_per_second": 10556.916052631028,
+        "computed_tokens_per_second": 10582.126130400431
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-fc1c054199483b92/attempts/07573c35b4d64361c8fe/status.json",
+      "status_sha256": "9a2114561e0ab1db02bb1eb8c190e7322a36c9cd8fca7e8d871076f47a7afe87"
+    },
+    {
+      "job_id": "h800vlfix-65c75bc53d1a82f5",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 12438208512,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 12438208512,
+        "max_allocated_bytes": 10917026816,
+        "measured_seconds": 387.98954999260604,
+        "effective_tokens": 2046888,
+        "computed_tokens": 2048424,
+        "effective_tokens_per_second": 5275.626624580502,
+        "computed_tokens_per_second": 5279.585494091367
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-65c75bc53d1a82f5/attempts/c862f3b2df5e13889d8d/status.json",
+      "status_sha256": "9aaa2f4e7548c970533ee2dfee1c5438987c7e550524a073aaa2452a28d5e483"
+    },
+    {
+      "job_id": "h800vlfix-735427359394eb55",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_base",
+      "media_tier": null,
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 30716985344,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 30716985344,
+        "max_allocated_bytes": 15450931200,
+        "measured_seconds": 194.76689963415265,
+        "effective_tokens": 1273275,
+        "computed_tokens": 1308568,
+        "effective_tokens_per_second": 6537.43014029438,
+        "computed_tokens_per_second": 6718.63649551333
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-735427359394eb55/attempts/d017c9cf25170072a05f/status.json",
+      "status_sha256": "2a1bbf55ae1b1908c5de50d6e61d8f9a5ef0cd0f32254e1ad42acb856a87fdc7"
+    },
+    {
+      "job_id": "h800vlfix-0b4cbd3007854880",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_base",
+      "media_tier": null,
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 47288680448,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 47288680448,
+        "max_allocated_bytes": 31727429120,
+        "measured_seconds": 143.9398392420262,
+        "effective_tokens": 1273275,
+        "computed_tokens": 1308568,
+        "effective_tokens_per_second": 8845.88315997119,
+        "computed_tokens_per_second": 9091.075875107248
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-0b4cbd3007854880/attempts/593e61cebaa36126f5d6/status.json",
+      "status_sha256": "ea5896cc39a69484f69fe3b2118b011b06f0fcce16eb8c7471d496870b95fb2d"
+    },
+    {
+      "job_id": "h800vlfix-9588b59556bb6e7a",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_base",
+      "media_tier": null,
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 142484701184,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 142484701184,
+        "max_allocated_bytes": 95364012544,
+        "measured_seconds": 104.5790603607893,
+        "effective_tokens": 1273275,
+        "computed_tokens": 1309248,
+        "effective_tokens_per_second": 12175.23848089,
+        "computed_tokens_per_second": 12519.217475115958
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-9588b59556bb6e7a/attempts/a4db6cee1eab5d30af42/status.json",
+      "status_sha256": "0a9f85f90d2734f88d1950b6f694dd1ce635fc570dba96f09bbd318feb63dc82"
+    },
+    {
+      "job_id": "h800vlfix-130724c9f880e7d3",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "low",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 33764147200,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 33764147200,
+        "max_allocated_bytes": 16234490880,
+        "measured_seconds": 208.77813351899385,
+        "effective_tokens": 1471880,
+        "computed_tokens": 1507408,
+        "effective_tokens_per_second": 7049.9720214525905,
+        "computed_tokens_per_second": 7220.143099243013
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-130724c9f880e7d3/attempts/40b3a77c00ed75bdd5f1/status.json",
+      "status_sha256": "bfa08169e28cf0a850d4b54989263ed5f25e9bb1a0d728f6f028c0bfc9719436"
+    },
+    {
+      "job_id": "h800vlfix-66367731fd42a74e",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_image",
+      "media_tier": "low",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 33581694976,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 33581694976,
+        "max_allocated_bytes": 16348077568,
+        "measured_seconds": 208.6787615623325,
+        "effective_tokens": 1471880,
+        "computed_tokens": 1473784,
+        "effective_tokens_per_second": 7053.329188750951,
+        "computed_tokens_per_second": 7062.453260533557
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-66367731fd42a74e/attempts/0e8ea70d740dfb91afb2/status.json",
+      "status_sha256": "b63c8cc47f9ae97c2cfb6ae564b22d5fd798be2bd4d151954acdeb5a2db4775b"
+    },
+    {
+      "job_id": "h800vlfix-9854f70da1f4a304",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "low",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 147528351744,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 147528351744,
+        "max_allocated_bytes": 107866231808,
+        "measured_seconds": 118.77183759398758,
+        "effective_tokens": 1471880,
+        "computed_tokens": 1508384,
+        "effective_tokens_per_second": 12392.500022029708,
+        "computed_tokens_per_second": 12699.845607813992
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-9854f70da1f4a304/attempts/ed906f8d51be8687d3f8/status.json",
+      "status_sha256": "296d29ebd78ad190e919e5463cb984c5691d918f987f0ad0934ee37aa9d32e56"
+    },
+    {
+      "job_id": "h800vlfix-602b75160783c579",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_image",
+      "media_tier": "low",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 143967387648,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 143967387648,
+        "max_allocated_bytes": 106226348544,
+        "measured_seconds": 121.73945732973516,
+        "effective_tokens": 1471880,
+        "computed_tokens": 1490848,
+        "effective_tokens_per_second": 12090.410391869635,
+        "computed_tokens_per_second": 12246.218544920823
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-602b75160783c579/attempts/90b95b71014289f0720e/status.json",
+      "status_sha256": "5235aebcfa90679983a80babcae2586f21af9f08da2451a652750cd21c2b3906"
+    },
+    {
+      "job_id": "h800vlfix-6dc164448031e76d",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 53791948800,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 53791948800,
+        "max_allocated_bytes": 17809874432,
+        "measured_seconds": 250.35637758299708,
+        "effective_tokens": 1858664,
+        "computed_tokens": 1894448,
+        "effective_tokens_per_second": 7424.072907365116,
+        "computed_tokens_per_second": 7567.005155967959
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-6dc164448031e76d/attempts/4556d39b50315f023318/status.json",
+      "status_sha256": "9df4cc651e377f1db0d8969ff09303498d0a0b2fd6df18fde7663eb08f1fbd9e"
+    },
+    {
+      "job_id": "h800vlfix-701d7def8f18baf4",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 54031024128,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 54031024128,
+        "max_allocated_bytes": 18523807232,
+        "measured_seconds": 251.39877317473292,
+        "effective_tokens": 1858664,
+        "computed_tokens": 1860616,
+        "effective_tokens_per_second": 7393.289857895006,
+        "computed_tokens_per_second": 7401.05441448114
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-701d7def8f18baf4/attempts/db4073403a13fe5a5455/status.json",
+      "status_sha256": "106b12bb4a886cd91a5fe452825005356401d8153287329227169ffa4d27aaf6"
+    },
+    {
+      "job_id": "h800vlfix-af74155852db83fb",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 78427193344,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 78427193344,
+        "max_allocated_bytes": 41053745664,
+        "measured_seconds": 185.89097561873496,
+        "effective_tokens": 1858664,
+        "computed_tokens": 1894448,
+        "effective_tokens_per_second": 9998.677955255593,
+        "computed_tokens_per_second": 10191.177886362488
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-af74155852db83fb/attempts/15121fcc12c95009a5ae/status.json",
+      "status_sha256": "466037159d297eed115bc947c376a6b8e585de384d63e72f82a7140ec239f0a2"
+    },
+    {
+      "job_id": "h800vlfix-0348215225ff65c1",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 77177290752,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 77177290752,
+        "max_allocated_bytes": 41476453888,
+        "measured_seconds": 187.52528461255133,
+        "effective_tokens": 1858664,
+        "computed_tokens": 1860616,
+        "effective_tokens_per_second": 9911.538083198819,
+        "computed_tokens_per_second": 9921.947346163188
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-0348215225ff65c1/attempts/08f3685b4583147376d4/status.json",
+      "status_sha256": "57dbd5d86e75f03fd80c298c546d2271773763a4d1940d9da3537a2d6287a5b4"
+    },
+    {
+      "job_id": "h800vlfix-476c711032cbc1a7",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 144573464576,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 144573464576,
+        "max_allocated_bytes": 132388761600,
+        "measured_seconds": 147.42250286974013,
+        "effective_tokens": 1858664,
+        "computed_tokens": 1900288,
+        "effective_tokens_per_second": 12607.736022785355,
+        "computed_tokens_per_second": 12890.080978200867
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-476c711032cbc1a7/attempts/1e56c189b6635af960d2/status.json",
+      "status_sha256": "cf83ac2988b03fc7935ce0164dacac3eb2d9e58eaebee4ce912d274a603bfd7c"
+    },
+    {
+      "job_id": "h800vlfix-70306b40647f89be",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 144611213312,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 144611213312,
+        "max_allocated_bytes": 132174004224,
+        "measured_seconds": 156.1010100506246,
+        "effective_tokens": 1858664,
+        "computed_tokens": 1883200,
+        "effective_tokens_per_second": 11906.803161601727,
+        "computed_tokens_per_second": 12063.98343860341
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-70306b40647f89be/attempts/dfddb12c478931acc462/status.json",
+      "status_sha256": "cf5fcf9cb98643fbdea75195f81c5b16946853091800498cd61bc45ef90fa185"
+    },
+    {
+      "job_id": "h800vlfix-808f3c242aad74f7",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 53791948800,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 53791948800,
+        "max_allocated_bytes": 17809874432,
+        "measured_seconds": 249.48185728862882,
+        "effective_tokens": 1858664,
+        "computed_tokens": 1894448,
+        "effective_tokens_per_second": 7450.096853534674,
+        "computed_tokens_per_second": 7593.530129160007
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-808f3c242aad74f7/attempts/3b227a080f9c3354a282/status.json",
+      "status_sha256": "2603a0fddcf69ab1da2e0ee911dd6d29ac9ac2e74e176a3332a29c98955e8d19"
+    },
+    {
+      "job_id": "h800vlfix-5b18ecaa06c93f5a",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 54031024128,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 54031024128,
+        "max_allocated_bytes": 18523807232,
+        "measured_seconds": 250.2110208235681,
+        "effective_tokens": 1858664,
+        "computed_tokens": 1860616,
+        "effective_tokens_per_second": 7428.38582362287,
+        "computed_tokens_per_second": 7436.187238578834
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-5b18ecaa06c93f5a/attempts/30fff4161cb1dfff7ec7/status.json",
+      "status_sha256": "2488c025ece0aaabffcb1669165effb938385e7a2db7e2994d7182629bf63e93"
+    },
+    {
+      "job_id": "h800vlfix-edd3dfbb6b34186c",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_base",
+      "media_tier": null,
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 11934892032,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 11934892032,
+        "max_allocated_bytes": 11463484928,
+        "measured_seconds": 235.3744155075401,
+        "effective_tokens": 1343903,
+        "computed_tokens": 1379680,
+        "effective_tokens_per_second": 5709.639244784226,
+        "computed_tokens_per_second": 5861.639622237543
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-edd3dfbb6b34186c/attempts/587492004c55ba427625/status.json",
+      "status_sha256": "c27722d5e03fdd3960c946b2e5036553bce12debafdf2f36a0b5a1eaf8130f46"
+    },
+    {
+      "job_id": "h800vlfix-919b7f90c89343f1",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_base",
+      "media_tier": null,
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 27854372864,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 27854372864,
+        "max_allocated_bytes": 26202289152,
+        "measured_seconds": 178.5589809678495,
+        "effective_tokens": 1343903,
+        "computed_tokens": 1379680,
+        "effective_tokens_per_second": 7526.381438310163,
+        "computed_tokens_per_second": 7726.746605080698
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-919b7f90c89343f1/attempts/c87b335804e0417edfeb/status.json",
+      "status_sha256": "8a28251d230734fc576751f50d7db702e7bc483ad6a16162bdab70c86ebb0a4b"
+    },
+    {
+      "job_id": "h800vlfix-558967f5f8e88c38",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_base",
+      "media_tier": null,
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 90951385088,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 90951385088,
+        "max_allocated_bytes": 73312803328,
+        "measured_seconds": 104.41114749014378,
+        "effective_tokens": 1343903,
+        "computed_tokens": 1380128,
+        "effective_tokens_per_second": 12871.259748647644,
+        "computed_tokens_per_second": 13218.205461541178
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-558967f5f8e88c38/attempts/aa6769e45d3b24b0c37d/status.json",
+      "status_sha256": "fdab4209b52f81745401d750c5593da516771c7a3916f2c2c68de9583475ef99"
+    },
+    {
+      "job_id": "h800vlfix-585cc03b30f71b6b",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "low",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 12178161664,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 12178161664,
+        "max_allocated_bytes": 11623384576,
+        "measured_seconds": 237.60811454243958,
+        "effective_tokens": 1542508,
+        "computed_tokens": 1578080,
+        "effective_tokens_per_second": 6491.81532781571,
+        "computed_tokens_per_second": 6641.524019661107
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-585cc03b30f71b6b/attempts/350b2d2c24cddb902541/status.json",
+      "status_sha256": "6d4bb332181245687b372ea112e89570e65aaa376ed53d90776b1ee1f497b4ee"
+    },
+    {
+      "job_id": "h800vlfix-cef1524a20aa2bc3",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_image",
+      "media_tier": "low",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 12492734464,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 12492734464,
+        "max_allocated_bytes": 11860631040,
+        "measured_seconds": 243.43881490454078,
+        "effective_tokens": 1542508,
+        "computed_tokens": 1544240,
+        "effective_tokens_per_second": 6336.3272640185205,
+        "computed_tokens_per_second": 6343.441988105061
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-cef1524a20aa2bc3/attempts/1db1c0058a1690534b1a/status.json",
+      "status_sha256": "e4d15aae595c28fd407940e9a6d09c18790d6e63393e855e3aae5fceacc950b7"
+    },
+    {
+      "job_id": "h800vlfix-b301f619a36cd036",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "low",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 113481089024,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 113481089024,
+        "max_allocated_bytes": 81989422080,
+        "measured_seconds": 116.19726842269301,
+        "effective_tokens": 1542508,
+        "computed_tokens": 1579008,
+        "effective_tokens_per_second": 13274.907585510438,
+        "computed_tokens_per_second": 13589.028566971236
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-b301f619a36cd036/attempts/1834ccde716e769243a8/status.json",
+      "status_sha256": "3b84c6880b31b9186a7650e6e06fd47fcdd99c4518d78b01286c295faa6353b9"
+    },
+    {
+      "job_id": "h800vlfix-595e60c9b0cb0245",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_image",
+      "media_tier": "low",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 110398275584,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 110398275584,
+        "max_allocated_bytes": 80907752960,
+        "measured_seconds": 117.59401114843786,
+        "effective_tokens": 1542508,
+        "computed_tokens": 1561472,
+        "effective_tokens_per_second": 13117.232628904087,
+        "computed_tokens_per_second": 13278.499344911093
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-595e60c9b0cb0245/attempts/19e7308f98eae1b772e3/status.json",
+      "status_sha256": "ddbbcf79841c1f28a97c3cc0d5d2f9d1bee801ceaa435c6a88fc3e042e7cdd36"
+    },
+    {
+      "job_id": "h800vlfix-7eff4bf0a65e9b09",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 12614369280,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 12614369280,
+        "max_allocated_bytes": 11951254016,
+        "measured_seconds": 238.08415236137807,
+        "effective_tokens": 1929292,
+        "computed_tokens": 1964832,
+        "effective_tokens_per_second": 8103.403695142244,
+        "computed_tokens_per_second": 8252.6786453962
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-7eff4bf0a65e9b09/attempts/317101a1d26281009eea/status.json",
+      "status_sha256": "a4aac56b1148023c0712b1b2e83a515b3bc26590f8d8c9add003d9468eac8aef"
+    },
+    {
+      "job_id": "h800vlfix-2cbcf765028aadff",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 14514388992,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 14514388992,
+        "max_allocated_bytes": 12800147968,
+        "measured_seconds": 238.47576133720577,
+        "effective_tokens": 1929292,
+        "computed_tokens": 1931288,
+        "effective_tokens_per_second": 8090.096826536483,
+        "computed_tokens_per_second": 8098.466649904727
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-2cbcf765028aadff/attempts/2d3a0d43b83753270d44/status.json",
+      "status_sha256": "b9f37e115356348f47cfff9e219c949a5c9fb20ca48a7dd74d99ea6b7388d7e4"
+    },
+    {
+      "job_id": "h800vlfix-4b80bb3ac1b59955",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 35817259008,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 35817259008,
+        "max_allocated_bytes": 32859373056,
+        "measured_seconds": 180.36702442914248,
+        "effective_tokens": 1929292,
+        "computed_tokens": 1964832,
+        "effective_tokens_per_second": 10696.478506013864,
+        "computed_tokens_per_second": 10893.52117560651
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-4b80bb3ac1b59955/attempts/0dec430a08030542b3c8/status.json",
+      "status_sha256": "8f0cd34df61320cc7b53f58ceb280c76bbbc10b7c81873bf293bd74e9c1f7e42"
+    },
+    {
+      "job_id": "h800vlfix-2e86fc5b3323b703",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 42203086848,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 42203086848,
+        "max_allocated_bytes": 33280371712,
+        "measured_seconds": 181.58486260659993,
+        "effective_tokens": 1929292,
+        "computed_tokens": 1931288,
+        "effective_tokens_per_second": 10624.740258111568,
+        "computed_tokens_per_second": 10635.732363793439
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-2e86fc5b3323b703/attempts/b5bd61ef77f989ef61d9/status.json",
+      "status_sha256": "4542fbfc7386d499d3d70e5b686aaa321f4e9f0e47a6bcb75dd85e263e416b0e"
+    },
+    {
+      "job_id": "h800vlfix-60e556ef7a8a31ac",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 124572925952,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 124572925952,
+        "max_allocated_bytes": 99392393728,
+        "measured_seconds": 142.83557401038706,
+        "effective_tokens": 1929292,
+        "computed_tokens": 1970816,
+        "effective_tokens_per_second": 13507.083325472555,
+        "computed_tokens_per_second": 13797.79521771433
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-60e556ef7a8a31ac/attempts/7fdf9de9791529e4968b/status.json",
+      "status_sha256": "93cffd063c4edbb428e4c5a0d3a13caa62c3fce62e40d463000b07b7affc0954"
+    },
+    {
+      "job_id": "h800vlfix-662b41db36106616",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 140521766912,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 140521766912,
+        "max_allocated_bytes": 99288007680,
+        "measured_seconds": 147.3388943336904,
+        "effective_tokens": 1929292,
+        "computed_tokens": 1953856,
+        "effective_tokens_per_second": 13094.24784762247,
+        "computed_tokens_per_second": 13260.965536872722
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-662b41db36106616/attempts/39a1084c0aeb4ab720ce/status.json",
+      "status_sha256": "a9136de782df04df90fa90446a03817d9368eeb125d8f625d7513566f0d3a992"
+    },
+    {
+      "job_id": "h800vlfix-8d065c0334b47b52",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 12614369280,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 12614369280,
+        "max_allocated_bytes": 11951254016,
+        "measured_seconds": 238.715984525159,
+        "effective_tokens": 1929292,
+        "computed_tokens": 1964832,
+        "effective_tokens_per_second": 8081.955650509302,
+        "computed_tokens_per_second": 8230.835500640387
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-8d065c0334b47b52/attempts/5e364989d6afdb6855fd/status.json",
+      "status_sha256": "33c9c1d31b52763e6666b1d4d6a9d5003cce3500c9a20d1240bfcdb955905f9b"
+    },
+    {
+      "job_id": "h800vlfix-45b1af738f50e956",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_image",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 14514388992,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 14514388992,
+        "max_allocated_bytes": 12800147968,
+        "measured_seconds": 237.8966631628573,
+        "effective_tokens": 1929292,
+        "computed_tokens": 1931288,
+        "effective_tokens_per_second": 8109.79008427395,
+        "computed_tokens_per_second": 8118.180281822176
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vlfix-45b1af738f50e956/attempts/73a27a160e7999090587/status.json",
+      "status_sha256": "b4f003197970843f8fc36f2ed0733493bf0a46706bcf7412b4605e06685ae72e"
+    },
+    {
+      "job_id": "h800vidfix-5aa3fff00be10456",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_16",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 10387193856,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 10387193856,
+        "max_allocated_bytes": 10001982976,
+        "measured_seconds": 151.9950330797583,
+        "effective_tokens": 1534728,
+        "computed_tokens": 1539160,
+        "effective_tokens_per_second": 10097.224684932058,
+        "computed_tokens_per_second": 10126.383532495676
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-5aa3fff00be10456/attempts/6170f5e0b6465f9ab11f/status.json",
+      "status_sha256": "c5650fb9420495ec86a4b11e60663a194c167057251884ae88e6ee41a1f71541"
+    },
+    {
+      "job_id": "h800vidfix-79b4e1c3e27abcea",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_16",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 10752098304,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 10752098304,
+        "max_allocated_bytes": 10306929664,
+        "measured_seconds": 215.04507362283766,
+        "effective_tokens": 1534728,
+        "computed_tokens": 1536184,
+        "effective_tokens_per_second": 7136.773580276115,
+        "computed_tokens_per_second": 7143.54425386315
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-79b4e1c3e27abcea/attempts/244c0b762dc3bcf3897c/status.json",
+      "status_sha256": "a7c169e4fc2bf4fff3da72ebc9b220a9d4bb5a8ae73c6fd284c2fa6f8316d1e4"
+    },
+    {
+      "job_id": "h800vidfix-a22fa8241d67a701",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 11301552128,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 11301552128,
+        "max_allocated_bytes": 10547855872,
+        "measured_seconds": 172.0786635838449,
+        "effective_tokens": 1980492,
+        "computed_tokens": 1984520,
+        "effective_tokens_per_second": 11509.224669419926,
+        "computed_tokens_per_second": 11532.632568552275
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-a22fa8241d67a701/attempts/b96f325cf3cd08ac8c73/status.json",
+      "status_sha256": "f14a8e8b44117cf87d45a9885e111d533b02f5bce182a1027e84afe36cb0e6c8"
+    },
+    {
+      "job_id": "h800vidfix-60532ac8292ca85c",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 12658409472,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 12658409472,
+        "max_allocated_bytes": 11584482816,
+        "measured_seconds": 387.94442999735475,
+        "effective_tokens": 1980492,
+        "computed_tokens": 1981800,
+        "effective_tokens_per_second": 5105.091984471859,
+        "computed_tokens_per_second": 5108.463601381036
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-60532ac8292ca85c/attempts/55c279806cef66453631/status.json",
+      "status_sha256": "7512c5eaf66d1d7c880d8434690582b6354ba4f9ef1191e88d2daca9d209b35e"
+    },
+    {
+      "job_id": "h800vidfix-28ac184e0c904ce0",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_128",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 11932794880,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 11932794880,
+        "max_allocated_bytes": 11283577856,
+        "measured_seconds": 194.46525281481445,
+        "effective_tokens": 2339532,
+        "computed_tokens": 2343296,
+        "effective_tokens_per_second": 12030.591409704908,
+        "computed_tokens_per_second": 12049.947052656631
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-28ac184e0c904ce0/attempts/5c8ca46949400afa4ead/status.json",
+      "status_sha256": "934da7d2f20f5262bffa1a3248403ee3a4a709d7c8e84000c5b209bd0a5dca48"
+    },
+    {
+      "job_id": "h800vidfix-8b83e0e0a077d574",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_128",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 13457424384,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 13457424384,
+        "max_allocated_bytes": 12863210496,
+        "measured_seconds": 536.7885088585317,
+        "effective_tokens": 2339532,
+        "computed_tokens": 2340760,
+        "effective_tokens_per_second": 4358.386890537133,
+        "computed_tokens_per_second": 4360.674569911289
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-8b83e0e0a077d574/attempts/1cdfd0a2ebdf3ad9fbaa/status.json",
+      "status_sha256": "531191ed658b218daa0b723e11a139a54303a1954b4dcd5039935e2d3830d097"
+    },
+    {
+      "job_id": "h800vidfix-d70b707a6ce3eb3c",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "upscaled_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 13904117760,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 13904117760,
+        "max_allocated_bytes": 13133519872,
+        "measured_seconds": 334.40674559399486,
+        "effective_tokens": 4239194,
+        "computed_tokens": 4243256,
+        "effective_tokens_per_second": 12676.75983171353,
+        "computed_tokens_per_second": 12688.906715870384
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-d70b707a6ce3eb3c/attempts/e1ce86e6585cc2209043/status.json",
+      "status_sha256": "28d43538cdbf47f770124f18af0e494e6a8fc81ec3406db0fe3f697926f87400"
+    },
+    {
+      "job_id": "h800vidfix-ad2f31c767c9ff01",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_video",
+      "media_tier": "upscaled_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 19193135104,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 19193135104,
+        "max_allocated_bytes": 17814589952,
+        "measured_seconds": 1204.7943401616067,
+        "effective_tokens": 4239194,
+        "computed_tokens": 4240632,
+        "effective_tokens_per_second": 3518.603846886739,
+        "computed_tokens_per_second": 3519.7974115907427
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-ad2f31c767c9ff01/attempts/517d552dcfe714181038/status.json",
+      "status_sha256": "f0e6f134bf2b8e7f82fee779fff40713a0d14b2fe6f940fdd36d420819911d98"
+    },
+    {
+      "job_id": "h800vidfix-8f2233172375a125",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 42767220736,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 42767220736,
+        "max_allocated_bytes": 31604559360,
+        "measured_seconds": 126.77380470000207,
+        "effective_tokens": 1980492,
+        "computed_tokens": 1984520,
+        "effective_tokens_per_second": 15622.249444091722,
+        "computed_tokens_per_second": 15654.022569537723
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-8f2233172375a125/attempts/b288fdaec41f43e1e0f9/status.json",
+      "status_sha256": "c27a9ade8959c23a1b2afaea7029a713acec442d23b9e50ba12266bb195d8e75"
+    },
+    {
+      "job_id": "h800vidfix-af33e5c71e93f5a0",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 46674214912,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 46674214912,
+        "max_allocated_bytes": 32617206784,
+        "measured_seconds": 343.5860327910632,
+        "effective_tokens": 1980492,
+        "computed_tokens": 1981800,
+        "effective_tokens_per_second": 5764.180761108963,
+        "computed_tokens_per_second": 5767.987667895525
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-af33e5c71e93f5a0/attempts/ede929578d7bec267eba/status.json",
+      "status_sha256": "a1b14aaa15dd91b26bbb73b46996ee86a81c6b9e57cfe634d05f77aaa8fc8e8f"
+    },
+    {
+      "job_id": "h800vidfix-ec8aa97fd9b68080",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 112822583296,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 112822583296,
+        "max_allocated_bytes": 100261313024,
+        "measured_seconds": 99.7423399053514,
+        "effective_tokens": 1980492,
+        "computed_tokens": 2124864,
+        "effective_tokens_per_second": 19856.08119760726,
+        "computed_tokens_per_second": 21303.530697358306
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-ec8aa97fd9b68080/attempts/b9628d3a6f25271da8d4/status.json",
+      "status_sha256": "6a466a79381303c4791bd16cfea8a9c12c67b3056fa1c50be0f8e7a4653191d4"
+    },
+    {
+      "job_id": "h800vidfix-9ddf2513beba614f",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 105539174400,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 105539174400,
+        "max_allocated_bytes": 101125810688,
+        "measured_seconds": 317.4153806362301,
+        "effective_tokens": 1980492,
+        "computed_tokens": 2123328,
+        "effective_tokens_per_second": 6239.432997954556,
+        "computed_tokens_per_second": 6689.430095491854
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-9ddf2513beba614f/attempts/ca5582a59cca6cdab6f6/status.json",
+      "status_sha256": "b364ef582a10d84d8c451adc422f497d910dadeb04dd1b29ee44ce72e5af2c67"
+    },
+    {
+      "job_id": "h800vidfix-06d7fcb3cec31265",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 11301552128,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 11301552128,
+        "max_allocated_bytes": 10547855872,
+        "measured_seconds": 170.61199875734746,
+        "effective_tokens": 1980492,
+        "computed_tokens": 1984520,
+        "effective_tokens_per_second": 11608.163636935937,
+        "computed_tokens_per_second": 11631.77276190568
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-06d7fcb3cec31265/attempts/50d3ea8b76ec216293bc/status.json",
+      "status_sha256": "8e58a4c06ede2f0abe53bb61386b45e57181ad0a2c44a925ab4e865ed4f98c86"
+    },
+    {
+      "job_id": "h800vidfix-7772c555d0f085d8",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 12658409472,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 12658409472,
+        "max_allocated_bytes": 11584482816,
+        "measured_seconds": 388.24777137860656,
+        "effective_tokens": 1980492,
+        "computed_tokens": 1981800,
+        "effective_tokens_per_second": 5101.103331430817,
+        "computed_tokens_per_second": 5104.472314066198
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-7772c555d0f085d8/attempts/0f961e6e59e482f614e4/status.json",
+      "status_sha256": "37d6177e50b7bf2a551df5f87920eab4ef50322848d1143b636ded633da17f36"
+    },
+    {
+      "job_id": "h800vidfix-aa75f4402ce55f6d",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_16",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 27957133312,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 27957133312,
+        "max_allocated_bytes": 18648610304,
+        "measured_seconds": 216.66585889458656,
+        "effective_tokens": 1539671,
+        "computed_tokens": 1565880,
+        "effective_tokens_per_second": 7106.200339339522,
+        "computed_tokens_per_second": 7227.165405703537
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-aa75f4402ce55f6d/attempts/c39c0fc7de015ca79d3e/status.json",
+      "status_sha256": "a31e888de1644f0f3bf6576a7f0b6482d79ff56b8d5667231bbab5d33eae9ca1"
+    },
+    {
+      "job_id": "h800vidfix-64fe685eb68cea5b",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_16",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 28147974144,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 28147974144,
+        "max_allocated_bytes": 18849154560,
+        "measured_seconds": 222.02754344791174,
+        "effective_tokens": 1539671,
+        "computed_tokens": 1541232,
+        "effective_tokens_per_second": 6934.594582681634,
+        "computed_tokens_per_second": 6941.625241922191
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-64fe685eb68cea5b/attempts/237724f4d0705373734e/status.json",
+      "status_sha256": "192c4a9e1d2935296277c4ceb946c93a7affa42a8d4643a759e5c041730bbf0f"
+    },
+    {
+      "job_id": "h800vidfix-6412af3f16137786",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 40405827584,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 40405827584,
+        "max_allocated_bytes": 22025886720,
+        "measured_seconds": 271.3633561320603,
+        "effective_tokens": 2005717,
+        "computed_tokens": 2031656,
+        "effective_tokens_per_second": 7391.25955909798,
+        "computed_tokens_per_second": 7486.8472624995275
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-6412af3f16137786/attempts/8fd31a4b9a93f5ca3adf/status.json",
+      "status_sha256": "9a78cc9952903092889a9f1212343dc85fe842d45579afcfdb560180d7895ae7"
+    },
+    {
+      "job_id": "h800vidfix-2372b06280eb5f2f",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 41406169088,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 41406169088,
+        "max_allocated_bytes": 23090678272,
+        "measured_seconds": 298.94818203523755,
+        "effective_tokens": 2005717,
+        "computed_tokens": 2006984,
+        "effective_tokens_per_second": 6709.246352813019,
+        "computed_tokens_per_second": 6713.484545503719
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-2372b06280eb5f2f/attempts/fd01d4ccc4e18f8ad175/status.json",
+      "status_sha256": "10624f2b4d70a80d51abe2282a2a3d6c3c20c5d5fdb6eadd9597f5865e59c6c9"
+    },
+    {
+      "job_id": "h800vidfix-274e19e0a8078cec",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_128",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 59313750016,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 59313750016,
+        "max_allocated_bytes": 26562024448,
+        "measured_seconds": 316.47073248773813,
+        "effective_tokens": 2382445,
+        "computed_tokens": 2408176,
+        "effective_tokens_per_second": 7528.168501623793,
+        "computed_tokens_per_second": 7609.4745983921475
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-274e19e0a8078cec/attempts/164cd84954f34841c00c/status.json",
+      "status_sha256": "c169bae6a4a9b147bab9d554efa18073373d2d781fddf6e2fe3bbcc240604206"
+    },
+    {
+      "job_id": "h800vidfix-c531bb1a6a4e1bf6",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_128",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 60865642496,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 60865642496,
+        "max_allocated_bytes": 28298300416,
+        "measured_seconds": 365.6871622707695,
+        "effective_tokens": 2382445,
+        "computed_tokens": 2383840,
+        "effective_tokens_per_second": 6514.981234796374,
+        "computed_tokens_per_second": 6518.795970843814
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-c531bb1a6a4e1bf6/attempts/0d709938dcc34d2015b6/status.json",
+      "status_sha256": "73099a3cc0b00b64b9f9ec1552c6160751fcb4953903803252992736eb7594ae"
+    },
+    {
+      "job_id": "h800vidfix-d2d5ad705018ce39",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "upscaled_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 59267612672,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 59267612672,
+        "max_allocated_bytes": 32403487744,
+        "measured_seconds": 472.3760778531432,
+        "effective_tokens": 3556757,
+        "computed_tokens": 3582696,
+        "effective_tokens_per_second": 7529.50279820427,
+        "computed_tokens_per_second": 7584.414554358154
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-d2d5ad705018ce39/attempts/b9b0a59bdc604c7cd3c9/status.json",
+      "status_sha256": "032eda9a70ca5072b0ab3ab7dcc07436d190f3db4ce3ce9d9ab841e3cb721c1e"
+    },
+    {
+      "job_id": "h800vidfix-a56dd98b4ef282e8",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_video",
+      "media_tier": "upscaled_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 63615008768,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 63615008768,
+        "max_allocated_bytes": 36726508032,
+        "measured_seconds": 521.1708954758942,
+        "effective_tokens": 3556757,
+        "computed_tokens": 3558024,
+        "effective_tokens_per_second": 6824.550317132034,
+        "computed_tokens_per_second": 6826.981381512256
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-a56dd98b4ef282e8/attempts/e5e9ce3f9b874b80bd2f/status.json",
+      "status_sha256": "9467a2452750b38b71960c9f381433923b39dacf2406595764e5620c451a102d"
+    },
+    {
+      "job_id": "h800vidfix-1baca7ec17c607d0",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 70734839808,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 70734839808,
+        "max_allocated_bytes": 57906724864,
+        "measured_seconds": 200.28850417397916,
+        "effective_tokens": 2005717,
+        "computed_tokens": 2031656,
+        "effective_tokens_per_second": 10014.139394928769,
+        "computed_tokens_per_second": 10143.64757667378
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-1baca7ec17c607d0/attempts/4e5e4c7a0850ebc28e1d/status.json",
+      "status_sha256": "69925e01c1b1e3162360a692f890e6ad95f87968dbad20d7627d4e31a34b4f26"
+    },
+    {
+      "job_id": "h800vidfix-271b620185ef22a5",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 70982303744,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 70982303744,
+        "max_allocated_bytes": 58565168640,
+        "measured_seconds": 229.25199354439974,
+        "effective_tokens": 2005717,
+        "computed_tokens": 2006984,
+        "effective_tokens_per_second": 8748.962087483651,
+        "computed_tokens_per_second": 8754.488756981313
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-271b620185ef22a5/attempts/77be06c8d59a7c20a193/status.json",
+      "status_sha256": "8ea8250c7f3031a94f86ed2143073a190b1242986c6c429293d35033c39b583b"
+    },
+    {
+      "job_id": "h800vidfix-1f37d8ffd82334c1",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "oom",
+      "calibration_eligible": false,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "right_censored_oom",
+      "exact_center_target_bytes": null,
+      "right_censor_lower_bytes": 150142189568,
+      "oom_peak_is_unknown_not_imputed": true,
+      "metrics": null,
+      "success_semantics": {
+        "required": false,
+        "all_passed": true,
+        "rank_checks": []
+      },
+      "oom_terminal_semantics": {
+        "required": true,
+        "all_passed": true,
+        "checks": {
+          "status_present": true,
+          "status_schema": true,
+          "status_job_exact": true,
+          "status_classification_oom": true,
+          "status_return_code_nonzero": true,
+          "attempt_id_present": true,
+          "latest_present": true,
+          "latest_schema": true,
+          "latest_state_complete": true,
+          "latest_job_exact": true,
+          "latest_classification_oom": true,
+          "latest_attempt_exact": true,
+          "latest_attempt_path_exact": true,
+          "classification_evidence_schema": true,
+          "classification_evidence_job_exact": true,
+          "classification_evidence_attempt_exact": true,
+          "classification_evidence_oom": true,
+          "cuda_oom_confirmed": true,
+          "cuda_oom_pattern_present": true,
+          "evidence_return_code_matches": true,
+          "summary_set_exact": true,
+          "log_is_attempt_local": true,
+          "log_hash_matches": true
+        },
+        "execution_attempt_id": "30507f74520d8ca9939b",
+        "log_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-1f37d8ffd82334c1/attempts/30507f74520d8ca9939b/train.log",
+        "log_sha256": "8f5b38acee5ee0f0cd61ff0505da0a66a34569adb05bc7c79c2f95173e6d6169"
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-1f37d8ffd82334c1/attempts/30507f74520d8ca9939b/status.json",
+      "status_sha256": "99bfc81ba961bd74a4f0adde6cf54ad708f8610d0b6b33c287fbfec19495776e"
+    },
+    {
+      "job_id": "h800vidfix-bc1f0d7c913dafcf",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "oom",
+      "calibration_eligible": false,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "right_censored_oom",
+      "exact_center_target_bytes": null,
+      "right_censor_lower_bytes": 150142189568,
+      "oom_peak_is_unknown_not_imputed": true,
+      "metrics": null,
+      "success_semantics": {
+        "required": false,
+        "all_passed": true,
+        "rank_checks": []
+      },
+      "oom_terminal_semantics": {
+        "required": true,
+        "all_passed": true,
+        "checks": {
+          "status_present": true,
+          "status_schema": true,
+          "status_job_exact": true,
+          "status_classification_oom": true,
+          "status_return_code_nonzero": true,
+          "attempt_id_present": true,
+          "latest_present": true,
+          "latest_schema": true,
+          "latest_state_complete": true,
+          "latest_job_exact": true,
+          "latest_classification_oom": true,
+          "latest_attempt_exact": true,
+          "latest_attempt_path_exact": true,
+          "classification_evidence_schema": true,
+          "classification_evidence_job_exact": true,
+          "classification_evidence_attempt_exact": true,
+          "classification_evidence_oom": true,
+          "cuda_oom_confirmed": true,
+          "cuda_oom_pattern_present": true,
+          "evidence_return_code_matches": true,
+          "summary_set_exact": true,
+          "log_is_attempt_local": true,
+          "log_hash_matches": true
+        },
+        "execution_attempt_id": "11f8164f9a3628652847",
+        "log_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-bc1f0d7c913dafcf/attempts/11f8164f9a3628652847/train.log",
+        "log_sha256": "79326755c4d3e9421d2f63d16e08a5c71df353298f70e371d83d0cb006e4ca68"
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-bc1f0d7c913dafcf/attempts/11f8164f9a3628652847/status.json",
+      "status_sha256": "211a899c0187faf73be615d08c203e2cbea8d417fb75ffd5612babb268a52215"
+    },
+    {
+      "job_id": "h800vidfix-75694af66e3c53af",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 40405827584,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 40405827584,
+        "max_allocated_bytes": 22025886720,
+        "measured_seconds": 271.3315163105726,
+        "effective_tokens": 2005717,
+        "computed_tokens": 2031656,
+        "effective_tokens_per_second": 7392.126898020235,
+        "computed_tokens_per_second": 7487.725818310459
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-75694af66e3c53af/attempts/1f4bc5ca526c0c148317/status.json",
+      "status_sha256": "37b38b344d63f392226dc566f9929041399051907892ab94009388f6ac647a5e"
+    },
+    {
+      "job_id": "h800vidfix-d2195c55e506df93",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 41406169088,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 41406169088,
+        "max_allocated_bytes": 23090678272,
+        "measured_seconds": 298.74779131263494,
+        "effective_tokens": 2005717,
+        "computed_tokens": 2006984,
+        "effective_tokens_per_second": 6713.746706502168,
+        "computed_tokens_per_second": 6717.987742040651
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-d2195c55e506df93/attempts/392f5820ca5b5b40256a/status.json",
+      "status_sha256": "3cf85043b387984fff173ca1a5dae047f1a1dc6aa149d4188795f88431f6c5c1"
+    },
+    {
+      "job_id": "h800vidfix-4834a6f914ee9026",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_16",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 12610174976,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 12610174976,
+        "max_allocated_bytes": 11999112704,
+        "measured_seconds": 193.0792989730835,
+        "effective_tokens": 1479779,
+        "computed_tokens": 1505944,
+        "effective_tokens_per_second": 7664.099713798374,
+        "computed_tokens_per_second": 7799.613982490885
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-4834a6f914ee9026/attempts/0e5ff6e5c137ef614e24/status.json",
+      "status_sha256": "b6070bfbc52f947b65b107b9924b3cad14e61568288f71356648e4830d002a41"
+    },
+    {
+      "job_id": "h800vidfix-adf6b9690f9b116c",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_video",
+      "media_tier": "native_16",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 13008633856,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 13008633856,
+        "max_allocated_bytes": 12316005888,
+        "measured_seconds": 190.41081286594272,
+        "effective_tokens": 1479779,
+        "computed_tokens": 1480864,
+        "effective_tokens_per_second": 7771.507183480316,
+        "computed_tokens_per_second": 7777.205389289478
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-adf6b9690f9b116c/attempts/4f0760f4d99a779bc536/status.json",
+      "status_sha256": "b95eaa6bcaf8648dc6cd83f54697175ffd7fe084ad2b2755e31f8b3eb83ee0bf"
+    },
+    {
+      "job_id": "h800vidfix-5791b2efa690cb22",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 13688111104,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 13688111104,
+        "max_allocated_bytes": 12706824704,
+        "measured_seconds": 243.27503039129078,
+        "effective_tokens": 1945825,
+        "computed_tokens": 1971568,
+        "effective_tokens_per_second": 7998.457535367593,
+        "computed_tokens_per_second": 8104.276040286056
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-5791b2efa690cb22/attempts/74789bd33443f1fb0669/status.json",
+      "status_sha256": "27d339ec80e4697aa34426f9c03c46affe149e46b8e80d89415f6034ff242c29"
+    },
+    {
+      "job_id": "h800vidfix-dcce3d1107caafdf",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 15456010240,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 15456010240,
+        "max_allocated_bytes": 13880317952,
+        "measured_seconds": 243.42601141519845,
+        "effective_tokens": 1945825,
+        "computed_tokens": 1947296,
+        "effective_tokens_per_second": 7993.496622187646,
+        "computed_tokens_per_second": 7999.539526113352
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-dcce3d1107caafdf/attempts/88384619715fe39f97d2/status.json",
+      "status_sha256": "2e1af44af84db93dc7526305983d14c3949aba79c1a5dc94ada314cb5893a394"
+    },
+    {
+      "job_id": "h800vidfix-eef1e17826e9a869",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_128",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 15017705472,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 15017705472,
+        "max_allocated_bytes": 13657922048,
+        "measured_seconds": 275.6543105021119,
+        "effective_tokens": 2322553,
+        "computed_tokens": 2348392,
+        "effective_tokens_per_second": 8425.600150309298,
+        "computed_tokens_per_second": 8519.337120911838
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-eef1e17826e9a869/attempts/6fac7bf95c6d5927a323/status.json",
+      "status_sha256": "8dfa6610f8cf668a7f91b002eadef1c754da363493848b8858f134153b2d0d77"
+    },
+    {
+      "job_id": "h800vidfix-92217f996a11fbf8",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_video",
+      "media_tier": "native_128",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 17400070144,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 17400070144,
+        "max_allocated_bytes": 15499666432,
+        "measured_seconds": 279.335582729429,
+        "effective_tokens": 2322553,
+        "computed_tokens": 2324136,
+        "effective_tokens_per_second": 8314.561923353958,
+        "computed_tokens_per_second": 8320.228942158123
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-92217f996a11fbf8/attempts/e22f447d1a160b48442b/status.json",
+      "status_sha256": "28e66980664808f465e1fcafddd0fbbb0cf398b8fa25fdff9745d6d551cf735e"
+    },
+    {
+      "job_id": "h800vidfix-d26ff9dad55b8674",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "upscaled_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 16435380224,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 16435380224,
+        "max_allocated_bytes": 14895497728,
+        "measured_seconds": 394.83374115265906,
+        "effective_tokens": 3496865,
+        "computed_tokens": 3522608,
+        "effective_tokens_per_second": 8856.550582002988,
+        "computed_tokens_per_second": 8921.750176963762
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-d26ff9dad55b8674/attempts/cb3299b5b917fe01dca5/status.json",
+      "status_sha256": "d161892b1d36d60ee85cfb193e7c3b0573100fd62139dd9d158587fc10cf2a34"
+    },
+    {
+      "job_id": "h800vidfix-b0424ca327dcd4e4",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_video",
+      "media_tier": "upscaled_64",
+      "mechanism_id": "SAFE",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 21485322240,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 21485322240,
+        "max_allocated_bytes": 19327505920,
+        "measured_seconds": 412.5380741972476,
+        "effective_tokens": 3496865,
+        "computed_tokens": 3498336,
+        "effective_tokens_per_second": 8476.46609783716,
+        "computed_tokens_per_second": 8480.031829322337
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-b0424ca327dcd4e4/attempts/b8539888cdff79a4ae9e/status.json",
+      "status_sha256": "856861468989f360be395bdd88f1fa18f2a9ff3e82d693da25c73fb49df6e371"
+    },
+    {
+      "job_id": "h800vidfix-f610e01b6e6c40f1",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 52177141760,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 52177141760,
+        "max_allocated_bytes": 42871153664,
+        "measured_seconds": 182.4013532102108,
+        "effective_tokens": 1945825,
+        "computed_tokens": 1971568,
+        "effective_tokens_per_second": 10667.821075633736,
+        "computed_tokens_per_second": 10808.954896994876
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-f610e01b6e6c40f1/attempts/6804460a6cca481fc6e7/status.json",
+      "status_sha256": "fe07c9977476edd9509c55d6020724a719ed92952b33c2e6bcda39c6a806529a"
+    },
+    {
+      "job_id": "h800vidfix-c907de1a6e664e66",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "NOGC",
+      "repeat": 0,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 52816773120,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 52816773120,
+        "max_allocated_bytes": 43749650944,
+        "measured_seconds": 182.55195809341967,
+        "effective_tokens": 1945825,
+        "computed_tokens": 1947296,
+        "effective_tokens_per_second": 10659.020151425808,
+        "computed_tokens_per_second": 10667.078131276385
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-c907de1a6e664e66/attempts/ff35fda1122853fb7f7a/status.json",
+      "status_sha256": "a9f01fc52cd798ad657eee0ac6c2b98b36d604e1f96c77318a4e916da78f1887"
+    },
+    {
+      "job_id": "h800vidfix-8d86c0777b27c49a",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "oom",
+      "calibration_eligible": false,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "right_censored_oom",
+      "exact_center_target_bytes": null,
+      "right_censor_lower_bytes": 150142189568,
+      "oom_peak_is_unknown_not_imputed": true,
+      "metrics": null,
+      "success_semantics": {
+        "required": false,
+        "all_passed": true,
+        "rank_checks": []
+      },
+      "oom_terminal_semantics": {
+        "required": true,
+        "all_passed": true,
+        "checks": {
+          "status_present": true,
+          "status_schema": true,
+          "status_job_exact": true,
+          "status_classification_oom": true,
+          "status_return_code_nonzero": true,
+          "attempt_id_present": true,
+          "latest_present": true,
+          "latest_schema": true,
+          "latest_state_complete": true,
+          "latest_job_exact": true,
+          "latest_classification_oom": true,
+          "latest_attempt_exact": true,
+          "latest_attempt_path_exact": true,
+          "classification_evidence_schema": true,
+          "classification_evidence_job_exact": true,
+          "classification_evidence_attempt_exact": true,
+          "classification_evidence_oom": true,
+          "cuda_oom_confirmed": true,
+          "cuda_oom_pattern_present": true,
+          "evidence_return_code_matches": true,
+          "summary_set_exact": true,
+          "log_is_attempt_local": true,
+          "log_hash_matches": true
+        },
+        "execution_attempt_id": "edd483e25657db01ab50",
+        "log_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-8d86c0777b27c49a/attempts/edd483e25657db01ab50/train.log",
+        "log_sha256": "6432e62ddbd22086a3abd5b1723d918a0f7de255a9e568408c6976d008d996dc"
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-8d86c0777b27c49a/attempts/edd483e25657db01ab50/status.json",
+      "status_sha256": "c6bb49f86fb4c406c1f24a3069d0c0af5e58aef9a6d04a5e317a640125cd1b0e"
+    },
+    {
+      "job_id": "h800vidfix-015ad4a3fa739b69",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "repeat": 0,
+      "classification": "oom",
+      "calibration_eligible": false,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "right_censored_oom",
+      "exact_center_target_bytes": null,
+      "right_censor_lower_bytes": 150142189568,
+      "oom_peak_is_unknown_not_imputed": true,
+      "metrics": null,
+      "success_semantics": {
+        "required": false,
+        "all_passed": true,
+        "rank_checks": []
+      },
+      "oom_terminal_semantics": {
+        "required": true,
+        "all_passed": true,
+        "checks": {
+          "status_present": true,
+          "status_schema": true,
+          "status_job_exact": true,
+          "status_classification_oom": true,
+          "status_return_code_nonzero": true,
+          "attempt_id_present": true,
+          "latest_present": true,
+          "latest_schema": true,
+          "latest_state_complete": true,
+          "latest_job_exact": true,
+          "latest_classification_oom": true,
+          "latest_attempt_exact": true,
+          "latest_attempt_path_exact": true,
+          "classification_evidence_schema": true,
+          "classification_evidence_job_exact": true,
+          "classification_evidence_attempt_exact": true,
+          "classification_evidence_oom": true,
+          "cuda_oom_confirmed": true,
+          "cuda_oom_pattern_present": true,
+          "evidence_return_code_matches": true,
+          "summary_set_exact": true,
+          "log_is_attempt_local": true,
+          "log_hash_matches": true
+        },
+        "execution_attempt_id": "a73b597d74f48995822d",
+        "log_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-015ad4a3fa739b69/attempts/a73b597d74f48995822d/train.log",
+        "log_sha256": "41aaadc174062122cbc1edabd954bfec5d85be7afcdc116320f54856b4f2ad53"
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-015ad4a3fa739b69/attempts/a73b597d74f48995822d/status.json",
+      "status_sha256": "5dbaa7c547eeec58b5d2aee9e4814ca2b75f879e90082ba832131dcfd197250c"
+    },
+    {
+      "job_id": "h800vidfix-a39baf1d53ec0a45",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "text_length_matched",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 13688111104,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 13688111104,
+        "max_allocated_bytes": 12706824704,
+        "measured_seconds": 243.91519048251212,
+        "effective_tokens": 1945825,
+        "computed_tokens": 1971568,
+        "effective_tokens_per_second": 7977.465430302952,
+        "computed_tokens_per_second": 8083.006212527606
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "no_runtime_media": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-a39baf1d53ec0a45/attempts/8196087f91154988c056/status.json",
+      "status_sha256": "237c31955f018e4bc52e56f02b84715ac2d94f2b3788a71c245ef75bf6293194"
+    },
+    {
+      "job_id": "h800vidfix-ceae16baf0617b9b",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "arm_id": "real_video",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "repeat": 1,
+      "classification": "success",
+      "calibration_eligible": true,
+      "terminal_eligible": true,
+      "result_artifacts_complete": true,
+      "memory_observation_kind": "exact_success_center",
+      "exact_center_target_bytes": 15456010240,
+      "right_censor_lower_bytes": null,
+      "oom_peak_is_unknown_not_imputed": false,
+      "metrics": {
+        "max_reserved_bytes": 15456010240,
+        "max_allocated_bytes": 13880317952,
+        "measured_seconds": 242.3721061553806,
+        "effective_tokens": 1945825,
+        "computed_tokens": 1947296,
+        "effective_tokens_per_second": 8028.254698387466,
+        "computed_tokens_per_second": 8034.323878638171
+      },
+      "success_semantics": {
+        "required": true,
+        "all_passed": true,
+        "rank_checks": [
+          {
+            "rank": 0,
+            "checks": {
+              "freeze_declaration_matched": true,
+              "vision_frozen": true,
+              "projector_frozen": true,
+              "language_adapter_trainable": true,
+              "real_media_path": true,
+              "vision_phase_observed": true
+            },
+            "all_passed": true
+          }
+        ]
+      },
+      "oom_terminal_semantics": {
+        "required": false,
+        "all_passed": true,
+        "checks": {}
+      },
+      "status_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/results/h800vidfix-ceae16baf0617b9b/attempts/2dfecc0e932a8ebea8f6/status.json",
+      "status_sha256": "4113012a1588593ca7f6cb810a57266c0c378f441a8da6474bf1e3811ae85051"
+    }
+  ],
+  "fit_allowed": true,
+  "oom_policy": "right_censored_lower_bound_never_exact_peak",
+  "repeat_policy": "collapse_physical_repeats_before_fit",
+  "acceptance_allowed": false,
+  "publication_allowed": false,
+  "next_required_stage": "fit VL residual heads then run a source-disjoint prospective holdout",
+  "report_sha256": "826b4764a6cf756ec138912abfd922a1e850fbf6dc1da77eb373d4bd38fc0570"
+}

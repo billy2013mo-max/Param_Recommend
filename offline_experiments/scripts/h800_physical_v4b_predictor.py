@@ -370,10 +370,12 @@ def validate_prediction_report(report: Mapping[str, Any]) -> None:
         )
         if admitted != expected_policy_admission:
             raise ValueError("H800 support/memory admission contract drifted")
+        hybrid_only = memory.get("hybrid_model") is True
         if admitted != (throughput.get("prediction_available") is True):
-            raise ValueError(
-                "H800 throughput must exist exactly for admitted candidates"
-            )
+            if not (hybrid_only and admitted):
+                raise ValueError(
+                    "H800 throughput must exist exactly for admitted candidates"
+                )
         if throughput.get("prediction_available") is True:
             score = float(throughput.get("ranking_score_log"))
             proxy = float(throughput.get("throughput_proxy_tokens_per_second"))
@@ -593,9 +595,10 @@ class H800PhysicalV4BPredictor:
             )
         if normalized["packing"]:
             add(
-                "packing_outside_supported_domain",
-                "unsupported",
-                "Packing requires a separate validated admission track.",
+                "packing_limited_evidence",
+                "caution",
+                "Packing memory/throughput evidence is limited; admission uses "
+                "the standard memory upper and should be verified with headroom.",
             )
         if normalized["offload"]:
             add(
@@ -1253,6 +1256,11 @@ class H800PhysicalV4BPredictor:
             }
             rows.append(row)
             if not admitted:
+                continue
+            if memory_result.get("hybrid_model"):
+                # Hybrid-attention models are memory-gate only until the V5
+                # throughput training domain is extended; keep throughput
+                # unavailable instead of failing candidate ranking.
                 continue
             effective_work = float(work["effective_tokens"])
             v4b_candidates.append(

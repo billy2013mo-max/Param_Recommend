@@ -1,0 +1,176 @@
+{
+  "schema": "sft_h800_final_memory_peak_replay_frozen_predictions/v1",
+  "generated_at_utc": "2026-08-10T07:15:45.401202+00:00",
+  "status": "frozen_before_any_stage1_gpu_outcome",
+  "outcomes_observed": 0,
+  "model_or_margin_refit_allowed_during_measurement_equivalence": false,
+  "production_model_mutated": false,
+  "v3_artifact": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_unified_bounded_memory_candidate_v3.json",
+    "sha256": "e6a13ad01312f9a272d3c928dd1fc7e5235fe0946fe3490725ff080b201878f0"
+  },
+  "ordered_job_payload_sha256": "b00690407e8a663b1738c99563e8985c65b81c9a58f105574fefe8d85555d057",
+  "rows": [
+    {
+      "job_id": "h800peak1-8a7852b8cd46d7fc",
+      "pair_id": "h800peakpair-f08b108c4d99e39d",
+      "replay_mode": "full_coverage",
+      "source_dataset_id": "dataset-5qtqde-1785830918",
+      "v3": {
+        "available": true,
+        "record_id": "peak-replay-stage1::h800peakpair-f08b108c4d99e39d",
+        "reference_bytes": 73256401920.0,
+        "log_center_correction": 0.2906928724130718,
+        "center_bytes": 97969726209.497,
+        "upper_multiplier": 1.017073869906859,
+        "risk_guard_bytes": 96744755850.64145,
+        "risk_guard_multiplier": 1.017073869906859,
+        "admission_upper_bytes": 98396563226.20615,
+        "safe_limit_bytes": 142635080089.6,
+        "admitted": true,
+        "issues": []
+      }
+    },
+    {
+      "job_id": "h800peak1-25e71e1ab434aaf0",
+      "pair_id": "h800peakpair-f08b108c4d99e39d",
+      "replay_mode": "peak_replay",
+      "source_dataset_id": "dataset-5qtqde-1785830918",
+      "v3": {
+        "available": true,
+        "record_id": "peak-replay-stage1::h800peakpair-f08b108c4d99e39d",
+        "reference_bytes": 73256401920.0,
+        "log_center_correction": 0.2906928724130718,
+        "center_bytes": 97969726209.497,
+        "upper_multiplier": 1.017073869906859,
+        "risk_guard_bytes": 96744755850.64145,
+        "risk_guard_multiplier": 1.017073869906859,
+        "admission_upper_bytes": 98396563226.20615,
+        "safe_limit_bytes": 142635080089.6,
+        "admitted": true,
+        "issues": []
+      }
+    },
+    {
+      "job_id": "h800peak1-389ac56ca84618ca",
+      "pair_id": "h800peakpair-6ef627443c82033e",
+      "replay_mode": "full_coverage",
+      "source_dataset_id": "dataset-d3olaw-1785988468",
+      "v3": {
+        "available": true,
+        "record_id": "peak-replay-stage1::h800peakpair-6ef627443c82033e",
+        "reference_bytes": 93379658240.0,
+        "log_center_correction": -0.04476057868323222,
+        "center_bytes": 89292094003.57698,
+        "upper_multiplier": 1.017073869906859,
+        "risk_guard_bytes": 98062173878.15529,
+        "risk_guard_multiplier": 1.017073869906859,
+        "admission_upper_bytes": 99736474677.73471,
+        "safe_limit_bytes": 142635080089.6,
+        "admitted": true,
+        "issues": []
+      }
+    },
+    {
+      "job_id": "h800peak1-f5435bd2ea7a8880",
+      "pair_id": "h800peakpair-6ef627443c82033e",
+      "replay_mode": "peak_replay",
+      "source_dataset_id": "dataset-d3olaw-1785988468",
+      "v3": {
+        "available": true,
+        "record_id": "peak-replay-stage1::h800peakpair-6ef627443c82033e",
+        "reference_bytes": 93379658240.0,
+        "log_center_correction": -0.04476057868323222,
+        "center_bytes": 89292094003.57698,
+        "upper_multiplier": 1.017073869906859,
+        "risk_guard_bytes": 98062173878.15529,
+        "risk_guard_multiplier": 1.017073869906859,
+        "admission_upper_bytes": 99736474677.73471,
+        "safe_limit_bytes": 142635080089.6,
+        "admitted": true,
+        "issues": []
+      }
+    },
+    {
+      "job_id": "h800peak1-5b2e5a1b05fbf2dd",
+      "pair_id": "h800peakpair-2807f5c3eb99b210",
+      "replay_mode": "full_coverage",
+      "source_dataset_id": "dataset-u6wwzq-1786083796",
+      "v3": {
+        "available": true,
+        "record_id": "peak-replay-stage1::h800peakpair-2807f5c3eb99b210",
+        "reference_bytes": 78220609536.0,
+        "log_center_correction": 0.19509187373858217,
+        "center_bytes": 95071100275.21259,
+        "upper_multiplier": 1.017073869906859,
+        "risk_guard_bytes": 109095113540.76172,
+        "risk_guard_multiplier": 1.017073869906859,
+        "admission_upper_bytes": 110957789316.8307,
+        "safe_limit_bytes": 142635080089.6,
+        "admitted": true,
+        "issues": []
+      }
+    },
+    {
+      "job_id": "h800peak1-21955b2ada00e298",
+      "pair_id": "h800peakpair-2807f5c3eb99b210",
+      "replay_mode": "peak_replay",
+      "source_dataset_id": "dataset-u6wwzq-1786083796",
+      "v3": {
+        "available": true,
+        "record_id": "peak-replay-stage1::h800peakpair-2807f5c3eb99b210",
+        "reference_bytes": 78220609536.0,
+        "log_center_correction": 0.19509187373858217,
+        "center_bytes": 95071100275.21259,
+        "upper_multiplier": 1.017073869906859,
+        "risk_guard_bytes": 109095113540.76172,
+        "risk_guard_multiplier": 1.017073869906859,
+        "admission_upper_bytes": 110957789316.8307,
+        "safe_limit_bytes": 142635080089.6,
+        "admitted": true,
+        "issues": []
+      }
+    },
+    {
+      "job_id": "h800peak1-d8394ef71b7a7a42",
+      "pair_id": "h800peakpair-c8944aad8489ea95",
+      "replay_mode": "full_coverage",
+      "source_dataset_id": "dataset-wfqhvw-1785941727",
+      "v3": {
+        "available": true,
+        "record_id": "peak-replay-stage1::h800peakpair-c8944aad8489ea95",
+        "reference_bytes": 36229220352.0,
+        "log_center_correction": -0.018339742329792453,
+        "center_bytes": 35570841488.78457,
+        "upper_multiplier": 1.017073869906859,
+        "risk_guard_bytes": 37858108381.99064,
+        "risk_guard_multiplier": 1.017073869906859,
+        "admission_upper_bytes": 38504492799.42452,
+        "safe_limit_bytes": 142635080089.6,
+        "admitted": true,
+        "issues": []
+      }
+    },
+    {
+      "job_id": "h800peak1-8518874ce9d650fe",
+      "pair_id": "h800peakpair-c8944aad8489ea95",
+      "replay_mode": "peak_replay",
+      "source_dataset_id": "dataset-wfqhvw-1785941727",
+      "v3": {
+        "available": true,
+        "record_id": "peak-replay-stage1::h800peakpair-c8944aad8489ea95",
+        "reference_bytes": 36229220352.0,
+        "log_center_correction": -0.018339742329792453,
+        "center_bytes": 35570841488.78457,
+        "upper_multiplier": 1.017073869906859,
+        "risk_guard_bytes": 37858108381.99064,
+        "risk_guard_multiplier": 1.017073869906859,
+        "admission_upper_bytes": 38504492799.42452,
+        "safe_limit_bytes": 142635080089.6,
+        "admitted": true,
+        "issues": []
+      }
+    }
+  ],
+  "report_sha256": "d430ca5fccd0db5adf5f21255000bbd6a4c93f1d5bc1a927388e43493bee282a"
+}

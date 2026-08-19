@@ -1,0 +1,36 @@
+{
+  "schema": "sft_h800_qwen35_vl_supplement_frozen_selection/v1",
+  "campaign_id": "h800_qwen35_vl_supplement_20260809_v1",
+  "generated_at_utc": "2026-08-09T08:15:00+00:00",
+  "generated_before_gpu": true,
+  "gpu_training_started": false,
+  "selection_basis": "preregistered coverage matrix, not model recommendation",
+  "prediction_availability": {
+    "qwen35_4b_text_historical_prediction": "diagnostic_only_not_reused_as_acceptance",
+    "qwen35_other_scales": "unavailable",
+    "real_image_memory_head": "unavailable",
+    "real_image_throughput_ranker": "unavailable",
+    "visual_train_scope_head": "unavailable"
+  },
+  "automatic_execution_from_prediction": false,
+  "right_censoring_policy": "success is exact; confirmed CUDA OOM is a lower bound, never a point target",
+  "repeat_policy": "repeats estimate run variance and collapse to one physical arm before model fitting",
+  "canary_jobs": 15,
+  "formal_jobs": 86,
+  "formal_track_counts": {
+    "qwen35_real_image_cross_scale": 16,
+    "qwen35_text_cross_scale": 28,
+    "repeat_variance_diagnostic": 6,
+    "visual_train_scope_ablation": 4,
+    "vl_anchor_mechanism_calibration": 16,
+    "vl_dense_scale_transfer": 14,
+    "vl_moe_transfer": 2
+  },
+  "excluded_from_this_batch": {
+    "video": "no frozen real-video dataset and no bound video workload profile",
+    "multimodal_packing": "packing semantics have no accepted real-image training path",
+    "qwen3p5_moe": "no local Qwen3.5 MoE checkpoint",
+    "qwen3p5_27b_fp8": "FP8 checkpoint is outside the BF16 SFT calibration domain"
+  },
+  "report_sha256": "6a4f5595efcfe33338e7347782fa3d629d4926004d175c388ec44bebfdbbe4d0"
+}

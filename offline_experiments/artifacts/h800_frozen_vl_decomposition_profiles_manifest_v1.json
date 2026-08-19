@@ -1,0 +1,349 @@
+{
+  "schema": "sft_h800_frozen_vl_decomposition_profiles/v1",
+  "campaign_id": "h800_frozen_vl_decomposition_20260811_v1",
+  "generated_at_utc": "2026-08-11T08:22:52.554193+00:00",
+  "source_vl_data": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/vl_calibration_v1/vl_pzfj38_calibration_v1.jsonl",
+    "sha256": "92c09ffb74a462f83f383430a89169fa3d0bfa7fdefe0e1c9f9dfdd1be3df615",
+    "rows": 1000
+  },
+  "profiles": [
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "arm_id": "text_base",
+      "tier": null,
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_vl_decomposition_v1/qwen2p5_vl_3b.text_base.jsonl",
+      "data_sha256": "b4ed2bba34e539d2702c8f12a4ef41bf55a6d278c58a649e1ff1851df62df5d2",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen2p5_vl_3b.text_base.jsonl",
+        "sha256": "7f1b6a8cde249cde1db8aee563c17390d616000a1fd31e37bebad7afe6ad2f46",
+        "rows": 1000,
+        "total_tokens": {
+          "count": 1000,
+          "minimum": 2455,
+          "mean": 2483.126,
+          "mean_squared": 6166696.916,
+          "p50": 2474.0,
+          "p90": 2522.0,
+          "p95": 2541.0499999999997,
+          "p99": 2562.01,
+          "maximum": 2574
+        },
+        "label_tokens": {
+          "count": 1000,
+          "minimum": 43,
+          "mean": 71.126,
+          "mean_squared": 5841.092,
+          "p50": 62.0,
+          "p90": 110.0,
+          "p95": 129.04999999999995,
+          "p99": 150.01,
+          "maximum": 162
+        },
+        "recordwise_total_match": true
+      }
+    },
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "arm_id": "text_length_matched",
+      "tier": "low",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_vl_decomposition_v1/qwen2p5_vl_3b.low.text_matched.jsonl",
+      "data_sha256": "c3189db34a73dc2cb83d17495b6e4dc730986a8342bd89ad561ae6c1056f98f3",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen2p5_vl_3b.low.text_matched.jsonl",
+        "sha256": "66b73740ab0855854e3c42a3c40d8beccc999c07b902919b56d490afa8f32406",
+        "rows": 1000,
+        "total_tokens": {
+          "count": 1000,
+          "minimum": 2945,
+          "mean": 2993.111,
+          "mean_squared": 8959546.011,
+          "p50": 2984.0,
+          "p90": 3036.0,
+          "p95": 3049.0499999999997,
+          "p99": 3071.0200000000004,
+          "maximum": 3082
+        },
+        "label_tokens": {
+          "count": 1000,
+          "minimum": 43,
+          "mean": 71.126,
+          "mean_squared": 5841.092,
+          "p50": 62.0,
+          "p90": 110.0,
+          "p95": 129.04999999999995,
+          "p99": 150.01,
+          "maximum": 162
+        },
+        "recordwise_total_match": true
+      },
+      "matched_vl_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_qwen35_vl_supplement_profiles_v1/qwen2p5_vl_3b.low.json",
+      "matched_vl_profile_sha256": "2f6b4bc7b0699c752346cfb9369641179d2481831484009c4bec1b2a6a43a0ce",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "arm_id": "text_length_matched",
+      "tier": "high",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_vl_decomposition_v1/qwen2p5_vl_3b.high.text_matched.jsonl",
+      "data_sha256": "8091651c5f0b6f06d42e4f421e1c1f06b2ecd33e0d8c0806a68e9a8a3b9db0da",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen2p5_vl_3b.high.text_matched.jsonl",
+        "sha256": "61cd515bad738a07164e578ed96ee48251ec63755a0e48dedcd3d0fc30992e2d",
+        "rows": 1000,
+        "total_tokens": {
+          "count": 1000,
+          "minimum": 3189,
+          "mean": 3996.174,
+          "mean_squared": 15977890.77,
+          "p50": 4016.0,
+          "p90": 4075.0,
+          "p95": 4083.05,
+          "p99": 4112.01,
+          "maximum": 4128
+        },
+        "label_tokens": {
+          "count": 1000,
+          "minimum": 43,
+          "mean": 71.126,
+          "mean_squared": 5841.092,
+          "p50": 62.0,
+          "p90": 110.0,
+          "p95": 129.04999999999995,
+          "p99": 150.01,
+          "maximum": 162
+        },
+        "recordwise_total_match": true
+      },
+      "matched_vl_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_qwen35_vl_supplement_profiles_v1/qwen2p5_vl_3b.high.json",
+      "matched_vl_profile_sha256": "bbae69e57424dc3dac57291777a02f37c30b63a8a314135e717a92ccf0a26409",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "arm_id": "text_base",
+      "tier": null,
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_vl_decomposition_v1/qwen3_vl_4b.text_base.jsonl",
+      "data_sha256": "0e025fba57b7f2b147d42f1602eef73409e256928af24946f0002ca616484c83",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen3_vl_4b.text_base.jsonl",
+        "sha256": "e300a55bad2b6ef7f68e91c3a3250674008d6d938c4b72c840ac545351d95919",
+        "rows": 1000,
+        "total_tokens": {
+          "count": 1000,
+          "minimum": 2459,
+          "mean": 2487.126,
+          "mean_squared": 6186577.924,
+          "p50": 2478.0,
+          "p90": 2526.0,
+          "p95": 2545.0499999999997,
+          "p99": 2566.01,
+          "maximum": 2578
+        },
+        "label_tokens": {
+          "count": 1000,
+          "minimum": 47,
+          "mean": 75.126,
+          "mean_squared": 6426.1,
+          "p50": 66.0,
+          "p90": 114.0,
+          "p95": 133.04999999999995,
+          "p99": 154.01,
+          "maximum": 166
+        },
+        "recordwise_total_match": true
+      }
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "arm_id": "text_length_matched",
+      "tier": "low",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_vl_decomposition_v1/qwen3_vl_4b.low.text_matched.jsonl",
+      "data_sha256": "1ff1fedd7cc3c79be4ecd585dfc3aba0ba8fec8b5b9dd815f355ee005c430852",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen3_vl_4b.low.text_matched.jsonl",
+        "sha256": "a107300adebed7d88795aaf0c3b5d90a452dd2c5617d47c7dd743febc8de56fd",
+        "rows": 1000,
+        "total_tokens": {
+          "count": 1000,
+          "minimum": 2839,
+          "mean": 2875.654,
+          "mean_squared": 8270232.568,
+          "p50": 2866.0,
+          "p90": 2920.0,
+          "p95": 2933.0499999999997,
+          "p99": 2954.0,
+          "maximum": 2977
+        },
+        "label_tokens": {
+          "count": 1000,
+          "minimum": 47,
+          "mean": 75.126,
+          "mean_squared": 6426.1,
+          "p50": 66.0,
+          "p90": 114.0,
+          "p95": 133.04999999999995,
+          "p99": 154.01,
+          "maximum": 166
+        },
+        "recordwise_total_match": true
+      },
+      "matched_vl_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_qwen35_vl_supplement_profiles_v1/qwen3_vl_4b.low.json",
+      "matched_vl_profile_sha256": "a894d2f852a6bfad36fa97622df1c837cf1a70f59fa3990446c29ac8798985f8",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "arm_id": "text_length_matched",
+      "tier": "high",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_vl_decomposition_v1/qwen3_vl_4b.high.text_matched.jsonl",
+      "data_sha256": "7a35fba9a0759bf83389306d2c559622ea32d93e9044235ef267cf7ba68d778c",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen3_vl_4b.high.text_matched.jsonl",
+        "sha256": "c7f8a8da98639b3192a0fc2588cd16ed965212a4e8b54b155b1e405351fee5c7",
+        "rows": 1000,
+        "total_tokens": {
+          "count": 1000,
+          "minimum": 3037,
+          "mean": 3629.731,
+          "mean_squared": 13179225.683,
+          "p50": 3635.0,
+          "p90": 3682.0,
+          "p95": 3688.1,
+          "p99": 3720.0,
+          "maximum": 3746
+        },
+        "label_tokens": {
+          "count": 1000,
+          "minimum": 47,
+          "mean": 75.126,
+          "mean_squared": 6426.1,
+          "p50": 66.0,
+          "p90": 114.0,
+          "p95": 133.04999999999995,
+          "p99": 154.01,
+          "maximum": 166
+        },
+        "recordwise_total_match": true
+      },
+      "matched_vl_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_qwen35_vl_supplement_profiles_v1/qwen3_vl_4b.high.json",
+      "matched_vl_profile_sha256": "26bcef68e73da78c25574f66093fe095b7c16d5e528c962af49f42fe9dbe5ba1",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "arm_id": "text_base",
+      "tier": null,
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_vl_decomposition_v1/qwen3p5_4b.text_base.jsonl",
+      "data_sha256": "7da62b6510ba31607bf59fab889dc00695f2008ba763915e90f85216a2b20256",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen3p5_4b.text_base.jsonl",
+        "sha256": "41cc2206ae3c8eb3eeeaf27b05c4038f1ea610290c44a6033aa83fea45a8bde7",
+        "rows": 1000,
+        "total_tokens": {
+          "count": 1000,
+          "minimum": 2597,
+          "mean": 2625.085,
+          "mean_squared": 6891852.075,
+          "p50": 2616.0,
+          "p90": 2664.0,
+          "p95": 2683.05,
+          "p99": 2704.01,
+          "maximum": 2716
+        },
+        "label_tokens": {
+          "count": 1000,
+          "minimum": 43,
+          "mean": 71.085,
+          "mean_squared": 5833.895,
+          "p50": 62.0,
+          "p90": 110.0,
+          "p95": 129.04999999999995,
+          "p99": 150.01,
+          "maximum": 162
+        },
+        "recordwise_total_match": true
+      }
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "arm_id": "text_length_matched",
+      "tier": "low",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_vl_decomposition_v1/qwen3p5_4b.low.text_matched.jsonl",
+      "data_sha256": "2a11adbfc79d66be8f08f08995756244f038ab72df12a9177d358c1807482c92",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen3p5_4b.low.text_matched.jsonl",
+        "sha256": "b7baca2630fbb559efc583319d9591628074bf2ebace5f7f2c51b45d6eee8399",
+        "rows": 1000,
+        "total_tokens": {
+          "count": 1000,
+          "minimum": 2977,
+          "mean": 3013.613,
+          "mean_squared": 9082708.703,
+          "p50": 3004.0,
+          "p90": 3058.0,
+          "p95": 3071.05,
+          "p99": 3092.0,
+          "maximum": 3115
+        },
+        "label_tokens": {
+          "count": 1000,
+          "minimum": 43,
+          "mean": 71.085,
+          "mean_squared": 5833.895,
+          "p50": 62.0,
+          "p90": 110.0,
+          "p95": 129.04999999999995,
+          "p99": 150.01,
+          "maximum": 162
+        },
+        "recordwise_total_match": true
+      },
+      "matched_vl_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_qwen35_vl_supplement_profiles_v1/qwen3p5_4b.low.json",
+      "matched_vl_profile_sha256": "071349a6f091753d3b4131a26ed36669d48c760d1f36266dab1bb293aee60a78",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "arm_id": "text_length_matched",
+      "tier": "high",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_vl_decomposition_v1/qwen3p5_4b.high.text_matched.jsonl",
+      "data_sha256": "592444f1e300ccb91638010d58ea37cdf14a2515f855ea9208300c4edc21bc46",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_decomposition_profiles_v1/qwen3p5_4b.high.text_matched.jsonl",
+        "sha256": "d218d374af608e17fb657ecf64b909e3970f0c51b5e4d5833730f35aaf75065b",
+        "rows": 1000,
+        "total_tokens": {
+          "count": 1000,
+          "minimum": 3175,
+          "mean": 3767.69,
+          "mean_squared": 14199765.49,
+          "p50": 3773.0,
+          "p90": 3820.0,
+          "p95": 3826.1,
+          "p99": 3858.0,
+          "maximum": 3884
+        },
+        "label_tokens": {
+          "count": 1000,
+          "minimum": 43,
+          "mean": 71.085,
+          "mean_squared": 5833.895,
+          "p50": 62.0,
+          "p90": 110.0,
+          "p95": 129.04999999999995,
+          "p99": 150.01,
+          "maximum": 162
+        },
+        "recordwise_total_match": true
+      },
+      "matched_vl_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_qwen35_vl_supplement_profiles_v1/qwen3p5_4b.high.json",
+      "matched_vl_profile_sha256": "7ebd521f0535e51bfa71aada3baadd93a8c6c44d3e6efa71063ad7bfc6252d75",
+      "recordwise_total_match": true
+    }
+  ],
+  "all_recordwise_total_matches_exact": true,
+  "raw_images_copied": false,
+  "gpu_training_started": false,
+  "report_sha256": "99c0d141ad0cc95b99b1dee44ad821ed3a8a11e4a1e8defd19d5e801b580f795"
+}

@@ -29,7 +29,6 @@ import statistics
 from typing import Any
 
 import numpy as np
-from scipy.optimize import minimize
 
 from analyze_h800_fresh_memory_residual_v2 import profile_padding_statistics
 from common import (
@@ -672,6 +671,10 @@ def _fit(
             "gradient_norm": float(np.linalg.norm(gradient)),
         }
     else:
+        # Prediction-only imports do not need SciPy.  Keep the optional fitting
+        # dependency local to the rare active-set fallback.
+        from scipy.optimize import minimize
+
         optimized = minimize(
             lambda value: objective(value)[0],
             parameters,

@@ -30,8 +30,16 @@ import statistics
 from typing import Any
 
 import numpy as np
-from scipy.optimize import minimize
-from scipy.special import expit
+try:
+    from scipy.optimize import minimize
+    from scipy.special import expit
+except ModuleNotFoundError as error:
+    if error.name != "scipy":
+        raise
+    # Frozen inference below uses only NumPy and math.  Keep the fitting-only
+    # SciPy dependency optional in the production prediction environment.
+    minimize = None  # type: ignore[assignment]
+    expit = None  # type: ignore[assignment]
 
 from common import ROOT, read_json, sha256_file, sha256_json, write_json
 from h800_challenger_modeling import (

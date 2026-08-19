@@ -1,0 +1,3121 @@
+{
+  "schema": "sft_h800_frozen_vl_modeling_formal_evaluation/v1",
+  "generated_at_utc": "2026-08-12T06:29:49.050219+00:00",
+  "model_artifact": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_vl_residual_overlay_v1.json",
+    "sha256": "1ee7c0f774c2851e2ad160008e0b247363b6d226220319fe4111a9dadfeee2b5"
+  },
+  "source_bindings": {
+    "queue_sha256": "d7bff914db605f70c41a1150b2dd8d66e89d487ea040d8822def8fe8d3294813",
+    "formal_results_sha256": "22d458bb03ea2f87b785445156a2dd7f5f37ce661e94da523dbec911911245c9",
+    "model_inventory_sha256": "9bfc7facb5f7ee2128ca6e73fbed75dcbb8d08d59754fdf37c83d2fd9cb9cb77"
+  },
+  "evidence": {
+    "jobs": 87,
+    "successful_jobs": 83,
+    "oom_jobs": 4,
+    "paired_physical_units": 33,
+    "paired_exact_units": 31,
+    "paired_right_censored_units": 2,
+    "negative_signed_memory_deltas_clipped_to_zero": 7,
+    "negative_signed_time_deltas_clipped_to_zero": 4
+  },
+  "memory_evaluation": {
+    "validation": "leave_one_model_family_out",
+    "fit_pair_units": 31,
+    "fold_coefficients_bytes_per_proxy_byte": {
+      "qwen2p5_vl": 42.97857055247955,
+      "qwen3_5": 17.20209886069018,
+      "qwen3_vl": 33.88813371907684
+    },
+    "baseline_text_only_mape": 0.07387717590480879,
+    "overlay_mape": 0.05182849116890302,
+    "overlay_p90_absolute_percentage_error": 0.13395357268186792,
+    "overlay_max_absolute_percentage_error": 0.13943094090244235,
+    "within_10_percent_rate": 0.8387096774193549,
+    "underprediction_rate": 0.3548387096774194,
+    "per_held_out_family": {
+      "qwen2p5_vl": {
+        "pair_units": 11,
+        "mape": 0.07062407572011585,
+        "max_absolute_percentage_error": 0.13589043159968994
+      },
+      "qwen3_5": {
+        "pair_units": 10,
+        "mape": 0.06613809368572415,
+        "max_absolute_percentage_error": 0.13943094090244235
+      },
+      "qwen3_vl": {
+        "pair_units": 10,
+        "mape": 0.016843745645747775,
+        "max_absolute_percentage_error": 0.03400306174423706
+      }
+    },
+    "target_mape_at_most_10_percent": true
+  },
+  "throughput_evaluation": {
+    "validation": "leave_one_media_scenario_out_within_family; all mechanisms of the held-out model/modality/tier scenario are collapsed before fitting",
+    "scenario_units": 18,
+    "pair_units": 31,
+    "baseline_text_only_step_time_mape": 0.2166291449258606,
+    "overlay_step_time_mape": 0.050792510337656596,
+    "overlay_p90_absolute_percentage_error": 0.1067157764187745,
+    "overlay_max_absolute_percentage_error": 0.13536171574472688,
+    "within_10_percent_rate": 0.8709677419354839,
+    "per_family": {
+      "qwen2p5_vl": {
+        "pair_units": 11,
+        "mape": 0.08347959800394432,
+        "max_absolute_percentage_error": 0.13536171574472688
+      },
+      "qwen3_5": {
+        "pair_units": 10,
+        "mape": 0.015649423447411638,
+        "max_absolute_percentage_error": 0.025797426349339903
+      },
+      "qwen3_vl": {
+        "pair_units": 10,
+        "mape": 0.04997980079498506,
+        "max_absolute_percentage_error": 0.08180029254323795
+      }
+    },
+    "ranking": {
+      "ranking_groups": 9,
+      "pairwise_comparisons": 17,
+      "pairwise_order_accuracy": 1.0,
+      "top1_exact_rate": 1.0,
+      "mean_top1_regret": 0.0,
+      "max_top1_regret": 0.0,
+      "details": [
+        {
+          "ranking_group": "qwen2p5_vl_3b::frozen_video_decomposition::native_64",
+          "candidate_count": 3,
+          "pairwise_comparisons": 3,
+          "pairwise_correct": 3,
+          "observed_best_mechanism": "PRESSURE",
+          "predicted_best_mechanism": "PRESSURE",
+          "top1_regret": 0.0
+        },
+        {
+          "ranking_group": "qwen2p5_vl_3b::frozen_vision_decomposition::high",
+          "candidate_count": 3,
+          "pairwise_comparisons": 3,
+          "pairwise_correct": 3,
+          "observed_best_mechanism": "PRESSURE",
+          "predicted_best_mechanism": "PRESSURE",
+          "top1_regret": 0.0
+        },
+        {
+          "ranking_group": "qwen2p5_vl_3b::frozen_vision_decomposition::low",
+          "candidate_count": 2,
+          "pairwise_comparisons": 1,
+          "pairwise_correct": 1,
+          "observed_best_mechanism": "PRESSURE",
+          "predicted_best_mechanism": "PRESSURE",
+          "top1_regret": 0.0
+        },
+        {
+          "ranking_group": "qwen3_vl_4b::frozen_video_decomposition::native_64",
+          "candidate_count": 2,
+          "pairwise_comparisons": 1,
+          "pairwise_correct": 1,
+          "observed_best_mechanism": "NOGC",
+          "predicted_best_mechanism": "NOGC",
+          "top1_regret": 0.0
+        },
+        {
+          "ranking_group": "qwen3_vl_4b::frozen_vision_decomposition::high",
+          "candidate_count": 3,
+          "pairwise_comparisons": 3,
+          "pairwise_correct": 3,
+          "observed_best_mechanism": "PRESSURE",
+          "predicted_best_mechanism": "PRESSURE",
+          "top1_regret": 0.0
+        },
+        {
+          "ranking_group": "qwen3_vl_4b::frozen_vision_decomposition::low",
+          "candidate_count": 2,
+          "pairwise_comparisons": 1,
+          "pairwise_correct": 1,
+          "observed_best_mechanism": "PRESSURE",
+          "predicted_best_mechanism": "PRESSURE",
+          "top1_regret": 0.0
+        },
+        {
+          "ranking_group": "qwen3p5_4b::frozen_video_decomposition::native_64",
+          "candidate_count": 2,
+          "pairwise_comparisons": 1,
+          "pairwise_correct": 1,
+          "observed_best_mechanism": "NOGC",
+          "predicted_best_mechanism": "NOGC",
+          "top1_regret": 0.0
+        },
+        {
+          "ranking_group": "qwen3p5_4b::frozen_vision_decomposition::high",
+          "candidate_count": 3,
+          "pairwise_comparisons": 3,
+          "pairwise_correct": 3,
+          "observed_best_mechanism": "PRESSURE",
+          "predicted_best_mechanism": "PRESSURE",
+          "top1_regret": 0.0
+        },
+        {
+          "ranking_group": "qwen3p5_4b::frozen_vision_decomposition::low",
+          "candidate_count": 2,
+          "pairwise_comparisons": 1,
+          "pairwise_correct": 1,
+          "observed_best_mechanism": "PRESSURE",
+          "predicted_best_mechanism": "PRESSURE",
+          "top1_regret": 0.0
+        }
+      ]
+    },
+    "target_step_time_mape_at_most_10_percent": true,
+    "target_pairwise_order_accuracy_at_least_90_percent": true,
+    "target_max_top1_regret_below_10_percent": true
+  },
+  "checks": {
+    "formal_evidence_gate": true,
+    "memory_leave_family_out_mape": true,
+    "throughput_leave_scenario_out_mape": true,
+    "throughput_pairwise_order_accuracy": true,
+    "throughput_top1_regret": true,
+    "oom_never_used_as_exact_peak": true,
+    "physical_repeats_collapsed_before_fit": true
+  },
+  "all_development_gates_passed": true,
+  "formal_campaign_fit_complete": true,
+  "automatic_recommendation_release_allowed": false,
+  "acceptance_status": "development_pass_shadow_only",
+  "blocking_acceptance_gap": "freeze this overlay, then run an unseen source-disjoint prospective image/video holdout before enabling admission or ranking",
+  "right_censored_pairs": [
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::PRESSURE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "oom": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1545.6,
+        "mean_raw_patch_units_per_sample": 6182.4,
+        "mean_pixel_value_elements_per_sample": 9496166.4,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 158269440.0,
+        "vision_forward_flops_per_sample": 4071310413004.7993
+      },
+      "memory_observation_kind": "right_censored_base_and_real",
+      "right_censor_lower_bytes": 150142189568,
+      "exact_peak_target_bytes": null,
+      "oom_peak_is_unknown_not_imputed": true,
+      "job_ids": [
+        "h800vidfix-1f37d8ffd82334c1",
+        "h800vidfix-bc1f0d7c913dafcf"
+      ]
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::PRESSURE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "oom": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1545.6,
+        "mean_raw_patch_units_per_sample": 6182.4,
+        "mean_pixel_value_elements_per_sample": 9496166.4,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 158269440.0,
+        "vision_forward_flops_per_sample": 3818346784358.3994
+      },
+      "memory_observation_kind": "right_censored_base_and_real",
+      "right_censor_lower_bytes": 150142189568,
+      "exact_peak_target_bytes": null,
+      "oom_peak_is_unknown_not_imputed": true,
+      "job_ids": [
+        "h800vidfix-8d86c0777b27c49a",
+        "h800vidfix-015ad4a3fa739b69"
+      ]
+    }
+  ],
+  "paired_units": [
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_128::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "native_128",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 2644.62,
+        "mean_raw_patch_units_per_sample": 10578.48,
+        "mean_pixel_value_elements_per_sample": 12440292.48,
+        "mean_sampled_frames_per_sample": 80.14,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 62793857.28,
+        "vision_forward_flops_per_sample": 10558566053713.92
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-28ac184e0c904ce0"
+        ],
+        "max_reserved_bytes": 11932794880.0,
+        "max_allocated_bytes": 11283577856.0,
+        "measured_seconds": 194.46525281481445,
+        "effective_tokens": 2339532.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-8b83e0e0a077d574"
+        ],
+        "max_reserved_bytes": 13457424384.0,
+        "max_allocated_bytes": 12863210496.0,
+        "measured_seconds": 536.7885088585317,
+        "effective_tokens": 2339532.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 1524629504.0,
+      "memory_fit_target_bytes": 1524629504.0,
+      "signed_visual_seconds": 342.32325604371727,
+      "throughput_fit_target_seconds": 342.32325604371727,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_16::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "native_16",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 520.74,
+        "mean_raw_patch_units_per_sample": 2082.96,
+        "mean_pixel_value_elements_per_sample": 2449560.96,
+        "mean_sampled_frames_per_sample": 15.78,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 12364450.559999999,
+        "vision_forward_flops_per_sample": 2079038836131.84
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-5aa3fff00be10456"
+        ],
+        "max_reserved_bytes": 10387193856.0,
+        "max_allocated_bytes": 10001982976.0,
+        "measured_seconds": 151.9950330797583,
+        "effective_tokens": 1534728.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-79b4e1c3e27abcea"
+        ],
+        "max_reserved_bytes": 10752098304.0,
+        "max_allocated_bytes": 10306929664.0,
+        "measured_seconds": 215.04507362283766,
+        "effective_tokens": 1534728.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 364904448.0,
+      "memory_fit_target_bytes": 364904448.0,
+      "signed_visual_seconds": 63.050040543079376,
+      "throughput_fit_target_seconds": 63.050040543079376,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::NOGC",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "native_64",
+      "mechanism_id": "NOGC",
+      "physical_mbs": 1,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1700.16,
+        "mean_raw_patch_units_per_sample": 6800.64,
+        "mean_pixel_value_elements_per_sample": 7997552.64,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 40368599.04,
+        "vision_forward_flops_per_sample": 6787837822402.56
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-8f2233172375a125"
+        ],
+        "max_reserved_bytes": 42767220736.0,
+        "max_allocated_bytes": 31604559360.0,
+        "measured_seconds": 126.77380470000207,
+        "effective_tokens": 1980492.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-af33e5c71e93f5a0"
+        ],
+        "max_reserved_bytes": 46674214912.0,
+        "max_allocated_bytes": 32617206784.0,
+        "measured_seconds": 343.5860327910632,
+        "effective_tokens": 1980492.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 3906994176.0,
+      "memory_fit_target_bytes": 3906994176.0,
+      "signed_visual_seconds": 216.81222809106112,
+      "throughput_fit_target_seconds": 216.81222809106112,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::PRESSURE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1700.16,
+        "mean_raw_patch_units_per_sample": 6800.64,
+        "mean_pixel_value_elements_per_sample": 7997552.64,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 161474396.16,
+        "vision_forward_flops_per_sample": 6787837822402.56
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-ec8aa97fd9b68080"
+        ],
+        "max_reserved_bytes": 112822583296.0,
+        "max_allocated_bytes": 100261313024.0,
+        "measured_seconds": 99.7423399053514,
+        "effective_tokens": 1980492.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-9ddf2513beba614f"
+        ],
+        "max_reserved_bytes": 105539174400.0,
+        "max_allocated_bytes": 101125810688.0,
+        "measured_seconds": 317.4153806362301,
+        "effective_tokens": 1980492.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": -7283408896.0,
+      "memory_fit_target_bytes": 0.0,
+      "signed_visual_seconds": 217.6730407308787,
+      "throughput_fit_target_seconds": 217.6730407308787,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 4
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1700.16,
+        "mean_raw_patch_units_per_sample": 6800.64,
+        "mean_pixel_value_elements_per_sample": 7997552.64,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 40368599.04,
+        "vision_forward_flops_per_sample": 6787837822402.56
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vidfix-a22fa8241d67a701",
+          "h800vidfix-06d7fcb3cec31265"
+        ],
+        "max_reserved_bytes": 11301552128.0,
+        "max_allocated_bytes": 10547855872.0,
+        "measured_seconds": 171.34533117059618,
+        "effective_tokens": 1980492.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vidfix-60532ac8292ca85c",
+          "h800vidfix-7772c555d0f085d8"
+        ],
+        "max_reserved_bytes": 12658409472.0,
+        "max_allocated_bytes": 11584482816.0,
+        "measured_seconds": 388.09610068798065,
+        "effective_tokens": 1980492.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 1356857344.0,
+      "memory_fit_target_bytes": 1356857344.0,
+      "signed_visual_seconds": 216.75076951738447,
+      "throughput_fit_target_seconds": 216.75076951738447,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::upscaled_64::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "upscaled_64",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 7702.24,
+        "mean_raw_patch_units_per_sample": 30808.96,
+        "mean_pixel_value_elements_per_sample": 36231336.96,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 182881986.55999997,
+        "vision_forward_flops_per_sample": 30750962256035.84
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-d70b707a6ce3eb3c"
+        ],
+        "max_reserved_bytes": 13904117760.0,
+        "max_allocated_bytes": 13133519872.0,
+        "measured_seconds": 334.40674559399486,
+        "effective_tokens": 4239194.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-ad2f31c767c9ff01"
+        ],
+        "max_reserved_bytes": 19193135104.0,
+        "max_allocated_bytes": 17814589952.0,
+        "measured_seconds": 1204.7943401616067,
+        "effective_tokens": 4239194.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 5289017344.0,
+      "memory_fit_target_bytes": 5289017344.0,
+      "signed_visual_seconds": 870.3875945676118,
+      "throughput_fit_target_seconds": 870.3875945676118,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_128::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "native_128",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 2404.2,
+        "mean_raw_patch_units_per_sample": 9616.8,
+        "mean_pixel_value_elements_per_sample": 14771404.8,
+        "mean_sampled_frames_per_sample": 80.14,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 61547520.0,
+        "vision_forward_flops_per_sample": 6332973922713.6
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-274e19e0a8078cec"
+        ],
+        "max_reserved_bytes": 59313750016.0,
+        "max_allocated_bytes": 26562024448.0,
+        "measured_seconds": 316.47073248773813,
+        "effective_tokens": 2382445.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-c531bb1a6a4e1bf6"
+        ],
+        "max_reserved_bytes": 60865642496.0,
+        "max_allocated_bytes": 28298300416.0,
+        "measured_seconds": 365.6871622707695,
+        "effective_tokens": 2382445.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 1551892480.0,
+      "memory_fit_target_bytes": 1551892480.0,
+      "signed_visual_seconds": 49.216429783031344,
+      "throughput_fit_target_seconds": 49.216429783031344,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_16::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "native_16",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 473.4,
+        "mean_raw_patch_units_per_sample": 1893.6,
+        "mean_pixel_value_elements_per_sample": 2908569.6,
+        "mean_sampled_frames_per_sample": 15.78,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 12119040.0,
+        "vision_forward_flops_per_sample": 1246996861747.2
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-aa75f4402ce55f6d"
+        ],
+        "max_reserved_bytes": 27957133312.0,
+        "max_allocated_bytes": 18648610304.0,
+        "measured_seconds": 216.66585889458656,
+        "effective_tokens": 1539671.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-64fe685eb68cea5b"
+        ],
+        "max_reserved_bytes": 28147974144.0,
+        "max_allocated_bytes": 18849154560.0,
+        "measured_seconds": 222.02754344791174,
+        "effective_tokens": 1539671.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 190840832.0,
+      "memory_fit_target_bytes": 190840832.0,
+      "signed_visual_seconds": 5.361684553325176,
+      "throughput_fit_target_seconds": 5.361684553325176,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::NOGC",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "native_64",
+      "mechanism_id": "NOGC",
+      "physical_mbs": 1,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1545.6,
+        "mean_raw_patch_units_per_sample": 6182.4,
+        "mean_pixel_value_elements_per_sample": 9496166.4,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 39567360.0,
+        "vision_forward_flops_per_sample": 4071310413004.7993
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-1baca7ec17c607d0"
+        ],
+        "max_reserved_bytes": 70734839808.0,
+        "max_allocated_bytes": 57906724864.0,
+        "measured_seconds": 200.28850417397916,
+        "effective_tokens": 2005717.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-271b620185ef22a5"
+        ],
+        "max_reserved_bytes": 70982303744.0,
+        "max_allocated_bytes": 58565168640.0,
+        "measured_seconds": 229.25199354439974,
+        "effective_tokens": 2005717.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 247463936.0,
+      "memory_fit_target_bytes": 247463936.0,
+      "signed_visual_seconds": 28.963489370420575,
+      "throughput_fit_target_seconds": 28.963489370420575,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::PRESSURE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "oom": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1545.6,
+        "mean_raw_patch_units_per_sample": 6182.4,
+        "mean_pixel_value_elements_per_sample": 9496166.4,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 158269440.0,
+        "vision_forward_flops_per_sample": 4071310413004.7993
+      },
+      "memory_observation_kind": "right_censored_base_and_real",
+      "right_censor_lower_bytes": 150142189568,
+      "exact_peak_target_bytes": null,
+      "oom_peak_is_unknown_not_imputed": true,
+      "job_ids": [
+        "h800vidfix-1f37d8ffd82334c1",
+        "h800vidfix-bc1f0d7c913dafcf"
+      ]
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 4
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1545.6,
+        "mean_raw_patch_units_per_sample": 6182.4,
+        "mean_pixel_value_elements_per_sample": 9496166.4,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 39567360.0,
+        "vision_forward_flops_per_sample": 4071310413004.7993
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vidfix-6412af3f16137786",
+          "h800vidfix-75694af66e3c53af"
+        ],
+        "max_reserved_bytes": 40405827584.0,
+        "max_allocated_bytes": 22025886720.0,
+        "measured_seconds": 271.34743622131646,
+        "effective_tokens": 2005717.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vidfix-2372b06280eb5f2f",
+          "h800vidfix-d2195c55e506df93"
+        ],
+        "max_reserved_bytes": 41406169088.0,
+        "max_allocated_bytes": 23090678272.0,
+        "measured_seconds": 298.84798667393625,
+        "effective_tokens": 2005717.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 1000341504.0,
+      "memory_fit_target_bytes": 1000341504.0,
+      "signed_visual_seconds": 27.50055045261979,
+      "throughput_fit_target_seconds": 27.50055045261979,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::upscaled_64::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "upscaled_64",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 5667.2,
+        "mean_raw_patch_units_per_sample": 22668.8,
+        "mean_pixel_value_elements_per_sample": 34819276.8,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 145080320.0,
+        "vision_forward_flops_per_sample": 14928138181017.6
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-d2d5ad705018ce39"
+        ],
+        "max_reserved_bytes": 59267612672.0,
+        "max_allocated_bytes": 32403487744.0,
+        "measured_seconds": 472.3760778531432,
+        "effective_tokens": 3556757.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-a56dd98b4ef282e8"
+        ],
+        "max_reserved_bytes": 63615008768.0,
+        "max_allocated_bytes": 36726508032.0,
+        "measured_seconds": 521.1708954758942,
+        "effective_tokens": 3556757.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 4347396096.0,
+      "memory_fit_target_bytes": 4347396096.0,
+      "signed_visual_seconds": 48.794817622751,
+      "throughput_fit_target_seconds": 48.794817622751,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_128::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "native_128",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 2404.2,
+        "mean_raw_patch_units_per_sample": 9616.8,
+        "mean_pixel_value_elements_per_sample": 14771404.8,
+        "mean_sampled_frames_per_sample": 80.14,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 61547520.0,
+        "vision_forward_flops_per_sample": 5939485855948.8
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-eef1e17826e9a869"
+        ],
+        "max_reserved_bytes": 15017705472.0,
+        "max_allocated_bytes": 13657922048.0,
+        "measured_seconds": 275.6543105021119,
+        "effective_tokens": 2322553.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-92217f996a11fbf8"
+        ],
+        "max_reserved_bytes": 17400070144.0,
+        "max_allocated_bytes": 15499666432.0,
+        "measured_seconds": 279.335582729429,
+        "effective_tokens": 2322553.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 2382364672.0,
+      "memory_fit_target_bytes": 2382364672.0,
+      "signed_visual_seconds": 3.681272227317095,
+      "throughput_fit_target_seconds": 3.681272227317095,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_16::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "native_16",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 473.4,
+        "mean_raw_patch_units_per_sample": 1893.6,
+        "mean_pixel_value_elements_per_sample": 2908569.6,
+        "mean_sampled_frames_per_sample": 15.78,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 12119040.0,
+        "vision_forward_flops_per_sample": 1169516930457.5999
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-4834a6f914ee9026"
+        ],
+        "max_reserved_bytes": 12610174976.0,
+        "max_allocated_bytes": 11999112704.0,
+        "measured_seconds": 193.0792989730835,
+        "effective_tokens": 1479779.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-adf6b9690f9b116c"
+        ],
+        "max_reserved_bytes": 13008633856.0,
+        "max_allocated_bytes": 12316005888.0,
+        "measured_seconds": 190.41081286594272,
+        "effective_tokens": 1479779.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 398458880.0,
+      "memory_fit_target_bytes": 398458880.0,
+      "signed_visual_seconds": -2.6684861071407795,
+      "throughput_fit_target_seconds": 0.0,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::NOGC",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "native_64",
+      "mechanism_id": "NOGC",
+      "physical_mbs": 1,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1545.6,
+        "mean_raw_patch_units_per_sample": 6182.4,
+        "mean_pixel_value_elements_per_sample": 9496166.4,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 39567360.0,
+        "vision_forward_flops_per_sample": 3818346784358.3994
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-f610e01b6e6c40f1"
+        ],
+        "max_reserved_bytes": 52177141760.0,
+        "max_allocated_bytes": 42871153664.0,
+        "measured_seconds": 182.4013532102108,
+        "effective_tokens": 1945825.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-c907de1a6e664e66"
+        ],
+        "max_reserved_bytes": 52816773120.0,
+        "max_allocated_bytes": 43749650944.0,
+        "measured_seconds": 182.55195809341967,
+        "effective_tokens": 1945825.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 639631360.0,
+      "memory_fit_target_bytes": 639631360.0,
+      "signed_visual_seconds": 0.1506048832088709,
+      "throughput_fit_target_seconds": 0.1506048832088709,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::PRESSURE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "native_64",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "oom": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1545.6,
+        "mean_raw_patch_units_per_sample": 6182.4,
+        "mean_pixel_value_elements_per_sample": 9496166.4,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 158269440.0,
+        "vision_forward_flops_per_sample": 3818346784358.3994
+      },
+      "memory_observation_kind": "right_censored_base_and_real",
+      "right_censor_lower_bytes": 150142189568,
+      "exact_peak_target_bytes": null,
+      "oom_peak_is_unknown_not_imputed": true,
+      "job_ids": [
+        "h800vidfix-8d86c0777b27c49a",
+        "h800vidfix-015ad4a3fa739b69"
+      ]
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "native_64",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 4
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1545.6,
+        "mean_raw_patch_units_per_sample": 6182.4,
+        "mean_pixel_value_elements_per_sample": 9496166.4,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 39567360.0,
+        "vision_forward_flops_per_sample": 3818346784358.3994
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vidfix-5791b2efa690cb22",
+          "h800vidfix-a39baf1d53ec0a45"
+        ],
+        "max_reserved_bytes": 13688111104.0,
+        "max_allocated_bytes": 12706824704.0,
+        "measured_seconds": 243.59511043690145,
+        "effective_tokens": 1945825.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vidfix-dcce3d1107caafdf",
+          "h800vidfix-ceae16baf0617b9b"
+        ],
+        "max_reserved_bytes": 15456010240.0,
+        "max_allocated_bytes": 13880317952.0,
+        "measured_seconds": 242.89905878528953,
+        "effective_tokens": 1945825.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 1767899136.0,
+      "memory_fit_target_bytes": 1767899136.0,
+      "signed_visual_seconds": -0.6960516516119242,
+      "throughput_fit_target_seconds": 0.0,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::upscaled_64::SAFE",
+      "track": "frozen_video_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "upscaled_64",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 5667.2,
+        "mean_raw_patch_units_per_sample": 22668.8,
+        "mean_pixel_value_elements_per_sample": 34819276.8,
+        "mean_sampled_frames_per_sample": 51.52,
+        "mean_media_per_sample": 1.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 145080320.0,
+        "vision_forward_flops_per_sample": 14000604875980.799
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-d26ff9dad55b8674"
+        ],
+        "max_reserved_bytes": 16435380224.0,
+        "max_allocated_bytes": 14895497728.0,
+        "measured_seconds": 394.83374115265906,
+        "effective_tokens": 3496865.0,
+        "logical_samples": 372.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vidfix-b0424ca327dcd4e4"
+        ],
+        "max_reserved_bytes": 21485322240.0,
+        "max_allocated_bytes": 19327505920.0,
+        "measured_seconds": 412.5380741972476,
+        "effective_tokens": 3496865.0,
+        "logical_samples": 372.0
+      },
+      "signed_memory_delta_bytes": 5049942016.0,
+      "memory_fit_target_bytes": 5049942016.0,
+      "signed_visual_seconds": 17.704333044588566,
+      "throughput_fit_target_seconds": 17.704333044588566,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::NOGC",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "high",
+      "mechanism_id": "NOGC",
+      "physical_mbs": 1,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1509.048,
+        "mean_raw_patch_units_per_sample": 6036.192,
+        "mean_pixel_value_elements_per_sample": 7098561.792,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 35830835.712000005,
+        "vision_forward_flops_per_sample": 6024828892704.769
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-89d1f2143d2162e3"
+        ],
+        "max_reserved_bytes": 28714205184.0,
+        "max_allocated_bytes": 25265891328.0,
+        "measured_seconds": 142.8998249359429,
+        "effective_tokens": 2046888.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-b79b6e870192135c"
+        ],
+        "max_reserved_bytes": 35011952640.0,
+        "max_allocated_bytes": 26162845696.0,
+        "measured_seconds": 338.7801139950752,
+        "effective_tokens": 2046888.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": 6297747456.0,
+      "memory_fit_target_bytes": 6297747456.0,
+      "signed_visual_seconds": 195.88028905913234,
+      "throughput_fit_target_seconds": 195.88028905913234,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::PRESSURE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "high",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1509.048,
+        "mean_raw_patch_units_per_sample": 6036.192,
+        "mean_pixel_value_elements_per_sample": 7098561.792,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 143323342.84800002,
+        "vision_forward_flops_per_sample": 6024828892704.769
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-bb0f8560ea310546"
+        ],
+        "max_reserved_bytes": 113598529536.0,
+        "max_allocated_bytes": 74690675200.0,
+        "measured_seconds": 92.34567856416106,
+        "effective_tokens": 2046888.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-9e3d39f1c1f8e959"
+        ],
+        "max_reserved_bytes": 108928172032.0,
+        "max_allocated_bytes": 75518049792.0,
+        "measured_seconds": 291.9143633171916,
+        "effective_tokens": 2046888.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": -4670357504.0,
+      "memory_fit_target_bytes": 0.0,
+      "signed_visual_seconds": 199.56868475303054,
+      "throughput_fit_target_seconds": 199.56868475303054,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::SAFE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 4
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1509.048,
+        "mean_raw_patch_units_per_sample": 6036.192,
+        "mean_pixel_value_elements_per_sample": 7098561.792,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 35830835.712000005,
+        "vision_forward_flops_per_sample": 6024828892704.769
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vlfix-ebae5db0b2461d4f",
+          "h800vlfix-fc1c054199483b92"
+        ],
+        "max_reserved_bytes": 10622074880.0,
+        "max_allocated_bytes": 9997545984.0,
+        "measured_seconds": 193.49480988644063,
+        "effective_tokens": 2046888.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vlfix-d39e9a3d1318d475",
+          "h800vlfix-65c75bc53d1a82f5"
+        ],
+        "max_reserved_bytes": 12438208512.0,
+        "max_allocated_bytes": 10917026816.0,
+        "measured_seconds": 387.084780883044,
+        "effective_tokens": 2046888.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": 1816133632.0,
+      "memory_fit_target_bytes": 1816133632.0,
+      "signed_visual_seconds": 193.58997099660337,
+      "throughput_fit_target_seconds": 193.58997099660337,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::low::PRESSURE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "low",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 505.985,
+        "mean_raw_patch_units_per_sample": 2023.94,
+        "mean_pixel_value_elements_per_sample": 2380153.44,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 48056431.36000001,
+        "vision_forward_flops_per_sample": 2020129941045.76
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-d9f1402f43bbb29a"
+        ],
+        "max_reserved_bytes": 96181682176.0,
+        "max_allocated_bytes": 57910303232.0,
+        "measured_seconds": 70.74040138348937,
+        "effective_tokens": 1532326.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-6245a1f91f53f67c"
+        ],
+        "max_reserved_bytes": 92421488640.0,
+        "max_allocated_bytes": 58159645696.0,
+        "measured_seconds": 135.7094750907272,
+        "effective_tokens": 1532326.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": -3760193536.0,
+      "memory_fit_target_bytes": 0.0,
+      "signed_visual_seconds": 64.96907370723784,
+      "throughput_fit_target_seconds": 64.96907370723784,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::low::SAFE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen2p5_vl_3b",
+      "model_family": "qwen2p5_vl",
+      "media_tier": "low",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 505.985,
+        "mean_raw_patch_units_per_sample": 2023.94,
+        "mean_pixel_value_elements_per_sample": 2380153.44,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 32.0,
+        "vision_hidden_size": 1280.0,
+        "vision_parameter_elements": 631975680.0,
+        "projector_parameter_elements": 36708608.0,
+        "vision_dynamic_microbatch_bytes": 12014107.840000002,
+        "vision_forward_flops_per_sample": 2020129941045.76
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-1bf8726ec8834976"
+        ],
+        "max_reserved_bytes": 10051649536.0,
+        "max_allocated_bytes": 9632696320.0,
+        "measured_seconds": 187.20352415181696,
+        "effective_tokens": 1532326.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-f91cbd39326ca439"
+        ],
+        "max_reserved_bytes": 10479468544.0,
+        "max_allocated_bytes": 9942523904.0,
+        "measured_seconds": 244.68945368938148,
+        "effective_tokens": 1532326.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": 427819008.0,
+      "memory_fit_target_bytes": 427819008.0,
+      "signed_visual_seconds": 57.485929537564516,
+      "throughput_fit_target_seconds": 57.485929537564516,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::NOGC",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "high",
+      "mechanism_id": "NOGC",
+      "physical_mbs": 1,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1138.605,
+        "mean_raw_patch_units_per_sample": 4554.42,
+        "mean_pixel_value_elements_per_sample": 6995589.12,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 29148288.0,
+        "vision_forward_flops_per_sample": 2999232914595.84
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-af74155852db83fb"
+        ],
+        "max_reserved_bytes": 78427193344.0,
+        "max_allocated_bytes": 41053745664.0,
+        "measured_seconds": 185.89097561873496,
+        "effective_tokens": 1858664.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-0348215225ff65c1"
+        ],
+        "max_reserved_bytes": 77177290752.0,
+        "max_allocated_bytes": 41476453888.0,
+        "measured_seconds": 187.52528461255133,
+        "effective_tokens": 1858664.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": -1249902592.0,
+      "memory_fit_target_bytes": 0.0,
+      "signed_visual_seconds": 1.6343089938163757,
+      "throughput_fit_target_seconds": 1.6343089938163757,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::PRESSURE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "high",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1138.605,
+        "mean_raw_patch_units_per_sample": 4554.42,
+        "mean_pixel_value_elements_per_sample": 6995589.12,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 116593152.0,
+        "vision_forward_flops_per_sample": 2999232914595.84
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-476c711032cbc1a7"
+        ],
+        "max_reserved_bytes": 144573464576.0,
+        "max_allocated_bytes": 132388761600.0,
+        "measured_seconds": 147.42250286974013,
+        "effective_tokens": 1858664.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-70306b40647f89be"
+        ],
+        "max_reserved_bytes": 144611213312.0,
+        "max_allocated_bytes": 132174004224.0,
+        "measured_seconds": 156.1010100506246,
+        "effective_tokens": 1858664.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": 37748736.0,
+      "memory_fit_target_bytes": 37748736.0,
+      "signed_visual_seconds": 8.67850718088448,
+      "throughput_fit_target_seconds": 8.67850718088448,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::SAFE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 4
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1138.605,
+        "mean_raw_patch_units_per_sample": 4554.42,
+        "mean_pixel_value_elements_per_sample": 6995589.12,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 29148288.0,
+        "vision_forward_flops_per_sample": 2999232914595.84
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vlfix-6dc164448031e76d",
+          "h800vlfix-808f3c242aad74f7"
+        ],
+        "max_reserved_bytes": 53791948800.0,
+        "max_allocated_bytes": 17809874432.0,
+        "measured_seconds": 249.91911743581295,
+        "effective_tokens": 1858664.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vlfix-701d7def8f18baf4",
+          "h800vlfix-5b18ecaa06c93f5a"
+        ],
+        "max_reserved_bytes": 54031024128.0,
+        "max_allocated_bytes": 18523807232.0,
+        "measured_seconds": 250.80489699915051,
+        "effective_tokens": 1858664.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": 239075328.0,
+      "memory_fit_target_bytes": 239075328.0,
+      "signed_visual_seconds": 0.8857795633375645,
+      "throughput_fit_target_seconds": 0.8857795633375645,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::low::PRESSURE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "low",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 384.528,
+        "mean_raw_patch_units_per_sample": 1538.112,
+        "mean_pixel_value_elements_per_sample": 2362540.032,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 39375667.2,
+        "vision_forward_flops_per_sample": 1012896512999.4241
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-9854f70da1f4a304"
+        ],
+        "max_reserved_bytes": 147528351744.0,
+        "max_allocated_bytes": 107866231808.0,
+        "measured_seconds": 118.77183759398758,
+        "effective_tokens": 1471880.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-602b75160783c579"
+        ],
+        "max_reserved_bytes": 143967387648.0,
+        "max_allocated_bytes": 106226348544.0,
+        "measured_seconds": 121.73945732973516,
+        "effective_tokens": 1471880.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": -3560964096.0,
+      "memory_fit_target_bytes": 0.0,
+      "signed_visual_seconds": 2.9676197357475758,
+      "throughput_fit_target_seconds": 2.9676197357475758,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::low::SAFE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3_vl_4b",
+      "model_family": "qwen3_vl",
+      "media_tier": "low",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 384.528,
+        "mean_raw_patch_units_per_sample": 1538.112,
+        "mean_pixel_value_elements_per_sample": 2362540.032,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 109105152.0,
+        "vision_dynamic_microbatch_bytes": 9843916.8,
+        "vision_forward_flops_per_sample": 1012896512999.4241
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-130724c9f880e7d3"
+        ],
+        "max_reserved_bytes": 33764147200.0,
+        "max_allocated_bytes": 16234490880.0,
+        "measured_seconds": 208.77813351899385,
+        "effective_tokens": 1471880.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-66367731fd42a74e"
+        ],
+        "max_reserved_bytes": 33581694976.0,
+        "max_allocated_bytes": 16348077568.0,
+        "measured_seconds": 208.6787615623325,
+        "effective_tokens": 1471880.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": -182452224.0,
+      "memory_fit_target_bytes": 0.0,
+      "signed_visual_seconds": -0.09937195666134357,
+      "throughput_fit_target_seconds": 0.0,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::NOGC",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "high",
+      "mechanism_id": "NOGC",
+      "physical_mbs": 1,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1138.605,
+        "mean_raw_patch_units_per_sample": 4554.42,
+        "mean_pixel_value_elements_per_sample": 6995589.12,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 29148288.0,
+        "vision_forward_flops_per_sample": 2812880913822.7197
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-4b80bb3ac1b59955"
+        ],
+        "max_reserved_bytes": 35817259008.0,
+        "max_allocated_bytes": 32859373056.0,
+        "measured_seconds": 180.36702442914248,
+        "effective_tokens": 1929292.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-2e86fc5b3323b703"
+        ],
+        "max_reserved_bytes": 42203086848.0,
+        "max_allocated_bytes": 33280371712.0,
+        "measured_seconds": 181.58486260659993,
+        "effective_tokens": 1929292.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": 6385827840.0,
+      "memory_fit_target_bytes": 6385827840.0,
+      "signed_visual_seconds": 1.2178381774574518,
+      "throughput_fit_target_seconds": 1.2178381774574518,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::PRESSURE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "high",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1138.605,
+        "mean_raw_patch_units_per_sample": 4554.42,
+        "mean_pixel_value_elements_per_sample": 6995589.12,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 116593152.0,
+        "vision_forward_flops_per_sample": 2812880913822.7197
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-60e556ef7a8a31ac"
+        ],
+        "max_reserved_bytes": 124572925952.0,
+        "max_allocated_bytes": 99392393728.0,
+        "measured_seconds": 142.83557401038706,
+        "effective_tokens": 1929292.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-662b41db36106616"
+        ],
+        "max_reserved_bytes": 140521766912.0,
+        "max_allocated_bytes": 99288007680.0,
+        "measured_seconds": 147.3388943336904,
+        "effective_tokens": 1929292.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": 15948840960.0,
+      "memory_fit_target_bytes": 15948840960.0,
+      "signed_visual_seconds": 4.503320323303342,
+      "throughput_fit_target_seconds": 4.503320323303342,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::SAFE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "high",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 4
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 1138.605,
+        "mean_raw_patch_units_per_sample": 4554.42,
+        "mean_pixel_value_elements_per_sample": 6995589.12,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 29148288.0,
+        "vision_forward_flops_per_sample": 2812880913822.7197
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vlfix-7eff4bf0a65e9b09",
+          "h800vlfix-8d065c0334b47b52"
+        ],
+        "max_reserved_bytes": 12614369280.0,
+        "max_allocated_bytes": 11951254016.0,
+        "measured_seconds": 238.40006844326854,
+        "effective_tokens": 1929292.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 2,
+        "job_ids": [
+          "h800vlfix-2cbcf765028aadff",
+          "h800vlfix-45b1af738f50e956"
+        ],
+        "max_reserved_bytes": 14514388992.0,
+        "max_allocated_bytes": 12800147968.0,
+        "measured_seconds": 238.18621225003153,
+        "effective_tokens": 1929292.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": 1900019712.0,
+      "memory_fit_target_bytes": 1900019712.0,
+      "signed_visual_seconds": -0.21385619323700666,
+      "throughput_fit_target_seconds": 0.0,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::low::PRESSURE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "low",
+      "mechanism_id": "PRESSURE",
+      "physical_mbs": 4,
+      "gradient_checkpointing": false,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 384.528,
+        "mean_raw_patch_units_per_sample": 1538.112,
+        "mean_pixel_value_elements_per_sample": 2362540.032,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 39375667.2,
+        "vision_forward_flops_per_sample": 949961990356.9921
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-b301f619a36cd036"
+        ],
+        "max_reserved_bytes": 113481089024.0,
+        "max_allocated_bytes": 81989422080.0,
+        "measured_seconds": 116.19726842269301,
+        "effective_tokens": 1542508.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-595e60c9b0cb0245"
+        ],
+        "max_reserved_bytes": 110398275584.0,
+        "max_allocated_bytes": 80907752960.0,
+        "measured_seconds": 117.59401114843786,
+        "effective_tokens": 1542508.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": -3082813440.0,
+      "memory_fit_target_bytes": 0.0,
+      "signed_visual_seconds": 1.3967427257448435,
+      "throughput_fit_target_seconds": 1.3967427257448435,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::low::SAFE",
+      "track": "frozen_vision_decomposition",
+      "model_id": "qwen3p5_4b",
+      "model_family": "qwen3_5",
+      "media_tier": "low",
+      "mechanism_id": "SAFE",
+      "physical_mbs": 1,
+      "gradient_checkpointing": true,
+      "classification_counts": {
+        "success": 2
+      },
+      "features": {
+        "mean_visual_tokens_per_sample": 384.528,
+        "mean_raw_patch_units_per_sample": 1538.112,
+        "mean_pixel_value_elements_per_sample": 2362540.032,
+        "mean_sampled_frames_per_sample": 2.0,
+        "mean_media_per_sample": 2.0,
+        "vision_depth": 24.0,
+        "vision_hidden_size": 1024.0,
+        "vision_parameter_elements": 306242560.0,
+        "projector_parameter_elements": 27271680.0,
+        "vision_dynamic_microbatch_bytes": 9843916.8,
+        "vision_forward_flops_per_sample": 949961990356.9921
+      },
+      "memory_observation_kind": "paired_exact_success_centers",
+      "control": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-585cc03b30f71b6b"
+        ],
+        "max_reserved_bytes": 12178161664.0,
+        "max_allocated_bytes": 11623384576.0,
+        "measured_seconds": 237.60811454243958,
+        "effective_tokens": 1542508.0,
+        "logical_samples": 512.0
+      },
+      "real_media": {
+        "repeat_count": 1,
+        "job_ids": [
+          "h800vlfix-cef1524a20aa2bc3"
+        ],
+        "max_reserved_bytes": 12492734464.0,
+        "max_allocated_bytes": 11860631040.0,
+        "measured_seconds": 243.43881490454078,
+        "effective_tokens": 1542508.0,
+        "logical_samples": 512.0
+      },
+      "signed_memory_delta_bytes": 314572800.0,
+      "memory_fit_target_bytes": 314572800.0,
+      "signed_visual_seconds": 5.830700362101197,
+      "throughput_fit_target_seconds": 5.830700362101197,
+      "oom_peak_is_unknown_not_imputed": false,
+      "right_censor_lower_bytes": null
+    }
+  ],
+  "memory_cross_validation_predictions": [
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_128::SAFE",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 2698790225.370812,
+      "predicted_peak_bytes": 14631585105.370811,
+      "observed_peak_bytes": 13457424384.0,
+      "absolute_percentage_error": 0.08725003298304324,
+      "signed_percentage_error": 0.08725003298304324
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_16::SAFE",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 531406410.73560524,
+      "predicted_peak_bytes": 10918600266.735605,
+      "observed_peak_bytes": 10752098304.0,
+      "absolute_percentage_error": 0.015485532035515615,
+      "signed_percentage_error": 0.015485532035515615
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::NOGC",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 1734984681.9453983,
+      "predicted_peak_bytes": 44502205417.9454,
+      "observed_peak_bytes": 46674214912.0,
+      "absolute_percentage_error": 0.04653553355208506,
+      "signed_percentage_error": -0.04653553355208506
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::PRESSURE",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 6939938727.781593,
+      "predicted_peak_bytes": 119762522023.78159,
+      "observed_peak_bytes": 105539174400.0,
+      "absolute_percentage_error": 0.1347684185009277,
+      "signed_percentage_error": 0.1347684185009277
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::SAFE",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 1734984681.9453983,
+      "predicted_peak_bytes": 13036536809.945398,
+      "observed_peak_bytes": 12658409472.0,
+      "absolute_percentage_error": 0.029871631090920614,
+      "signed_percentage_error": 0.029871631090920614
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::upscaled_64::SAFE",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 7860006362.146576,
+      "predicted_peak_bytes": 21764124122.146576,
+      "observed_peak_bytes": 19193135104.0,
+      "absolute_percentage_error": 0.13395357268186792,
+      "signed_percentage_error": 0.13395357268186792
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::NOGC",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 1539958100.6024961,
+      "predicted_peak_bytes": 30254163284.602497,
+      "observed_peak_bytes": 35011952640.0,
+      "absolute_percentage_error": 0.13589043159968994,
+      "signed_percentage_error": -0.13589043159968994
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::PRESSURE",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 6159832402.409985,
+      "predicted_peak_bytes": 119758361938.40999,
+      "observed_peak_bytes": 108928172032.0,
+      "absolute_percentage_error": 0.09942505877385321,
+      "signed_percentage_error": 0.09942505877385321
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::SAFE",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 1539958100.6024961,
+      "predicted_peak_bytes": 12162032980.602497,
+      "observed_peak_bytes": 12438208512.0,
+      "absolute_percentage_error": 0.022203802993900346,
+      "signed_percentage_error": -0.022203802993900346
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::low::PRESSURE",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 2065396725.7061512,
+      "predicted_peak_bytes": 98247078901.70615,
+      "observed_peak_bytes": 92421488640.0,
+      "absolute_percentage_error": 0.06303285466865804,
+      "signed_percentage_error": 0.06303285466865804
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::low::SAFE",
+      "held_out_family": "qwen2p5_vl",
+      "predicted_visual_delta_bytes": 516349181.4265378,
+      "predicted_peak_bytes": 10567998717.426538,
+      "observed_peak_bytes": 10479468544.0,
+      "absolute_percentage_error": 0.008447964040812606,
+      "signed_percentage_error": 0.008447964040812606
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_128::SAFE",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 1058746523.6703062,
+      "predicted_peak_bytes": 16076451995.670307,
+      "observed_peak_bytes": 17400070144.0,
+      "absolute_percentage_error": 0.07606970186761641,
+      "signed_percentage_error": -0.07606970186761641
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_16::SAFE",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 208472924.17665875,
+      "predicted_peak_bytes": 12818647900.176659,
+      "observed_peak_bytes": 13008633856.0,
+      "absolute_percentage_error": 0.014604604751460082,
+      "signed_percentage_error": -0.014604604751460082
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::NOGC",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 680641638.3765182,
+      "predicted_peak_bytes": 52857783398.37652,
+      "observed_peak_bytes": 52816773120.0,
+      "absolute_percentage_error": 0.0007764631565685409,
+      "signed_percentage_error": 0.0007764631565685409
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::SAFE",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 680641638.3765182,
+      "predicted_peak_bytes": 14368752742.376518,
+      "observed_peak_bytes": 15456010240.0,
+      "absolute_percentage_error": 0.07034528838559317,
+      "signed_percentage_error": -0.07034528838559317
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::upscaled_64::SAFE",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 2495686007.380567,
+      "predicted_peak_bytes": 18931066231.380566,
+      "observed_peak_bytes": 21485322240.0,
+      "absolute_percentage_error": 0.11888376539515355,
+      "signed_percentage_error": -0.11888376539515355
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::NOGC",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 501411731.7958693,
+      "predicted_peak_bytes": 36318670739.79587,
+      "observed_peak_bytes": 42203086848.0,
+      "absolute_percentage_error": 0.13943094090244235,
+      "signed_percentage_error": -0.13943094090244235
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::PRESSURE",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 2005646927.1834772,
+      "predicted_peak_bytes": 126578572879.18347,
+      "observed_peak_bytes": 140521766912.0,
+      "absolute_percentage_error": 0.09922444286904164,
+      "signed_percentage_error": -0.09922444286904164
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::SAFE",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 501411731.7958693,
+      "predicted_peak_bytes": 13115781011.79587,
+      "observed_peak_bytes": 14514388992.0,
+      "absolute_percentage_error": 0.09636010037866638,
+      "signed_percentage_error": -0.09636010037866638
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::low::PRESSURE",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 677344119.8800358,
+      "predicted_peak_bytes": 114158433143.88004,
+      "observed_peak_bytes": 110398275584.0,
+      "absolute_percentage_error": 0.03405993019355624,
+      "signed_percentage_error": 0.03405993019355624
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::low::SAFE",
+      "held_out_family": "qwen3_5",
+      "predicted_visual_delta_bytes": 169336029.97000894,
+      "predicted_peak_bytes": 12347497693.970009,
+      "observed_peak_bytes": 12492734464.0,
+      "absolute_percentage_error": 0.01162569895714316,
+      "signed_percentage_error": -0.01162569895714316
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_128::SAFE",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 2085730587.8375561,
+      "predicted_peak_bytes": 61399480603.837555,
+      "observed_peak_bytes": 60865642496.0,
+      "absolute_percentage_error": 0.008770762715149871,
+      "signed_percentage_error": 0.008770762715149871
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_16::SAFE",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 410691648.066841,
+      "predicted_peak_bytes": 28367824960.06684,
+      "observed_peak_bytes": 28147974144.0,
+      "absolute_percentage_error": 0.007810537800771122,
+      "signed_percentage_error": 0.007810537800771122
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::NOGC",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 1340863986.5908523,
+      "predicted_peak_bytes": 72075703794.59085,
+      "observed_peak_bytes": 70982303744.0,
+      "absolute_percentage_error": 0.015403840012494285,
+      "signed_percentage_error": 0.015403840012494285
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::SAFE",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 1340863986.5908523,
+      "predicted_peak_bytes": 41746691570.59085,
+      "observed_peak_bytes": 41406169088.0,
+      "absolute_percentage_error": 0.00822395527263442,
+      "signed_percentage_error": 0.00822395527263442
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::upscaled_64::SAFE",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 4916501284.166458,
+      "predicted_peak_bytes": 64184113956.16646,
+      "observed_peak_bytes": 63615008768.0,
+      "absolute_percentage_error": 0.008946083623786905,
+      "signed_percentage_error": 0.008946083623786905
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::NOGC",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 987781081.4261628,
+      "predicted_peak_bytes": 79414974425.42616,
+      "observed_peak_bytes": 77177290752.0,
+      "absolute_percentage_error": 0.02899406874253585,
+      "signed_percentage_error": 0.02899406874253585
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::PRESSURE",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 3951124325.7046514,
+      "predicted_peak_bytes": 148524588901.70465,
+      "observed_peak_bytes": 144611213312.0,
+      "absolute_percentage_error": 0.027061356447245277,
+      "signed_percentage_error": 0.027061356447245277
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::SAFE",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 987781081.4261628,
+      "predicted_peak_bytes": 54779729881.42616,
+      "observed_peak_bytes": 54031024128.0,
+      "absolute_percentage_error": 0.013856960246625638,
+      "signed_percentage_error": 0.013856960246625638
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::low::PRESSURE",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 1334367875.351468,
+      "predicted_peak_bytes": 148862719619.35147,
+      "observed_peak_bytes": 143967387648.0,
+      "absolute_percentage_error": 0.03400306174423706,
+      "signed_percentage_error": 0.03400306174423706
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::low::SAFE",
+      "held_out_family": "qwen3_vl",
+      "predicted_visual_delta_bytes": 333591968.837867,
+      "predicted_peak_bytes": 34097739168.837868,
+      "observed_peak_bytes": 33581694976.0,
+      "absolute_percentage_error": 0.015366829851997332,
+      "signed_percentage_error": 0.015366829851997332
+    }
+  ],
+  "throughput_cross_validation_predictions": [
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_128::SAFE",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::native_128",
+      "coefficient_seconds_per_pflop": 75.61451383558445,
+      "predicted_visual_seconds": 296.9976720903238,
+      "predicted_step_seconds": 491.46292490513827,
+      "observed_step_seconds": 536.7885088585317,
+      "absolute_percentage_error": 0.08443843935813244,
+      "predicted_effective_tokens_per_second": 4760.342808059376,
+      "observed_effective_tokens_per_second": 4358.386890537133,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_128",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_16::SAFE",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::native_16",
+      "coefficient_seconds_per_pflop": 76.68341173950586,
+      "predicted_visual_seconds": 59.307138286789794,
+      "predicted_step_seconds": 211.30217136654807,
+      "observed_step_seconds": 215.04507362283766,
+      "absolute_percentage_error": 0.017405198794993915,
+      "predicted_effective_tokens_per_second": 7263.190861099536,
+      "observed_effective_tokens_per_second": 7136.773580276115,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_16",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::NOGC",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::native_64",
+      "coefficient_seconds_per_pflop": 76.32581086626065,
+      "predicted_visual_seconds": 192.72844800635997,
+      "predicted_step_seconds": 319.502252706362,
+      "observed_step_seconds": 343.5860327910632,
+      "absolute_percentage_error": 0.07009534086429725,
+      "predicted_effective_tokens_per_second": 6198.679299517076,
+      "observed_effective_tokens_per_second": 5764.180761108963,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_64",
+        "mechanism_id": "NOGC"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::PRESSURE",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::native_64",
+      "coefficient_seconds_per_pflop": 76.32581086626065,
+      "predicted_visual_seconds": 192.72844800635997,
+      "predicted_step_seconds": 292.47078791171134,
+      "observed_step_seconds": 317.4153806362301,
+      "absolute_percentage_error": 0.07858659109246569,
+      "predicted_effective_tokens_per_second": 6771.589101739127,
+      "observed_effective_tokens_per_second": 6239.432997954556,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_64",
+        "mechanism_id": "PRESSURE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::native_64::SAFE",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::native_64",
+      "coefficient_seconds_per_pflop": 76.32581086626065,
+      "predicted_visual_seconds": 192.72844800635997,
+      "predicted_step_seconds": 364.0737791769561,
+      "observed_step_seconds": 388.09610068798065,
+      "absolute_percentage_error": 0.061897868771265685,
+      "predicted_effective_tokens_per_second": 5439.809492672617,
+      "observed_effective_tokens_per_second": 5103.096878554482,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_64",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen2p5_vl_3b::upscaled_64::SAFE",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::upscaled_64",
+      "coefficient_seconds_per_pflop": 79.13672537990263,
+      "predicted_visual_seconds": 905.2733293432011,
+      "predicted_step_seconds": 1239.680074937196,
+      "observed_step_seconds": 1204.7943401616067,
+      "absolute_percentage_error": 0.028955759180367524,
+      "predicted_effective_tokens_per_second": 3419.587106144917,
+      "observed_effective_tokens_per_second": 3518.603846886739,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "upscaled_64",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_128::SAFE",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_video_decomposition::native_128",
+      "coefficient_seconds_per_pflop": 8.970662008335553,
+      "predicted_visual_seconds": 21.1336803073952,
+      "predicted_step_seconds": 337.6044127951333,
+      "observed_step_seconds": 365.6871622707695,
+      "absolute_percentage_error": 0.076794463609971,
+      "predicted_effective_tokens_per_second": 7056.9130903088235,
+      "observed_effective_tokens_per_second": 6514.981234796374,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_128",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_16::SAFE",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_video_decomposition::native_16",
+      "coefficient_seconds_per_pflop": 10.558723769760784,
+      "predicted_visual_seconds": 4.8980106906403815,
+      "predicted_step_seconds": 221.56386958522694,
+      "observed_step_seconds": 222.02754344791174,
+      "absolute_percentage_error": 0.0020883619008899013,
+      "predicted_effective_tokens_per_second": 6949.106832636126,
+      "observed_effective_tokens_per_second": 6934.594582681634,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_16",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::NOGC",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_video_decomposition::native_64",
+      "coefficient_seconds_per_pflop": 10.091657010220013,
+      "predicted_visual_seconds": 15.28409179650756,
+      "predicted_step_seconds": 215.57259597048673,
+      "observed_step_seconds": 229.25199354439974,
+      "absolute_percentage_error": 0.059669699540753074,
+      "predicted_effective_tokens_per_second": 9304.137156072451,
+      "observed_effective_tokens_per_second": 8748.962087483651,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_64",
+        "mechanism_id": "NOGC"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::native_64::SAFE",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_video_decomposition::native_64",
+      "coefficient_seconds_per_pflop": 10.091657010220013,
+      "predicted_visual_seconds": 15.28409179650756,
+      "predicted_step_seconds": 286.631528017824,
+      "observed_step_seconds": 298.84798667393625,
+      "absolute_percentage_error": 0.040878504125380855,
+      "predicted_effective_tokens_per_second": 6997.544945143913,
+      "observed_effective_tokens_per_second": 6711.49577523631,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_64",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3_vl_4b::upscaled_64::SAFE",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_video_decomposition::upscaled_64",
+      "coefficient_seconds_per_pflop": 15.692723697186539,
+      "predicted_visual_seconds": 87.14589097718438,
+      "predicted_step_seconds": 559.5219688303276,
+      "observed_step_seconds": 521.1708954758942,
+      "absolute_percentage_error": 0.073586368094124,
+      "predicted_effective_tokens_per_second": 6356.778103700463,
+      "observed_effective_tokens_per_second": 6824.550317132034,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_video_decomposition",
+        "media_tier": "upscaled_64",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_128::SAFE",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_video_decomposition::native_128",
+      "coefficient_seconds_per_pflop": 3.05971651834411,
+      "predicted_visual_seconds": 6.760409190017402,
+      "predicted_step_seconds": 282.4147196921293,
+      "observed_step_seconds": 279.335582729429,
+      "absolute_percentage_error": 0.011023074585105208,
+      "predicted_effective_tokens_per_second": 8223.909159309756,
+      "observed_effective_tokens_per_second": 8314.561923353958,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_128",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_16::SAFE",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_video_decomposition::native_16",
+      "coefficient_seconds_per_pflop": 2.8884202777886974,
+      "predicted_visual_seconds": 1.2566369871801442,
+      "predicted_step_seconds": 194.33593596026364,
+      "observed_step_seconds": 190.41081286594272,
+      "absolute_percentage_error": 0.020613971629249717,
+      "predicted_effective_tokens_per_second": 7614.541246260157,
+      "observed_effective_tokens_per_second": 7771.507183480316,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_16",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::NOGC",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_video_decomposition::native_64",
+      "coefficient_seconds_per_pflop": 3.038359571119112,
+      "predicted_visual_seconds": 4.315761905295887,
+      "predicted_step_seconds": 186.7171151155067,
+      "observed_step_seconds": 182.55195809341967,
+      "absolute_percentage_error": 0.022816282364692686,
+      "predicted_effective_tokens_per_second": 10421.246058757262,
+      "observed_effective_tokens_per_second": 10659.020151425808,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_64",
+        "mechanism_id": "NOGC"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::native_64::SAFE",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_video_decomposition::native_64",
+      "coefficient_seconds_per_pflop": 3.038359571119112,
+      "predicted_visual_seconds": 4.315761905295887,
+      "predicted_step_seconds": 247.91087234219734,
+      "observed_step_seconds": 242.89905878528953,
+      "absolute_percentage_error": 0.02063331814446423,
+      "predicted_effective_tokens_per_second": 7848.88932710515,
+      "observed_effective_tokens_per_second": 8010.837957672001,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_video_decomposition",
+        "media_tier": "native_64",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_video_decomposition::qwen3p5_4b::upscaled_64::SAFE",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_video_decomposition::upscaled_64",
+      "coefficient_seconds_per_pflop": 1.3559153915944469,
+      "predicted_visual_seconds": 7.061912459186561,
+      "predicted_step_seconds": 401.8956536118456,
+      "observed_step_seconds": 412.5380741972476,
+      "absolute_percentage_error": 0.025797426349339903,
+      "predicted_effective_tokens_per_second": 8700.927637742765,
+      "observed_effective_tokens_per_second": 8476.46609783716,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_video_decomposition",
+        "media_tier": "upscaled_64",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::NOGC",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_vision_decomposition::high",
+      "coefficient_seconds_per_pflop": 77.50567422742208,
+      "predicted_visual_seconds": 239.08271382217518,
+      "predicted_step_seconds": 381.98253875811804,
+      "observed_step_seconds": 338.7801139950752,
+      "absolute_percentage_error": 0.1275234967412251,
+      "predicted_effective_tokens_per_second": 5358.590491216528,
+      "observed_effective_tokens_per_second": 6041.936688260737,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "high",
+        "mechanism_id": "NOGC"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::PRESSURE",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_vision_decomposition::high",
+      "coefficient_seconds_per_pflop": 77.50567422742208,
+      "predicted_visual_seconds": 239.08271382217518,
+      "predicted_step_seconds": 331.4283923863362,
+      "observed_step_seconds": 291.9143633171916,
+      "absolute_percentage_error": 0.13536171574472688,
+      "predicted_effective_tokens_per_second": 6175.958508750824,
+      "observed_effective_tokens_per_second": 7011.94684886358,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "high",
+        "mechanism_id": "PRESSURE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::high::SAFE",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_vision_decomposition::high",
+      "coefficient_seconds_per_pflop": 77.50567422742208,
+      "predicted_visual_seconds": 239.08271382217518,
+      "predicted_step_seconds": 432.5775237086158,
+      "observed_step_seconds": 387.084780883044,
+      "absolute_percentage_error": 0.11752656025842878,
+      "predicted_effective_tokens_per_second": 4731.840855834164,
+      "observed_effective_tokens_per_second": 5287.9578353106535,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "high",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::low::PRESSURE",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_vision_decomposition::low",
+      "coefficient_seconds_per_pflop": 76.81612115811272,
+      "predicted_visual_seconds": 79.45141570892912,
+      "predicted_step_seconds": 150.1918170924185,
+      "observed_step_seconds": 135.7094750907272,
+      "absolute_percentage_error": 0.1067157764187745,
+      "predicted_effective_tokens_per_second": 10202.45995863479,
+      "observed_effective_tokens_per_second": 11291.22339450196,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "low",
+        "mechanism_id": "PRESSURE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen2p5_vl_3b::low::SAFE",
+      "held_out_scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_vision_decomposition::low",
+      "coefficient_seconds_per_pflop": 76.81612115811272,
+      "predicted_visual_seconds": 79.45141570892912,
+      "predicted_step_seconds": 266.6549398607461,
+      "observed_step_seconds": 244.68945368938148,
+      "absolute_percentage_error": 0.08976883081870968,
+      "predicted_effective_tokens_per_second": 5746.475204247929,
+      "observed_effective_tokens_per_second": 6262.329564661972,
+      "source": {
+        "model_id": "qwen2p5_vl_3b",
+        "model_family": "qwen2p5_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "low",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::NOGC",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_vision_decomposition::high",
+      "coefficient_seconds_per_pflop": 11.053563409036734,
+      "predicted_visual_seconds": 16.973932134377048,
+      "predicted_step_seconds": 202.864907753112,
+      "observed_step_seconds": 187.52528461255133,
+      "absolute_percentage_error": 0.08180029254323795,
+      "predicted_effective_tokens_per_second": 9162.077466162886,
+      "observed_effective_tokens_per_second": 9911.538083198819,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "high",
+        "mechanism_id": "NOGC"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::PRESSURE",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_vision_decomposition::high",
+      "coefficient_seconds_per_pflop": 11.053563409036734,
+      "predicted_visual_seconds": 16.973932134377048,
+      "predicted_step_seconds": 164.39643500411717,
+      "observed_step_seconds": 156.1010100506246,
+      "absolute_percentage_error": 0.053141391915416225,
+      "predicted_effective_tokens_per_second": 11305.987261545248,
+      "observed_effective_tokens_per_second": 11906.803161601727,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "high",
+        "mechanism_id": "PRESSURE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::high::SAFE",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_vision_decomposition::high",
+      "coefficient_seconds_per_pflop": 11.053563409036734,
+      "predicted_visual_seconds": 16.973932134377048,
+      "predicted_step_seconds": 266.89304957019,
+      "observed_step_seconds": 250.80489699915051,
+      "absolute_percentage_error": 0.06414608631463037,
+      "predicted_effective_tokens_per_second": 6964.077944304771,
+      "observed_effective_tokens_per_second": 7410.7962892219575,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "high",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::low::PRESSURE",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_vision_decomposition::low",
+      "coefficient_seconds_per_pflop": 10.614117983170225,
+      "predicted_visual_seconds": 5.504513583983411,
+      "predicted_step_seconds": 124.276351177971,
+      "observed_step_seconds": 121.73945732973516,
+      "absolute_percentage_error": 0.020838714939927616,
+      "predicted_effective_tokens_per_second": 11843.604885793451,
+      "observed_effective_tokens_per_second": 12090.410391869635,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "low",
+        "mechanism_id": "PRESSURE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3_vl_4b::low::SAFE",
+      "held_out_scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_vision_decomposition::low",
+      "coefficient_seconds_per_pflop": 10.614117983170225,
+      "predicted_visual_seconds": 5.504513583983411,
+      "predicted_step_seconds": 214.28264710297728,
+      "observed_step_seconds": 208.6787615623325,
+      "absolute_percentage_error": 0.026854124965519643,
+      "predicted_effective_tokens_per_second": 6868.871651061238,
+      "observed_effective_tokens_per_second": 7053.329188750951,
+      "source": {
+        "model_id": "qwen3_vl_4b",
+        "model_family": "qwen3_vl",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "low",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::NOGC",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_vision_decomposition::high",
+      "coefficient_seconds_per_pflop": 2.9667291166485477,
+      "predicted_visual_seconds": 4.272668522855852,
+      "predicted_step_seconds": 184.6396929519983,
+      "observed_step_seconds": 181.58486260659993,
+      "absolute_percentage_error": 0.016823155309022786,
+      "predicted_effective_tokens_per_second": 10448.955851012855,
+      "observed_effective_tokens_per_second": 10624.740258111568,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "high",
+        "mechanism_id": "NOGC"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::PRESSURE",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_vision_decomposition::high",
+      "coefficient_seconds_per_pflop": 2.9667291166485477,
+      "predicted_visual_seconds": 4.272668522855852,
+      "predicted_step_seconds": 147.1082425332429,
+      "observed_step_seconds": 147.3388943336904,
+      "absolute_percentage_error": 0.0015654508708686787,
+      "predicted_effective_tokens_per_second": 13114.778388872579,
+      "observed_effective_tokens_per_second": 13094.24784762247,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "high",
+        "mechanism_id": "PRESSURE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::high::SAFE",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_vision_decomposition::high",
+      "coefficient_seconds_per_pflop": 2.9667291166485477,
+      "predicted_visual_seconds": 4.272668522855852,
+      "predicted_step_seconds": 242.67273696612438,
+      "observed_step_seconds": 238.18621225003153,
+      "absolute_percentage_error": 0.018836206654074594,
+      "predicted_effective_tokens_per_second": 7950.180247356411,
+      "observed_effective_tokens_per_second": 8099.931485432758,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "high",
+        "mechanism_id": "SAFE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::low::PRESSURE",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_vision_decomposition::low",
+      "coefficient_seconds_per_pflop": 2.843748968168846,
+      "predicted_visual_seconds": 1.3831441560971875,
+      "predicted_step_seconds": 117.5804125787902,
+      "observed_step_seconds": 117.59401114843786,
+      "absolute_percentage_error": 0.00011563998467989389,
+      "predicted_effective_tokens_per_second": 13118.749680916208,
+      "observed_effective_tokens_per_second": 13117.232628904087,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "low",
+        "mechanism_id": "PRESSURE"
+      }
+    },
+    {
+      "pair_unit_id": "frozen_vision_decomposition::qwen3p5_4b::low::SAFE",
+      "held_out_scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_vision_decomposition::low",
+      "coefficient_seconds_per_pflop": 2.843748968168846,
+      "predicted_visual_seconds": 1.3831441560971875,
+      "predicted_step_seconds": 238.99125869853677,
+      "observed_step_seconds": 243.43881490454078,
+      "absolute_percentage_error": 0.01826970858261867,
+      "predicted_effective_tokens_per_second": 6454.244428854686,
+      "observed_effective_tokens_per_second": 6336.3272640185205,
+      "source": {
+        "model_id": "qwen3p5_4b",
+        "model_family": "qwen3_5",
+        "track": "frozen_vision_decomposition",
+        "media_tier": "low",
+        "mechanism_id": "SAFE"
+      }
+    }
+  ],
+  "throughput_fit_scenarios": [
+    {
+      "scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::native_128",
+      "model_family": "qwen2p5_vl",
+      "model_id": "qwen2p5_vl_3b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "native_128",
+      "vision_forward_pflop": 3.927786571981578,
+      "visual_seconds_target": 342.32325604371727,
+      "mechanisms_collapsed": [
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::native_16",
+      "model_family": "qwen2p5_vl",
+      "model_id": "qwen2p5_vl_3b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "native_16",
+      "vision_forward_pflop": 0.7734024470410445,
+      "visual_seconds_target": 63.050040543079376,
+      "mechanisms_collapsed": [
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::native_64",
+      "model_family": "qwen2p5_vl",
+      "model_id": "qwen2p5_vl_3b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "native_64",
+      "vision_forward_pflop": 2.525075669933752,
+      "visual_seconds_target": 217.07867944644144,
+      "mechanisms_collapsed": [
+        "NOGC",
+        "PRESSURE",
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_video_decomposition::upscaled_64",
+      "model_family": "qwen2p5_vl",
+      "model_id": "qwen2p5_vl_3b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "upscaled_64",
+      "vision_forward_pflop": 11.439357959245331,
+      "visual_seconds_target": 870.3875945676118,
+      "mechanisms_collapsed": [
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_vision_decomposition::high",
+      "model_family": "qwen2p5_vl",
+      "model_id": "qwen2p5_vl_3b",
+      "track": "frozen_vision_decomposition",
+      "media_tier": "high",
+      "vision_forward_pflop": 3.084712393064842,
+      "visual_seconds_target": 196.34631493625542,
+      "mechanisms_collapsed": [
+        "NOGC",
+        "PRESSURE",
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen2p5_vl::qwen2p5_vl_3b::frozen_vision_decomposition::low",
+      "model_family": "qwen2p5_vl",
+      "model_id": "qwen2p5_vl_3b",
+      "track": "frozen_vision_decomposition",
+      "media_tier": "low",
+      "vision_forward_pflop": 1.034306529815429,
+      "visual_seconds_target": 61.22750162240118,
+      "mechanisms_collapsed": [
+        "PRESSURE",
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_video_decomposition::native_128",
+      "model_family": "qwen3_5",
+      "model_id": "qwen3p5_4b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "native_128",
+      "vision_forward_pflop": 2.2094887384129533,
+      "visual_seconds_target": 3.681272227317095,
+      "mechanisms_collapsed": [
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_video_decomposition::native_16",
+      "model_family": "qwen3_5",
+      "model_id": "qwen3p5_4b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "native_16",
+      "vision_forward_pflop": 0.4350602981302271,
+      "visual_seconds_target": 0.0,
+      "mechanisms_collapsed": [
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_video_decomposition::native_64",
+      "model_family": "qwen3_5",
+      "model_id": "qwen3p5_4b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "native_64",
+      "vision_forward_pflop": 1.4204250037813244,
+      "visual_seconds_target": 0.07530244160443544,
+      "mechanisms_collapsed": [
+        "NOGC",
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_video_decomposition::upscaled_64",
+      "model_family": "qwen3_5",
+      "model_id": "qwen3p5_4b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "upscaled_64",
+      "vision_forward_pflop": 5.208225013864857,
+      "visual_seconds_target": 17.704333044588566,
+      "mechanisms_collapsed": [
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_vision_decomposition::high",
+      "model_family": "qwen3_5",
+      "model_id": "qwen3p5_4b",
+      "track": "frozen_vision_decomposition",
+      "media_tier": "high",
+      "vision_forward_pflop": 1.4401950278772324,
+      "visual_seconds_target": 1.9070528335869312,
+      "mechanisms_collapsed": [
+        "NOGC",
+        "PRESSURE",
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_5::qwen3p5_4b::frozen_vision_decomposition::low",
+      "model_family": "qwen3_5",
+      "model_id": "qwen3p5_4b",
+      "track": "frozen_vision_decomposition",
+      "media_tier": "low",
+      "vision_forward_pflop": 0.48638053906277995,
+      "visual_seconds_target": 3.6137215439230204,
+      "mechanisms_collapsed": [
+        "PRESSURE",
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_video_decomposition::native_128",
+      "model_family": "qwen3_vl",
+      "model_id": "qwen3_vl_4b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "native_128",
+      "vision_forward_pflop": 2.355866299249459,
+      "visual_seconds_target": 49.216429783031344,
+      "mechanisms_collapsed": [
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_video_decomposition::native_16",
+      "model_family": "qwen3_vl",
+      "model_id": "qwen3_vl_4b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "native_16",
+      "vision_forward_pflop": 0.4638828325699584,
+      "visual_seconds_target": 5.361684553325176,
+      "mechanisms_collapsed": [
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_video_decomposition::native_64",
+      "model_family": "qwen3_vl",
+      "model_id": "qwen3_vl_4b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "native_64",
+      "vision_forward_pflop": 1.5145274736377852,
+      "visual_seconds_target": 28.232019911520183,
+      "mechanisms_collapsed": [
+        "NOGC",
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_video_decomposition::upscaled_64",
+      "model_family": "qwen3_vl",
+      "model_id": "qwen3_vl_4b",
+      "track": "frozen_video_decomposition",
+      "media_tier": "upscaled_64",
+      "vision_forward_pflop": 5.553267403338547,
+      "visual_seconds_target": 48.794817622751,
+      "mechanisms_collapsed": [
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_vision_decomposition::high",
+      "model_family": "qwen3_vl",
+      "model_id": "qwen3_vl_4b",
+      "track": "frozen_vision_decomposition",
+      "media_tier": "high",
+      "vision_forward_pflop": 1.53560725227307,
+      "visual_seconds_target": 3.732865246012807,
+      "mechanisms_collapsed": [
+        "NOGC",
+        "PRESSURE",
+        "SAFE"
+      ]
+    },
+    {
+      "scenario_unit_id": "qwen3_vl::qwen3_vl_4b::frozen_vision_decomposition::low",
+      "model_family": "qwen3_vl",
+      "model_id": "qwen3_vl_4b",
+      "track": "frozen_vision_decomposition",
+      "media_tier": "low",
+      "vision_forward_pflop": 0.5186030146557051,
+      "visual_seconds_target": 1.4838098678737879,
+      "mechanisms_collapsed": [
+        "PRESSURE",
+        "SAFE"
+      ]
+    }
+  ],
+  "report_sha256": "65cd1cb198a29fba70aff152f99d24e3ef5b3686555cdbbf3ed97b3c16ea2ca6"
+}

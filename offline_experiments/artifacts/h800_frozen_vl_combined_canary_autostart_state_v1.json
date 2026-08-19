@@ -1,0 +1,9 @@
+{
+  "schema": "sft_h800_frozen_vl_combined_canary_autostart_state/v1",
+  "updated_at_utc": "2026-08-12T03:27:51.509072+00:00",
+  "stage": "blocked",
+  "error": "RuntimeError(\"command failed with code 1: ['/fine-tuning-launcher/.venv/bin/python', '/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/scripts/scheduler.py', '--input', '/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_frozen_vl_combined_formal_v1.jsonl', '--execute', '--join-busy-pool']\")",
+  "backup_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/frozen_vl_staging/prelaunch_backups/20260812T030544Z",
+  "queue": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_frozen_vl_combined_canary_v1.jsonl",
+  "log_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/frozen_vl_staging/h800_frozen_vl_combined_canary_autostart_v1.log"
+}

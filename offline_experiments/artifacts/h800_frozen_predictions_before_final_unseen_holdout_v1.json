@@ -1,0 +1,1633 @@
+{
+  "schema": "sft_h800_profile_aware_memory_v4b_prediction/v1",
+  "implementation_version": "sft_h800_profile_aware_v4b_predictor/2026-08-03.shadow-v1",
+  "generated_at_utc": "2026-08-03T02:45:21.101262+00:00",
+  "hardware_id": "h800",
+  "runtime_binding": {
+    "runtime_cohort_id": "h800_static_inference_fa3_v1",
+    "gpu_family": "H800",
+    "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624"
+  },
+  "release": {
+    "mode": "shadow_only",
+    "automatic_execution_allowed": false,
+    "reason": "profile-aware memory challenger requires frozen unseen holdout",
+    "memory_publishable": false,
+    "throughput_publishable": false,
+    "memory_publication_blockers": [
+      "challenger_report_is_diagnostic_and_never_auto_publishes",
+      "holdout_was_previously_inspected_not_fresh_acceptance",
+      "prospective_unseen_scenario_acceptance_still_required"
+    ]
+  },
+  "model_artifacts": {
+    "memory": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_challenger_modeling.json",
+      "sha256": "0eda1ea69c39f4465d2c648c994a304a40bb59341e82fd9f2284076e7c6535c9",
+      "report_sha256": "cddda7208d537c773817b38a2c72bd7732780399acadc3347f1bc8229bbac242"
+    },
+    "throughput": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/joint_throughput_modeling.json",
+      "sha256": "b2cd58fe6ba6889398ccd13a20088416ce38e9e5595604a20bffb02b7c5c7bb2",
+      "report_sha256": "d4595fee61314922eb3b9d7c206899033f912f1a0efc6557fe4b5d4be289abb1"
+    },
+    "memory_anchors": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_memory_anchor_registry_v1.json",
+      "sha256": "d526e1b871fc9abdaadf45072de10097002ebb9ba26e29bb05ef43a9d4bbe8e5",
+      "report_sha256": "bc82fed707f8eee4b3fcebcdc20ad98eff4d94886bcea7a8429161b1c2dd9993",
+      "registry_id": "h800_memory_anchors/2026-07-30.v1"
+    },
+    "profile_aware_memory_challenger": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_profile_aware_memory_challenger_v1.json",
+      "sha256": "412ebff22da03acdf3cc0f7e39ed93cdeab90ce3a543a78d95fac22d5d46bfed",
+      "report_sha256": "bce8c03d2319667f74693ac6bf184643162d6bcec7ad41c3d9de886070131d9c"
+    }
+  },
+  "policy": "profile-aware physical allocated correction plus reservation ratio and selector-MBS operational guard; no historical-anchor override; unchanged frozen v4b ranking for admitted candidates",
+  "selection_policy": {
+    "id": "minimum_admitted_gpu_count_then_v4b",
+    "primary_objective": "minimum_admitted_gpu_count",
+    "secondary_objective": "v4b_rank_within_gpu_count",
+    "cross_gpu_throughput_ranking": "diagnostic_only",
+    "scale_out_enabled": false
+  },
+  "scale_out": {
+    "schema": "sft_cross_card_scale_out_report/v1",
+    "selection_policy": "thresholded_doubling_then_v4b",
+    "enabled": false,
+    "minimum_ratio": 1.8,
+    "gpu_order": [
+      1,
+      2,
+      4
+    ],
+    "status": "disabled_pending_conservative_ratio_calibration",
+    "automatic_execution_allowed": false,
+    "groups": [
+      {
+        "comparison_group": "unseen_business_material_short_v1__qwen3_14b_full",
+        "schema": "sft_cross_card_scale_out_policy/v1",
+        "selection_policy": "thresholded_doubling_then_v4b",
+        "minimum_ratio": 1.8,
+        "minimum_admitted_gpu_count": 2,
+        "recommended_gpu_count": 2,
+        "scaling_steps": [
+          {
+            "from_gpu": 2,
+            "to_gpu": 4,
+            "baseline_candidate_count": 2,
+            "expanded_candidate_count": 0,
+            "baseline_candidate": "finalunseenpred-9cbc8e4227e9b6fa",
+            "expanded_candidate": null,
+            "scenario_contract": "10ae5a2e26884ba2e86db7c0cb7182ef0130f64629b500f81038d4f8b48fad48:9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+            "predicted_ratio": null,
+            "conservative_ratio_lower": null,
+            "minimum_ratio": 1.8,
+            "passes": false,
+            "status": "expanded_not_memory_admitted",
+            "reason": "expanded endpoint did not pass the memory gate"
+          }
+        ],
+        "scaling_stop_reason": "expanded_not_memory_admitted",
+        "automatic_execution_allowed": false
+      },
+      {
+        "comparison_group": "unseen_business_material_short_v1__qwen3_8b_lora",
+        "schema": "sft_cross_card_scale_out_policy/v1",
+        "selection_policy": "thresholded_doubling_then_v4b",
+        "minimum_ratio": 1.8,
+        "minimum_admitted_gpu_count": 2,
+        "recommended_gpu_count": 2,
+        "scaling_steps": [
+          {
+            "from_gpu": 2,
+            "to_gpu": 4,
+            "baseline_candidate_count": 2,
+            "expanded_candidate_count": 0,
+            "baseline_candidate": "finalunseenpred-159bf886b4bdad38",
+            "expanded_candidate": null,
+            "scenario_contract": "eed70971cefbf9919ed2bae64a65d276ac27f2237514619f829cb6c485e27fd4:9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+            "predicted_ratio": null,
+            "conservative_ratio_lower": null,
+            "minimum_ratio": 1.8,
+            "passes": false,
+            "status": "expanded_not_memory_admitted",
+            "reason": "expanded endpoint did not pass the memory gate"
+          }
+        ],
+        "scaling_stop_reason": "expanded_not_memory_admitted",
+        "automatic_execution_allowed": false
+      },
+      {
+        "comparison_group": "unseen_business_user_long_v1__qwen3_14b_full",
+        "schema": "sft_cross_card_scale_out_policy/v1",
+        "selection_policy": "thresholded_doubling_then_v4b",
+        "minimum_ratio": 1.8,
+        "minimum_admitted_gpu_count": 2,
+        "recommended_gpu_count": 2,
+        "scaling_steps": [
+          {
+            "from_gpu": 2,
+            "to_gpu": 4,
+            "baseline_candidate_count": 2,
+            "expanded_candidate_count": 0,
+            "baseline_candidate": "finalunseenpred-1281e4f61a78bc61",
+            "expanded_candidate": null,
+            "scenario_contract": "b14318e4fcb64fed48129290a3cb376e4178e2e8bd6aa9236ddf7814505cc7e0:9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+            "predicted_ratio": null,
+            "conservative_ratio_lower": null,
+            "minimum_ratio": 1.8,
+            "passes": false,
+            "status": "expanded_not_memory_admitted",
+            "reason": "expanded endpoint did not pass the memory gate"
+          }
+        ],
+        "scaling_stop_reason": "expanded_not_memory_admitted",
+        "automatic_execution_allowed": false
+      },
+      {
+        "comparison_group": "unseen_business_user_long_v1__qwen3_8b_lora",
+        "schema": "sft_cross_card_scale_out_policy/v1",
+        "selection_policy": "thresholded_doubling_then_v4b",
+        "minimum_ratio": 1.8,
+        "minimum_admitted_gpu_count": null,
+        "recommended_gpu_count": null,
+        "scaling_steps": [],
+        "scaling_stop_reason": "no_admitted_candidate_evidence",
+        "automatic_execution_allowed": false
+      }
+    ]
+  },
+  "absolute_throughput_scale_trusted": false,
+  "gpu_experiments_launched": false,
+  "queues_mutated": false,
+  "predictions": [
+    {
+      "input_index": 0,
+      "request_id": "finalunseenpred-e02be6811a64ce48",
+      "comparison_group": "unseen_business_material_short_v1__qwen3_8b_lora",
+      "scenario_material": {
+        "model_id": "qwen3_8b",
+        "model_geometry_sha256": "1ceb739f529f67fae0bac3403217e0b1165bec9538320b8f0e0987da9f8cc84a",
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_8b",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "gpu_count": 1,
+        "physical_mbs": 2,
+        "gradient_accumulation_steps": 32,
+        "zero_stage": 0,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+        "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 60372379648.0,
+        "allocated_anchor_bytes": 65574962607.78815,
+        "allocated_center_bytes": 32502415393.3233,
+        "reserved_center_bytes": 36086885780.36555,
+        "operational_p95_reserved_bytes": 40304582833.1286,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 40304582833.1286,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": 102330497256.4714,
+        "base_physical_model_admitted": true,
+        "anchor_override_applied": false,
+        "admission_source": "physical_model_operational_p95",
+        "physical_model_admitted": true,
+        "admitted": true,
+        "rejection_reason": null,
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"lora\",0,false,false,2]",
+        "operational_log_guard": 0.11053565587443079,
+        "profile_guard_log_residual": 0.11053565587443079,
+        "legacy_oom_guard_log_residual": -0.09363084262571798,
+        "allocated_profile_log_correction": -0.7018795491635599,
+        "reservation_ratio_log": 0.10461511818777341,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+          "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+          "rows": 1000,
+          "cutoff_len": 4096,
+          "physical_mbs": 2,
+          "mean_clipped_tokens": 253.662,
+          "p50_clipped_tokens": 252.5,
+          "p90_clipped_tokens": 286.0,
+          "p99_clipped_tokens": 306.01,
+          "maximum_clipped_tokens": 334,
+          "truncation_fraction": 0.0,
+          "coefficient_of_variation": 0.09536048540988475,
+          "expected_random_batch_max_tokens": 267.5327419999997,
+          "expected_random_batch_max_fraction_of_cutoff": 0.06531561083984368,
+          "expected_padded_tokens_per_physical_batch": 535.0654839999994,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 56.22616004943848,
+          "allocated_anchor": 61.07144300619899,
+          "allocated_center": 30.270233185331616,
+          "reserved_center": 33.60853137482474,
+          "operational_upper": 37.536567852952146,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": 95.30270216657911
+        }
+      },
+      "throughput": {
+        "prediction_available": true,
+        "ranking_score_log": 7.086861554619824,
+        "throughput_proxy_tokens_per_second": 1196.1478587896306,
+        "proxy_step_seconds": 13.57220838603296,
+        "static_effective_tokens_per_step": 16234.367999999993,
+        "candidate_set_dependent": true,
+        "absolute_scale_trusted": false,
+        "reason": null
+      },
+      "rank_within_admitted_group": 3,
+      "rank_within_gpu_count": 1
+    },
+    {
+      "input_index": 1,
+      "request_id": "finalunseenpred-0039e9c430c3f7d8",
+      "comparison_group": "unseen_business_material_short_v1__qwen3_8b_lora",
+      "scenario_material": {
+        "model_id": "qwen3_8b",
+        "model_geometry_sha256": "1ceb739f529f67fae0bac3403217e0b1165bec9538320b8f0e0987da9f8cc84a",
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_8b",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "gpu_count": 2,
+        "physical_mbs": 1,
+        "gradient_accumulation_steps": 32,
+        "zero_stage": 2,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+        "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 38638807040.0,
+        "allocated_anchor_bytes": 37644263251.15351,
+        "allocated_center_bytes": 23146192696.358635,
+        "reserved_center_bytes": 24801619072.202854,
+        "operational_p95_reserved_bytes": 29983817029.697712,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 29983817029.697712,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": 112651263059.9023,
+        "base_physical_model_admitted": true,
+        "anchor_override_applied": false,
+        "admission_source": "physical_model_operational_p95",
+        "physical_model_admitted": true,
+        "admitted": true,
+        "rejection_reason": null,
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"lora\",2,false,false,1]",
+        "operational_log_guard": 0.18974886756335288,
+        "profile_guard_log_residual": 0.18974886756335288,
+        "legacy_oom_guard_log_residual": -0.4677125637204422,
+        "allocated_profile_log_correction": -0.48635026750254196,
+        "reservation_ratio_log": 0.06907863156291444,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+          "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+          "rows": 1000,
+          "cutoff_len": 4096,
+          "physical_mbs": 1,
+          "mean_clipped_tokens": 253.662,
+          "p50_clipped_tokens": 252.5,
+          "p90_clipped_tokens": 286.0,
+          "p99_clipped_tokens": 306.01,
+          "maximum_clipped_tokens": 334,
+          "truncation_fraction": 0.0,
+          "coefficient_of_variation": 0.09536048540988475,
+          "expected_random_batch_max_tokens": 253.66199999999876,
+          "expected_random_batch_max_fraction_of_cutoff": 0.061929199218749696,
+          "expected_padded_tokens_per_physical_batch": 253.66199999999876,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 35.98519325256348,
+          "allocated_anchor": 35.05895217056713,
+          "allocated_center": 21.55657177451871,
+          "reserved_center": 23.098307728956318,
+          "operational_upper": 27.924605672897503,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": 104.91466434663376
+        }
+      },
+      "throughput": {
+        "prediction_available": true,
+        "ranking_score_log": 7.797862697730985,
+        "throughput_proxy_tokens_per_second": 2435.3912439200244,
+        "proxy_step_seconds": 6.66602051745453,
+        "static_effective_tokens_per_step": 16234.367999999993,
+        "candidate_set_dependent": true,
+        "absolute_scale_trusted": false,
+        "reason": null
+      },
+      "rank_within_admitted_group": 2,
+      "rank_within_gpu_count": 2
+    },
+    {
+      "input_index": 2,
+      "request_id": "finalunseenpred-159bf886b4bdad38",
+      "comparison_group": "unseen_business_material_short_v1__qwen3_8b_lora",
+      "scenario_material": {
+        "model_id": "qwen3_8b",
+        "model_geometry_sha256": "1ceb739f529f67fae0bac3403217e0b1165bec9538320b8f0e0987da9f8cc84a",
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_8b",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "gpu_count": 2,
+        "physical_mbs": 2,
+        "gradient_accumulation_steps": 16,
+        "zero_stage": 2,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+        "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 59935909888.0,
+        "allocated_anchor_bytes": 58954593937.75951,
+        "allocated_center_bytes": 29260394135.268204,
+        "reserved_center_bytes": 31895154141.6807,
+        "operational_p95_reserved_bytes": 50514768455.29445,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 50514768455.29445,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": 92120311634.30556,
+        "base_physical_model_admitted": true,
+        "anchor_override_applied": false,
+        "admission_source": "physical_model_operational_p95",
+        "physical_model_admitted": true,
+        "admitted": true,
+        "rejection_reason": null,
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"lora\",2,false,false,2]",
+        "operational_log_guard": 0.4598116477196673,
+        "profile_guard_log_residual": 0.4598116477196673,
+        "legacy_oom_guard_log_residual": -0.4677125637204422,
+        "allocated_profile_log_correction": -0.7005326877346404,
+        "reservation_ratio_log": 0.0862192248612214,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+          "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+          "rows": 1000,
+          "cutoff_len": 4096,
+          "physical_mbs": 2,
+          "mean_clipped_tokens": 253.662,
+          "p50_clipped_tokens": 252.5,
+          "p90_clipped_tokens": 286.0,
+          "p99_clipped_tokens": 306.01,
+          "maximum_clipped_tokens": 334,
+          "truncation_fraction": 0.0,
+          "coefficient_of_variation": 0.09536048540988475,
+          "expected_random_batch_max_tokens": 267.5327419999997,
+          "expected_random_batch_max_fraction_of_cutoff": 0.06531561083984368,
+          "expected_padded_tokens_per_physical_batch": 535.0654839999994,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 55.81966590881348,
+          "allocated_anchor": 54.905744211524265,
+          "allocated_center": 27.25086560032163,
+          "reserved_center": 29.70467707298761,
+          "operational_upper": 47.045544213889585,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": 85.79372580564167
+        }
+      },
+      "throughput": {
+        "prediction_available": true,
+        "ranking_score_log": 7.88575224527912,
+        "throughput_proxy_tokens_per_second": 2659.1245878006876,
+        "proxy_step_seconds": 6.105155085428748,
+        "static_effective_tokens_per_step": 16234.367999999993,
+        "candidate_set_dependent": true,
+        "absolute_scale_trusted": false,
+        "reason": null
+      },
+      "rank_within_admitted_group": 1,
+      "rank_within_gpu_count": 1
+    },
+    {
+      "input_index": 3,
+      "request_id": "finalunseenpred-c6b300c727393182",
+      "comparison_group": "unseen_business_material_short_v1__qwen3_14b_full",
+      "scenario_material": {
+        "model_id": "qwen3_14b",
+        "model_geometry_sha256": "e6ff8b1635d6ff51c49d66996c47e41a16bdd896d16d4c13eab255cbfd31d3e8",
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 2048,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "target_gbs": 64,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 1,
+        "gradient_accumulation_steps": 32,
+        "zero_stage": 3,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+        "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 124407101952.0,
+        "allocated_anchor_bytes": 139501598819.77954,
+        "allocated_center_bytes": 130666735420.08351,
+        "reserved_center_bytes": 136248586619.24638,
+        "operational_p95_reserved_bytes": 137369981987.99048,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 137369981987.99048,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": 5265098101.609528,
+        "base_physical_model_admitted": true,
+        "anchor_override_applied": false,
+        "admission_source": "physical_model_operational_p95",
+        "physical_model_admitted": true,
+        "admitted": true,
+        "rejection_reason": null,
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"full\",3,true,false,1]",
+        "operational_log_guard": 0.008196824163878689,
+        "profile_guard_log_residual": 0.008196824163878689,
+        "legacy_oom_guard_log_residual": -0.0434914766225782,
+        "allocated_profile_log_correction": -0.06542598497310832,
+        "reservation_ratio_log": 0.041830982756502225,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+          "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+          "rows": 1000,
+          "cutoff_len": 2048,
+          "physical_mbs": 1,
+          "mean_clipped_tokens": 253.662,
+          "p50_clipped_tokens": 252.5,
+          "p90_clipped_tokens": 286.0,
+          "p99_clipped_tokens": 306.01,
+          "maximum_clipped_tokens": 334,
+          "truncation_fraction": 0.0,
+          "coefficient_of_variation": 0.09536048540988475,
+          "expected_random_batch_max_tokens": 253.66199999999876,
+          "expected_random_batch_max_fraction_of_cutoff": 0.12385839843749939,
+          "expected_padded_tokens_per_physical_batch": 253.66199999999876,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 115.86314249038696,
+          "allocated_anchor": 129.92098817581268,
+          "allocated_center": 121.69288044803172,
+          "reserved_center": 126.89138447795658,
+          "operational_upper": 127.9357652999372,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": 4.9035047195940535
+        }
+      },
+      "throughput": {
+        "prediction_available": true,
+        "ranking_score_log": 6.129081214290354,
+        "throughput_proxy_tokens_per_second": 459.01423116209406,
+        "proxy_step_seconds": 35.36789689265008,
+        "static_effective_tokens_per_step": 16234.367999999993,
+        "candidate_set_dependent": true,
+        "absolute_scale_trusted": false,
+        "reason": null
+      },
+      "rank_within_admitted_group": 2,
+      "rank_within_gpu_count": 2
+    },
+    {
+      "input_index": 4,
+      "request_id": "finalunseenpred-9cbc8e4227e9b6fa",
+      "comparison_group": "unseen_business_material_short_v1__qwen3_14b_full",
+      "scenario_material": {
+        "model_id": "qwen3_14b",
+        "model_geometry_sha256": "e6ff8b1635d6ff51c49d66996c47e41a16bdd896d16d4c13eab255cbfd31d3e8",
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 2048,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_material_short_v1",
+        "dataset_category": "short",
+        "dataset_profile_sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "target_gbs": 64,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 2,
+        "gradient_accumulation_steps": 16,
+        "zero_stage": 3,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+        "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 126889409024.0,
+        "allocated_anchor_bytes": 139477463153.80484,
+        "allocated_center_bytes": 129824254438.2407,
+        "reserved_center_bytes": 137687511824.96994,
+        "operational_p95_reserved_bytes": 137687511824.96994,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 137687511824.96994,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": 4947568264.630066,
+        "base_physical_model_admitted": true,
+        "anchor_override_applied": false,
+        "admission_source": "physical_model_operational_p95",
+        "physical_model_admitted": true,
+        "admitted": true,
+        "rejection_reason": null,
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"full\",3,true,false,2]",
+        "operational_log_guard": 0.0,
+        "profile_guard_log_residual": 0.0,
+        "legacy_oom_guard_log_residual": -0.0434914766225782,
+        "allocated_profile_log_correction": -0.07172138686436645,
+        "reservation_ratio_log": 0.058805063552511264,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_material_short_v1.qwen3_nothink.jsonl",
+          "sha256": "f904d7196297c2773dd1740e7774b9386304763854282f6136ae0e348a56fd37",
+          "rows": 1000,
+          "cutoff_len": 2048,
+          "physical_mbs": 2,
+          "mean_clipped_tokens": 253.662,
+          "p50_clipped_tokens": 252.5,
+          "p90_clipped_tokens": 286.0,
+          "p99_clipped_tokens": 306.01,
+          "maximum_clipped_tokens": 334,
+          "truncation_fraction": 0.0,
+          "coefficient_of_variation": 0.09536048540988475,
+          "expected_random_batch_max_tokens": 267.5327419999997,
+          "expected_random_batch_max_fraction_of_cutoff": 0.13063122167968735,
+          "expected_padded_tokens_per_physical_batch": 535.0654839999994,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 118.17497110366821,
+          "allocated_anchor": 129.89851008523706,
+          "allocated_center": 120.9082588909573,
+          "reserved_center": 128.23148800523015,
+          "operational_upper": 128.23148800523015,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": 4.607782014301108
+        }
+      },
+      "throughput": {
+        "prediction_available": true,
+        "ranking_score_log": 6.480767449755353,
+        "throughput_proxy_tokens_per_second": 652.4714932621506,
+        "proxy_step_seconds": 24.88134449956319,
+        "static_effective_tokens_per_step": 16234.367999999993,
+        "candidate_set_dependent": true,
+        "absolute_scale_trusted": false,
+        "reason": null
+      },
+      "rank_within_admitted_group": 1,
+      "rank_within_gpu_count": 1
+    },
+    {
+      "input_index": 5,
+      "request_id": "finalunseenpred-89e2fb0e87e262da",
+      "comparison_group": "unseen_business_user_long_v1__qwen3_8b_lora",
+      "scenario_material": {
+        "model_id": "qwen3_8b",
+        "model_geometry_sha256": "1ceb739f529f67fae0bac3403217e0b1165bec9538320b8f0e0987da9f8cc84a",
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_8b",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "gpu_count": 1,
+        "physical_mbs": 2,
+        "gradient_accumulation_steps": 32,
+        "zero_stage": 0,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+        "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 60372379648.0,
+        "allocated_anchor_bytes": 65574962607.78815,
+        "allocated_center_bytes": 66773586443.91493,
+        "reserved_center_bytes": 76388366644.24913,
+        "operational_p95_reserved_bytes": 85316346487.72261,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 85316346487.72261,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": 57318733601.877396,
+        "base_physical_model_admitted": true,
+        "anchor_override_applied": false,
+        "admission_source": "physical_model_operational_p95",
+        "physical_model_admitted": true,
+        "admitted": true,
+        "rejection_reason": null,
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"lora\",0,false,false,2]",
+        "operational_log_guard": 0.11053565587443079,
+        "profile_guard_log_residual": 0.11053565587443079,
+        "legacy_oom_guard_log_residual": -0.09363084262571798,
+        "allocated_profile_log_correction": 0.01811363429797802,
+        "reservation_ratio_log": 0.13452282569382093,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+          "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+          "rows": 1000,
+          "cutoff_len": 4096,
+          "physical_mbs": 2,
+          "mean_clipped_tokens": 4067.977,
+          "p50_clipped_tokens": 4096.0,
+          "p90_clipped_tokens": 4096.0,
+          "p99_clipped_tokens": 4096.0,
+          "maximum_clipped_tokens": 4096,
+          "truncation_fraction": 0.968,
+          "coefficient_of_variation": 0.04832531684002068,
+          "expected_random_batch_max_tokens": 4095.459145,
+          "expected_random_batch_max_fraction_of_cutoff": 0.9998679553222656,
+          "expected_padded_tokens_per_physical_batch": 8190.91829,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 56.22616004943848,
+          "allocated_anchor": 61.07144300619899,
+          "allocated_center": 62.18774844325607,
+          "reserved_center": 71.14221029379324,
+          "operational_upper": 79.45703946773206,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": 53.382230551799196
+        }
+      },
+      "throughput": {
+        "prediction_available": true,
+        "ranking_score_log": 8.733798571104415,
+        "throughput_proxy_tokens_per_second": 6209.269723201007,
+        "proxy_step_seconds": 41.92933140385207,
+        "static_effective_tokens_per_step": 260350.52799999982,
+        "candidate_set_dependent": true,
+        "absolute_scale_trusted": false,
+        "reason": null
+      },
+      "rank_within_admitted_group": 2,
+      "rank_within_gpu_count": 1
+    },
+    {
+      "input_index": 6,
+      "request_id": "finalunseenpred-7a80ab98723fc4c2",
+      "comparison_group": "unseen_business_user_long_v1__qwen3_8b_lora",
+      "scenario_material": {
+        "model_id": "qwen3_8b",
+        "model_geometry_sha256": "1ceb739f529f67fae0bac3403217e0b1165bec9538320b8f0e0987da9f8cc84a",
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_8b",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "gpu_count": 2,
+        "physical_mbs": 1,
+        "gradient_accumulation_steps": 32,
+        "zero_stage": 2,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+        "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 38638807040.0,
+        "allocated_anchor_bytes": 37644263251.15351,
+        "allocated_center_bytes": 40534599652.11335,
+        "reserved_center_bytes": 106676169325.01826,
+        "operational_p95_reserved_bytes": 128965723292.4474,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 128965723292.4474,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": 13669356797.152603,
+        "base_physical_model_admitted": true,
+        "anchor_override_applied": false,
+        "admission_source": "physical_model_operational_p95",
+        "physical_model_admitted": true,
+        "admitted": true,
+        "rejection_reason": null,
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"lora\",2,false,false,1]",
+        "operational_log_guard": 0.18974886756335288,
+        "profile_guard_log_residual": 0.18974886756335288,
+        "legacy_oom_guard_log_residual": -0.4677125637204422,
+        "allocated_profile_log_correction": 0.07397534964417427,
+        "reservation_ratio_log": 0.9676418687864359,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+          "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+          "rows": 1000,
+          "cutoff_len": 4096,
+          "physical_mbs": 1,
+          "mean_clipped_tokens": 4067.977,
+          "p50_clipped_tokens": 4096.0,
+          "p90_clipped_tokens": 4096.0,
+          "p99_clipped_tokens": 4096.0,
+          "maximum_clipped_tokens": 4096,
+          "truncation_fraction": 0.968,
+          "coefficient_of_variation": 0.04832531684002068,
+          "expected_random_batch_max_tokens": 4067.977,
+          "expected_random_batch_max_fraction_of_cutoff": 0.993158447265625,
+          "expected_padded_tokens_per_physical_batch": 4067.977,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 35.98519325256348,
+          "allocated_anchor": 35.05895217056713,
+          "allocated_center": 37.750787709013885,
+          "reserved_center": 99.34992466589274,
+          "operational_upper": 120.1086894538695,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": 12.730580565661754
+        }
+      },
+      "throughput": {
+        "prediction_available": true,
+        "ranking_score_log": 9.674621721524591,
+        "throughput_proxy_tokens_per_second": 15908.704981774625,
+        "proxy_step_seconds": 16.3652873252891,
+        "static_effective_tokens_per_step": 260350.52799999982,
+        "candidate_set_dependent": true,
+        "absolute_scale_trusted": false,
+        "reason": null
+      },
+      "rank_within_admitted_group": 1,
+      "rank_within_gpu_count": 1
+    },
+    {
+      "input_index": 7,
+      "request_id": "finalunseenpred-248ce7607b5dd2b5",
+      "comparison_group": "unseen_business_user_long_v1__qwen3_8b_lora",
+      "scenario_material": {
+        "model_id": "qwen3_8b",
+        "model_geometry_sha256": "1ceb739f529f67fae0bac3403217e0b1165bec9538320b8f0e0987da9f8cc84a",
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_8b",
+        "training_mode": "lora",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "target_gbs": 64,
+        "cutoff_len": 4096,
+        "gpu_count": 2,
+        "physical_mbs": 2,
+        "gradient_accumulation_steps": 16,
+        "zero_stage": 2,
+        "gradient_checkpointing": false,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+        "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 59935909888.0,
+        "allocated_anchor_bytes": 58954593937.75951,
+        "allocated_center_bytes": 60492958125.75384,
+        "reserved_center_bytes": 292081382719.80676,
+        "operational_p95_reserved_bytes": 462591381519.9955,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 462591381519.9955,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": -319956301430.3955,
+        "base_physical_model_admitted": false,
+        "anchor_override_applied": false,
+        "admission_source": "rejected",
+        "physical_model_admitted": false,
+        "admitted": false,
+        "rejection_reason": "memory_upper_exceeds_safe_limit",
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"lora\",2,false,false,2]",
+        "operational_log_guard": 0.4598116477196673,
+        "profile_guard_log_residual": 0.4598116477196673,
+        "legacy_oom_guard_log_residual": -0.4677125637204422,
+        "allocated_profile_log_correction": 0.025759410306020136,
+        "reservation_ratio_log": 1.5745055077342034,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+          "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+          "rows": 1000,
+          "cutoff_len": 4096,
+          "physical_mbs": 2,
+          "mean_clipped_tokens": 4067.977,
+          "p50_clipped_tokens": 4096.0,
+          "p90_clipped_tokens": 4096.0,
+          "p99_clipped_tokens": 4096.0,
+          "maximum_clipped_tokens": 4096,
+          "truncation_fraction": 0.968,
+          "coefficient_of_variation": 0.04832531684002068,
+          "expected_random_batch_max_tokens": 4095.459145,
+          "expected_random_batch_max_fraction_of_cutoff": 0.9998679553222656,
+          "expected_padded_tokens_per_physical_batch": 8190.91829,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 55.81966590881348,
+          "allocated_anchor": 54.905744211524265,
+          "allocated_center": 56.338457507783396,
+          "reserved_center": 272.02198535185937,
+          "operational_upper": 430.8217964321333,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": -297.98252641260206
+        }
+      },
+      "throughput": {
+        "prediction_available": false,
+        "reason": "memory_upper_exceeds_safe_limit",
+        "absolute_scale_trusted": false
+      },
+      "rank_within_admitted_group": null,
+      "rank_within_gpu_count": null
+    },
+    {
+      "input_index": 8,
+      "request_id": "finalunseenpred-228623eed5c6203c",
+      "comparison_group": "unseen_business_user_long_v1__qwen3_14b_full",
+      "scenario_material": {
+        "model_id": "qwen3_14b",
+        "model_geometry_sha256": "e6ff8b1635d6ff51c49d66996c47e41a16bdd896d16d4c13eab255cbfd31d3e8",
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 2048,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "target_gbs": 64,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 1,
+        "gradient_accumulation_steps": 32,
+        "zero_stage": 3,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+        "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 124407101952.0,
+        "allocated_anchor_bytes": 139501598819.77954,
+        "allocated_center_bytes": 131375929119.79547,
+        "reserved_center_bytes": 139576222291.27698,
+        "operational_p95_reserved_bytes": 140725005799.04016,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 140725005799.04016,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": 1910074290.559845,
+        "base_physical_model_admitted": true,
+        "anchor_override_applied": false,
+        "admission_source": "physical_model_operational_p95",
+        "physical_model_admitted": true,
+        "admitted": true,
+        "rejection_reason": null,
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"full\",3,true,false,1]",
+        "operational_log_guard": 0.008196824163878689,
+        "profile_guard_log_residual": 0.008196824163878689,
+        "legacy_oom_guard_log_residual": -0.0434914766225782,
+        "allocated_profile_log_correction": -0.06001316082485644,
+        "reservation_ratio_log": 0.06054794694995126,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+          "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+          "rows": 1000,
+          "cutoff_len": 2048,
+          "physical_mbs": 1,
+          "mean_clipped_tokens": 2046.286,
+          "p50_clipped_tokens": 2048.0,
+          "p90_clipped_tokens": 2048.0,
+          "p99_clipped_tokens": 2048.0,
+          "maximum_clipped_tokens": 2048,
+          "truncation_fraction": 0.998,
+          "coefficient_of_variation": 0.018742785228599953,
+          "expected_random_batch_max_tokens": 2046.286,
+          "expected_random_batch_max_fraction_of_cutoff": 0.9991630859375,
+          "expected_padded_tokens_per_physical_batch": 2046.286,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 115.86314249038696,
+          "allocated_anchor": 129.92098817581268,
+          "allocated_center": 122.35336855034853,
+          "reserved_center": 129.99048669941442,
+          "operational_upper": 131.06037471354023,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": 1.7788953059910284
+        }
+      },
+      "throughput": {
+        "prediction_available": true,
+        "ranking_score_log": 7.652599567494911,
+        "throughput_proxy_tokens_per_second": 2106.1134633872666,
+        "proxy_step_seconds": 62.181979402654314,
+        "static_effective_tokens_per_step": 130962.30399999995,
+        "candidate_set_dependent": true,
+        "absolute_scale_trusted": false,
+        "reason": null
+      },
+      "rank_within_admitted_group": 2,
+      "rank_within_gpu_count": 2
+    },
+    {
+      "input_index": 9,
+      "request_id": "finalunseenpred-1281e4f61a78bc61",
+      "comparison_group": "unseen_business_user_long_v1__qwen3_14b_full",
+      "scenario_material": {
+        "model_id": "qwen3_14b",
+        "model_geometry_sha256": "e6ff8b1635d6ff51c49d66996c47e41a16bdd896d16d4c13eab255cbfd31d3e8",
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "profile_tokenizer_id": "qwen3_shared_local",
+        "profile_template_id": "qwen3_nothink",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "target_gbs": 64,
+        "cutoff_len": 2048,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16"
+      },
+      "runtime_mechanism_component_sha256": "9723bdb98e55814c6a296cd9600161e195bc91e007736ba17b2e619f51688624",
+      "configuration": {
+        "hardware_id": "h800",
+        "model_id": "qwen3_14b",
+        "training_mode": "full",
+        "lora_rank": 32,
+        "dataset_id": "unseen_business_user_long_v1",
+        "dataset_category": "longcontext",
+        "dataset_profile_sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "target_gbs": 64,
+        "cutoff_len": 2048,
+        "gpu_count": 2,
+        "physical_mbs": 2,
+        "gradient_accumulation_steps": 16,
+        "zero_stage": 3,
+        "gradient_checkpointing": true,
+        "packing": false,
+        "offload": false,
+        "dtype": "bf16",
+        "kernel_path": "fa3_orig+liger_fused_ce+adamw_torch_fused"
+      },
+      "dataset_profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+        "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+        "origin": "additional",
+        "tokenizer_id": "qwen3_shared_local",
+        "template_id": "qwen3_nothink"
+      },
+      "support": {
+        "label": "caution",
+        "support_tier": "caution",
+        "inside_initial_product_domain": false,
+        "eligible_for_shadow_ranking": true,
+        "automatic_execution_allowed": false,
+        "required_experiment_family": "targeted_domain_holdout",
+        "visual_path_observed": false,
+        "fallback_policy": {
+          "automatic_execution_allowed": false,
+          "reason": "cautionary inputs require prospective validation"
+        },
+        "reasons": [
+          {
+            "code": "new_dataset_profile",
+            "severity": "caution",
+            "message": "The dataset profile was not part of frozen model fitting."
+          }
+        ]
+      },
+      "memory": {
+        "prediction_available": true,
+        "analytic_reference_bytes": 126889409024.0,
+        "allocated_anchor_bytes": 139477463153.80484,
+        "allocated_center_bytes": 131066584031.38736,
+        "reserved_center_bytes": 141491488408.7032,
+        "operational_p95_reserved_bytes": 141491488408.7032,
+        "operational_upper_semantics": "selector_mbs_LOPO_empirical_guard",
+        "admission_upper_reserved_bytes": 141491488408.7032,
+        "safe_limit_bytes": 142635080089.6,
+        "headroom_to_safe_limit_bytes": 1143591680.89682,
+        "base_physical_model_admitted": true,
+        "anchor_override_applied": false,
+        "admission_source": "physical_model_operational_p95",
+        "physical_model_admitted": true,
+        "admitted": true,
+        "rejection_reason": null,
+        "tail_source": "selector_mbs",
+        "tail_bucket": "[\"full\",3,true,false,2]",
+        "operational_log_guard": 0.0,
+        "profile_guard_log_residual": 0.0,
+        "legacy_oom_guard_log_residual": -0.0434914766225782,
+        "allocated_profile_log_correction": -0.062197564635181446,
+        "reservation_ratio_log": 0.07653409356348209,
+        "padding_statistics": {
+          "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/final_unseen_holdout_v1/profiles/unseen_business_user_long_v1.qwen3_nothink.jsonl",
+          "sha256": "966559e61d927013ec2aa7df4d1ab9d51ce53107ceecef7c19a909f092daad2f",
+          "rows": 1000,
+          "cutoff_len": 2048,
+          "physical_mbs": 2,
+          "mean_clipped_tokens": 2046.286,
+          "p50_clipped_tokens": 2048.0,
+          "p90_clipped_tokens": 2048.0,
+          "p99_clipped_tokens": 2048.0,
+          "maximum_clipped_tokens": 2048,
+          "truncation_fraction": 0.998,
+          "coefficient_of_variation": 0.018742785228599953,
+          "expected_random_batch_max_tokens": 2047.996672,
+          "expected_random_batch_max_fraction_of_cutoff": 0.999998375,
+          "expected_padded_tokens_per_physical_batch": 4095.993344,
+          "formula": "E[max(clipped_length_1..clipped_length_mbs)] from the empirical profile CDF"
+        },
+        "issues": [],
+        "historical_anchor": {
+          "matched": false,
+          "override_allowed": false,
+          "reason": "disabled_for_prospective_challenger_acceptance"
+        },
+        "gib": {
+          "analytic_reference": 118.17497110366821,
+          "allocated_anchor": 129.89851008523706,
+          "allocated_center": 122.06526848616764,
+          "reserved_center": 131.7742172709696,
+          "operational_upper": 131.7742172709696,
+          "safe_limit": 132.83927001953126,
+          "headroom_to_safe_limit": 1.0650527485616692
+        }
+      },
+      "throughput": {
+        "prediction_available": true,
+        "ranking_score_log": 7.727142435993149,
+        "throughput_proxy_tokens_per_second": 2269.108803911613,
+        "proxy_step_seconds": 57.71530381189303,
+        "static_effective_tokens_per_step": 130962.30399999995,
+        "candidate_set_dependent": true,
+        "absolute_scale_trusted": false,
+        "reason": null
+      },
+      "rank_within_admitted_group": 1,
+      "rank_within_gpu_count": 1
+    }
+  ],
+  "ranking_groups": [
+    {
+      "comparison_group": "unseen_business_material_short_v1__qwen3_14b_full",
+      "requested_candidates": 2,
+      "physical_model_admitted_candidates": 2,
+      "policy_admitted_candidates": 2,
+      "rejected_by_memory": 0,
+      "rejected_by_support_domain": 0,
+      "admitted_by_historical_anchor": 0,
+      "status": "ranked_shadow_only",
+      "selection_policy": "minimum_admitted_gpu_count_then_v4b",
+      "minimum_admitted_gpu_count": 2,
+      "selected_request_id": "finalunseenpred-9cbc8e4227e9b6fa",
+      "throughput_top_request_id": "finalunseenpred-9cbc8e4227e9b6fa",
+      "ranked_request_ids": [
+        "finalunseenpred-9cbc8e4227e9b6fa",
+        "finalunseenpred-c6b300c727393182"
+      ],
+      "automatic_execution_allowed": false
+    },
+    {
+      "comparison_group": "unseen_business_material_short_v1__qwen3_8b_lora",
+      "requested_candidates": 3,
+      "physical_model_admitted_candidates": 3,
+      "policy_admitted_candidates": 3,
+      "rejected_by_memory": 0,
+      "rejected_by_support_domain": 0,
+      "admitted_by_historical_anchor": 0,
+      "status": "ranked_shadow_only",
+      "selection_policy": "minimum_admitted_gpu_count_then_v4b",
+      "minimum_admitted_gpu_count": 1,
+      "selected_request_id": "finalunseenpred-e02be6811a64ce48",
+      "throughput_top_request_id": "finalunseenpred-159bf886b4bdad38",
+      "ranked_request_ids": [
+        "finalunseenpred-159bf886b4bdad38",
+        "finalunseenpred-0039e9c430c3f7d8",
+        "finalunseenpred-e02be6811a64ce48"
+      ],
+      "automatic_execution_allowed": false
+    },
+    {
+      "comparison_group": "unseen_business_user_long_v1__qwen3_14b_full",
+      "requested_candidates": 2,
+      "physical_model_admitted_candidates": 2,
+      "policy_admitted_candidates": 2,
+      "rejected_by_memory": 0,
+      "rejected_by_support_domain": 0,
+      "admitted_by_historical_anchor": 0,
+      "status": "ranked_shadow_only",
+      "selection_policy": "minimum_admitted_gpu_count_then_v4b",
+      "minimum_admitted_gpu_count": 2,
+      "selected_request_id": "finalunseenpred-1281e4f61a78bc61",
+      "throughput_top_request_id": "finalunseenpred-1281e4f61a78bc61",
+      "ranked_request_ids": [
+        "finalunseenpred-1281e4f61a78bc61",
+        "finalunseenpred-228623eed5c6203c"
+      ],
+      "automatic_execution_allowed": false
+    },
+    {
+      "comparison_group": "unseen_business_user_long_v1__qwen3_8b_lora",
+      "requested_candidates": 3,
+      "physical_model_admitted_candidates": 2,
+      "policy_admitted_candidates": 2,
+      "rejected_by_memory": 1,
+      "rejected_by_support_domain": 0,
+      "admitted_by_historical_anchor": 0,
+      "status": "ranked_shadow_only",
+      "selection_policy": "minimum_admitted_gpu_count_then_v4b",
+      "minimum_admitted_gpu_count": 1,
+      "selected_request_id": "finalunseenpred-89e2fb0e87e262da",
+      "throughput_top_request_id": "finalunseenpred-7a80ab98723fc4c2",
+      "ranked_request_ids": [
+        "finalunseenpred-7a80ab98723fc4c2",
+        "finalunseenpred-89e2fb0e87e262da"
+      ],
+      "automatic_execution_allowed": false
+    }
+  ],
+  "base_predictor_contract_validation_passed": true,
+  "base_predictor_report_sha256_before_wrapping": "de4fe618237781645070a883e105df4c73ecadea64313b4196061c32218fc57e",
+  "report_sha256": "a8c61a774bfb5d37a04db27d1f79f0a13f6d10c270032160c653bf624304a3bc"
+}

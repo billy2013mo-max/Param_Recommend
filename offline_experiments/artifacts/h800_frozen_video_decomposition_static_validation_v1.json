@@ -1,0 +1,39 @@
+{
+  "schema": "sft_h800_frozen_video_decomposition_static_validation/v1",
+  "all_passed": true,
+  "gpu_training_started": false,
+  "profiles": 12,
+  "media": {
+    "rows": 100,
+    "all_files_present": true,
+    "minimum_video_bytes": 177963,
+    "maximum_video_bytes": 36802804,
+    "training_view_format": "sharegpt",
+    "full_decode_deferred_to_runtime_canary": true
+  },
+  "canary_jobs": 6,
+  "formal_jobs": 42,
+  "canary_configs_rendered": 6,
+  "formal_by_model": {
+    "qwen2p5_vl_3b": 14,
+    "qwen3_vl_4b": 14,
+    "qwen3p5_4b": 14
+  },
+  "formal_by_arm": {
+    "real_video": 21,
+    "text_length_matched": 21
+  },
+  "formal_by_tier": {
+    "native_128": 6,
+    "native_16": 6,
+    "native_64": 24,
+    "upscaled_64": 6
+  },
+  "formal_by_mechanism": {
+    "NOGC": 6,
+    "PRESSURE": 6,
+    "SAFE": 30
+  },
+  "packing_enabled_jobs": 0,
+  "exact_text_video_pairs": 21
+}

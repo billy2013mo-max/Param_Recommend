@@ -1,0 +1,111 @@
+{
+  "schema": "sft_h800_text_dense_memory_admission_release/v1",
+  "release_id": "h800_text_dense_memory_admission_limited_production/2026-08-18.v1",
+  "status": "active_limited_production",
+  "activated_at_utc": "2026-08-18T00:00:00+00:00",
+  "authorization": "explicit_user_acceptance_2026-08-18",
+  "automatic_execution_allowed": true,
+  "fail_closed": true,
+  "vl_allowed": false,
+  "capability": "dense_text_memory_admission",
+  "scope": {
+    "hardware_ids": [
+      "h800"
+    ],
+    "modalities": [
+      "text"
+    ],
+    "stages": [
+      "sft"
+    ],
+    "dtypes": [
+      "bf16"
+    ],
+    "architecture_routes": [
+      "dense_full_attention"
+    ],
+    "model_ids": [
+      "qwen3_1p7b",
+      "qwen3_4b",
+      "qwen3_8b",
+      "qwen3_14b",
+      "qwen3_32b"
+    ],
+    "training_modes": [
+      "full",
+      "lora"
+    ],
+    "lora_ranks": [
+      32
+    ],
+    "cutoff_lens": [
+      512,
+      1024,
+      2048,
+      4096,
+      8192,
+      16384
+    ],
+    "gpu_counts": [
+      1,
+      2,
+      4
+    ],
+    "target_gbs_values": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "packing_allowed_values": [
+      true,
+      false
+    ],
+    "offload_allowed": false,
+    "required_kernel_substring": "fa3"
+  },
+  "excluded_model_families": {
+    "note": "Hybrid-attention, VL and MoE checkpoints are out of dense scope and must fail closed.",
+    "prefixes": [
+      "qwen3p5_",
+      "qwen3_6_"
+    ],
+    "model_ids": [
+      "qwen3_6_27b",
+      "qwen3_vl_8b",
+      "qwen2p5_72b"
+    ]
+  },
+  "required_runtime_gates": {
+    "unified_v3_memory_upper_below_safe_limit": true,
+    "architecture_route_is_dense_full_attention": true,
+    "request_modality_is_text": true
+  },
+  "evidence_bindings": {
+    "business_blind": {
+      "path": "artifacts/h800_business_blind_eval_v1.json",
+      "sha256": "be171834b972fddd928c1f194bb2ad81348a89bd787494caba15fe105f96f467",
+      "note": "Dense qwen3_4b/8b/14b safe-admission rate 1.0, OOM-admission rate 0.0, memory MAPE 11.4% over 46 LoRA jobs (packing on/off, ZeRO none/2/3, 1-2 GPU, cutoff 2048/4096)."
+    },
+    "transfer_validation": {
+      "path": "artifacts/h800_packing_transfer_validation_results_v1.json",
+      "sha256": "7c7b491f9503534d6c9eb3b5b312a6fae0764701e22a6843e19f5f3ac5661397",
+      "report_sha256": "2ff8c9dc801b3e80824da6eb39c9e571db74b640e60628feeaefe8ae88bf0754",
+      "note": "24/24 dense success (full+lora, qwen3_1p7b/4b/8b/14b/32b, ZeRO none/2/3, 1/2/4 GPU, cutoff 1024/4096/8192/16384). No selected OOM; memory upper never falsely admitted an OOM."
+    }
+  },
+  "observed_acceptance": {
+    "business_blind_jobs": 46,
+    "business_blind_success": 46,
+    "business_blind_observed_oom": 0,
+    "dense_safe_admission_rate": 1.0,
+    "dense_oom_admission_rate": 0.0,
+    "memory_mape": 0.11393074405507717,
+    "transfer_jobs": 24,
+    "transfer_success": 24,
+    "transfer_observed_oom": 0
+  },
+  "engineering_assumption": "The business blind and transfer-validation evidence jointly cover dense Qwen full-attention scales qwen3_1p7b/4b/8b/14b/32b, Full/LoRA, packing on/off, ZeRO none/2/3 and 1/2/4 GPUs. Per explicit user acceptance the release scope is aligned with the pure-text Packing production release rather than restricted to the exact measured tuples; production admission treats the listed axes as transferable and fails closed outside them.",
+  "known_limitation": "Neither evidence source contains any OOM boundary sample (business blind is 46/46 success, transfer validation is 24/24 success). Admission therefore has no false-safe counter-evidence and relies entirely on the unified V3 memory upper staying below the safe limit with fail-closed behaviour. Grid cells absent from both sources (for example cutoff_len 512 and target_gbs 32/128/256) are admitted only through the unified V3 upper, not through direct measurement. Hybrid-attention (qwen3p5_*/qwen3_6_*), VL and MoE requests are always out of scope and fail closed.",
+  "rollback": "Set status to disabled or automatic_execution_allowed to false; the request then falls back to non-automatic memory recommendation."
+}

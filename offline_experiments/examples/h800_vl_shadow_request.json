@@ -1,0 +1,23 @@
+{
+  "candidates": [
+    {
+      "request_id": "qwen2p5-vl-3b-image-low-shadow",
+      "comparison_group": "qwen2p5-vl-3b-image-low-shadow",
+      "hardware_id": "h800",
+      "model_id": "qwen2p5_vl_3b",
+      "training_mode": "lora",
+      "lora_rank": 32,
+      "target_gbs": 64,
+      "cutoff_len": 8192,
+      "gpu_count": 1,
+      "physical_mbs": 1,
+      "zero_stage": 0,
+      "gradient_checkpointing": true,
+      "packing": false,
+      "dtype": "bf16",
+      "freeze_vision_tower": true,
+      "freeze_multi_modal_projector": true,
+      "vl_workload_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen2p5_vl_3b.pzfj38.low.json"
+    }
+  ]
+}

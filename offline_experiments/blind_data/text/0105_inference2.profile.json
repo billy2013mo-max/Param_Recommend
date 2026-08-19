@@ -1,0 +1,14 @@
+{
+ "schema": "sft_blind_text_profile/v1",
+ "source": "0105_inference2.sft.jsonl",
+ "template": "qwen3",
+ "tokenizer": "/wanqing-models/Qwen3-8B",
+ "rows": 5920,
+ "total_tokens": 6112164,
+ "mean_tokens_per_sample": 1032.460135135135,
+ "median_tokens_per_sample": 751.5,
+ "p90_tokens_per_sample": 2271,
+ "p95_tokens_per_sample": 2841,
+ "p99_tokens_per_sample": 3926,
+ "max_tokens_per_sample": 11525
+}

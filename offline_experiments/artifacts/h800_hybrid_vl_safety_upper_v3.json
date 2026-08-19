@@ -1,0 +1,474 @@
+{
+  "schema": "sft_h800_hybrid_vl_safety_upper/v3",
+  "generated_at_utc": "2026-08-18T08:30:35.155722+00:00",
+  "target_coverage": 0.95,
+  "center_source": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_hybrid_memory_artifact_v2.json",
+    "sha256": "1b9cbe34ac2e344f38c8551d2698ec530469a9684e122a50629497f23416ed0a",
+    "policy": "stage2_hybrid_center_v2"
+  },
+  "development_source": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_hybrid_attention_dense_stage1_observations_v1.jsonl",
+    "sha256": "968c3533f38f6f3fa2f72cee8b1e430861301ec1abd9c2e6a313bf8e908a054b",
+    "role": "stage1_development_only",
+    "note": "Part C prospective data (0105_inference2, blind_data/vl) is NOT used here."
+  },
+  "data_role": {
+    "prospective_acceptance_data_used": false,
+    "may_be_used_as_future_acceptance": true,
+    "reason": "multipliers derived solely from stage-1 development observations"
+  },
+  "hybrid_memory": {
+    "center_policy": "stage2_center_v2_unchanged",
+    "fallback_global_upper_multiplier": 1.0987854571817057,
+    "global_guard": {
+      "exact_rows": 127,
+      "target_coverage": 0.95,
+      "finite_sample_rank": 122,
+      "selected_rank": 122,
+      "rank_capped_at_sample_maximum": false,
+      "selected_log_guard": 0.09420543996911139,
+      "upper_multiplier": 1.0987854571817057
+    },
+    "conditional_key": "model_id::gpu_count_zero_stage_gradient_checkpointing",
+    "conditional_by_model_mechanism": {
+      "qwen3p5_4b::g1_z0_gc0": {
+        "development_exact_rows": 6,
+        "maximum_actual_to_center_ratio": 1.1062937934617165,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.128419669330951,
+        "selected_source": "development_max_plus_sparse_margin",
+        "job_ids": [
+          "h800hybriddense-44753bba894830fa",
+          "h800hybriddense-11b36b4bafaf0d57",
+          "h800hybriddense-e8db3556184385a9",
+          "h800hybriddense-bb9e2f79d06d0a5e",
+          "h800hybriddense-7bf8fdf87a377011",
+          "h800hybriddense-2e33a9e5d5520349"
+        ]
+      },
+      "qwen3p5_4b::g1_z0_gc1": {
+        "development_exact_rows": 6,
+        "maximum_actual_to_center_ratio": 1.0472108403319331,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-6c97a584dd4b0fe9",
+          "h800hybriddense-f0affc436e4ca31b",
+          "h800hybriddense-f2df7a6597d45141",
+          "h800hybriddense-905c8d76a4a50253",
+          "h800hybriddense-2a66145acd568d69",
+          "h800hybriddense-1a7c3633c23ed0ab"
+        ]
+      },
+      "qwen3p5_4b::g2_z2_gc0": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.0060426886891758,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-628467b90d6304c4",
+          "h800hybriddense-8e3114f06b53918f",
+          "h800hybriddense-a56b1e4447da576f",
+          "h800hybriddense-5f3d246782705e78",
+          "h800hybriddense-2cb22cf381c4a30b"
+        ]
+      },
+      "qwen3p5_4b::g2_z2_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.0703028507080121,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-eb69091c09c6fb4d",
+          "h800hybriddense-bc52db2a3078e465",
+          "h800hybriddense-7cf3fe3c1017a421",
+          "h800hybriddense-8f2e22085f23369c",
+          "h800hybriddense-db4394ca891c6d09"
+        ]
+      },
+      "qwen3p5_4b::g2_z3_gc0": {
+        "development_exact_rows": 3,
+        "maximum_actual_to_center_ratio": 1.0238906736371776,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-6d8a812539edaac2",
+          "h800hybriddense-04f3ab60b659c8c0",
+          "h800hybriddense-8c81d3c1f38921d2"
+        ]
+      },
+      "qwen3p5_4b::g2_z3_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.1192929628278137,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.1416788220843699,
+        "selected_source": "development_max_plus_sparse_margin",
+        "job_ids": [
+          "h800hybriddense-f0df8a657c0305ef",
+          "h800hybriddense-0df626f2d0e2d91e",
+          "h800hybriddense-765e05367b623005",
+          "h800hybriddense-72818b474cac4057",
+          "h800hybriddense-0e0858b86522ecad"
+        ]
+      },
+      "qwen3p5_4b::g4_z2_gc0": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 0.9846639316851157,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-580f16c7fd1d98f7",
+          "h800hybriddense-035c2034301a5ac4",
+          "h800hybriddense-8ab9a1287ee49fdb",
+          "h800hybriddense-9a374f16cd4b9eb1",
+          "h800hybriddense-908a002732489c51"
+        ]
+      },
+      "qwen3p5_4b::g4_z2_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.0806687877069647,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.102282163461104,
+        "selected_source": "development_max_plus_sparse_margin",
+        "job_ids": [
+          "h800hybriddense-77f1214d5bd38625",
+          "h800hybriddense-180df09a5bcf5ab6",
+          "h800hybriddense-352ab9b4bf97529b",
+          "h800hybriddense-bf278f13012b20b0",
+          "h800hybriddense-f344d0d05061fb12"
+        ]
+      },
+      "qwen3p5_4b::g4_z3_gc0": {
+        "development_exact_rows": 3,
+        "maximum_actual_to_center_ratio": 1.008517912627632,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-37bd96955c602a2d",
+          "h800hybriddense-664c076358f3c2a1",
+          "h800hybriddense-a4bfba771dc1bcbc"
+        ]
+      },
+      "qwen3p5_4b::g4_z3_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 0.977729278663759,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-48b26509e905cb1e",
+          "h800hybriddense-40b75b6b1f99eed6",
+          "h800hybriddense-f785d2f027113ed2",
+          "h800hybriddense-608883ebdc9c15b9",
+          "h800hybriddense-a5505c6f48b9dc3d"
+        ]
+      },
+      "qwen3p5_9b::g1_z0_gc0": {
+        "development_exact_rows": 6,
+        "maximum_actual_to_center_ratio": 1.0584607419838967,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-ba83022cb9a4c65f",
+          "h800hybriddense-d62267b55c9b4590",
+          "h800hybriddense-c65a543140f625bf",
+          "h800hybriddense-63e9b3390a56a39e",
+          "h800hybriddense-28ae348f068884cd",
+          "h800hybriddense-6b2472f93df07c35"
+        ]
+      },
+      "qwen3p5_9b::g1_z0_gc1": {
+        "development_exact_rows": 6,
+        "maximum_actual_to_center_ratio": 1.0161744467527414,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-1acdadee13f78048",
+          "h800hybriddense-0b3abd4bacda0f04",
+          "h800hybriddense-957fd3046eb391a5",
+          "h800hybriddense-10b7820aaa724d3e",
+          "h800hybriddense-23e68af8ffbe9ab6",
+          "h800hybriddense-555e449f4a543fed"
+        ]
+      },
+      "qwen3p5_9b::g2_z2_gc0": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 0.9834157452940753,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-b223ebd10dbbe597",
+          "h800hybriddense-271c0a521a9dff07",
+          "h800hybriddense-168334be5bfec545",
+          "h800hybriddense-f06b66c513c197e1",
+          "h800hybriddense-038bd976836ab605"
+        ]
+      },
+      "qwen3p5_9b::g2_z2_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.0005163605860066,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-acdc02152232570d",
+          "h800hybriddense-bb02eb7ded77e14e",
+          "h800hybriddense-6269e5758611e574",
+          "h800hybriddense-da7d299d5000885e",
+          "h800hybriddense-8b972ee977de8108"
+        ]
+      },
+      "qwen3p5_9b::g2_z3_gc0": {
+        "development_exact_rows": 3,
+        "maximum_actual_to_center_ratio": 1.0539537417738118,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-c30769c57fc200bf",
+          "h800hybriddense-0f019493222b6d15",
+          "h800hybriddense-61244277cb5c4281"
+        ]
+      },
+      "qwen3p5_9b::g2_z3_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.1528951012350683,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.1759530032597698,
+        "selected_source": "development_max_plus_sparse_margin",
+        "job_ids": [
+          "h800hybriddense-ec749ab45f5be437",
+          "h800hybriddense-eb684e47a05d5f63",
+          "h800hybriddense-097e4e5368df6f3a",
+          "h800hybriddense-9379405b41c4ed36",
+          "h800hybriddense-92b605d5e539d9c8"
+        ]
+      },
+      "qwen3p5_9b::g4_z2_gc0": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 0.9862641544059126,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-9e3581bf593daae1",
+          "h800hybriddense-e055f2091a11dffc",
+          "h800hybriddense-6016435d82673569",
+          "h800hybriddense-b1ebae0be5fd3c90",
+          "h800hybriddense-93e8349042f62cca"
+        ]
+      },
+      "qwen3p5_9b::g4_z2_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.0082234125869773,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-22ec0b9ab3a22e86",
+          "h800hybriddense-c5ffbf66c1d736fe",
+          "h800hybriddense-9a62d44a02583510",
+          "h800hybriddense-e68d0989e3945686",
+          "h800hybriddense-4801f5ee444b108f"
+        ]
+      },
+      "qwen3p5_9b::g4_z3_gc0": {
+        "development_exact_rows": 3,
+        "maximum_actual_to_center_ratio": 1.0344656034101867,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-02128a5c1c152a4e",
+          "h800hybriddense-944ae18be37d9a5f",
+          "h800hybriddense-e8247913de0ba757"
+        ]
+      },
+      "qwen3p5_9b::g4_z3_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.091572927728546,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.1134043862831169,
+        "selected_source": "development_max_plus_sparse_margin",
+        "job_ids": [
+          "h800hybriddense-f12e979dc050071c",
+          "h800hybriddense-d658bc7ce138400b",
+          "h800hybriddense-db56f280f9d1088e",
+          "h800hybriddense-d126838146e37ec2",
+          "h800hybriddense-9521e16611718cdd"
+        ]
+      },
+      "qwen3p6_27b::g1_z0_gc0": {
+        "development_exact_rows": 1,
+        "maximum_actual_to_center_ratio": 1.0527980175526626,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-cabbd8964f109707"
+        ]
+      },
+      "qwen3p6_27b::g1_z0_gc1": {
+        "development_exact_rows": 6,
+        "maximum_actual_to_center_ratio": 1.0269984202017433,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-9af086dc21157bc4",
+          "h800hybriddense-edc005feb11d21fe",
+          "h800hybriddense-8a93d54a03ec97e6",
+          "h800hybriddense-f764894c9950f271",
+          "h800hybriddense-86608388c01dc5e3",
+          "h800hybriddense-38da6712fff32eb2"
+        ]
+      },
+      "qwen3p6_27b::g2_z2_gc0": {
+        "development_exact_rows": 1,
+        "maximum_actual_to_center_ratio": 1.0111773372035853,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-f4b74923935b415c"
+        ]
+      },
+      "qwen3p6_27b::g2_z2_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.0322029789899254,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-94bb9a06e890598a",
+          "h800hybriddense-90a6f9d5da195e97",
+          "h800hybriddense-1eb3e2f434f0af48",
+          "h800hybriddense-4ddab84fb4269229",
+          "h800hybriddense-d5f3e4dd6fd3b070"
+        ]
+      },
+      "qwen3p6_27b::g2_z3_gc0": {
+        "development_exact_rows": 1,
+        "maximum_actual_to_center_ratio": 1.1121944010827194,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.1344382891043738,
+        "selected_source": "development_max_plus_sparse_margin",
+        "job_ids": [
+          "h800hybriddense-62c186b13a6270ca"
+        ]
+      },
+      "qwen3p6_27b::g2_z3_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.0404817272207114,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-3447442d87303c79",
+          "h800hybriddense-3257d351491ff9c2",
+          "h800hybriddense-de2632abf2d2d51b",
+          "h800hybriddense-966eb1d1a62ae236",
+          "h800hybriddense-91a27353d9fce2de"
+        ]
+      },
+      "qwen3p6_27b::g4_z2_gc0": {
+        "development_exact_rows": 1,
+        "maximum_actual_to_center_ratio": 1.0066470613050666,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-77ac5c253a189c2e"
+        ]
+      },
+      "qwen3p6_27b::g4_z2_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.0285604472643968,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-deb16d2368776f78",
+          "h800hybriddense-c155b13befdc3497",
+          "h800hybriddense-9ccf5ad591373756",
+          "h800hybriddense-9757d1e3b7a2ab29",
+          "h800hybriddense-0f4fc6a726f2995a"
+        ]
+      },
+      "qwen3p6_27b::g4_z3_gc0": {
+        "development_exact_rows": 1,
+        "maximum_actual_to_center_ratio": 1.112716656497062,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.1349709896270033,
+        "selected_source": "development_max_plus_sparse_margin",
+        "job_ids": [
+          "h800hybriddense-da45a013114b0940"
+        ]
+      },
+      "qwen3p6_27b::g4_z3_gc1": {
+        "development_exact_rows": 5,
+        "maximum_actual_to_center_ratio": 1.0056777070557181,
+        "fallback_global_multiplier": 1.0987854571817057,
+        "sparse_measurement_margin_fraction": 0.02,
+        "upper_multiplier": 1.0987854571817057,
+        "selected_source": "global_guard_floor",
+        "job_ids": [
+          "h800hybriddense-6422bd72d755ce2a",
+          "h800hybriddense-6dc339e26d956179",
+          "h800hybriddense-32aa3bad611c94ff",
+          "h800hybriddense-5271e885a6c7df01",
+          "h800hybriddense-f85f765deaeaee51"
+        ]
+      }
+    },
+    "development_coverage": {
+      "exact_rows": 127,
+      "covered_rows": 127,
+      "exact_upper_coverage": 1.0
+    }
+  },
+  "release": {
+    "mode": "shadow_only",
+    "automatic_admission_allowed": false
+  },
+  "report_sha256": "ac23997f8b6bd35f4272f6c2dae1b507f67c6e365861a04d85f37d099898b5e6"
+}

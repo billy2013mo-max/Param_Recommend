@@ -1,0 +1,62 @@
+{
+  "schema": "sft_h800_frozen_vl_combined_canary_design/v1",
+  "campaign_id": "h800_frozen_vl_combined_canary_20260811_v1",
+  "phase_id": "h800_frozen_vl_combined_canary_v1",
+  "generated_at_utc": "2026-08-12T02:55:49.494099+00:00",
+  "queue": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_frozen_vl_combined_canary_v1.jsonl",
+    "sha256": "7582f0a3fadec795630a48b2b89522c050f02d2e980fe8b411d8b20083b76187",
+    "ordered_job_ids": [
+      "h800vlfix-72998c7af30bf23d",
+      "h800vlfix-88cb3815b4547ed0",
+      "h800vlfix-8ea22310d4a43dfb",
+      "h800vlfix-aef0f311b308a0e8",
+      "h800vlfix-ba1c3c9fb0cfc4ab",
+      "h800vlfix-efde080cabccaed4",
+      "h800vidfix-d0d632b2d3badd0a",
+      "h800vidfix-1e069de637fa7099",
+      "h800vidfix-57dcfd30feefb1b8",
+      "h800vidfix-e2c9a266464ffb75",
+      "h800vidfix-627eb84f1ae180c9",
+      "h800vidfix-4e1057cfeae6e268"
+    ]
+  },
+  "source_queues": [
+    {
+      "modality": "image",
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_frozen_vl_decomposition_canary_v1.jsonl",
+      "sha256": "c1a29b658a3e84f04249a572096a479ba3eae13bbfc642b899c48b57fca0bf6b"
+    },
+    {
+      "modality": "video",
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_frozen_video_decomposition_canary_v1.jsonl",
+      "sha256": "dbbdfec5a56b00faf7ea2c6c3a8cacbb6cd1d1cedc49f431232eb62c00fb516d"
+    }
+  ],
+  "jobs": 12,
+  "by_model": {
+    "qwen2p5_vl_3b": 4,
+    "qwen3_vl_4b": 4,
+    "qwen3p5_4b": 4
+  },
+  "by_arm": {
+    "real_image": 3,
+    "real_video": 3,
+    "text_length_matched": 6
+  },
+  "execution_order_policy": "all_image_pairs_then_all_video_pairs",
+  "authorized_gpu_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "packing": false,
+  "formal_execution_authorized": false,
+  "formal_requires_canary_acceptance": true,
+  "gpu_training_started": false,
+  "report_sha256": "ad2707a829969cfce68f33ebe37482a77db84fb557eb650ab68d65f9c402ae79"
+}

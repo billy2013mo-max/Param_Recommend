@@ -1,12 +1,17 @@
 {
   "schema_version": 1,
   "training_scope": {
-    "phase_id": "h800_hybrid_attention_dense_stage1_formal_v1",
+    "phase_id": "h800_packing_transfer_validation_v1",
     "model_ids": [
-      "qwen3_8b",
-      "qwen3p5_4b",
-      "qwen3p5_9b",
-      "qwen3p6_27b"
+      "qwen3_14b",
+      "qwen3_1p7b",
+      "qwen3_32b",
+      "qwen3_4b",
+      "qwen3_8b"
+    ],
+    "train_types": [
+      "full",
+      "lora"
     ],
     "gpu_ids": [
       0,
@@ -15,7 +20,8 @@
       3,
       4,
       5,
-      6
+      6,
+      7
     ],
     "exclusive_node_gpu_ids": [
       0,
@@ -24,7 +30,8 @@
       3,
       4,
       5,
-      6
+      6,
+      7
     ],
     "max_gpu_count": 4,
     "stage": "sft",
@@ -36,26 +43,9 @@
       4
     ],
     "global_batch_sizes": [
-      64
+      256
     ],
-    "gradient_checkpointing": [
-      false,
-      true
-    ],
-    "zero_by_gpu_count": {
-      "1": [
-        "none"
-      ],
-      "2": [
-        "zero2",
-        "zero3"
-      ],
-      "4": [
-        "zero2",
-        "zero3"
-      ]
-    },
-    "objective": "calibrate architecture-aware dense full/linear-attention memory features across exact token length, ZeRO, GC and MBS"
+    "objective": "small prospective transfer validation for the accepted zero-coefficient virtual-MBS Packing ranker"
   },
   "fixed_runtime": {
     "python": "/fine-tuning-launcher/.venv/bin/python",
@@ -92,49 +82,5 @@
     "performance_parallelism": "disjoint_gpu_masks",
     "scheduler_order_policy": "strict_homogeneous_card_count_waves",
     "formal_throughput_requires_exclusive_node": false
-  },
-  "datasets": [
-    {
-      "id": "packing_config_rank_pf02_v1",
-      "workload_id": "PF02",
-      "runtime_records": 11690,
-      "distribution_preserving_repetition": false
-    },
-    {
-      "id": "packing_config_rank_pf04_v1",
-      "workload_id": "PF04",
-      "runtime_records": 10330,
-      "distribution_preserving_repetition": true
-    },
-    {
-      "id": "packing_config_rank_pf06_v1",
-      "workload_id": "PF06",
-      "runtime_records": 8500,
-      "distribution_preserving_repetition": true
-    },
-    {
-      "id": "packing_config_rank_ph02_v1",
-      "workload_id": "PH02",
-      "runtime_records": 8973,
-      "distribution_preserving_repetition": true
-    },
-    {
-      "id": "packing_config_rank_ph03_v1",
-      "workload_id": "PH03",
-      "runtime_records": 9380,
-      "distribution_preserving_repetition": true
-    },
-    {
-      "id": "packing_config_rank_ph06_v1",
-      "workload_id": "PH06",
-      "runtime_records": 8274,
-      "distribution_preserving_repetition": true
-    }
-  ],
-  "packing_static_gate": {
-    "virtual_mbs_source": "upload_time samples_per_pack.mean",
-    "maximum_expected_gbs_relative_error": 0.1,
-    "pack_count_p99_gbs_epsilon": 0.15,
-    "recommendation_time_raw_rows_required": false
   }
 }

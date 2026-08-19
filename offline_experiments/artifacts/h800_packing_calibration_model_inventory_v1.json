@@ -1,0 +1,182 @@
+{
+  "schema": "sft_h800_packing_calibration_model_inventory/v1",
+  "campaign_id": "h800_packing_calibration_20260803_v1",
+  "fixed_lora": {
+    "rank": 32,
+    "alpha": 32,
+    "dropout": 0.0,
+    "target": "all"
+  },
+  "models": [
+    {
+      "id": "qwen3_8b",
+      "nominal_scale_b": 8,
+      "path": "/wanqing-models/Qwen3-8B",
+      "tokenizer_path": "/wanqing-models/Qwen3-8B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "lora",
+        "full"
+      ],
+      "actual_parameters": 8190735360,
+      "actual_parameters_b": 8.19073536,
+      "checkpoint_bytes": 16381516776,
+      "checkpoint_shards": 5,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00005.safetensors",
+          "size": 3996250744,
+          "mtime_ns": 1749218319988992000
+        },
+        {
+          "name": "model-00002-of-00005.safetensors",
+          "size": 3993160032,
+          "mtime_ns": 1749218311038756000
+        },
+        {
+          "name": "model-00003-of-00005.safetensors",
+          "size": 3959604768,
+          "mtime_ns": 1749218317170918000
+        },
+        {
+          "name": "model-00004-of-00005.safetensors",
+          "size": 3187841392,
+          "mtime_ns": 1749218313581823000
+        },
+        {
+          "name": "model-00005-of-00005.safetensors",
+          "size": 1244659840,
+          "mtime_ns": 1749218309610718000
+        }
+      ],
+      "model_directory_name": "Qwen3-8B",
+      "model_identity": "/wanqing-models/Qwen3-8B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-8B",
+      "tokenizer_directory_name": "Qwen3-8B",
+      "tokenizer_class": "Qwen2TokenizerFast",
+      "tokenizer_size": 151669,
+      "tokenizer_max_id": 151668,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 399,
+      "model_type": "qwen3",
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "architecture_role": "dense_language",
+      "is_vision_language": false,
+      "vision_config": null,
+      "vision_geometry": null,
+      "component_parameter_estimates": {
+        "language_model_or_other": 8190735360,
+        "vision_tower": 0,
+        "projector_or_merger": 0
+      },
+      "vision_parameter_estimate": 0,
+      "hidden_size": 4096,
+      "intermediate_size": 12288,
+      "num_hidden_layers": 36,
+      "num_attention_heads": 32,
+      "num_key_value_heads": 8,
+      "head_dim": 128,
+      "vocab_size": 151936,
+      "max_position_embeddings": 40960,
+      "torch_dtype": "bfloat16",
+      "geometry_source": "top_level"
+    },
+    {
+      "id": "qwen3_14b",
+      "nominal_scale_b": 14,
+      "path": "/wanqing-models/Qwen3-14B",
+      "tokenizer_path": "/wanqing-models/Qwen3-14B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "lora",
+        "full"
+      ],
+      "actual_parameters": 14768307200,
+      "actual_parameters_b": 14.7683072,
+      "checkpoint_bytes": 29536665640,
+      "checkpoint_shards": 8,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00008.safetensors",
+          "size": 3841788544,
+          "mtime_ns": 1749791188772152000
+        },
+        {
+          "name": "model-00002-of-00008.safetensors",
+          "size": 3963750816,
+          "mtime_ns": 1749791186176083000
+        },
+        {
+          "name": "model-00003-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791188588147000
+        },
+        {
+          "name": "model-00004-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791194956315000
+        },
+        {
+          "name": "model-00005-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791196326351000
+        },
+        {
+          "name": "model-00006-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791195088319000
+        },
+        {
+          "name": "model-00007-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791217877922000
+        },
+        {
+          "name": "model-00008-of-00008.safetensors",
+          "size": 1912371880,
+          "mtime_ns": 1749790759512789000
+        }
+      ],
+      "model_directory_name": "Qwen3-14B",
+      "model_identity": "/wanqing-models/Qwen3-14B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-14B",
+      "tokenizer_directory_name": "Qwen3-14B",
+      "tokenizer_class": "Qwen2TokenizerFast",
+      "tokenizer_size": 151669,
+      "tokenizer_max_id": 151668,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 443,
+      "model_type": "qwen3",
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "architecture_role": "dense_language",
+      "is_vision_language": false,
+      "vision_config": null,
+      "vision_geometry": null,
+      "component_parameter_estimates": {
+        "language_model_or_other": 14768307200,
+        "vision_tower": 0,
+        "projector_or_merger": 0
+      },
+      "vision_parameter_estimate": 0,
+      "hidden_size": 5120,
+      "intermediate_size": 17408,
+      "num_hidden_layers": 40,
+      "num_attention_heads": 40,
+      "num_key_value_heads": 8,
+      "head_dim": 128,
+      "vocab_size": 151936,
+      "max_position_embeddings": 40960,
+      "torch_dtype": "bfloat16",
+      "geometry_source": "top_level"
+    }
+  ],
+  "report_sha256": "3c835f361fb9e759c8e5fedfb2cd926de85e185d1a1f65072098c511fba6f302"
+}

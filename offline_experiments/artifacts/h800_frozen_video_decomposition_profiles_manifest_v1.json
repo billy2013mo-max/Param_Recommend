@@ -1,0 +1,465 @@
+{
+  "schema": "sft_h800_frozen_video_decomposition_profiles/v1",
+  "campaign_id": "h800_frozen_video_decomposition_20260811_v1",
+  "generated_at_utc": "2026-08-12T02:53:46.541072+00:00",
+  "source_video_data": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/vl_media_business_v1/derived/zltbjg_v2_videos_local.jsonl",
+    "sha256": "e1fe627bd61d5b09e0e9abcec5b0baa856d41e1292758944245c367ed251d9d1",
+    "trainable_view_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/zltbjg_v2_videos_trainable.jsonl",
+    "trainable_view_sha256": "883c151443c1ad5405dcbb7d965f5dc60587898eb9ff6ff1f4e11bf9f718405e",
+    "empty_responses_replaced_with_calibration_sentinel": true,
+    "calibration_sentinel": "0",
+    "all_training_responses_nonempty": true,
+    "training_view_format": "sharegpt",
+    "semantic_labels_fabricated": false
+  },
+  "profiles": [
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "tier": "native_16",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen2p5_vl_3b.native_16.text_matched.jsonl",
+      "data_sha256": "c2d46296fd0fa073dca6a63eff7834bec5ce86e5334a12a2542226b195de8a16",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen2p5_vl_3b.native_16.text_matched.jsonl",
+        "sha256": "afb6f98d3fe6a57d236c2207fca8668fc29c0b6ef804fadffc71a87db37ad621",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 3868,
+          "mean": 4124.74,
+          "mean_squared": 17014864.84,
+          "p50": 4132.0,
+          "p90": 4132.0,
+          "p95": 4132.0,
+          "p99": 4132.0,
+          "maximum": 4132
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 3,
+          "mean": 3.0,
+          "mean_squared": 9.0,
+          "p50": 3.0,
+          "p90": 3.0,
+          "p95": 3.0,
+          "p99": 3.0,
+          "maximum": 3
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen2p5_vl_3b.zltbjg.native_16.json",
+      "matched_video_profile_sha256": "1e2408218d7032278cc6a6f2cbe0b4b6a9452b4423abef450d61c28e46f39610",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "tier": "native_64",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen2p5_vl_3b.native_64.text_matched.jsonl",
+      "data_sha256": "9bf3e90dfc6ef937addb55ee0868ffed8741447474848314d6be199dbdae13f0",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen2p5_vl_3b.native_64.text_matched.jsonl",
+        "sha256": "be25728a8965ce1af563ae8f9d949c9846f527a70f506ec565e959afde0b02cf",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 3868,
+          "mean": 5304.16,
+          "mean_squared": 28483126.48,
+          "p50": 5716.0,
+          "p90": 5716.0,
+          "p95": 5716.0,
+          "p99": 5716.0,
+          "maximum": 5716
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 3,
+          "mean": 3.0,
+          "mean_squared": 9.0,
+          "p50": 3.0,
+          "p90": 3.0,
+          "p95": 3.0,
+          "p99": 3.0,
+          "maximum": 3
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen2p5_vl_3b.zltbjg.native_64.json",
+      "matched_video_profile_sha256": "14c03cb21873b6966f7e17ade65a482354201dc43a568898cc8a2f4946f92906",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "tier": "native_128",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen2p5_vl_3b.native_128.text_matched.jsonl",
+      "data_sha256": "4cd306ec8980e39cd072416d2a95a9992da297705ad28222099beb6f47874b56",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen2p5_vl_3b.native_128.text_matched.jsonl",
+        "sha256": "6ef9f8819319d5fe64cf4ee723e31930142e97307d9ac8c2ad220c5e84e0f15e",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 3868,
+          "mean": 6248.62,
+          "mean_squared": 41148350.92,
+          "p50": 5947.0,
+          "p90": 7828.0,
+          "p95": 7828.0,
+          "p99": 7828.0,
+          "maximum": 7828
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 3,
+          "mean": 3.0,
+          "mean_squared": 9.0,
+          "p50": 3.0,
+          "p90": 3.0,
+          "p95": 3.0,
+          "p99": 3.0,
+          "maximum": 3
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen2p5_vl_3b.zltbjg.native_128.json",
+      "matched_video_profile_sha256": "08f77b9999c93e223cd80b424e56d63fdf40cf5752485b8f675fb16d127e8419",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen2p5_vl_3b",
+      "tier": "upscaled_64",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen2p5_vl_3b.upscaled_64.text_matched.jsonl",
+      "data_sha256": "d43dea7a54e6f5b49c6993d9978e10b2df7e7244f9774eedd0b0c7b281b0fbf8",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen2p5_vl_3b.upscaled_64.text_matched.jsonl",
+        "sha256": "3cae051dadb2584e5c78460c8779d88e7a61efcf65703e63d9ed9ab4edc67875",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 4800,
+          "mean": 11306.24,
+          "mean_squared": 134994085.62,
+          "p50": 13172.0,
+          "p90": 13172.0,
+          "p95": 13172.0,
+          "p99": 13172.0,
+          "maximum": 13172
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 3,
+          "mean": 3.0,
+          "mean_squared": 9.0,
+          "p50": 3.0,
+          "p90": 3.0,
+          "p95": 3.0,
+          "p99": 3.0,
+          "maximum": 3
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen2p5_vl_3b.zltbjg.upscaled_64.json",
+      "matched_video_profile_sha256": "a86e26966050849d759ea0dfe5b96004d177a467dea432641b05d1bee94c2f24",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "tier": "native_16",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen3_vl_4b.native_16.text_matched.jsonl",
+      "data_sha256": "4143ba14c2812d2840efd2829bf863099e86dad5cd0ce5c7e22ad6612df904ad",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3_vl_4b.native_16.text_matched.jsonl",
+        "sha256": "037671e49b3c630912254a0244436f9942c71f7790700bef1270e4a315d3891d",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 3867,
+          "mean": 4137.89,
+          "mean_squared": 17123716.87,
+          "p50": 4145.0,
+          "p90": 4153.0,
+          "p95": 4153.0,
+          "p99": 4154.0,
+          "maximum": 4154
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 7,
+          "mean": 7.0,
+          "mean_squared": 49.0,
+          "p50": 7.0,
+          "p90": 7.0,
+          "p95": 7.0,
+          "p99": 7.0,
+          "maximum": 7
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen3_vl_4b.zltbjg.native_16.json",
+      "matched_video_profile_sha256": "65a0372b95d9bb88ed0d3df41cc8da85a56d0fbef5b2c52189667724fbe613ff",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "tier": "native_64",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen3_vl_4b.native_64.text_matched.jsonl",
+      "data_sha256": "440f6796ee6b665b76954c28f7fa51b19701394165e2fbab73caf5bb0480a029",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3_vl_4b.native_64.text_matched.jsonl",
+        "sha256": "8005520f64e080d25b9427edd8af1232a8f5119cef488fd217c725d2ca390c35",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 3867,
+          "mean": 5370.9,
+          "mean_squared": 29234501.36,
+          "p50": 5794.0,
+          "p90": 5826.0,
+          "p95": 5828.0,
+          "p99": 5829.01,
+          "maximum": 5830
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 7,
+          "mean": 7.0,
+          "mean_squared": 49.0,
+          "p50": 7.0,
+          "p90": 7.0,
+          "p95": 7.0,
+          "p99": 7.0,
+          "maximum": 7
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen3_vl_4b.zltbjg.native_64.json",
+      "matched_video_profile_sha256": "d34ed1740500bca7478f640e3616c70e6173cc0e64b660a2fdde792e6001a041",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "tier": "native_128",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen3_vl_4b.native_128.text_matched.jsonl",
+      "data_sha256": "c16841104716164ae31124b6beb9fc78ebcbc9c4f91fa3e3193b944f76b5e62c",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3_vl_4b.native_128.text_matched.jsonl",
+        "sha256": "c6fe9f1152102b6dd45e52d2346e668528ab6284bee6e0dfd9540906d3c032b6",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 3867,
+          "mean": 6361.86,
+          "mean_squared": 42809941.7,
+          "p50": 6034.5,
+          "p90": 8057.0,
+          "p95": 8060.05,
+          "p99": 8065.01,
+          "maximum": 8066
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 7,
+          "mean": 7.0,
+          "mean_squared": 49.0,
+          "p50": 7.0,
+          "p90": 7.0,
+          "p95": 7.0,
+          "p99": 7.0,
+          "maximum": 7
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen3_vl_4b.zltbjg.native_128.json",
+      "matched_video_profile_sha256": "ab37444b1549854ed0b63cdeb5f699b2ef9660dcd69bf2df5a6e848e64f32f7b",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3_vl_4b",
+      "tier": "upscaled_64",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen3_vl_4b.upscaled_64.text_matched.jsonl",
+      "data_sha256": "c5632b1434f155a310a9740f42bf22ef1ca2bce54f0da4096de92f81c470894a",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3_vl_4b.upscaled_64.text_matched.jsonl",
+        "sha256": "e21d73cab231869ce35fcf9dd30acead3ec7725943bb10c353b690900a305afc",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 4507,
+          "mean": 9492.5,
+          "mean_squared": 94330379.76,
+          "p50": 10914.0,
+          "p90": 10946.0,
+          "p95": 10948.0,
+          "p99": 10949.01,
+          "maximum": 10950
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 7,
+          "mean": 7.0,
+          "mean_squared": 49.0,
+          "p50": 7.0,
+          "p90": 7.0,
+          "p95": 7.0,
+          "p99": 7.0,
+          "maximum": 7
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen3_vl_4b.zltbjg.upscaled_64.json",
+      "matched_video_profile_sha256": "b7c0df6c7f68f68ca1a101dd088c489e44dfe067443683d1efbec36170749188",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "tier": "native_16",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen3p5_4b.native_16.text_matched.jsonl",
+      "data_sha256": "2108235fae15a59684fe157eec2395232abe4b5e7939483313d710a7e3724195",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3p5_4b.native_16.text_matched.jsonl",
+        "sha256": "fa1952ea4f4cf6eb0c154a67b7858392e1c5223a8495c441e06ecc0efe32009e",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 3706,
+          "mean": 3976.89,
+          "mean_squared": 15817237.29,
+          "p50": 3984.0,
+          "p90": 3992.0,
+          "p95": 3992.0,
+          "p99": 3993.0,
+          "maximum": 3993
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 3,
+          "mean": 3.0,
+          "mean_squared": 9.0,
+          "p50": 3.0,
+          "p90": 3.0,
+          "p95": 3.0,
+          "p99": 3.0,
+          "maximum": 3
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen3p5_4b.zltbjg.native_16.json",
+      "matched_video_profile_sha256": "e65bf2203f53c8264a798b84aaea6c319e447f5c67647b7d04d7d52ca27b4e99",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "tier": "native_64",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen3p5_4b.native_64.text_matched.jsonl",
+      "data_sha256": "8a8aecee6aa221ca49d36f04db4b0aa07a83aa78ec0aeda8561fea43f23ba8d1",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3p5_4b.native_64.text_matched.jsonl",
+        "sha256": "c3cbe246e57e236669fd5f3f289ee74b8a3a382226b5ac9c801f0f39eeb5dfba",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 3706,
+          "mean": 5209.9,
+          "mean_squared": 27530992.56,
+          "p50": 5633.0,
+          "p90": 5665.0,
+          "p95": 5667.0,
+          "p99": 5668.009999999999,
+          "maximum": 5669
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 3,
+          "mean": 3.0,
+          "mean_squared": 9.0,
+          "p50": 3.0,
+          "p90": 3.0,
+          "p95": 3.0,
+          "p99": 3.0,
+          "maximum": 3
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen3p5_4b.zltbjg.native_64.json",
+      "matched_video_profile_sha256": "564a40cfab3b870ad00f22ce8c54a9d459893ad1f7cb76ac030c77340196005a",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "tier": "native_128",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen3p5_4b.native_128.text_matched.jsonl",
+      "data_sha256": "fd0aa673cf8b0b25d23e00fcd0ca478644e884dcddcdb9c674ae5f71d932de51",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3p5_4b.native_128.text_matched.jsonl",
+        "sha256": "5f5ca2e3df79926a658513c3bd8636c1af7a5a32971e7fa1bc5fc9923d141f28",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 3706,
+          "mean": 6200.86,
+          "mean_squared": 40787343.78,
+          "p50": 5873.5,
+          "p90": 7896.0,
+          "p95": 7899.049999999999,
+          "p99": 7904.009999999999,
+          "maximum": 7905
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 3,
+          "mean": 3.0,
+          "mean_squared": 9.0,
+          "p50": 3.0,
+          "p90": 3.0,
+          "p95": 3.0,
+          "p99": 3.0,
+          "maximum": 3
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen3p5_4b.zltbjg.native_128.json",
+      "matched_video_profile_sha256": "9c4348de3dcddec6a4d6f4e1a843f0db87be5bb72094762e9bffe7977a98d63c",
+      "recordwise_total_match": true
+    },
+    {
+      "model_id": "qwen3p5_4b",
+      "tier": "upscaled_64",
+      "data_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/data/frozen_video_decomposition_v1/qwen3p5_4b.upscaled_64.text_matched.jsonl",
+      "data_sha256": "b8ed25295c89d431ae959aff0e66d0f81962a475db13a0f8943cde3e98e32860",
+      "profile": {
+        "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_frozen_video_decomposition_profiles_v1/qwen3p5_4b.upscaled_64.text_matched.jsonl",
+        "sha256": "bc408471e90fa3dc2aba6e68b901a32caa40f69cebc12a8db21ee02e7147f4f9",
+        "rows": 100,
+        "total_tokens": {
+          "count": 100,
+          "minimum": 4346,
+          "mean": 9331.5,
+          "mean_squared": 91299715.76,
+          "p50": 10753.0,
+          "p90": 10785.0,
+          "p95": 10787.0,
+          "p99": 10788.01,
+          "maximum": 10789
+        },
+        "label_tokens": {
+          "count": 100,
+          "minimum": 3,
+          "mean": 3.0,
+          "mean_squared": 9.0,
+          "p50": 3.0,
+          "p90": 3.0,
+          "p95": 3.0,
+          "p99": 3.0,
+          "maximum": 3
+        },
+        "recordwise_total_match": true
+      },
+      "matched_video_profile_path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_vl_business_workload_profiles_v2/qwen3p5_4b.zltbjg.upscaled_64.json",
+      "matched_video_profile_sha256": "f9ebf9209453fa07956540d73f73777807a605e1476c9d658f49994a2d718281",
+      "recordwise_total_match": true
+    }
+  ],
+  "all_recordwise_total_matches_exact": true,
+  "gpu_training_started": false,
+  "report_sha256": "4b6209e343ac0a7f7d04d8f4783588e38d7699260377199d781138b611d233e0"
+}

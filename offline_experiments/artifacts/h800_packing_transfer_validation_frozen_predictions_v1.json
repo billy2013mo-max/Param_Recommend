@@ -1,0 +1,582 @@
+{
+  "schema": "sft_h800_packing_transfer_validation_frozen_predictions/v1",
+  "generated_at_utc": "2026-08-17T13:06:36.649100+00:00",
+  "generated_before_first_validation_gpu_execution": true,
+  "validation_outcomes_read": false,
+  "coefficients_fitted": false,
+  "queue_binding": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_packing_transfer_validation_v1.jsonl",
+    "sha256": "3f0820c0d717b980260cce6d1505cb0eebf508132d27c8d8f90c1896eb387ed4",
+    "jobs": 24
+  },
+  "design_binding": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_packing_transfer_validation_design_v1.json",
+    "sha256": "a1b991ab17015d584ac0bf01906c8b3cb2a6c1af5158586788f197f35141a19c"
+  },
+  "model_bindings": {
+    "accepted_packing_ranking_rule": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/h800_packing_ranking_acceptance_v1.json",
+      "sha256": "76467acb3d9f2595b802732162934f9faf0396b0157592ce4be5968e95f1a38f"
+    },
+    "frozen_unpacked_throughput": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/structured_throughput_modeling.json",
+      "sha256": "1b8070112138786d91fe088155f33a8cf4d20d7070932ef8e5ade87a5ea3f528"
+    },
+    "prediction_rule": "accepted frozen Unpacked V5 at upload-time samples_per_pack.mean; Packing coefficient is fixed at zero"
+  },
+  "ranking_freeze": {
+    "S1-qwen3_1p7b-full-PH02-dp1": {
+      "predicted_top1_job_id": "h800packxfer-18a5793d5b619db9",
+      "ordered_job_ids": [
+        "h800packxfer-18a5793d5b619db9",
+        "h800packxfer-b85f7f255bced158",
+        "h800packxfer-3cc2c3bd979147b1",
+        "h800packxfer-fef31cdcb5536fe8"
+      ]
+    },
+    "S2-qwen3_1p7b-lora-PH03-dp1": {
+      "predicted_top1_job_id": "h800packxfer-cf85ec68d6f1cada",
+      "ordered_job_ids": [
+        "h800packxfer-cf85ec68d6f1cada",
+        "h800packxfer-8aeba24c090bdf64",
+        "h800packxfer-dd4c82e808eccf0d",
+        "h800packxfer-5ae56e21423981ca"
+      ]
+    },
+    "S3-qwen3_4b-full-PH06-dp2": {
+      "predicted_top1_job_id": "h800packxfer-4692d575c05795d9",
+      "ordered_job_ids": [
+        "h800packxfer-4692d575c05795d9",
+        "h800packxfer-401a0dd97059a8e5",
+        "h800packxfer-dd2461886f780ad8",
+        "h800packxfer-f94fa27710f3cb93"
+      ]
+    },
+    "S4-qwen3_8b-full-PH03-dp2": {
+      "predicted_top1_job_id": "h800packxfer-6ce5dfcae57a6359",
+      "ordered_job_ids": [
+        "h800packxfer-6ce5dfcae57a6359",
+        "h800packxfer-566cf7943a8786a5",
+        "h800packxfer-0721f344e244a6be",
+        "h800packxfer-fa9ac3bb1a4fc854"
+      ]
+    },
+    "S5-qwen3_14b-lora-PH02-dp4": {
+      "predicted_top1_job_id": "h800packxfer-c050c5af148bd7a9",
+      "ordered_job_ids": [
+        "h800packxfer-c050c5af148bd7a9",
+        "h800packxfer-888fc69c7ae2a41f",
+        "h800packxfer-4cf315e9ddf280ca",
+        "h800packxfer-89279af6651b0362"
+      ]
+    },
+    "S6-qwen3_32b-lora-PH06-dp4": {
+      "predicted_top1_job_id": "h800packxfer-338d30ab94b539b8",
+      "ordered_job_ids": [
+        "h800packxfer-338d30ab94b539b8",
+        "h800packxfer-4e9b2ed9c1d5db21",
+        "h800packxfer-f4d189205cfa1fd7"
+      ]
+    }
+  },
+  "predictions": [
+    {
+      "job_id": "h800packxfer-fef31cdcb5536fe8",
+      "scene_id": "S1",
+      "ranking_group_id": "S1-qwen3_1p7b-full-PH02-dp1",
+      "predicted_ranking_score": 18.276811295090567,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 18.276811295090567,
+        "predicted_effective_tokens_per_second": 4449.092826174421,
+        "virtual_mbs": 3.8346153846153848,
+        "lower_mbs": 2,
+        "upper_mbs": 4,
+        "upper_log_weight": 0.9390818813697415,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": false,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-cf85ec68d6f1cada",
+      "scene_id": "S2",
+      "ranking_group_id": "S2-qwen3_1p7b-lora-PH03-dp1",
+      "predicted_ranking_score": 23.134940346280995,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 23.134940346280995,
+        "predicted_effective_tokens_per_second": 17151.13982035799,
+        "virtual_mbs": 5.134099616858237,
+        "lower_mbs": 4,
+        "upper_mbs": 8,
+        "upper_log_weight": 0.3601112887752502,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-18a5793d5b619db9",
+      "scene_id": "S1",
+      "ranking_group_id": "S1-qwen3_1p7b-full-PH02-dp1",
+      "predicted_ranking_score": 69.94770485299493,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 69.94770485299493,
+        "predicted_effective_tokens_per_second": 17027.2498218778,
+        "virtual_mbs": 15.578125,
+        "lower_mbs": 8,
+        "upper_mbs": 16,
+        "upper_log_weight": 0.9614496943981958,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-dd4c82e808eccf0d",
+      "scene_id": "S2",
+      "ranking_group_id": "S2-qwen3_1p7b-lora-PH03-dp1",
+      "predicted_ranking_score": 6.149180052142091,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 6.149180052142091,
+        "predicted_effective_tokens_per_second": 4507.734449208496,
+        "virtual_mbs": 1.0,
+        "lower_mbs": 1,
+        "upper_mbs": 2,
+        "upper_log_weight": 0.0,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": false,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-3cc2c3bd979147b1",
+      "scene_id": "S1",
+      "ranking_group_id": "S1-qwen3_1p7b-full-PH02-dp1",
+      "predicted_ranking_score": 23.862960905792157,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 23.862960905792157,
+        "predicted_effective_tokens_per_second": 5808.919644848501,
+        "virtual_mbs": 3.8346153846153848,
+        "lower_mbs": 2,
+        "upper_mbs": 4,
+        "upper_log_weight": 0.9390818813697415,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": false,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-5ae56e21423981ca",
+      "scene_id": "S2",
+      "ranking_group_id": "S2-qwen3_1p7b-lora-PH03-dp1",
+      "predicted_ranking_score": 4.357925361397288,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 4.357925361397288,
+        "predicted_effective_tokens_per_second": 3194.6324732850762,
+        "virtual_mbs": 1.0,
+        "lower_mbs": 1,
+        "upper_mbs": 2,
+        "upper_log_weight": 0.0,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": false,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-b85f7f255bced158",
+      "scene_id": "S1",
+      "ranking_group_id": "S1-qwen3_1p7b-full-PH02-dp1",
+      "predicted_ranking_score": 54.11059420221632,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 54.11059420221632,
+        "predicted_effective_tokens_per_second": 13172.049139106817,
+        "virtual_mbs": 15.578125,
+        "lower_mbs": 8,
+        "upper_mbs": 16,
+        "upper_log_weight": 0.9614496943981958,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-8aeba24c090bdf64",
+      "scene_id": "S2",
+      "ranking_group_id": "S2-qwen3_1p7b-lora-PH03-dp1",
+      "predicted_ranking_score": 16.340199043959217,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 16.340199043959217,
+        "predicted_effective_tokens_per_second": 12113.84314377434,
+        "virtual_mbs": 5.134099616858237,
+        "lower_mbs": 4,
+        "upper_mbs": 8,
+        "upper_log_weight": 0.3601112887752502,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-dd2461886f780ad8",
+      "scene_id": "S3",
+      "ranking_group_id": "S3-qwen3_4b-full-PH06-dp2",
+      "predicted_ranking_score": 3.506247534297744,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 3.506247534297744,
+        "predicted_effective_tokens_per_second": 22772.766266574254,
+        "virtual_mbs": 2.4171779141104293,
+        "lower_mbs": 2,
+        "upper_mbs": 4,
+        "upper_log_weight": 0.2733236652252986,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [
+          "label_token_ratio"
+        ],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-0721f344e244a6be",
+      "scene_id": "S4",
+      "ranking_group_id": "S4-qwen3_8b-full-PH03-dp2",
+      "predicted_ranking_score": 5.635317927154253,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 5.635317927154253,
+        "predicted_effective_tokens_per_second": 4131.0412993397995,
+        "virtual_mbs": 1.0,
+        "lower_mbs": 1,
+        "upper_mbs": 2,
+        "upper_log_weight": 0.0,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": false,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-401a0dd97059a8e5",
+      "scene_id": "S3",
+      "ranking_group_id": "S3-qwen3_4b-full-PH06-dp2",
+      "predicted_ranking_score": 4.727164124979653,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 4.727164124979653,
+        "predicted_effective_tokens_per_second": 17453.60178819009,
+        "virtual_mbs": 1.031413612565445,
+        "lower_mbs": 1,
+        "upper_mbs": 2,
+        "upper_log_weight": 0.04462299142062747,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [
+          "label_token_ratio"
+        ],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-fa9ac3bb1a4fc854",
+      "scene_id": "S4",
+      "ranking_group_id": "S4-qwen3_8b-full-PH03-dp2",
+      "predicted_ranking_score": 2.7055629476329814,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 2.7055629476329814,
+        "predicted_effective_tokens_per_second": 1983.3472430684094,
+        "virtual_mbs": 1.0,
+        "lower_mbs": 1,
+        "upper_mbs": 2,
+        "upper_log_weight": 0.0,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": false,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-4692d575c05795d9",
+      "scene_id": "S3",
+      "ranking_group_id": "S3-qwen3_4b-full-PH06-dp2",
+      "predicted_ranking_score": 5.933136568471209,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 5.933136568471209,
+        "predicted_effective_tokens_per_second": 21906.284673687067,
+        "virtual_mbs": 1.031413612565445,
+        "lower_mbs": 1,
+        "upper_mbs": 2,
+        "upper_log_weight": 0.04462299142062747,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [
+          "label_token_ratio"
+        ],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-566cf7943a8786a5",
+      "scene_id": "S4",
+      "ranking_group_id": "S4-qwen3_8b-full-PH03-dp2",
+      "predicted_ranking_score": 11.69594604842674,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 11.69594604842674,
+        "predicted_effective_tokens_per_second": 8670.815787955005,
+        "virtual_mbs": 5.134099616858237,
+        "lower_mbs": 4,
+        "upper_mbs": 8,
+        "upper_log_weight": 0.3601112887752502,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-f94fa27710f3cb93",
+      "scene_id": "S3",
+      "ranking_group_id": "S3-qwen3_4b-full-PH06-dp2",
+      "predicted_ranking_score": 2.5592497625701274,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 2.5592497625701274,
+        "predicted_effective_tokens_per_second": 16622.099863370924,
+        "virtual_mbs": 2.4171779141104293,
+        "lower_mbs": 2,
+        "upper_mbs": 4,
+        "upper_log_weight": 0.2733236652252986,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [
+          "label_token_ratio"
+        ],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-6ce5dfcae57a6359",
+      "scene_id": "S4",
+      "ranking_group_id": "S4-qwen3_8b-full-PH03-dp2",
+      "predicted_ranking_score": 13.257273130106295,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 13.257273130106295,
+        "predicted_effective_tokens_per_second": 9828.309115466534,
+        "virtual_mbs": 5.134099616858237,
+        "lower_mbs": 4,
+        "upper_mbs": 8,
+        "upper_log_weight": 0.3601112887752502,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": false
+      }
+    },
+    {
+      "job_id": "h800packxfer-888fc69c7ae2a41f",
+      "scene_id": "S5",
+      "ranking_group_id": "S5-qwen3_14b-lora-PH02-dp4",
+      "predicted_ranking_score": 48.766855727870045,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 48.766855727870045,
+        "predicted_effective_tokens_per_second": 11871.232047585361,
+        "virtual_mbs": 15.578125,
+        "lower_mbs": 8,
+        "upper_mbs": 16,
+        "upper_log_weight": 0.9614496943981958,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-338d30ab94b539b8",
+      "scene_id": "S6",
+      "ranking_group_id": "S6-qwen3_32b-lora-PH06-dp4",
+      "predicted_ranking_score": 1.2258852327515963,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 1.2258852327515963,
+        "predicted_effective_tokens_per_second": 4526.20474449069,
+        "virtual_mbs": 1.031413612565445,
+        "lower_mbs": 1,
+        "upper_mbs": 2,
+        "upper_log_weight": 0.04462299142062747,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [
+          "label_token_ratio"
+        ],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-4cf315e9ddf280ca",
+      "scene_id": "S5",
+      "ranking_group_id": "S5-qwen3_14b-lora-PH02-dp4",
+      "predicted_ranking_score": 45.407706336421676,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 45.407706336421676,
+        "predicted_effective_tokens_per_second": 11053.520072654832,
+        "virtual_mbs": 3.8346153846153848,
+        "lower_mbs": 2,
+        "upper_mbs": 4,
+        "upper_log_weight": 0.9390818813697415,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": false,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-f4d189205cfa1fd7",
+      "scene_id": "S6",
+      "ranking_group_id": "S6-qwen3_32b-lora-PH06-dp4",
+      "predicted_ranking_score": 0.6095784360080908,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 0.6095784360080908,
+        "predicted_effective_tokens_per_second": 3959.1577915038724,
+        "virtual_mbs": 2.4171779141104293,
+        "lower_mbs": 2,
+        "upper_mbs": 4,
+        "upper_log_weight": 0.2733236652252986,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [
+          "label_token_ratio",
+          "log1p_optimizer_to_roof_ratio"
+        ],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-89279af6651b0362",
+      "scene_id": "S5",
+      "ranking_group_id": "S5-qwen3_14b-lora-PH02-dp4",
+      "predicted_ranking_score": 12.354287552364625,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 12.354287552364625,
+        "predicted_effective_tokens_per_second": 3007.3830294722065,
+        "virtual_mbs": 3.8346153846153848,
+        "lower_mbs": 2,
+        "upper_mbs": 4,
+        "upper_log_weight": 0.9390818813697415,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": false,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-4e9b2ed9c1d5db21",
+      "scene_id": "S6",
+      "ranking_group_id": "S6-qwen3_32b-lora-PH06-dp4",
+      "predicted_ranking_score": 0.905499520233448,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 0.905499520233448,
+        "predicted_effective_tokens_per_second": 4914.040178088817,
+        "virtual_mbs": 1.4121863799283154,
+        "lower_mbs": 1,
+        "upper_mbs": 2,
+        "upper_log_weight": 0.4979305076271887,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [
+          "label_token_ratio"
+        ],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    },
+    {
+      "job_id": "h800packxfer-c050c5af148bd7a9",
+      "scene_id": "S5",
+      "ranking_group_id": "S5-qwen3_14b-lora-PH02-dp4",
+      "predicted_ranking_score": 54.602713971784226,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 54.602713971784226,
+        "predicted_effective_tokens_per_second": 13291.845010555755,
+        "virtual_mbs": 15.578125,
+        "lower_mbs": 8,
+        "upper_mbs": 16,
+        "upper_log_weight": 0.9614496943981958,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": false
+      }
+    },
+    {
+      "job_id": "h800packxfer-ce89c042f50d0574",
+      "scene_id": "S6",
+      "ranking_group_id": "S6-qwen3_32b-lora-PH06-dp4",
+      "predicted_ranking_score": 0.905499520233448,
+      "admitted": true,
+      "admission_contract": "all_predeclared_candidates_run; any OOM is retained as failure evidence",
+      "prediction": {
+        "predicted_logical_samples_per_second": 0.905499520233448,
+        "predicted_effective_tokens_per_second": 4914.040178088817,
+        "virtual_mbs": 1.4121863799283154,
+        "lower_mbs": 1,
+        "upper_mbs": 2,
+        "upper_log_weight": 0.4979305076271887,
+        "grid_extrapolation": false,
+        "outside_h800_feature_support": [
+          "label_token_ratio"
+        ],
+        "cutoff_seen_exactly_in_h800_training": true,
+        "template_gc_exact": true
+      }
+    }
+  ],
+  "report_sha256": "d1bd78cf2466165b3a6f5f7e889b67739108c9ee8ba54c87bc532ab009609a1f"
+}

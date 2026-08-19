@@ -1,0 +1,844 @@
+{
+  "schema_version": 1,
+  "catalog_sha256": "e5518ea368b1eacf815b11c5ad3002e4f61df758e670896919ec6cb41fec31b3",
+  "selection_policy": "Use one dense Qwen3 family wherever available; use Qwen2.5 only for the missing dense 72B endpoint.",
+  "fixed_lora": {
+    "rank": 32,
+    "alpha": 32,
+    "dropout": 0.0,
+    "target": "all"
+  },
+  "models": [
+    {
+      "id": "qwen3_0p6b",
+      "nominal_scale_b": 0.5,
+      "path": "/wanqing-models/Qwen3-0.6B",
+      "tokenizer_path": "/wanqing-models/Qwen3-0.6B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "actual_parameters": 751632384,
+      "actual_parameters_b": 0.751632384,
+      "checkpoint_bytes": 1503300328,
+      "checkpoint_shards": 1,
+      "checkpoint_manifest": [
+        {
+          "name": "model.safetensors",
+          "size": 1503300328,
+          "mtime_ns": 1749736866722954000
+        }
+      ],
+      "model_directory_name": "Qwen3-0.6B",
+      "model_identity": "/wanqing-models/Qwen3-0.6B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-0.6B",
+      "tokenizer_directory_name": "Qwen3-0.6B",
+      "tokenizer_class": "Qwen2TokenizerFast",
+      "tokenizer_size": 151669,
+      "tokenizer_max_id": 151668,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 311,
+      "model_type": "qwen3",
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "hidden_size": 1024,
+      "intermediate_size": 3072,
+      "num_hidden_layers": 28,
+      "num_attention_heads": 16,
+      "num_key_value_heads": 8,
+      "vocab_size": 151936,
+      "max_position_embeddings": 40960,
+      "torch_dtype": "bfloat16",
+      "head_dim": 128
+    },
+    {
+      "id": "qwen3_1p7b",
+      "nominal_scale_b": 1.5,
+      "path": "/wanqing-models/Qwen3-1.7B",
+      "tokenizer_path": "/wanqing-models/Qwen3-1.7B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "actual_parameters": 2031739904,
+      "actual_parameters_b": 2.031739904,
+      "checkpoint_bytes": 4063515592,
+      "checkpoint_shards": 2,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00002.safetensors",
+          "size": 3441185608,
+          "mtime_ns": 1749784993895681000
+        },
+        {
+          "name": "model-00002-of-00002.safetensors",
+          "size": 622329984,
+          "mtime_ns": 1749783851306611000
+        }
+      ],
+      "model_directory_name": "Qwen3-1.7B",
+      "model_identity": "/wanqing-models/Qwen3-1.7B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-1.7B",
+      "tokenizer_directory_name": "Qwen3-1.7B",
+      "tokenizer_class": "Qwen2TokenizerFast",
+      "tokenizer_size": 151669,
+      "tokenizer_max_id": 151668,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 311,
+      "model_type": "qwen3",
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "hidden_size": 2048,
+      "intermediate_size": 6144,
+      "num_hidden_layers": 28,
+      "num_attention_heads": 16,
+      "num_key_value_heads": 8,
+      "vocab_size": 151936,
+      "max_position_embeddings": 40960,
+      "torch_dtype": "bfloat16"
+    },
+    {
+      "id": "qwen3_4b",
+      "nominal_scale_b": 4,
+      "path": "/wanqing-models/Qwen3-4B",
+      "tokenizer_path": "/wanqing-models/Qwen3-4B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "actual_parameters": 4022468096,
+      "actual_parameters_b": 4.022468096,
+      "checkpoint_bytes": 8044982000,
+      "checkpoint_shards": 3,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00003.safetensors",
+          "size": 3957900840,
+          "mtime_ns": 1749789704178661000
+        },
+        {
+          "name": "model-00002-of-00003.safetensors",
+          "size": 3987450520,
+          "mtime_ns": 1749789829116968000
+        },
+        {
+          "name": "model-00003-of-00003.safetensors",
+          "size": 99630640,
+          "mtime_ns": 1749788639337748000
+        }
+      ],
+      "model_directory_name": "Qwen3-4B",
+      "model_identity": "/wanqing-models/Qwen3-4B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-4B",
+      "tokenizer_directory_name": "Qwen3-4B",
+      "tokenizer_class": "Qwen2TokenizerFast",
+      "tokenizer_size": 151669,
+      "tokenizer_max_id": 151668,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 398,
+      "model_type": "qwen3",
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "hidden_size": 2560,
+      "intermediate_size": 9728,
+      "num_hidden_layers": 36,
+      "num_attention_heads": 32,
+      "num_key_value_heads": 8,
+      "vocab_size": 151936,
+      "max_position_embeddings": 40960,
+      "torch_dtype": "bfloat16"
+    },
+    {
+      "id": "qwen3_8b",
+      "nominal_scale_b": 7,
+      "path": "/wanqing-models/Qwen3-8B",
+      "tokenizer_path": "/wanqing-models/Qwen3-8B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "actual_parameters": 8190735360,
+      "actual_parameters_b": 8.19073536,
+      "checkpoint_bytes": 16381516776,
+      "checkpoint_shards": 5,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00005.safetensors",
+          "size": 3996250744,
+          "mtime_ns": 1749218319988992000
+        },
+        {
+          "name": "model-00002-of-00005.safetensors",
+          "size": 3993160032,
+          "mtime_ns": 1749218311038756000
+        },
+        {
+          "name": "model-00003-of-00005.safetensors",
+          "size": 3959604768,
+          "mtime_ns": 1749218317170918000
+        },
+        {
+          "name": "model-00004-of-00005.safetensors",
+          "size": 3187841392,
+          "mtime_ns": 1749218313581823000
+        },
+        {
+          "name": "model-00005-of-00005.safetensors",
+          "size": 1244659840,
+          "mtime_ns": 1749218309610718000
+        }
+      ],
+      "model_directory_name": "Qwen3-8B",
+      "model_identity": "/wanqing-models/Qwen3-8B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-8B",
+      "tokenizer_directory_name": "Qwen3-8B",
+      "tokenizer_class": "Qwen2TokenizerFast",
+      "tokenizer_size": 151669,
+      "tokenizer_max_id": 151668,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 399,
+      "model_type": "qwen3",
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "hidden_size": 4096,
+      "intermediate_size": 12288,
+      "num_hidden_layers": 36,
+      "num_attention_heads": 32,
+      "num_key_value_heads": 8,
+      "vocab_size": 151936,
+      "max_position_embeddings": 40960,
+      "torch_dtype": "bfloat16"
+    },
+    {
+      "id": "qwen3_14b",
+      "nominal_scale_b": 14,
+      "path": "/wanqing-models/Qwen3-14B",
+      "tokenizer_path": "/wanqing-models/Qwen3-14B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "actual_parameters": 14768307200,
+      "actual_parameters_b": 14.7683072,
+      "checkpoint_bytes": 29536665640,
+      "checkpoint_shards": 8,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00008.safetensors",
+          "size": 3841788544,
+          "mtime_ns": 1749791188772152000
+        },
+        {
+          "name": "model-00002-of-00008.safetensors",
+          "size": 3963750816,
+          "mtime_ns": 1749791186176083000
+        },
+        {
+          "name": "model-00003-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791188588147000
+        },
+        {
+          "name": "model-00004-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791194956315000
+        },
+        {
+          "name": "model-00005-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791196326351000
+        },
+        {
+          "name": "model-00006-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791195088319000
+        },
+        {
+          "name": "model-00007-of-00008.safetensors",
+          "size": 3963750880,
+          "mtime_ns": 1749791217877922000
+        },
+        {
+          "name": "model-00008-of-00008.safetensors",
+          "size": 1912371880,
+          "mtime_ns": 1749790759512789000
+        }
+      ],
+      "model_directory_name": "Qwen3-14B",
+      "model_identity": "/wanqing-models/Qwen3-14B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-14B",
+      "tokenizer_directory_name": "Qwen3-14B",
+      "tokenizer_class": "Qwen2TokenizerFast",
+      "tokenizer_size": 151669,
+      "tokenizer_max_id": 151668,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 443,
+      "model_type": "qwen3",
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "hidden_size": 5120,
+      "intermediate_size": 17408,
+      "num_hidden_layers": 40,
+      "num_attention_heads": 40,
+      "num_key_value_heads": 8,
+      "vocab_size": 151936,
+      "max_position_embeddings": 40960,
+      "torch_dtype": "bfloat16"
+    },
+    {
+      "id": "qwen3_32b",
+      "nominal_scale_b": 32,
+      "path": "/wanqing-models/Qwen3-32B",
+      "tokenizer_path": "/wanqing-models/Qwen3-32B",
+      "family": "qwen3",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "actual_parameters": 32762123264,
+      "actual_parameters_b": 32.762123264,
+      "checkpoint_bytes": 65524328560,
+      "checkpoint_shards": 17,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00017.safetensors",
+          "size": 3957109648,
+          "mtime_ns": 1749218240539900000
+        },
+        {
+          "name": "model-00002-of-00017.safetensors",
+          "size": 3900791760,
+          "mtime_ns": 1749218266649584000
+        },
+        {
+          "name": "model-00003-of-00017.safetensors",
+          "size": 3900791760,
+          "mtime_ns": 1749218242278945000
+        },
+        {
+          "name": "model-00004-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218246885066000
+        },
+        {
+          "name": "model-00005-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218238159837000
+        },
+        {
+          "name": "model-00006-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218255164282000
+        },
+        {
+          "name": "model-00007-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218272932750000
+        },
+        {
+          "name": "model-00008-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218282271996000
+        },
+        {
+          "name": "model-00009-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218269794667000
+        },
+        {
+          "name": "model-00010-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218270973698000
+        },
+        {
+          "name": "model-00011-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218307075651000
+        },
+        {
+          "name": "model-00012-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218309776722000
+        },
+        {
+          "name": "model-00013-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218290524214000
+        },
+        {
+          "name": "model-00014-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218296512372000
+        },
+        {
+          "name": "model-00015-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218308207681000
+        },
+        {
+          "name": "model-00016-of-00017.safetensors",
+          "size": 3900791800,
+          "mtime_ns": 1749218309824724000
+        },
+        {
+          "name": "model-00017-of-00017.safetensors",
+          "size": 3055341992,
+          "mtime_ns": 1749218311887778000
+        }
+      ],
+      "model_directory_name": "Qwen3-32B",
+      "model_identity": "/wanqing-models/Qwen3-32B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-32B",
+      "tokenizer_directory_name": "Qwen3-32B",
+      "tokenizer_class": "Qwen2TokenizerFast",
+      "tokenizer_size": 151669,
+      "tokenizer_max_id": 151668,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 707,
+      "model_type": "qwen3",
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "hidden_size": 5120,
+      "intermediate_size": 25600,
+      "num_hidden_layers": 64,
+      "num_attention_heads": 64,
+      "num_key_value_heads": 8,
+      "vocab_size": 151936,
+      "max_position_embeddings": 40960,
+      "torch_dtype": "bfloat16",
+      "head_dim": 128
+    },
+    {
+      "id": "qwen2p5_72b",
+      "nominal_scale_b": 72,
+      "path": "/wanqing-models/Qwen2.5-72B",
+      "tokenizer_path": "/wanqing-models/Qwen3-8B",
+      "family": "qwen2.5",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "lora"
+      ],
+      "actual_parameters": 72706203648,
+      "actual_parameters_b": 72.706203648,
+      "checkpoint_bytes": 145412518888,
+      "checkpoint_shards": 37,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00037.safetensors",
+          "size": 3762312336,
+          "mtime_ns": 1749217759042478000
+        },
+        {
+          "name": "model-00002-of-00037.safetensors",
+          "size": 3995216928,
+          "mtime_ns": 1749217748343198000
+        },
+        {
+          "name": "model-00003-of-00037.safetensors",
+          "size": 3812752872,
+          "mtime_ns": 1749217778980931000
+        },
+        {
+          "name": "model-00004-of-00037.safetensors",
+          "size": 3995183936,
+          "mtime_ns": 1749217802266457000
+        },
+        {
+          "name": "model-00005-of-00037.safetensors",
+          "size": 3995183928,
+          "mtime_ns": 1749217760444512000
+        },
+        {
+          "name": "model-00006-of-00037.safetensors",
+          "size": 3995216960,
+          "mtime_ns": 1749217761963546000
+        },
+        {
+          "name": "model-00007-of-00037.safetensors",
+          "size": 3812752904,
+          "mtime_ns": 1749217805007518000
+        },
+        {
+          "name": "model-00008-of-00037.safetensors",
+          "size": 3995183960,
+          "mtime_ns": 1749217802687466000
+        },
+        {
+          "name": "model-00009-of-00037.safetensors",
+          "size": 3995183952,
+          "mtime_ns": 1749217774394827000
+        },
+        {
+          "name": "model-00010-of-00037.safetensors",
+          "size": 3995216960,
+          "mtime_ns": 1749217786262095000
+        },
+        {
+          "name": "model-00011-of-00037.safetensors",
+          "size": 3812752904,
+          "mtime_ns": 1749217857196829000
+        },
+        {
+          "name": "model-00012-of-00037.safetensors",
+          "size": 3995183960,
+          "mtime_ns": 1749217798018361000
+        },
+        {
+          "name": "model-00013-of-00037.safetensors",
+          "size": 3995183952,
+          "mtime_ns": 1749217809603622000
+        },
+        {
+          "name": "model-00014-of-00037.safetensors",
+          "size": 3995216960,
+          "mtime_ns": 1749217829956109000
+        },
+        {
+          "name": "model-00015-of-00037.safetensors",
+          "size": 3812752904,
+          "mtime_ns": 1749217841305409000
+        },
+        {
+          "name": "model-00016-of-00037.safetensors",
+          "size": 3995183960,
+          "mtime_ns": 1749217868060116000
+        },
+        {
+          "name": "model-00017-of-00037.safetensors",
+          "size": 3995183952,
+          "mtime_ns": 1749217821459890000
+        },
+        {
+          "name": "model-00018-of-00037.safetensors",
+          "size": 3995216960,
+          "mtime_ns": 1749217833208195000
+        },
+        {
+          "name": "model-00019-of-00037.safetensors",
+          "size": 3812752904,
+          "mtime_ns": 1749217854915769000
+        },
+        {
+          "name": "model-00020-of-00037.safetensors",
+          "size": 3995183960,
+          "mtime_ns": 1749217845233513000
+        },
+        {
+          "name": "model-00021-of-00037.safetensors",
+          "size": 3995183952,
+          "mtime_ns": 1749217892854771000
+        },
+        {
+          "name": "model-00022-of-00037.safetensors",
+          "size": 3995216960,
+          "mtime_ns": 1749217857414835000
+        },
+        {
+          "name": "model-00023-of-00037.safetensors",
+          "size": 3812752904,
+          "mtime_ns": 1749217927943697000
+        },
+        {
+          "name": "model-00024-of-00037.safetensors",
+          "size": 3995183960,
+          "mtime_ns": 1749217884651554000
+        },
+        {
+          "name": "model-00025-of-00037.safetensors",
+          "size": 3995183952,
+          "mtime_ns": 1749217869613157000
+        },
+        {
+          "name": "model-00026-of-00037.safetensors",
+          "size": 3995216960,
+          "mtime_ns": 1749217914416340000
+        },
+        {
+          "name": "model-00027-of-00037.safetensors",
+          "size": 3812752904,
+          "mtime_ns": 1749217881303466000
+        },
+        {
+          "name": "model-00028-of-00037.safetensors",
+          "size": 3995183960,
+          "mtime_ns": 1749217893099777000
+        },
+        {
+          "name": "model-00029-of-00037.safetensors",
+          "size": 3995183952,
+          "mtime_ns": 1749217928367708000
+        },
+        {
+          "name": "model-00030-of-00037.safetensors",
+          "size": 3995216960,
+          "mtime_ns": 1749217939468002000
+        },
+        {
+          "name": "model-00031-of-00037.safetensors",
+          "size": 3812752904,
+          "mtime_ns": 1749217903581054000
+        },
+        {
+          "name": "model-00032-of-00037.safetensors",
+          "size": 3995183960,
+          "mtime_ns": 1749217915080358000
+        },
+        {
+          "name": "model-00033-of-00037.safetensors",
+          "size": 3995183952,
+          "mtime_ns": 1749217961921595000
+        },
+        {
+          "name": "model-00034-of-00037.safetensors",
+          "size": 3995216960,
+          "mtime_ns": 1749217926899670000
+        },
+        {
+          "name": "model-00035-of-00037.safetensors",
+          "size": 3812752904,
+          "mtime_ns": 1749217937482949000
+        },
+        {
+          "name": "model-00036-of-00037.safetensors",
+          "size": 3995183960,
+          "mtime_ns": 1749217963199628000
+        },
+        {
+          "name": "model-00037-of-00037.safetensors",
+          "size": 3460350632,
+          "mtime_ns": 1749217952524346000
+        }
+      ],
+      "model_directory_name": "Qwen2.5-72B",
+      "model_identity": "/wanqing-models/Qwen2.5-72B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-8B",
+      "tokenizer_directory_name": "Qwen3-8B",
+      "tokenizer_class": "Qwen2TokenizerFast",
+      "tokenizer_size": 151669,
+      "tokenizer_max_id": 151668,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 963,
+      "model_type": "qwen2",
+      "architectures": [
+        "Qwen2ForCausalLM"
+      ],
+      "hidden_size": 8192,
+      "intermediate_size": 29568,
+      "num_hidden_layers": 80,
+      "num_attention_heads": 64,
+      "num_key_value_heads": 8,
+      "vocab_size": 152064,
+      "max_position_embeddings": 131072,
+      "torch_dtype": "bfloat16"
+    },
+    {
+      "id": "qwen3_vl_8b",
+      "nominal_scale_b": 8,
+      "path": "/wanqing-models/Qwen3-VL-8B-Instruct",
+      "tokenizer_path": "/wanqing-models/Qwen3-VL-8B-Instruct",
+      "family": "qwen3_vl",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "generalization_role": "holdout_generalization_text_only_proxy",
+      "actual_parameters": 8767123696,
+      "actual_parameters_b": 8.767123696,
+      "checkpoint_bytes": 17534339512,
+      "checkpoint_shards": 4,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00004.safetensors",
+          "size": 4902275944,
+          "mtime_ns": 1763352152259092000
+        },
+        {
+          "name": "model-00002-of-00004.safetensors",
+          "size": 4915962496,
+          "mtime_ns": 1763352146803860000
+        },
+        {
+          "name": "model-00003-of-00004.safetensors",
+          "size": 4999831048,
+          "mtime_ns": 1763352145667812000
+        },
+        {
+          "name": "model-00004-of-00004.safetensors",
+          "size": 2716270024,
+          "mtime_ns": 1763352090246463000
+        }
+      ],
+      "model_directory_name": "Qwen3-VL-8B-Instruct",
+      "model_identity": "/wanqing-models/Qwen3-VL-8B-Instruct",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3-VL-8B-Instruct",
+      "tokenizer_directory_name": "Qwen3-VL-8B-Instruct",
+      "tokenizer_class": "Qwen2Tokenizer",
+      "tokenizer_size": 151643,
+      "tokenizer_max_id": 151642,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 750,
+      "model_type": "qwen3_vl",
+      "architectures": [
+        "Qwen3VLForConditionalGeneration"
+      ],
+      "hidden_size": 4096,
+      "intermediate_size": 12288,
+      "num_hidden_layers": 36,
+      "num_attention_heads": 32,
+      "num_key_value_heads": 8,
+      "head_dim": 128,
+      "vocab_size": 151936,
+      "max_position_embeddings": 262144,
+      "torch_dtype": "bfloat16",
+      "geometry_source": "text_config",
+      "calibration_role": "holdout_generalization",
+      "publishable": false
+    },
+    {
+      "id": "qwen3_6_27b",
+      "nominal_scale_b": 27,
+      "path": "/wanqing-models/Qwen3.6-27B",
+      "tokenizer_path": "/wanqing-models/Qwen3.6-27B",
+      "family": "qwen3_5",
+      "template": "qwen3_nothink",
+      "train_types": [
+        "full",
+        "lora"
+      ],
+      "generalization_role": "holdout_generalization_out_of_domain_hybrid_attention",
+      "actual_parameters": 27781427952,
+      "actual_parameters_b": 27.781427952,
+      "checkpoint_bytes": 55563006400,
+      "checkpoint_shards": 15,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00015.safetensors",
+          "size": 3968861352,
+          "mtime_ns": 1778584910086748461
+        },
+        {
+          "name": "model-00002-of-00015.safetensors",
+          "size": 3921677136,
+          "mtime_ns": 1778586328850504772
+        },
+        {
+          "name": "model-00003-of-00015.safetensors",
+          "size": 3921677128,
+          "mtime_ns": 1778642166470482990
+        },
+        {
+          "name": "model-00004-of-00015.safetensors",
+          "size": 3921677128,
+          "mtime_ns": 1778577354369848751
+        },
+        {
+          "name": "model-00005-of-00015.safetensors",
+          "size": 3921677112,
+          "mtime_ns": 1778585063591574626
+        },
+        {
+          "name": "model-00006-of-00015.safetensors",
+          "size": 3900710888,
+          "mtime_ns": 1778595259178042916
+        },
+        {
+          "name": "model-00007-of-00015.safetensors",
+          "size": 3994391976,
+          "mtime_ns": 1778580502916794747
+        },
+        {
+          "name": "model-00008-of-00015.safetensors",
+          "size": 3879219776,
+          "mtime_ns": 1778592016715607168
+        },
+        {
+          "name": "model-00009-of-00015.safetensors",
+          "size": 3921677136,
+          "mtime_ns": 1778590649875168316
+        },
+        {
+          "name": "model-00010-of-00015.safetensors",
+          "size": 3921677128,
+          "mtime_ns": 1778645431397418919
+        },
+        {
+          "name": "model-00011-of-00015.safetensors",
+          "size": 3921677136,
+          "mtime_ns": 1778591685624383624
+        },
+        {
+          "name": "model-00012-of-00015.safetensors",
+          "size": 3921677136,
+          "mtime_ns": 1778647917988346284
+        },
+        {
+          "name": "model-00013-of-00015.safetensors",
+          "size": 3995081848,
+          "mtime_ns": 1778592820675854668
+        },
+        {
+          "name": "model-00014-of-00015.safetensors",
+          "size": 3942652952,
+          "mtime_ns": 1778650581024094661
+        },
+        {
+          "name": "model-00015-of-00015.safetensors",
+          "size": 508670568,
+          "mtime_ns": 1778593231747293409
+        }
+      ],
+      "model_directory_name": "Qwen3.6-27B",
+      "model_identity": "/wanqing-models/Qwen3.6-27B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3.6-27B",
+      "tokenizer_directory_name": "Qwen3.6-27B",
+      "tokenizer_class": "Qwen2Tokenizer",
+      "tokenizer_size": 248044,
+      "tokenizer_max_id": 248043,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 1199,
+      "model_type": "qwen3_5",
+      "architectures": [
+        "Qwen3_5ForConditionalGeneration"
+      ],
+      "hidden_size": 5120,
+      "intermediate_size": 17408,
+      "num_hidden_layers": 64,
+      "num_attention_heads": 24,
+      "num_key_value_heads": 4,
+      "head_dim": 256,
+      "vocab_size": 248320,
+      "max_position_embeddings": 262144,
+      "torch_dtype": "bfloat16",
+      "geometry_source": "text_config",
+      "calibration_role": "holdout_generalization",
+      "publishable": false
+    }
+  ]
+}

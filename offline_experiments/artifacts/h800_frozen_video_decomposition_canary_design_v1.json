@@ -1,0 +1,65 @@
+{
+  "schema": "sft_h800_frozen_video_decomposition_design/v1",
+  "campaign_id": "h800_frozen_video_decomposition_20260811_v1",
+  "phase_id": "h800_frozen_video_decomposition_canary_v1",
+  "generated_at_utc": "2026-08-12T02:53:47.146054+00:00",
+  "queue": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_frozen_video_decomposition_canary_v1.jsonl",
+    "sha256": "dbbdfec5a56b00faf7ea2c6c3a8cacbb6cd1d1cedc49f431232eb62c00fb516d"
+  },
+  "jobs": 6,
+  "by_model": {
+    "qwen2p5_vl_3b": 2,
+    "qwen3_vl_4b": 2,
+    "qwen3p5_4b": 2
+  },
+  "by_arm": {
+    "real_video": 3,
+    "text_length_matched": 3
+  },
+  "by_tier": {
+    "native_16": 6
+  },
+  "by_mechanism": {
+    "SAFE": 6
+  },
+  "fixed_semantics": {
+    "train_type": "lora",
+    "train_scope_id": "language_only",
+    "freeze_vision_tower": true,
+    "freeze_multi_modal_projector": true,
+    "packing": false,
+    "offload": false,
+    "dtype": "bf16",
+    "formal_target_gbs": 64,
+    "canary_target_gbs": 8
+  },
+  "hypotheses": {
+    "memory": "At recordwise matched language-backbone lengths, real-video minus text-control peak isolates the frozen video decode/vision-forward residual. The full-step peak is max(language phase, vision phase), never their sum.",
+    "throughput": "Step time is a shared mixed-token language component plus a video-forward component driven by raw patch units, sampled frames, and media launches.",
+    "resolution_arm": "upscaled_64 is a controlled processor-resolution mechanism arm, not evidence that the downloaded source distribution contains high-resolution video."
+  },
+  "decision_metrics": {
+    "data_quality": [
+      "recordwise text/video total-token equality",
+      "one decoded video and nonzero video_grid_thw per real-video sample",
+      "measured sampled-frame count and pixel tensor size",
+      "repeat throughput CV <= 5%"
+    ],
+    "memory": [
+      "rank/phase max allocated and reserved bytes",
+      "paired OOM mismatch",
+      "leave-family-out residual MAPE target <= 10%"
+    ],
+    "throughput": [
+      "effective/computed tokens per second",
+      "real-video minus matched-text step-time residual",
+      "mechanism order accuracy target >= 90%",
+      "top-1 regret target < 10%"
+    ]
+  },
+  "coefficient_policy": "no_vl_coefficient_is_fit_before_approved_paired_gpu_evidence",
+  "usage": "fit_and_hypothesis_diagnostic_only_never_prospective_acceptance",
+  "gpu_training_started": false,
+  "report_sha256": "fde778490cf7bafc42f67e1ae6f4ae762571e9ec94dbfda8142c2a1941293f91"
+}

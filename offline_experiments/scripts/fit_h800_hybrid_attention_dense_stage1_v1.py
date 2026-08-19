@@ -61,6 +61,10 @@ COEFFICIENTS: tuple[tuple[str, str | None], ...] = (
     ("linear_state", "linear_recurrent_state_bytes"),
     ("logits", "logits_workspace_bytes"),
     ("zero_workspace", "zero_collective_workspace_bytes"),
+    (
+        "zero3_saved",
+        "zero3_saved_activation_bytes",
+    ),
 )
 
 # Pre-registered thresholds, frozen before the formal queue completed.
@@ -112,6 +116,7 @@ def protocol_payload() -> dict[str, Any]:
                 "name": name,
                 "feature_key": key,
                 "constraint": "non_negative",
+                "identically_zero_feature_column": "fixed at 0 and excluded from fitting",
             }
             for name, key in COEFFICIENTS
         ],
@@ -157,6 +162,11 @@ def _memory_features(observation: dict[str, Any]) -> dict[str, float]:
     memory = observation["feature_basis"]["memory"]
     activation = memory["activation_components"]
     workspace = memory["workspace_candidates"]
+    zero_stage = str((observation.get("configuration") or {}).get("zero") or "none")
+    saved_total = float(
+        activation["saved_full_attention_activations_bytes"]
+        + activation["saved_linear_attention_activations_bytes"]
+    )
     return {
         "state_bytes": float(memory["state_bytes"]),
         "saved_full_attention_activations_bytes": float(
@@ -181,6 +191,7 @@ def _memory_features(observation: dict[str, Any]) -> dict[str, float]:
         "zero_collective_workspace_bytes": float(
             workspace["zero_collective_workspace_bytes"]
         ),
+        "zero3_saved_activation_bytes": saved_total if zero_stage == "zero3" else 0.0,
     }
 
 
@@ -255,48 +266,58 @@ def _predict(coefficients: np.ndarray, design: Sequence[float]) -> float:
     return float(np.dot(coefficients, design))
 
 
-def _residuals(
-    coefficients: np.ndarray,
-    rows: Sequence[dict[str, Any]],
-    weight: float,
-) -> np.ndarray:
-    residuals: list[float] = []
-    for row in rows:
-        predicted = max(_predict(coefficients, row["design"]), CEIL)
-        if row["state"] == "exact":
-            residuals.append(math.log(predicted) - math.log(row["peak_reserved_bytes"]))
-        else:
-            residuals.append(
-                math.sqrt(weight)
-                * max(
-                    0.0,
-                    math.log(row["censor_lower_bytes"]) - math.log(predicted),
-                )
-            )
-    return np.asarray(residuals, dtype=float)
-
-
 def _fit_route(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
-    """Fit one coefficient set per architecture route (pre-registered)."""
+    """Fit one coefficient set per architecture route (pre-registered).
 
-    initial = np.full(len(COEFFICIENTS), 1.0, dtype=float)
+    Feature columns that are identically zero within the route (for example
+    linear-attention terms inside the full-attention route) carry no gradient
+    information and are fixed at 0 rather than fitted.
+    """
+
+    names = [name for name, _ in COEFFICIENTS]
+    design_matrix = np.asarray([row["design"] for row in rows], dtype=float)
+    active = design_matrix.max(axis=0) > 0.0
+    fixed_zero = [names[i] for i in range(len(names)) if not active[i]]
+    active_designs = [design[active] for design in design_matrix]
+    initial = np.full(int(active.sum()), 1.0, dtype=float)
     initial[0] = 1e6  # intercept starts at 1 MB
-    lower = np.zeros(len(COEFFICIENTS), dtype=float)
+    lower = np.zeros(int(active.sum()), dtype=float)
     weight = float(THRESHOLDS["censor_constraint_weight"])
+
+    def residuals(coefficients: np.ndarray) -> np.ndarray:
+        values: list[float] = []
+        for design, row in zip(active_designs, rows):
+            predicted = max(float(np.dot(coefficients, design)), CEIL)
+            if row["state"] == "exact":
+                values.append(
+                    math.log(predicted) - math.log(row["peak_reserved_bytes"])
+                )
+            else:
+                values.append(
+                    math.sqrt(weight)
+                    * max(
+                        0.0,
+                        math.log(row["censor_lower_bytes"])
+                        - math.log(predicted),
+                    )
+                )
+        return np.asarray(values, dtype=float)
+
     result = least_squares(
-        lambda coefficients: _residuals(coefficients, rows, weight),
+        residuals,
         initial,
         bounds=(lower, np.inf),
         method="trf",
         max_nfev=2000,
     )
+    full = np.zeros(len(COEFFICIENTS), dtype=float)
+    full[active] = result.x
     exact = [row for row in rows if row["state"] == "exact"]
     censored = [row for row in rows if row["state"] == "censored"]
     return {
-        "coefficients": result.x.tolist(),
-        "coefficients_by_name": dict(
-            zip((name for name, _ in COEFFICIENTS), result.x)
-        ),
+        "coefficients": full.tolist(),
+        "coefficients_by_name": dict(zip(names, full)),
+        "fixed_zero_coefficients": fixed_zero,
         "exact_rows": len(exact),
         "censored_rows": len(censored),
         "solver_success": bool(result.success),
@@ -547,12 +568,26 @@ def fit(*, allow_incomplete: bool = False) -> dict[str, Any]:
             if route_fits[route].get("coefficients_by_name")
         ]
         low, high = THRESHOLDS["state_coefficient_range"]
+        per_source_minimums: list[bool] = []
+        for route in ROUTES:
+            by_source: dict[str, int] = {}
+            for row in collapsed[route]:
+                if row["state"] == "exact":
+                    by_source[str(row["source_dataset_id"])] = (
+                        by_source.get(str(row["source_dataset_id"]), 0) + 1
+                    )
+            per_source_minimums.extend(
+                count >= THRESHOLDS["minimum_exact_rows_per_source"]
+                for count in by_source.values()
+            )
         gates = {
             "minimum_exact_rows_per_route": all(
                 route_fits[route]["exact_rows"]
                 >= THRESHOLDS["minimum_exact_rows_per_route"][route]
                 for route in ROUTES
             ),
+            "minimum_exact_rows_per_source": bool(per_source_minimums)
+            and all(per_source_minimums),
             "cv_exact_mape_within_10pct": bool(
                 cv_mape
                 and max(cv_mape) <= THRESHOLDS["exact_mape_max"]

@@ -1,0 +1,562 @@
+{
+  "schema": "sft_h800_v3_prospective_acceptance_predictions/v1",
+  "generated_at_utc": "2026-08-06T03:43:47.819812+00:00",
+  "temporal_status": {
+    "predictions_frozen_before_gpu_outcomes": true,
+    "datasets_never_used_in_any_fit_or_diagnosis": true,
+    "correction_factor_locked_before_sealing": true,
+    "model_refit_from_these_outcomes": false
+  },
+  "campaign_id": "h800_v3_prospective_acceptance_20260806_v1",
+  "phase_id": "h800_v3_prospective_acceptance_v1",
+  "zero3_correction_factor": 1.4,
+  "challenger_v1": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/rank_first_throughput_challenger_v1.json",
+    "sha256": "b813ea68b32fe95086bf1725976f9edb8cdc3398702328a3001fe9f7b78a62df"
+  },
+  "challenger_v3": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/diagnostics/rank_first_challenger_zero3_intercept_v3/rank_first_throughput_challenger_v3.json",
+    "sha256": "f09101ecebee08ef7fb092d1e3d3dec017241879064eacda0b6765a6fb321aec"
+  },
+  "queue": {
+    "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/matrix/h800_v3_prospective_acceptance_jobs_v1.jsonl",
+    "sha256": "ad6d8e443f44659c249c99c35e9d487d98676fe829f774323d72fe259f2aaed4"
+  },
+  "dataset_profiles": {
+    "lora_s2_src04_live_punishment.qwen3_nothink.jsonl": "187be1e903fa31d5854f29850fe0c6028cfab6911775c208b80450e707ed410b",
+    "lora_s2_src12_flood_multilabel.qwen3_nothink.jsonl": "f9d153ce3e72340fdf2a8d671acca29c95f8894efd36af6ddcdaddc9ce29cd8c",
+    "lora_s2_src14_ad_metrics.qwen3_nothink.jsonl": "468e4e75dfdf390cf4656a27eed143f7e9845a273fdb4ccb3d1513820355302e",
+    "lora_s2_src18_marketing_antifraud.qwen3_nothink.jsonl": "1b6971cd738a68d5481461a52722112463731d7919b664939b4472e64b7710b3"
+  },
+  "job_count": 48,
+  "predictions": {
+    "h800v3acc-9bf4e7058eacaee6": {
+      "job_id": "h800v3acc-9bf4e7058eacaee6",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs4_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.8904343705387394,
+      "v3_log_prediction": 1.8904343705387394,
+      "v1_predicted_effective_tokens_per_second": 6.622244564337447,
+      "v3_predicted_effective_tokens_per_second": 6.622244564337447
+    },
+    "h800v3acc-044f879deb42f3a4": {
+      "job_id": "h800v3acc-044f879deb42f3a4",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs8_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.9081093081424927,
+      "v3_log_prediction": 1.9081093081424927,
+      "v1_predicted_effective_tokens_per_second": 6.740332851109749,
+      "v3_predicted_effective_tokens_per_second": 6.740332851109749
+    },
+    "h800v3acc-b0be0b7304ac4ef1": {
+      "job_id": "h800v3acc-b0be0b7304ac4ef1",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs8_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.4190368182947877,
+      "v3_log_prediction": 1.4190368182947877,
+      "v1_predicted_effective_tokens_per_second": 4.133137559957715,
+      "v3_predicted_effective_tokens_per_second": 4.133137559957715
+    },
+    "h800v3acc-7f8dc61e5750a551": {
+      "job_id": "h800v3acc-7f8dc61e5750a551",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs16_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.4367138255479723,
+      "v3_log_prediction": 1.4367138255479723,
+      "v1_predicted_effective_tokens_per_second": 4.2068486388157815,
+      "v3_predicted_effective_tokens_per_second": 4.2068486388157815
+    },
+    "h800v3acc-f7c93663e905a4f9": {
+      "job_id": "h800v3acc-f7c93663e905a4f9",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs8_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.465306619248657,
+      "v3_log_prediction": 1.128834382627444,
+      "v1_predicted_effective_tokens_per_second": 4.328870351806214,
+      "v3_predicted_effective_tokens_per_second": 3.0920502512901527
+    },
+    "h800v3acc-c8452f62ddf7315e": {
+      "job_id": "h800v3acc-c8452f62ddf7315e",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs16_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.48697035269042,
+      "v3_log_prediction": 1.1504981160692072,
+      "v1_predicted_effective_tokens_per_second": 4.423673027476658,
+      "v3_predicted_effective_tokens_per_second": 3.1597664481976127
+    },
+    "h800v3acc-8d236700fa9845f3": {
+      "job_id": "h800v3acc-8d236700fa9845f3",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs4_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.8904343705387394,
+      "v3_log_prediction": 1.8904343705387394,
+      "v1_predicted_effective_tokens_per_second": 6.622244564337447,
+      "v3_predicted_effective_tokens_per_second": 6.622244564337447
+    },
+    "h800v3acc-4c0d7c0198b35090": {
+      "job_id": "h800v3acc-4c0d7c0198b35090",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs8_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.9081093081424927,
+      "v3_log_prediction": 1.9081093081424927,
+      "v1_predicted_effective_tokens_per_second": 6.740332851109749,
+      "v3_predicted_effective_tokens_per_second": 6.740332851109749
+    },
+    "h800v3acc-ad9f849db63136c7": {
+      "job_id": "h800v3acc-ad9f849db63136c7",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs8_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.4190368182947877,
+      "v3_log_prediction": 1.4190368182947877,
+      "v1_predicted_effective_tokens_per_second": 4.133137559957715,
+      "v3_predicted_effective_tokens_per_second": 4.133137559957715
+    },
+    "h800v3acc-e10a14886a8070e0": {
+      "job_id": "h800v3acc-e10a14886a8070e0",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs16_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.4367138255479723,
+      "v3_log_prediction": 1.4367138255479723,
+      "v1_predicted_effective_tokens_per_second": 4.2068486388157815,
+      "v3_predicted_effective_tokens_per_second": 4.2068486388157815
+    },
+    "h800v3acc-3fe6c9973d98e63c": {
+      "job_id": "h800v3acc-3fe6c9973d98e63c",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs8_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.465306619248657,
+      "v3_log_prediction": 1.128834382627444,
+      "v1_predicted_effective_tokens_per_second": 4.328870351806214,
+      "v3_predicted_effective_tokens_per_second": 3.0920502512901527
+    },
+    "h800v3acc-52d5aa84c3b2539b": {
+      "job_id": "h800v3acc-52d5aa84c3b2539b",
+      "scenario_id": "lora_s2_src04_live_punishment__qwen3_14b_cutoff1024",
+      "candidate_arm_id": "mbs16_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.48697035269042,
+      "v3_log_prediction": 1.1504981160692072,
+      "v1_predicted_effective_tokens_per_second": 4.423673027476658,
+      "v3_predicted_effective_tokens_per_second": 3.1597664481976127
+    },
+    "h800v3acc-958ff69727396fcc": {
+      "job_id": "h800v3acc-958ff69727396fcc",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs4_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.2188177701469134,
+      "v3_log_prediction": 1.2188177701469134,
+      "v1_predicted_effective_tokens_per_second": 3.383185665313083,
+      "v3_predicted_effective_tokens_per_second": 3.383185665313083
+    },
+    "h800v3acc-0bcb096ec92cf2f4": {
+      "job_id": "h800v3acc-0bcb096ec92cf2f4",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs8_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.094750639580087,
+      "v3_log_prediction": 1.094750639580087,
+      "v1_predicted_effective_tokens_per_second": 2.9884373924711265,
+      "v3_predicted_effective_tokens_per_second": 2.9884373924711265
+    },
+    "h800v3acc-b1282f5470a1c380": {
+      "job_id": "h800v3acc-b1282f5470a1c380",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs8_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 0.6057027080087567,
+      "v3_log_prediction": 0.6057027080087567,
+      "v1_predicted_effective_tokens_per_second": 1.8325394967197741,
+      "v3_predicted_effective_tokens_per_second": 1.8325394967197741
+    },
+    "h800v3acc-dd64b791977b8c94": {
+      "job_id": "h800v3acc-dd64b791977b8c94",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs16_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 0.5123177642491654,
+      "v3_log_prediction": 0.5123177642491654,
+      "v1_predicted_effective_tokens_per_second": 1.6691554237978274,
+      "v3_predicted_effective_tokens_per_second": 1.6691554237978274
+    },
+    "h800v3acc-7c6c2e079ea6f2cf": {
+      "job_id": "h800v3acc-7c6c2e079ea6f2cf",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs8_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 0.6519508484826482,
+      "v3_log_prediction": 0.3154786118614353,
+      "v1_predicted_effective_tokens_per_second": 1.9192814063971575,
+      "v3_predicted_effective_tokens_per_second": 1.370915290283684
+    },
+    "h800v3acc-4af3a90ff2811a72": {
+      "job_id": "h800v3acc-4af3a90ff2811a72",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs16_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 0.5625452427891717,
+      "v3_log_prediction": 0.22607300616795883,
+      "v1_predicted_effective_tokens_per_second": 1.7551340623243747,
+      "v3_predicted_effective_tokens_per_second": 1.2536671873745535
+    },
+    "h800v3acc-3a32be7055008fe7": {
+      "job_id": "h800v3acc-3a32be7055008fe7",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs4_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.2188177701469134,
+      "v3_log_prediction": 1.2188177701469134,
+      "v1_predicted_effective_tokens_per_second": 3.383185665313083,
+      "v3_predicted_effective_tokens_per_second": 3.383185665313083
+    },
+    "h800v3acc-905c9a573e1f75b3": {
+      "job_id": "h800v3acc-905c9a573e1f75b3",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs8_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.094750639580087,
+      "v3_log_prediction": 1.094750639580087,
+      "v1_predicted_effective_tokens_per_second": 2.9884373924711265,
+      "v3_predicted_effective_tokens_per_second": 2.9884373924711265
+    },
+    "h800v3acc-9af690d366a38272": {
+      "job_id": "h800v3acc-9af690d366a38272",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs8_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 0.6057027080087567,
+      "v3_log_prediction": 0.6057027080087567,
+      "v1_predicted_effective_tokens_per_second": 1.8325394967197741,
+      "v3_predicted_effective_tokens_per_second": 1.8325394967197741
+    },
+    "h800v3acc-ce0cdce0eebf69b4": {
+      "job_id": "h800v3acc-ce0cdce0eebf69b4",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs16_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 0.5123177642491654,
+      "v3_log_prediction": 0.5123177642491654,
+      "v1_predicted_effective_tokens_per_second": 1.6691554237978274,
+      "v3_predicted_effective_tokens_per_second": 1.6691554237978274
+    },
+    "h800v3acc-818564b5272a3280": {
+      "job_id": "h800v3acc-818564b5272a3280",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs8_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 0.6519508484826482,
+      "v3_log_prediction": 0.3154786118614353,
+      "v1_predicted_effective_tokens_per_second": 1.9192814063971575,
+      "v3_predicted_effective_tokens_per_second": 1.370915290283684
+    },
+    "h800v3acc-af58355f584e7f54": {
+      "job_id": "h800v3acc-af58355f584e7f54",
+      "scenario_id": "lora_s2_src12_flood_multilabel__qwen3_14b_cutoff4096",
+      "candidate_arm_id": "mbs16_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 0.5625452427891717,
+      "v3_log_prediction": 0.22607300616795883,
+      "v1_predicted_effective_tokens_per_second": 1.7551340623243747,
+      "v3_predicted_effective_tokens_per_second": 1.2536671873745535
+    },
+    "h800v3acc-99e242ab627187d5": {
+      "job_id": "h800v3acc-99e242ab627187d5",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs4_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.8915262655670662,
+      "v3_log_prediction": 1.8915262655670662,
+      "v1_predicted_effective_tokens_per_second": 6.62947930932586,
+      "v3_predicted_effective_tokens_per_second": 6.62947930932586
+    },
+    "h800v3acc-d556fb7140837cb0": {
+      "job_id": "h800v3acc-d556fb7140837cb0",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs8_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.8789687140062075,
+      "v3_log_prediction": 1.8789687140062075,
+      "v1_predicted_effective_tokens_per_second": 6.546749808211493,
+      "v3_predicted_effective_tokens_per_second": 6.546749808211493
+    },
+    "h800v3acc-ec8850c0029d351b": {
+      "job_id": "h800v3acc-ec8850c0029d351b",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs8_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.389925167975629,
+      "v3_log_prediction": 1.389925167975629,
+      "v1_predicted_effective_tokens_per_second": 4.0145496248781525,
+      "v3_predicted_effective_tokens_per_second": 4.0145496248781525
+    },
+    "h800v3acc-5890994786f97182": {
+      "job_id": "h800v3acc-5890994786f97182",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs16_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.3877826411538154,
+      "v3_log_prediction": 1.3877826411538154,
+      "v1_predicted_effective_tokens_per_second": 4.005957552289107,
+      "v3_predicted_effective_tokens_per_second": 4.005957552289107
+    },
+    "h800v3acc-8f2309208b2c8beb": {
+      "job_id": "h800v3acc-8f2309208b2c8beb",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs8_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.4361694402944714,
+      "v3_log_prediction": 1.0996972036732584,
+      "v1_predicted_effective_tokens_per_second": 4.204559115700953,
+      "v3_predicted_effective_tokens_per_second": 3.0032565112149663
+    },
+    "h800v3acc-aa705fc3409a0769": {
+      "job_id": "h800v3acc-aa705fc3409a0769",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs16_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.438006786951851,
+      "v3_log_prediction": 1.101534550330638,
+      "v1_predicted_effective_tokens_per_second": 4.212291449651648,
+      "v3_predicted_effective_tokens_per_second": 3.0087796068940342
+    },
+    "h800v3acc-2de02e190edc53f2": {
+      "job_id": "h800v3acc-2de02e190edc53f2",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs4_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.8915262655670662,
+      "v3_log_prediction": 1.8915262655670662,
+      "v1_predicted_effective_tokens_per_second": 6.62947930932586,
+      "v3_predicted_effective_tokens_per_second": 6.62947930932586
+    },
+    "h800v3acc-3595dd855e505626": {
+      "job_id": "h800v3acc-3595dd855e505626",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs8_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.8789687140062075,
+      "v3_log_prediction": 1.8789687140062075,
+      "v1_predicted_effective_tokens_per_second": 6.546749808211493,
+      "v3_predicted_effective_tokens_per_second": 6.546749808211493
+    },
+    "h800v3acc-94677ed9a1942057": {
+      "job_id": "h800v3acc-94677ed9a1942057",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs8_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.389925167975629,
+      "v3_log_prediction": 1.389925167975629,
+      "v1_predicted_effective_tokens_per_second": 4.0145496248781525,
+      "v3_predicted_effective_tokens_per_second": 4.0145496248781525
+    },
+    "h800v3acc-dfc00d2260a10f88": {
+      "job_id": "h800v3acc-dfc00d2260a10f88",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs16_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.3877826411538154,
+      "v3_log_prediction": 1.3877826411538154,
+      "v1_predicted_effective_tokens_per_second": 4.005957552289107,
+      "v3_predicted_effective_tokens_per_second": 4.005957552289107
+    },
+    "h800v3acc-93db57e030678bed": {
+      "job_id": "h800v3acc-93db57e030678bed",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs8_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.4361694402944714,
+      "v3_log_prediction": 1.0996972036732584,
+      "v1_predicted_effective_tokens_per_second": 4.204559115700953,
+      "v3_predicted_effective_tokens_per_second": 3.0032565112149663
+    },
+    "h800v3acc-93ca4f90698d8ca3": {
+      "job_id": "h800v3acc-93ca4f90698d8ca3",
+      "scenario_id": "lora_s2_src14_ad_metrics__qwen3_14b_cutoff8192",
+      "candidate_arm_id": "mbs16_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.438006786951851,
+      "v3_log_prediction": 1.101534550330638,
+      "v1_predicted_effective_tokens_per_second": 4.212291449651648,
+      "v3_predicted_effective_tokens_per_second": 3.0087796068940342
+    },
+    "h800v3acc-b0a1e3393d243357": {
+      "job_id": "h800v3acc-b0a1e3393d243357",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs4_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.8198843702827603,
+      "v3_log_prediction": 1.8198843702827603,
+      "v1_predicted_effective_tokens_per_second": 6.171144840894147,
+      "v3_predicted_effective_tokens_per_second": 6.171144840894147
+    },
+    "h800v3acc-9550a05a8682840b": {
+      "job_id": "h800v3acc-9550a05a8682840b",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs8_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.7717297763317885,
+      "v3_log_prediction": 1.7717297763317885,
+      "v1_predicted_effective_tokens_per_second": 5.8810174128079735,
+      "v3_predicted_effective_tokens_per_second": 5.8810174128079735
+    },
+    "h800v3acc-3808dd3ca3c0ba39": {
+      "job_id": "h800v3acc-3808dd3ca3c0ba39",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs8_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.2826849914483622,
+      "v3_log_prediction": 1.2826849914483622,
+      "v1_predicted_effective_tokens_per_second": 3.6063096484961075,
+      "v3_predicted_effective_tokens_per_second": 3.6063096484961075
+    },
+    "h800v3acc-63f76ac96caced7d": {
+      "job_id": "h800v3acc-63f76ac96caced7d",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs16_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.2366937347650873,
+      "v3_log_prediction": 1.2366937347650873,
+      "v1_predicted_effective_tokens_per_second": 3.4442071566294192,
+      "v3_predicted_effective_tokens_per_second": 3.4442071566294192
+    },
+    "h800v3acc-80c6a875a3327718": {
+      "job_id": "h800v3acc-80c6a875a3327718",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs8_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.3289303564690556,
+      "v3_log_prediction": 0.9924581198478426,
+      "v1_predicted_effective_tokens_per_second": 3.7770011812143895,
+      "v3_predicted_effective_tokens_per_second": 2.697857986581707
+    },
+    "h800v3acc-74e4eef966b3aee9": {
+      "job_id": "h800v3acc-74e4eef966b3aee9",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs16_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.2869185639186544,
+      "v3_log_prediction": 0.9504463272974415,
+      "v1_predicted_effective_tokens_per_second": 3.621609585587666,
+      "v3_predicted_effective_tokens_per_second": 2.586863989705476
+    },
+    "h800v3acc-537f0deaf22c9df1": {
+      "job_id": "h800v3acc-537f0deaf22c9df1",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs4_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.8198843702827603,
+      "v3_log_prediction": 1.8198843702827603,
+      "v1_predicted_effective_tokens_per_second": 6.171144840894147,
+      "v3_predicted_effective_tokens_per_second": 6.171144840894147
+    },
+    "h800v3acc-23e90f9332825e27": {
+      "job_id": "h800v3acc-23e90f9332825e27",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs8_z2_gc0",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.7717297763317885,
+      "v3_log_prediction": 1.7717297763317885,
+      "v1_predicted_effective_tokens_per_second": 5.8810174128079735,
+      "v3_predicted_effective_tokens_per_second": 5.8810174128079735
+    },
+    "h800v3acc-6edb50eda6955d25": {
+      "job_id": "h800v3acc-6edb50eda6955d25",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs8_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.2826849914483622,
+      "v3_log_prediction": 1.2826849914483622,
+      "v1_predicted_effective_tokens_per_second": 3.6063096484961075,
+      "v3_predicted_effective_tokens_per_second": 3.6063096484961075
+    },
+    "h800v3acc-130cf2d45c2bd4f5": {
+      "job_id": "h800v3acc-130cf2d45c2bd4f5",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs16_z2_gc1",
+      "zero_stage": 2,
+      "zero3_correction_applied": false,
+      "v1_log_prediction": 1.2366937347650873,
+      "v3_log_prediction": 1.2366937347650873,
+      "v1_predicted_effective_tokens_per_second": 3.4442071566294192,
+      "v3_predicted_effective_tokens_per_second": 3.4442071566294192
+    },
+    "h800v3acc-0b83d7f122a1e03c": {
+      "job_id": "h800v3acc-0b83d7f122a1e03c",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs8_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.3289303564690556,
+      "v3_log_prediction": 0.9924581198478426,
+      "v1_predicted_effective_tokens_per_second": 3.7770011812143895,
+      "v3_predicted_effective_tokens_per_second": 2.697857986581707
+    },
+    "h800v3acc-35ff6d10d21f63a4": {
+      "job_id": "h800v3acc-35ff6d10d21f63a4",
+      "scenario_id": "lora_s2_src18_marketing_antifraud__qwen3_14b_cutoff16384",
+      "candidate_arm_id": "mbs16_z3_gc0",
+      "zero_stage": 3,
+      "zero3_correction_applied": true,
+      "v1_log_prediction": 1.2869185639186544,
+      "v3_log_prediction": 0.9504463272974415,
+      "v1_predicted_effective_tokens_per_second": 3.621609585587666,
+      "v3_predicted_effective_tokens_per_second": 2.586863989705476
+    }
+  }
+}

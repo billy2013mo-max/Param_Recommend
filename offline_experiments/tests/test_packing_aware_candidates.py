@@ -64,40 +64,49 @@ class TestBranchContract(unittest.TestCase):
             candidate["comparison_group"]
             for candidate in self.report["shadow_candidates"]
         }
-        self.assertEqual(len(rankable_groups), 1)
-        self.assertEqual(len(shadow_groups), 1)
+        self.assertEqual(len(rankable_groups), 2)
+        self.assertEqual(len(shadow_groups), 0)
         self.assertFalse(rankable_groups & shadow_groups)
         # Both branches still describe one scenario, and the report says so.
-        self.assertEqual(
-            self.report["comparison_group"], next(iter(rankable_groups))
-        )
+        self.assertIn(self.report["comparison_group"], rankable_groups)
         self.assertEqual(
             self.report["scenario"]["dataset_id"],
             _scenario()["dataset_id"],
         )
 
     def test_unpacked_candidates_are_rankable(self) -> None:
-        self.assertTrue(self.report["rankable_candidates"])
-        for candidate in self.report["rankable_candidates"]:
+        unpacked = [
+            candidate
+            for candidate in self.report["rankable_candidates"]
+            if candidate["candidate_branch"] == pac.BRANCH_UNPACKED
+        ]
+        self.assertTrue(unpacked)
+        for candidate in unpacked:
             self.assertEqual(candidate["candidate_branch"], pac.BRANCH_UNPACKED)
             self.assertEqual(candidate["eligibility"], "rankable")
             self.assertFalse(candidate["packing"])
 
-    def test_packed_candidates_are_shadow_only_with_a_reason(self) -> None:
-        self.assertTrue(self.report["shadow_candidates"])
-        for candidate in self.report["shadow_candidates"]:
-            self.assertEqual(candidate["candidate_branch"], pac.BRANCH_PACKED_SHADOW)
-            self.assertEqual(candidate["eligibility"], "shadow_only")
-            self.assertEqual(candidate["shadow_reason"], pac.PACKED_SHADOW_REASON)
+    def test_policy_positive_packed_candidates_are_released(self) -> None:
+        self.assertTrue(self.report["released_packing_candidates"])
+        for candidate in self.report["released_packing_candidates"]:
+            self.assertEqual(candidate["candidate_branch"], pac.BRANCH_PACKED_RELEASED)
+            self.assertEqual(candidate["eligibility"], "rankable")
+            self.assertTrue(
+                candidate["automatic_execution_allowed_after_runtime_gates"]
+            )
             self.assertTrue(candidate["packing"])
 
     def test_packed_candidates_fix_physical_mbs_to_one(self) -> None:
         self.assertEqual(
-            {c["physical_mbs"] for c in self.report["shadow_candidates"]}, {1}
+            {
+                c["physical_mbs"]
+                for c in self.report["released_packing_candidates"]
+            },
+            {1},
         )
 
     def test_packed_candidates_record_the_baseline_they_replace(self) -> None:
-        for candidate in self.report["shadow_candidates"]:
+        for candidate in self.report["released_packing_candidates"]:
             self.assertTrue(candidate["replaces_no_packing_mbs"])
             self.assertIsInstance(candidate["replaces_no_packing_mbs"], list)
 
@@ -107,7 +116,8 @@ class TestBranchContract(unittest.TestCase):
         self.assertFalse(guarantees["overrides_policy_off"])
         self.assertFalse(guarantees["predicts_memory"])
         self.assertFalse(guarantees["ranks_candidates"])
-        self.assertFalse(guarantees["admits_packed_candidates"])
+        self.assertTrue(guarantees["releases_packed_candidates_for_runtime_admission"])
+        self.assertTrue(guarantees["final_memory_admission_still_required"])
         self.assertFalse(guarantees["creates_gpu_queue"])
 
     def test_policy_is_bound_by_sha(self) -> None:
@@ -144,6 +154,24 @@ class TestPolicyObedience(unittest.TestCase):
         )
         self.assertIn("on", report["decision_summary"]["distinct_decisions"])
         self.assertTrue(report["decision_summary"]["shapes_with_packing_on"])
+        self.assertTrue(report["released_packing_candidates"])
+
+    def test_full_sft_stays_shadow_only_outside_release_scope(self) -> None:
+        _requires_artifacts(self)
+        report = pac.build_candidate_space(
+            _scenario(training_mode="full"),
+            capacity_bytes=CAPACITY,
+            profile_path=str(MULTITURN_PROFILE),
+            policy_path=POLICY,
+        )
+        self.assertEqual(report["released_packing_candidates"], [])
+        self.assertTrue(report["shadow_candidates"])
+        self.assertTrue(
+            all(
+                candidate["eligibility"] == "shadow_only"
+                for candidate in report["shadow_candidates"]
+            )
+        )
 
     def test_decision_is_queried_per_baseline_shape(self) -> None:
         _requires_artifacts(self)
@@ -220,21 +248,18 @@ class TestPredictorHandoff(unittest.TestCase):
         self.assertEqual(group["rejected_by_support_domain"], 0)
         self.assertIsNotNone(group["selected_request_id"])
 
-    def test_shadow_branch_is_never_ranked_by_the_active_predictor(self) -> None:
-        report = self.predictor_cls().predict(self.report["shadow_candidates"])
-        group = report["ranking_groups"][0]
-        # Packing has no calibrated head, so every packed candidate must fall out
-        # on the support domain and nothing may be selected.
-        self.assertEqual(
-            group["rejected_by_support_domain"], group["requested_candidates"]
+    def test_released_packing_branch_can_pass_active_admission(self) -> None:
+        report = self.predictor_cls().predict(
+            self.report["released_packing_candidates"]
         )
-        self.assertEqual(len(group["ranked_request_ids"] or []), 0)
-        self.assertIsNone(group["selected_request_id"])
+        group = report["ranking_groups"][0]
+        self.assertEqual(group["rejected_by_support_domain"], 0)
+        self.assertTrue(group["ranked_request_ids"])
+        self.assertIsNotNone(group["selected_request_id"])
+        self.assertTrue(group["automatic_execution_allowed"])
         for prediction in report["predictions"]:
-            self.assertFalse(prediction["memory"]["admitted"])
-            self.assertEqual(
-                prediction["memory"]["rejection_reason"],
-                "outside_supported_domain",
+            self.assertTrue(
+                prediction["support"]["packing_production_admission"]["verified"]
             )
 
 

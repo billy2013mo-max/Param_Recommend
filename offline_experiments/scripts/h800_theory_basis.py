@@ -193,8 +193,24 @@ def _model_geometry(
     target = str(fixed_lora.get("target") or "")
     if target != "all":
         raise ValueError("Historical analytic LoRA basis requires target=all")
+    # Projection widths: q_proj is [heads*head_dim, hidden] (doubled when the
+    # model gates its attention output, e.g. Qwen3.5) and o_proj is
+    # [hidden, heads*head_dim].  The historical hidden x hidden assumption
+    # undercounted FLOPs and per-layer parameter elements for every model
+    # with heads*head_dim != hidden (Qwen3-0.6B, Qwen3-4B, Qwen3-32B, ...).
+    q_width = attention_heads * head_dim
+    q_projection_width = (
+        q_width * 2 if bool(geom.get("attn_output_gate", False)) else q_width
+    )
     adapter_parameters = (
-        rank * layers * (9 * hidden + 2 * kv_width + 3 * intermediate)
+        rank
+        * layers
+        * (
+            (hidden + q_projection_width)  # q_proj adapter
+            + (q_width + hidden)  # o_proj adapter
+            + 2 * (hidden + kv_width)  # k/v adapters
+            + 3 * (hidden + intermediate)  # MLP adapters
+        )
         if mode == "lora"
         else 0
     )
@@ -203,12 +219,14 @@ def _model_geometry(
         adapter_parameters if mode == "lora" else base_parameters
     )
     linear_applications = layers * (
-        2 * hidden * hidden
+        hidden * q_projection_width
+        + q_width * hidden
         + 2 * hidden * kv_width
         + 3 * hidden * intermediate
     ) + vocab * hidden
     max_layer = (
-        2 * hidden * hidden
+        hidden * q_projection_width
+        + q_width * hidden
         + 2 * hidden * kv_width
         + 3 * hidden * intermediate
         + 2 * hidden

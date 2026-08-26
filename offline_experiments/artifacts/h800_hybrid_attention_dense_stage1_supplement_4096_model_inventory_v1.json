@@ -1,0 +1,338 @@
+{
+  "schema": "sft_h800_hybrid_attention_dense_stage1_supplement_4096_model_inventory/v1",
+  "campaign_id": "h800_hybrid_attention_dense_stage1_supplement_4096_20260825_v1",
+  "generated_at_utc": "2026-08-25T00:00:00+00:00",
+  "gpu_training_started": false,
+  "fixed_lora": {
+    "rank": 32,
+    "alpha": 32,
+    "dropout": 0.0,
+    "target": "all"
+  },
+  "supplement_of": "h800_hybrid_attention_dense_stage1_20260812_v1",
+  "models": [
+    {
+      "id": "qwen3p6_27b",
+      "source_inventory": "new_scan",
+      "family": "qwen3_5",
+      "release_family": "qwen3_6",
+      "path": "/wanqing-models/Qwen3.6-27B",
+      "tokenizer_path": "/wanqing-models/Qwen3.6-27B",
+      "template": "qwen3_5_nothink",
+      "enable_liger_kernel": true,
+      "train_types": [
+        "lora"
+      ],
+      "actual_parameters": 27781427952,
+      "actual_parameters_b": 27.781427952,
+      "checkpoint_bytes": 55563006400,
+      "checkpoint_shards": 15,
+      "checkpoint_manifest": [
+        {
+          "name": "model-00001-of-00015.safetensors",
+          "size": 3968861352,
+          "mtime_ns": 1778584910086748461
+        },
+        {
+          "name": "model-00002-of-00015.safetensors",
+          "size": 3921677136,
+          "mtime_ns": 1778586328850504772
+        },
+        {
+          "name": "model-00003-of-00015.safetensors",
+          "size": 3921677128,
+          "mtime_ns": 1778642166470482990
+        },
+        {
+          "name": "model-00004-of-00015.safetensors",
+          "size": 3921677128,
+          "mtime_ns": 1778577354369848751
+        },
+        {
+          "name": "model-00005-of-00015.safetensors",
+          "size": 3921677112,
+          "mtime_ns": 1778585063591574626
+        },
+        {
+          "name": "model-00006-of-00015.safetensors",
+          "size": 3900710888,
+          "mtime_ns": 1778595259178042916
+        },
+        {
+          "name": "model-00007-of-00015.safetensors",
+          "size": 3994391976,
+          "mtime_ns": 1778580502916794747
+        },
+        {
+          "name": "model-00008-of-00015.safetensors",
+          "size": 3879219776,
+          "mtime_ns": 1778592016715607168
+        },
+        {
+          "name": "model-00009-of-00015.safetensors",
+          "size": 3921677136,
+          "mtime_ns": 1778590649875168316
+        },
+        {
+          "name": "model-00010-of-00015.safetensors",
+          "size": 3921677128,
+          "mtime_ns": 1778645431397418919
+        },
+        {
+          "name": "model-00011-of-00015.safetensors",
+          "size": 3921677136,
+          "mtime_ns": 1778591685624383624
+        },
+        {
+          "name": "model-00012-of-00015.safetensors",
+          "size": 3921677136,
+          "mtime_ns": 1778647917988346284
+        },
+        {
+          "name": "model-00013-of-00015.safetensors",
+          "size": 3995081848,
+          "mtime_ns": 1778592820675854668
+        },
+        {
+          "name": "model-00014-of-00015.safetensors",
+          "size": 3942652952,
+          "mtime_ns": 1778650581024094661
+        },
+        {
+          "name": "model-00015-of-00015.safetensors",
+          "size": 508670568,
+          "mtime_ns": 1778593231747293409
+        }
+      ],
+      "model_directory_name": "Qwen3.6-27B",
+      "model_identity": "/wanqing-models/Qwen3.6-27B",
+      "revision_policy": "The configured local model directory name/path is the authoritative model identity.",
+      "tokenizer_identity": "/wanqing-models/Qwen3.6-27B",
+      "tokenizer_directory_name": "Qwen3.6-27B",
+      "tokenizer_class": "TokenizersBackend",
+      "tokenizer_size": 248077,
+      "tokenizer_max_id": 248076,
+      "tokenizer_fits_model_embeddings": true,
+      "tensor_count": 1199,
+      "model_type": "qwen3_5",
+      "architectures": [
+        "Qwen3_5ForConditionalGeneration"
+      ],
+      "architecture_role": "vision_language",
+      "is_vision_language": true,
+      "vision_config": {
+        "deepstack_visual_indexes": [],
+        "depth": 27,
+        "hidden_act": "gelu_pytorch_tanh",
+        "hidden_size": 1152,
+        "in_channels": 3,
+        "initializer_range": 0.02,
+        "intermediate_size": 4304,
+        "model_type": "qwen3_5",
+        "num_heads": 16,
+        "num_position_embeddings": 2304,
+        "out_hidden_size": 5120,
+        "patch_size": 16,
+        "spatial_merge_size": 2,
+        "temporal_patch_size": 2
+      },
+      "vision_geometry": {
+        "model_type": "qwen3_5",
+        "depth": 27,
+        "hidden_size": 1152,
+        "intermediate_size": 4304,
+        "num_heads": 16,
+        "patch_size": 16,
+        "spatial_merge_size": 2,
+        "temporal_patch_size": 2,
+        "out_hidden_size": 5120,
+        "in_channels": 3,
+        "num_position_embeddings": 2304
+      },
+      "component_parameter_estimates": {
+        "language_model_or_other": 27320697856,
+        "vision_tower": 415891440,
+        "projector_or_merger": 44838656
+      },
+      "vision_parameter_estimate": 460730096,
+      "hidden_size": 5120,
+      "intermediate_size": 17408,
+      "num_hidden_layers": 64,
+      "num_attention_heads": 24,
+      "num_key_value_heads": 4,
+      "head_dim": 256,
+      "vocab_size": 248320,
+      "max_position_embeddings": 262144,
+      "torch_dtype": "bfloat16",
+      "geometry_source": "text_config",
+      "architecture_signature": {
+        "schema": "sft_dense_architecture_signature/v1",
+        "model_type": "qwen3_5",
+        "text_model_type": "qwen3_5_text",
+        "architecture_route": "dense_hybrid_attention",
+        "hidden_size": 5120,
+        "intermediate_size": 17408,
+        "vocab_size": 248320,
+        "num_hidden_layers": 64,
+        "num_full_attention_layers": 16,
+        "num_linear_attention_layers": 48,
+        "full_attention_interval": 4,
+        "layer_pattern_source": "explicit_config",
+        "layer_pattern_sha256": "d9c34d22fdab24ccd3286b84516e34a3bfa117d228218df41dfab516e899221f",
+        "layer_runs": [
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          },
+          {
+            "type": "linear_attention",
+            "count": 3
+          },
+          {
+            "type": "full_attention",
+            "count": 1
+          }
+        ],
+        "max_consecutive_full_attention_layers": 1,
+        "max_consecutive_linear_attention_layers": 3,
+        "num_attention_heads": 24,
+        "num_key_value_heads": 4,
+        "head_dim": 256,
+        "query_width": 6144,
+        "query_projection_width": 12288,
+        "kv_width": 1024,
+        "attention_output_gate": true,
+        "linear_num_key_heads": 16,
+        "linear_num_value_heads": 48,
+        "linear_key_head_dim": 128,
+        "linear_value_head_dim": 128,
+        "linear_key_width": 2048,
+        "linear_value_width": 6144,
+        "linear_qkv_width": 10240,
+        "linear_conv_kernel_dim": 4,
+        "linear_state_dtype": "float32",
+        "linear_state_dtype_bytes": 4,
+        "config_path": "/wanqing-models/Qwen3.6-27B/config.json",
+        "config_sha256": "69db4eb7196bc8190813231b3018ca05d8c2e3abc7b1af19d55c157af44a9d9c",
+        "signature_sha256": "cd80ccc60c07d5e42efe7dc881921dedb24d428dfbbe57846de03c3403c0f04b"
+      }
+    }
+  ],
+  "report_sha256": "dfdbb82077ed0fdf35367ecaba2e5172f14b7a345deda5ac793fa088a9794dcf"
+}

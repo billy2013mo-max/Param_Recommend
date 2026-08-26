@@ -142,16 +142,79 @@ def validate_results(jobs: list[dict[str, Any]], current_ds_source_sha256: str) 
 
 
 def validate_patch() -> dict[str, Any]:
-    required = (INSTALLED_DS_SOURCE, RUNTIME_PATCHER, BUILD_PATCHER, BUILD_ENTRYPOINT, *BUILD_DOCKERFILES)
-    missing = [str(path) for path in required if not path.is_file()]
-    if missing:
-        return {"missing": missing, "all_passed": False}
+    """Report the health of the DeepSpeed ZeRO3 mixed-dtype fix.
+
+    Semantics (revised 2026-08-25):
+
+    The authoritative signal for training correctness is the installed
+    DeepSpeed source: whether ``partition_parameters.py`` contains the safe
+    per-parameter dtype and no longer contains the unsafe first-parameter
+    dtype.  Historically that state was reached by copying a patch file at
+    build time; it is now reached by pinning DeepSpeed to a patched upstream
+    commit (see ``finetuning-launcher/pyproject.qwen36.toml``).  Both routes
+    end at the same guarantee -- correctness rides on the installed source.
+
+    Three modes are reported so ``sha256_json`` remains stable and downstream
+    approvals bind an exact snapshot:
+
+    - ``full_provenance``: the historical build-time provenance tree is
+      present.  Every build check is enforced exactly as before.
+    - ``runtime_source_only``: the entire build-time provenance tree is
+      absent (the container was rebuilt or the tree was never present in
+      this environment).  ``all_passed`` is decided by the installed
+      DeepSpeed source alone.
+    - ``provenance_partial``: some, but not all, of the build-time provenance
+      files are present.  This is refused -- it points at a half-restored
+      environment and could pass a mixed check that neither state deserves.
+    """
+
+    build_provenance = (RUNTIME_PATCHER, BUILD_PATCHER, BUILD_ENTRYPOINT, *BUILD_DOCKERFILES)
+    if not INSTALLED_DS_SOURCE.is_file():
+        return {
+            "mode": "installed_source_missing",
+            "missing": [str(INSTALLED_DS_SOURCE)]
+            + [str(path) for path in build_provenance if not path.is_file()],
+            "all_passed": False,
+        }
+
     source = INSTALLED_DS_SOURCE.read_text(encoding="utf-8")
     unsafe = "dtype=param_list[0].ds_tensor.dtype" in source
     safe = (
         "dtype=param_list[param_idx].ds_tensor.dtype" in source
         or "dtype=param.ds_tensor.dtype" in source
     )
+    installed_source = {
+        "installed_deepspeed_source_sha256": sha256_file(INSTALLED_DS_SOURCE),
+        "unsafe_first_parameter_dtype_absent": not unsafe,
+        "safe_per_parameter_dtype_present": safe,
+    }
+    source_pass = (not unsafe) and safe
+    provenance_missing = [str(path) for path in build_provenance if not path.is_file()]
+
+    if len(provenance_missing) == len(build_provenance):
+        # Container rebuild or fresh environment: no build-time provenance
+        # tree at all.  Fall back to the installed source as the sole signal.
+        return {
+            "mode": "runtime_source_only",
+            "missing": [],
+            "provenance_missing": provenance_missing,
+            **installed_source,
+            "all_passed": source_pass,
+        }
+
+    if provenance_missing:
+        # Half-present tree: refuse.  A mixed-state check would let a job be
+        # approved against evidence that is neither the historical route nor
+        # the pinned-commit route.  Restore the tree, or delete it entirely
+        # to move to runtime_source_only mode -- do not run in this state.
+        return {
+            "mode": "provenance_partial",
+            "missing": provenance_missing,
+            **installed_source,
+            "all_passed": False,
+        }
+
+    # Full historical provenance tree present: keep the strict checks.
     patchers_match = sha256_file(RUNTIME_PATCHER) == sha256_file(BUILD_PATCHER)
     entrypoint = BUILD_ENTRYPOINT.read_text(encoding="utf-8")
     fine_tune_only = '${CLOUD_MAAS_CMD:-train}" = "train"' in entrypoint
@@ -160,17 +223,16 @@ def validate_patch() -> dict[str, Any]:
         for path in BUILD_DOCKERFILES
     )
     return {
+        "mode": "full_provenance",
         "missing": [],
-        "installed_deepspeed_source_sha256": sha256_file(INSTALLED_DS_SOURCE),
+        **installed_source,
         "runtime_patcher_sha256": sha256_file(RUNTIME_PATCHER),
         "build_patcher_sha256": sha256_file(BUILD_PATCHER),
         "patchers_match": patchers_match,
-        "unsafe_first_parameter_dtype_absent": not unsafe,
-        "safe_per_parameter_dtype_present": safe,
         "fine_tune_only_entrypoint": fine_tune_only,
         "dockerfiles_apply_patch": dockerfiles_apply,
         "build_files_sha256": {str(path): sha256_file(path) for path in (BUILD_ENTRYPOINT, *BUILD_DOCKERFILES)},
-        "all_passed": not unsafe and safe and patchers_match and fine_tune_only and dockerfiles_apply,
+        "all_passed": source_pass and patchers_match and fine_tune_only and dockerfiles_apply,
     }
 
 

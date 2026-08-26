@@ -1,16 +1,11 @@
 {
   "schema_version": 1,
   "training_scope": {
-    "phase_id": "h800_packing_transfer_validation_v1",
+    "phase_id": "h800_hybrid_attention_dense_stage1_supplement_4096_formal_v1",
     "model_ids": [
-      "qwen3_14b",
-      "qwen3_1p7b",
-      "qwen3_32b",
-      "qwen3_4b",
-      "qwen3_8b"
+      "qwen3p6_27b"
     ],
     "train_types": [
-      "full",
       "lora"
     ],
     "gpu_ids": [
@@ -20,8 +15,7 @@
       3,
       4,
       5,
-      6,
-      7
+      6
     ],
     "exclusive_node_gpu_ids": [
       0,
@@ -30,8 +24,7 @@
       3,
       4,
       5,
-      6,
-      7
+      6
     ],
     "max_gpu_count": 4,
     "stage": "sft",
@@ -43,9 +36,9 @@
       4
     ],
     "global_batch_sizes": [
-      256
+      64
     ],
-    "objective": "small prospective transfer validation for the accepted zero-coefficient virtual-MBS Packing ranker"
+    "objective": "close the qwen3.6-27B × cutoff=4096 gap in the dense hybrid-attention stage-1 fit data"
   },
   "fixed_runtime": {
     "python": "/fine-tuning-launcher/.venv/bin/python",

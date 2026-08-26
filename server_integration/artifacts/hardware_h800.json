@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "gpu_id": "local_h800_140g",
+  "name_reported_by_driver": "NVIDIA H800",
+  "memory_bytes_reported_by_torch": 150142189568,
+  "sm_count": 132,
+  "compute_capability": "9.0",
+  "max_sm_clock_mhz_reported_by_nvidia_smi": 1980,
+  "power_limit_w": 700,
+  "bf16_dense_peak_flops_per_second_for_mfu": 1070858240000000,
+  "bf16_dense_peak_basis": "Measured-device ceiling: 132 enabled SM * 4096 dense BF16 tensor FLOPs/cycle/SM * the configured 1.980 GHz max SM clock.",
+  "bf16_public_reference_dense_peak_flops_per_second": 989500000000000,
+  "bf16_public_reference_basis": "Compatibility-only denominator: half of NVIDIA's public 1,979 TFLOPS sparse Hopper figure. It is not treated as the exact ceiling of this 140GB H800 SKU.",
+  "device_peak_formula": "132 SM * 4096 BF16 tensor FLOPs/cycle/SM * 1.980 GHz",
+  "official_architecture_reference": "https://resources.nvidia.com/en-us-tensor-core/nvidia-tensor-core-gpu-datasheet",
+  "mfu_policy": "Use the measured-device 1.07085824 PFLOPS dense ceiling for primary MFU. Retain 989.5 TFLOPS only as public-reference MFU for cross-report comparison. Never use 1,979 TFLOPS as a dense denominator."
+}

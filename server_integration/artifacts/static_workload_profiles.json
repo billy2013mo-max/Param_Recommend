@@ -1,0 +1,1245 @@
+{
+  "schema": "sft_static_workload_profiles/v1",
+  "generated_at_utc": "2026-07-28T10:22:30.138516+00:00",
+  "profile_seeds": [
+    20260714,
+    20260715,
+    20260716
+  ],
+  "source_bindings": {
+    "longcontext_16384": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/dataset_profiles/longcontext_16384.qwen3_nothink.jsonl",
+      "sha256": "e9d554d885fa41354e4f8e878361e402115f7dd674788be57c2bfd25f742204a"
+    },
+    "longcontext_32768": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/dataset_profiles/longcontext_32768.qwen3_nothink.jsonl",
+      "sha256": "e8222a1a0947d5856f5f11862c8f344acee5f87317d00a66680347d72cf07c1d"
+    },
+    "longtail_8192": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/dataset_profiles/longtail_8192.qwen3_nothink.jsonl",
+      "sha256": "03d1d18993c9052607a55d67109f221804ab7a6fe4f02d7d8adef9c39819d489"
+    },
+    "multiturn_2048": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/dataset_profiles/multiturn_2048.qwen3_nothink.jsonl",
+      "sha256": "15082241dd0332f9d5ee0bfbcc7ed96253db749194b284145cf28648658ade64"
+    },
+    "multiturn_4096": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/dataset_profiles/multiturn_4096.qwen3_nothink.jsonl",
+      "sha256": "235de0e8ad4e8851da71bd5ed497c6ee132c380c3f5f43509d5f2e37613b3bf1"
+    },
+    "short_512": {
+      "path": "/wanqing-develop/luowenjing/Param_Recommend/offline_experiments/artifacts/dataset_profiles/short_512.qwen3_nothink.jsonl",
+      "sha256": "b48cdc25da5707ae3010fb18d213119fcc93da5c1b6f52575c286617a7da90f9"
+    }
+  },
+  "datasets": {
+    "longcontext_16384": {
+      "cutoff_len": 16384,
+      "unpacked": {
+        "1": {
+          "dataset_id": "longcontext_16384",
+          "cutoff_len": 16384,
+          "physical_mbs": 1,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 8282.658,
+            "std": 5919.767686238709,
+            "p50": 7959.0,
+            "p90": 16320.0,
+            "p99": 16320.0,
+            "maximum": 16320,
+            "mean_squared": 103646073.004
+          },
+          "label_token_ratio": 0.025287293040470823,
+          "mean_turns": 2.0,
+          "padding_utilization": 1.0,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 8282.658,
+            "computed_tokens": 8282.658,
+            "computed_attention_token_pairs": 103646073.004,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "2": {
+          "dataset_id": "longcontext_16384",
+          "cutoff_len": 16384,
+          "physical_mbs": 2,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 8282.658,
+            "std": 5919.767686238709,
+            "p50": 7959.0,
+            "p90": 16320.0,
+            "p99": 16320.0,
+            "maximum": 16320,
+            "mean_squared": 103646073.004
+          },
+          "label_token_ratio": 0.025287293040470823,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.7098895013323869,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 8282.658,
+            "computed_tokens": 11667.531333333332,
+            "computed_attention_token_pairs": 158536642.81933334,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "4": {
+          "dataset_id": "longcontext_16384",
+          "cutoff_len": 16384,
+          "physical_mbs": 4,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 8282.658,
+            "std": 5919.767686238709,
+            "p50": 7959.0,
+            "p90": 16320.0,
+            "p99": 16320.0,
+            "maximum": 16320,
+            "mean_squared": 103646073.004
+          },
+          "label_token_ratio": 0.025287293040470823,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.5842008031546876,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 8282.658,
+            "computed_tokens": 14177.758666666667,
+            "computed_attention_token_pairs": 211102011.028,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "8": {
+          "dataset_id": "longcontext_16384",
+          "cutoff_len": 16384,
+          "physical_mbs": 8,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 8282.658,
+            "std": 5919.767686238709,
+            "p50": 7959.0,
+            "p90": 16320.0,
+            "p99": 16320.0,
+            "maximum": 16320,
+            "mean_squared": 103646073.004
+          },
+          "label_token_ratio": 0.025287293040470823,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.5278093002271146,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 8282.658,
+            "computed_tokens": 15692.519999999999,
+            "computed_attention_token_pairs": 249200295.97599998,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "16": {
+          "dataset_id": "longcontext_16384",
+          "cutoff_len": 16384,
+          "physical_mbs": 16,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 8282.658,
+            "std": 5919.767686238709,
+            "p50": 7959.0,
+            "p90": 16320.0,
+            "p99": 16320.0,
+            "maximum": 16320,
+            "mean_squared": 103646073.004
+          },
+          "label_token_ratio": 0.025287293040470823,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.5099757753043725,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 8282.658,
+            "computed_tokens": 16241.277333333333,
+            "computed_attention_token_pairs": 263995706.62133333,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "32": {
+          "dataset_id": "longcontext_16384",
+          "cutoff_len": 16384,
+          "physical_mbs": 32,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 8282.658,
+            "std": 5919.767686238709,
+            "p50": 7959.0,
+            "p90": 16320.0,
+            "p99": 16320.0,
+            "maximum": 16320,
+            "mean_squared": 103646073.004
+          },
+          "label_token_ratio": 0.025287293040470823,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.5077042069042287,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 8282.658,
+            "computed_tokens": 16313.943999999998,
+            "computed_attention_token_pairs": 266152498.73333335,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        }
+      },
+      "packing_mbs1": {
+        "dataset_id": "longcontext_16384",
+        "cutoff_len": 16384,
+        "physical_mbs": 1,
+        "packing": true,
+        "samples_profiled": 1000,
+        "length": {
+          "mean": 8282.658,
+          "std": 5919.767686238709,
+          "p50": 7959.0,
+          "p90": 16320.0,
+          "p99": 16320.0,
+          "maximum": 16320,
+          "mean_squared": 103646073.004
+        },
+        "label_token_ratio": 0.025287293040470823,
+        "mean_turns": 2.0,
+        "padding_utilization": 0.9556395561348062,
+        "packing_fill_ratio": 0.9556395561348062,
+        "mean_samples_per_pack": 1.890359168241966,
+        "work_per_physical_sequence": {
+          "effective_tokens": 15657.198487712665,
+          "computed_tokens": 16384.0,
+          "computed_attention_token_pairs": 195928304.3553875,
+          "logical_samples": 1.890359168241966
+        },
+        "source_is_pre_run_static_profile": true
+      }
+    },
+    "longcontext_32768": {
+      "cutoff_len": 32768,
+      "unpacked": {
+        "1": {
+          "dataset_id": "longcontext_32768",
+          "cutoff_len": 32768,
+          "physical_mbs": 1,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 9501.903,
+            "std": 7999.425254953696,
+            "p50": 7959.0,
+            "p90": 24268.0,
+            "p99": 26673.08,
+            "maximum": 32704,
+            "mean_squared": 154276965.031
+          },
+          "label_token_ratio": 0.022042531901241256,
+          "mean_turns": 2.0,
+          "padding_utilization": 1.0,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 9501.903,
+            "computed_tokens": 9501.903,
+            "computed_attention_token_pairs": 154276965.031,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "2": {
+          "dataset_id": "longcontext_32768",
+          "cutoff_len": 32768,
+          "physical_mbs": 2,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 9501.903,
+            "std": 7999.425254953696,
+            "p50": 7959.0,
+            "p90": 24268.0,
+            "p99": 26673.08,
+            "maximum": 32704,
+            "mean_squared": 154276965.031
+          },
+          "label_token_ratio": 0.022042531901241256,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.6803605035740652,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 9501.903,
+            "computed_tokens": 13965.982666666669,
+            "computed_attention_token_pairs": 254173128.59066668,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "4": {
+          "dataset_id": "longcontext_32768",
+          "cutoff_len": 32768,
+          "physical_mbs": 4,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 9501.903,
+            "std": 7999.425254953696,
+            "p50": 7959.0,
+            "p90": 24268.0,
+            "p99": 26673.08,
+            "maximum": 32704,
+            "mean_squared": 154276965.031
+          },
+          "label_token_ratio": 0.022042531901241256,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.5226131208802958,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 9501.903,
+            "computed_tokens": 18181.524,
+            "computed_attention_token_pairs": 378412760.8946667,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "8": {
+          "dataset_id": "longcontext_32768",
+          "cutoff_len": 32768,
+          "physical_mbs": 8,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 9501.903,
+            "std": 7999.425254953696,
+            "p50": 7959.0,
+            "p90": 24268.0,
+            "p99": 26673.08,
+            "maximum": 32704,
+            "mean_squared": 154276965.031
+          },
+          "label_token_ratio": 0.022042531901241256,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.4294162019154695,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 9501.903,
+            "computed_tokens": 22127.49066666667,
+            "computed_attention_token_pairs": 520133747.36800003,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "16": {
+          "dataset_id": "longcontext_32768",
+          "cutoff_len": 32768,
+          "physical_mbs": 16,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 9501.903,
+            "std": 7999.425254953696,
+            "p50": 7959.0,
+            "p90": 24268.0,
+            "p99": 26673.08,
+            "maximum": 32704,
+            "mean_squared": 154276965.031
+          },
+          "label_token_ratio": 0.022042531901241256,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.3821367644790908,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 9501.903,
+            "computed_tokens": 24865.189333333332,
+            "computed_attention_token_pairs": 632390541.6266667,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "32": {
+          "dataset_id": "longcontext_32768",
+          "cutoff_len": 32768,
+          "physical_mbs": 32,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 9501.903,
+            "std": 7999.425254953696,
+            "p50": 7959.0,
+            "p90": 24268.0,
+            "p99": 26673.08,
+            "maximum": 32704,
+            "mean_squared": 154276965.031
+          },
+          "label_token_ratio": 0.022042531901241256,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.3572591678155157,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 9501.903,
+            "computed_tokens": 26596.666666666668,
+            "computed_attention_token_pairs": 715545488.5066667,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        }
+      },
+      "packing_mbs1": {
+        "dataset_id": "longcontext_32768",
+        "cutoff_len": 32768,
+        "physical_mbs": 1,
+        "packing": true,
+        "samples_profiled": 1000,
+        "length": {
+          "mean": 9501.903,
+          "std": 7999.425254953696,
+          "p50": 7959.0,
+          "p90": 24268.0,
+          "p99": 26673.08,
+          "maximum": 32704,
+          "mean_squared": 154276965.031
+        },
+        "label_token_ratio": 0.022042531901241256,
+        "mean_turns": 2.0,
+        "padding_utilization": 0.9698162780557588,
+        "packing_fill_ratio": 0.9698162780557588,
+        "mean_samples_per_pack": 3.3444816053511706,
+        "work_per_physical_sequence": {
+          "effective_tokens": 31778.939799331103,
+          "computed_tokens": 32768.0,
+          "computed_attention_token_pairs": 515976471.67558527,
+          "logical_samples": 3.3444816053511706
+        },
+        "source_is_pre_run_static_profile": true
+      }
+    },
+    "longtail_8192": {
+      "cutoff_len": 8192,
+      "unpacked": {
+        "1": {
+          "dataset_id": "longtail_8192",
+          "cutoff_len": 8192,
+          "physical_mbs": 1,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 819.158,
+            "std": 1683.0126413773605,
+            "p50": 244.5,
+            "p90": 1583.1000000000013,
+            "p99": 8128.0,
+            "maximum": 8128,
+            "mean_squared": 3503551.38
+          },
+          "label_token_ratio": 0.436257718291221,
+          "mean_turns": 3.132,
+          "padding_utilization": 1.0,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 819.158,
+            "computed_tokens": 819.158,
+            "computed_attention_token_pairs": 3503551.3800000004,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "2": {
+          "dataset_id": "longtail_8192",
+          "cutoff_len": 8192,
+          "physical_mbs": 2,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 819.158,
+            "std": 1683.0126413773605,
+            "p50": 244.5,
+            "p90": 1583.1000000000013,
+            "p99": 8128.0,
+            "maximum": 8128,
+            "mean_squared": 3503551.38
+          },
+          "label_token_ratio": 0.436257718291221,
+          "mean_turns": 3.132,
+          "padding_utilization": 0.5848154367207533,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 819.158,
+            "computed_tokens": 1400.7120000000002,
+            "computed_attention_token_pairs": 6709084.404,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "4": {
+          "dataset_id": "longtail_8192",
+          "cutoff_len": 8192,
+          "physical_mbs": 4,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 819.158,
+            "std": 1683.0126413773605,
+            "p50": 244.5,
+            "p90": 1583.1000000000013,
+            "p99": 8128.0,
+            "maximum": 8128,
+            "mean_squared": 3503551.38
+          },
+          "label_token_ratio": 0.436257718291221,
+          "mean_turns": 3.132,
+          "padding_utilization": 0.3625510527443229,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 819.158,
+            "computed_tokens": 2259.428,
+            "computed_attention_token_pairs": 12333436.873333333,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "8": {
+          "dataset_id": "longtail_8192",
+          "cutoff_len": 8192,
+          "physical_mbs": 8,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 819.158,
+            "std": 1683.0126413773605,
+            "p50": 244.5,
+            "p90": 1583.1000000000013,
+            "p99": 8128.0,
+            "maximum": 8128,
+            "mean_squared": 3503551.38
+          },
+          "label_token_ratio": 0.436257718291221,
+          "mean_turns": 3.132,
+          "padding_utilization": 0.22795792802927986,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 819.158,
+            "computed_tokens": 3593.461333333333,
+            "computed_attention_token_pairs": 22294910.336,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "16": {
+          "dataset_id": "longtail_8192",
+          "cutoff_len": 8192,
+          "physical_mbs": 16,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 819.158,
+            "std": 1683.0126413773605,
+            "p50": 244.5,
+            "p90": 1583.1000000000013,
+            "p99": 8128.0,
+            "maximum": 8128,
+            "mean_squared": 3503551.38
+          },
+          "label_token_ratio": 0.436257718291221,
+          "mean_turns": 3.132,
+          "padding_utilization": 0.15753668608282792,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 819.158,
+            "computed_tokens": 5199.792,
+            "computed_attention_token_pairs": 36419324.080000006,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "32": {
+          "dataset_id": "longtail_8192",
+          "cutoff_len": 8192,
+          "physical_mbs": 32,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 819.158,
+            "std": 1683.0126413773605,
+            "p50": 244.5,
+            "p90": 1583.1000000000013,
+            "p99": 8128.0,
+            "maximum": 8128,
+            "mean_squared": 3503551.38
+          },
+          "label_token_ratio": 0.436257718291221,
+          "mean_turns": 3.132,
+          "padding_utilization": 0.11999169155554235,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 819.158,
+            "computed_tokens": 6826.789333333334,
+            "computed_attention_token_pairs": 52386304.25066667,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        }
+      },
+      "packing_mbs1": {
+        "dataset_id": "longtail_8192",
+        "cutoff_len": 8192,
+        "physical_mbs": 1,
+        "packing": true,
+        "samples_profiled": 1000,
+        "length": {
+          "mean": 819.158,
+          "std": 1683.0126413773605,
+          "p50": 244.5,
+          "p90": 1583.1000000000013,
+          "p99": 8128.0,
+          "maximum": 8128,
+          "mean_squared": 3503551.38
+        },
+        "label_token_ratio": 0.436257718291221,
+        "mean_turns": 3.132,
+        "padding_utilization": 0.9900482479888614,
+        "packing_fill_ratio": 0.9900482479888614,
+        "mean_samples_per_pack": 9.900990099009901,
+        "work_per_physical_sequence": {
+          "effective_tokens": 8110.475247524752,
+          "computed_tokens": 8192.0,
+          "computed_attention_token_pairs": 34688627.524752475,
+          "logical_samples": 9.900990099009901
+        },
+        "source_is_pre_run_static_profile": true
+      }
+    },
+    "multiturn_2048": {
+      "cutoff_len": 2048,
+      "unpacked": {
+        "1": {
+          "dataset_id": "multiturn_2048",
+          "cutoff_len": 2048,
+          "physical_mbs": 1,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1134.574,
+            "std": 484.0606165801965,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 1984.0,
+            "maximum": 1984,
+            "mean_squared": 1521572.842
+          },
+          "label_token_ratio": 0.7692032428030257,
+          "mean_turns": 6.384,
+          "padding_utilization": 1.0,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1134.574,
+            "computed_tokens": 1134.574,
+            "computed_attention_token_pairs": 1521572.842,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "2": {
+          "dataset_id": "multiturn_2048",
+          "cutoff_len": 2048,
+          "physical_mbs": 2,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1134.574,
+            "std": 484.0606165801965,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 1984.0,
+            "maximum": 1984,
+            "mean_squared": 1521572.842
+          },
+          "label_token_ratio": 0.7692032428030257,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.8055323100691244,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1134.574,
+            "computed_tokens": 1408.4773333333333,
+            "computed_attention_token_pairs": 2161316.0373333334,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "4": {
+          "dataset_id": "multiturn_2048",
+          "cutoff_len": 2048,
+          "physical_mbs": 4,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1134.574,
+            "std": 484.0606165801965,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 1984.0,
+            "maximum": 1984,
+            "mean_squared": 1521572.842
+          },
+          "label_token_ratio": 0.7692032428030257,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.6884874047487666,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1134.574,
+            "computed_tokens": 1647.9226666666666,
+            "computed_attention_token_pairs": 2824395.026666667,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "8": {
+          "dataset_id": "multiturn_2048",
+          "cutoff_len": 2048,
+          "physical_mbs": 8,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1134.574,
+            "std": 484.0606165801965,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 1984.0,
+            "maximum": 1984,
+            "mean_squared": 1521572.842
+          },
+          "label_token_ratio": 0.7692032428030257,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.6182003307024376,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1134.574,
+            "computed_tokens": 1835.2853333333333,
+            "computed_attention_token_pairs": 3413203.5840000003,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "16": {
+          "dataset_id": "multiturn_2048",
+          "cutoff_len": 2048,
+          "physical_mbs": 16,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1134.574,
+            "std": 484.0606165801965,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 1984.0,
+            "maximum": 1984,
+            "mean_squared": 1521572.842
+          },
+          "label_token_ratio": 0.7692032428030257,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.5853106664557267,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1134.574,
+            "computed_tokens": 1938.4133333333332,
+            "computed_attention_token_pairs": 3769115.618666666,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "32": {
+          "dataset_id": "multiturn_2048",
+          "cutoff_len": 2048,
+          "physical_mbs": 32,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1134.574,
+            "std": 484.0606165801965,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 1984.0,
+            "maximum": 1984,
+            "mean_squared": 1521572.842
+          },
+          "label_token_ratio": 0.7692032428030257,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.573875860041085,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1134.574,
+            "computed_tokens": 1977.0373333333334,
+            "computed_attention_token_pairs": 3909969.048,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        }
+      },
+      "packing_mbs1": {
+        "dataset_id": "multiturn_2048",
+        "cutoff_len": 2048,
+        "physical_mbs": 1,
+        "packing": true,
+        "samples_profiled": 1000,
+        "length": {
+          "mean": 1134.574,
+          "std": 484.0606165801965,
+          "p50": 1093.5,
+          "p90": 1940.5,
+          "p99": 1984.0,
+          "maximum": 1984,
+          "mean_squared": 1521572.842
+        },
+        "label_token_ratio": 0.7692032428030257,
+        "mean_turns": 6.384,
+        "padding_utilization": 0.9805154175884956,
+        "packing_fill_ratio": 0.9805154175884956,
+        "mean_samples_per_pack": 1.7699115044247788,
+        "work_per_physical_sequence": {
+          "effective_tokens": 2008.095575221239,
+          "computed_tokens": 2048.0,
+          "computed_attention_token_pairs": 2693049.277876106,
+          "logical_samples": 1.7699115044247788
+        },
+        "source_is_pre_run_static_profile": true
+      }
+    },
+    "multiturn_4096": {
+      "cutoff_len": 4096,
+      "unpacked": {
+        "1": {
+          "dataset_id": "multiturn_4096",
+          "cutoff_len": 4096,
+          "physical_mbs": 1,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1176.034,
+            "std": 583.5977011983512,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 3155.1099999999997,
+            "maximum": 3916,
+            "mean_squared": 1723642.246
+          },
+          "label_token_ratio": 0.7670985702794307,
+          "mean_turns": 6.384,
+          "padding_utilization": 1.0,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1176.034,
+            "computed_tokens": 1176.034,
+            "computed_attention_token_pairs": 1723642.246,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "2": {
+          "dataset_id": "multiturn_4096",
+          "cutoff_len": 4096,
+          "physical_mbs": 2,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1176.034,
+            "std": 583.5977011983512,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 3155.1099999999997,
+            "maximum": 3916,
+            "mean_squared": 1723642.246
+          },
+          "label_token_ratio": 0.7670985702794307,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.7894597637775543,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1176.034,
+            "computed_tokens": 1489.6693333333333,
+            "computed_attention_token_pairs": 2558026.0506666666,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "4": {
+          "dataset_id": "multiturn_4096",
+          "cutoff_len": 4096,
+          "physical_mbs": 4,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1176.034,
+            "std": 583.5977011983512,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 3155.1099999999997,
+            "maximum": 3916,
+            "mean_squared": 1723642.246
+          },
+          "label_token_ratio": 0.7670985702794307,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.6520539104361095,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1176.034,
+            "computed_tokens": 1803.584,
+            "computed_attention_token_pairs": 3588509.6906666667,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "8": {
+          "dataset_id": "multiturn_4096",
+          "cutoff_len": 4096,
+          "physical_mbs": 8,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1176.034,
+            "std": 583.5977011983512,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 3155.1099999999997,
+            "maximum": 3916,
+            "mean_squared": 1723642.246
+          },
+          "label_token_ratio": 0.7670985702794307,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.5552239905224369,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1176.034,
+            "computed_tokens": 2118.1253333333334,
+            "computed_attention_token_pairs": 4813080.061333333,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "16": {
+          "dataset_id": "multiturn_4096",
+          "cutoff_len": 4096,
+          "physical_mbs": 16,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1176.034,
+            "std": 583.5977011983512,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 3155.1099999999997,
+            "maximum": 3916,
+            "mean_squared": 1723642.246
+          },
+          "label_token_ratio": 0.7670985702794307,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.48269226138617327,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1176.034,
+            "computed_tokens": 2436.4053333333336,
+            "computed_attention_token_pairs": 6268741.077333334,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "32": {
+          "dataset_id": "multiturn_4096",
+          "cutoff_len": 4096,
+          "physical_mbs": 32,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 1176.034,
+            "std": 583.5977011983512,
+            "p50": 1093.5,
+            "p90": 1940.5,
+            "p99": 3155.1099999999997,
+            "maximum": 3916,
+            "mean_squared": 1723642.246
+          },
+          "label_token_ratio": 0.7670985702794307,
+          "mean_turns": 6.384,
+          "padding_utilization": 0.429210324496982,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 1176.034,
+            "computed_tokens": 2739.994666666667,
+            "computed_attention_token_pairs": 7814826.074666667,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        }
+      },
+      "packing_mbs1": {
+        "dataset_id": "multiturn_4096",
+        "cutoff_len": 4096,
+        "physical_mbs": 1,
+        "packing": true,
+        "samples_profiled": 1000,
+        "length": {
+          "mean": 1176.034,
+          "std": 583.5977011983512,
+          "p50": 1093.5,
+          "p90": 1940.5,
+          "p99": 3155.1099999999997,
+          "maximum": 3916,
+          "mean_squared": 1723642.246
+        },
+        "label_token_ratio": 0.7670985702794307,
+        "mean_turns": 6.384,
+        "padding_utilization": 0.9934867674091695,
+        "packing_fill_ratio": 0.9934867674091695,
+        "mean_samples_per_pack": 3.4602076124567476,
+        "work_per_physical_sequence": {
+          "effective_tokens": 4069.3217993079584,
+          "computed_tokens": 4096.0,
+          "computed_attention_token_pairs": 5964160.020761246,
+          "logical_samples": 3.4602076124567476
+        },
+        "source_is_pre_run_static_profile": true
+      }
+    },
+    "short_512": {
+      "cutoff_len": 512,
+      "unpacked": {
+        "1": {
+          "dataset_id": "short_512",
+          "cutoff_len": 512,
+          "physical_mbs": 1,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 160.359,
+            "std": 114.58300100363928,
+            "p50": 130.0,
+            "p90": 337.0,
+            "p99": 431.0,
+            "maximum": 448,
+            "mean_squared": 38844.273
+          },
+          "label_token_ratio": 0.830093727199596,
+          "mean_turns": 2.0,
+          "padding_utilization": 1.0,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 160.359,
+            "computed_tokens": 160.359,
+            "computed_attention_token_pairs": 38844.273,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "2": {
+          "dataset_id": "short_512",
+          "cutoff_len": 512,
+          "physical_mbs": 2,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 160.359,
+            "std": 114.58300100363928,
+            "p50": 130.0,
+            "p90": 337.0,
+            "p99": 431.0,
+            "maximum": 448,
+            "mean_squared": 38844.273
+          },
+          "label_token_ratio": 0.830093727199596,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.7166498333050294,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 160.359,
+            "computed_tokens": 223.76200000000003,
+            "computed_attention_token_pairs": 62760.58866666667,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "4": {
+          "dataset_id": "short_512",
+          "cutoff_len": 512,
+          "physical_mbs": 4,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 160.359,
+            "std": 114.58300100363928,
+            "p50": 130.0,
+            "p90": 337.0,
+            "p99": 431.0,
+            "maximum": 448,
+            "mean_squared": 38844.273
+          },
+          "label_token_ratio": 0.830093727199596,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.5485409549698294,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 160.359,
+            "computed_tokens": 292.33733333333333,
+            "computed_attention_token_pairs": 93831.04666666668,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "8": {
+          "dataset_id": "short_512",
+          "cutoff_len": 512,
+          "physical_mbs": 8,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 160.359,
+            "std": 114.58300100363928,
+            "p50": 130.0,
+            "p90": 337.0,
+            "p99": 431.0,
+            "maximum": 448,
+            "mean_squared": 38844.273
+          },
+          "label_token_ratio": 0.830093727199596,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.4647404439154829,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 160.359,
+            "computed_tokens": 345.0506666666667,
+            "computed_attention_token_pairs": 123426.46933333333,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "16": {
+          "dataset_id": "short_512",
+          "cutoff_len": 512,
+          "physical_mbs": 16,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 160.359,
+            "std": 114.58300100363928,
+            "p50": 130.0,
+            "p90": 337.0,
+            "p99": 431.0,
+            "maximum": 448,
+            "mean_squared": 38844.273
+          },
+          "label_token_ratio": 0.830093727199596,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.4182609043422618,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 160.359,
+            "computed_tokens": 383.39466666666664,
+            "computed_attention_token_pairs": 148808.05066666668,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        },
+        "32": {
+          "dataset_id": "short_512",
+          "cutoff_len": 512,
+          "physical_mbs": 32,
+          "packing": false,
+          "samples_profiled": 1000,
+          "length": {
+            "mean": 160.359,
+            "std": 114.58300100363928,
+            "p50": 130.0,
+            "p90": 337.0,
+            "p99": 431.0,
+            "maximum": 448,
+            "mean_squared": 38844.273
+          },
+          "label_token_ratio": 0.830093727199596,
+          "mean_turns": 2.0,
+          "padding_utilization": 0.39470069902530275,
+          "packing_fill_ratio": null,
+          "mean_samples_per_pack": 1.0,
+          "work_per_physical_sequence": {
+            "effective_tokens": 160.359,
+            "computed_tokens": 406.28000000000003,
+            "computed_attention_token_pairs": 165877.31466666667,
+            "logical_samples": 1.0
+          },
+          "source_is_pre_run_static_profile": true
+        }
+      },
+      "packing_mbs1": {
+        "dataset_id": "short_512",
+        "cutoff_len": 512,
+        "physical_mbs": 1,
+        "packing": true,
+        "samples_profiled": 1000,
+        "length": {
+          "mean": 160.359,
+          "std": 114.58300100363928,
+          "p50": 130.0,
+          "p90": 337.0,
+          "p99": 431.0,
+          "maximum": 448,
+          "mean_squared": 38844.273
+        },
+        "label_token_ratio": 0.830093727199596,
+        "mean_turns": 2.0,
+        "padding_utilization": 0.9942894345238096,
+        "packing_fill_ratio": 0.9942894345238096,
+        "mean_samples_per_pack": 3.1746031746031744,
+        "work_per_physical_sequence": {
+          "effective_tokens": 509.0761904761905,
+          "computed_tokens": 512.0,
+          "computed_attention_token_pairs": 123315.15238095238,
+          "logical_samples": 3.1746031746031744
+        },
+        "source_is_pre_run_static_profile": true
+      }
+    }
+  },
+  "uses_runtime_outcome_counters": false,
+  "report_sha256": "f84d441585baa21eec3d68b9568543de42c676b5f437eda6c670ddb33bf76096"
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "sft_static_packing_policy/v1",
+  "policy_id": "h800_text_sft_static_packing/2026-07-30.v1",
+  "version": "2026-07-30.v1",
+  "status": "frozen_shadow_release",
+  "objective": "Decide packing from a token-length profile and a frozen training configuration without running a GPU probe.",
+  "online_gpu_execution_allowed": false,
+  "packed_physical_mbs": 1,
+  "profile_contract": {
+    "length_field": "total_tokens",
+    "minimum_records": 1000,
+    "padding_shuffle_seeds": [
+      17,
+      43,
+      97,
+      193,
+      389
+    ]
+  },
+  "packing_algorithm": {
+    "id": "llamafactory_neat_packing_greedy_knapsack",
+    "implementation": "llamafactory.data.processor.processor_utils.greedy_knapsack",
+    "effective_capacity": "cutoff_len - 1",
+    "model_facing_sequence_length": "cutoff_len",
+    "preprocessing_num_workers": 8,
+    "scope": "independent contiguous datasets.Dataset.map worker shards",
+    "algorithm_revision": "largest-fitting-item/2026-07-30.v1"
+  },
+  "hard_gates": {
+    "minimum_pack_utilization": 0.9,
+    "minimum_sequence_reduction_ratio": 0.15,
+    "minimum_mean_samples_per_pack": 1.5,
+    "maximum_expected_gbs_relative_error": 0.05,
+    "minimum_cutoff_tokens_per_no_packing_mbs": 1024.0,
+    "minimum_linear_token_efficiency_when_no_packing_mbs_is_one": 0.9,
+    "minimum_linear_token_efficiency_when_no_packing_mbs_exceeds_one": 1.1
+  },
+  "released_enablement_domain": {
+    "gpu_families": [
+      "H800"
+    ],
+    "modalities": [
+      "text"
+    ],
+    "stages": [
+      "sft"
+    ],
+    "dtypes": [
+      "bf16"
+    ],
+    "model_ids": [
+      "qwen3_8b",
+      "qwen3_14b"
+    ],
+    "train_types": [
+      "lora"
+    ],
+    "cutoff_len": {
+      "minimum": 512,
+      "maximum": 16384
+    }
+  },
+  "decision_semantics": {
+    "on": "All static gates pass and the request is inside the released enablement domain.",
+    "off": "At least one structural or benefit gate fails. Returning packing=false is allowed even outside the enablement domain.",
+    "hold_off": "The static features look favorable, but the request is outside the released enablement domain; return packing=false and retain a shadow candidate.",
+    "fail_closed": true
+  },
+  "calibration": {
+    "hardware": "H800",
+    "complete_paired_points": 10,
+    "positive_points": 6,
+    "negative_points": 4,
+    "independent_holdout_points": 0,
+    "runs_per_treatment_per_point": 1,
+    "fit_kind": "low-dimensional monotonic engineering gates",
+    "selection_metric": "seconds per 1000 logical samples",
+    "warning": "The ten-point replay is resubstitution evidence, not an independent generalization estimate.",
+    "source_bindings": {
+      "stage_decisions": {
+        "path": "offline_experiments/artifacts/stage_decisions.json",
+        "sha256": "b661722aa2ca2beb9bcf53589a4a81f22c75a618a81f6457269b1e02ff2d55da"
+      },
+      "dataset_analysis": {
+        "path": "offline_experiments/artifacts/dataset_analysis.json",
+        "sha256": "89d562ef34dff6d0ec3de4f851eb9acd83c92f590afea8ebeadaf0da69942a27"
+      },
+      "packing_pair_requests": {
+        "path": "offline_experiments/matrix/packing_pair_requests.jsonl",
+        "sha256": "95dbbca07a894087b06881095493237860c40ca49f0fcc7b9b331172bd83a240"
+      },
+      "packing_effect_diagnostic": {
+        "path": "offline_experiments/artifacts/h800_packing_effect_candidate.json",
+        "sha256": "a0761ad5180b8593b399c9a5e883a6f5a5c27f537efb8bf87cc72fd79c8d3f75"
+      }
+    }
+  },
+  "promotion_requirements": {
+    "full_sft": "Keep favorable cases in hold_off until prerelease offline paired experiments cover Full SFT.",
+    "multimodal": "Unsupported; requires a modality-aware packing implementation and independent memory/throughput validation.",
+    "new_gpu_family": "Recalibrate the occupancy gate and validate all positive/negative boundary cases on the new GPU family.",
+    "new_model_family": "Require at least one negative short-sequence boundary and two positive medium/long-sequence cases before automatic enablement."
+  }
+}

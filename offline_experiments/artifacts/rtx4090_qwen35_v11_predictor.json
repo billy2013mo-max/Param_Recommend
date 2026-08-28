@@ -1,0 +1,145 @@
+{
+  "name": "rtx4090_qwen35_v1",
+  "version": "1.0.0",
+  "created_at": "2026-08-28T07:33:45+00:00",
+  "card_memory_mib": 24564,
+  "model_meta": {
+    "qwen35_0p8b": {
+      "params_b": 0.87,
+      "hidden": 1024,
+      "layers": 24,
+      "full_layers": 6,
+      "kv_heads": 2,
+      "head_dim": 256,
+      "intermediate": 3584
+    },
+    "qwen35_4b": {
+      "params_b": 4.66,
+      "hidden": 2560,
+      "layers": 32,
+      "full_layers": 8,
+      "kv_heads": 4,
+      "head_dim": 256,
+      "intermediate": 9216
+    },
+    "qwen35_9b": {
+      "params_b": 9.65,
+      "hidden": 4096,
+      "layers": 32,
+      "full_layers": 8,
+      "kv_heads": 4,
+      "head_dim": 256,
+      "intermediate": 12288
+    }
+  },
+  "dataset_len": {
+    "short_512": [
+      153.0,
+      445.0
+    ],
+    "multiturn_4096": [
+      1159.0,
+      4201.0
+    ],
+    "blind_f1": [
+      811.0,
+      811.0
+    ],
+    "blind_f2": [
+      1538.0,
+      1538.0
+    ]
+  },
+  "pack_token_ratio": 1.276,
+  "data_sha256": "808a6ac3b5d7ecfc9d36bd4c82702d40fee047f4ea560c8ffadef5b4b1e0f1ea",
+  "n_observations": 552,
+  "n_infeasible_excluded": 18,
+  "memory_model": {
+    "coefficients": {
+      "const": -274.356523257778,
+      "weight_gib": 841.9004866708946,
+      "hidden_scale": 1276.402398911644,
+      "eff_mbs": 592.8217185097012,
+      "activation_nogc": -532.2088783998853,
+      "hidden_x_activation_nogc": 1849.455053903791,
+      "activation_gc": -433.8163754074388,
+      "hidden_x_activation_gc": 111.51857483365562,
+      "gc_x_log_gpu": 949.021021971505,
+      "sdpa_x_activation": 378.94917044291697,
+      "is_pack": 220.27242012124137,
+      "z2_optim_shard": 1531.3472528429566,
+      "z3_optim_shard": 1072.1651553372521,
+      "z3_bias": 1370.315205139812,
+      "z3_eff_mbs": 939.5904527558174,
+      "z3_x_log_gpu": -177.71500592982292,
+      "log_ga": 250.68757322177962
+    },
+    "feature_names": [
+      "const",
+      "weight_gib",
+      "hidden_scale",
+      "eff_mbs",
+      "activation_nogc",
+      "hidden_x_activation_nogc",
+      "activation_gc",
+      "hidden_x_activation_gc",
+      "gc_x_log_gpu",
+      "sdpa_x_activation",
+      "is_pack",
+      "z2_optim_shard",
+      "z3_optim_shard",
+      "z3_bias",
+      "z3_eff_mbs",
+      "z3_x_log_gpu",
+      "log_ga"
+    ],
+    "alpha": 1,
+    "loo_rmse": 1150.7742931142004,
+    "loo_mae": 819.6168300091038,
+    "insample_rmse": 1078.1568210168516,
+    "safety_margin_mib": 1831.6235745849142,
+    "n_train": 353,
+    "oom_admission": {
+      "tp": 181,
+      "fn": 0,
+      "total_oom": 181
+    },
+    "false_reject_on_ok": 8
+  },
+  "throughput_model": {
+    "coefficients": {
+      "const": 7.221775517947541,
+      "log_gpu": 0.7445145060739149,
+      "z3_pcie_penalty": 1.002408240089371,
+      "sdpa_x_log_mbs": 0.7149284380656913,
+      "log_ga": 0.10001665497200209,
+      "neg_gc": 0.17533143674419535,
+      "gc_x_log_gpu": -0.027010894377238533,
+      "log_eff_tokens_kt": 0.46034710956169556,
+      "neg_log_param_scale": 0.3440080992663781,
+      "is_sdpa": 0.0006976855345923673,
+      "is_pack": 0.34265634003974954,
+      "is_neat": 0.044419258872819174
+    },
+    "feature_names": [
+      "const",
+      "log_gpu",
+      "z3_pcie_penalty",
+      "sdpa_x_log_mbs",
+      "log_ga",
+      "neg_gc",
+      "gc_x_log_gpu",
+      "log_eff_tokens_kt",
+      "neg_log_param_scale",
+      "is_sdpa",
+      "is_pack",
+      "is_neat"
+    ],
+    "alpha": 0.01,
+    "loo_rmse_log": 0.2956804187750967,
+    "loo_mape": 0.19504882279241034,
+    "insample_mape": 0.18799918095569074,
+    "n_train": 353
+  },
+  "notes": "独立发布的 4090 Qwen3.5 预测器；不与 H800/A100 或 4090 VL 混合。核心机制：packing 关时 cutoff 不影响显存，packing 开时 每样本有效 token ≈ 1.276 × cutoff。FA2 无 packing 会被 llamafactory patcher 逼成 batch=1，吞吐塌陷。sdpa + packing 与单卡 zero-2/3 均为配置层面不可行，预测器前置拒绝。"
+}

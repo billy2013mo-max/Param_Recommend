@@ -1,0 +1,96 @@
+{
+  "name": "rtx4090_vl_v1",
+  "version": "1.0.0",
+  "created_at": "2026-08-25T08:39:15+00:00",
+  "card_memory_mib": 24564,
+  "model_meta": {
+    "qwen25vl3b": {
+      "params_b": 3.755,
+      "hidden": 2048,
+      "layers": 36,
+      "vision_hidden": 1280,
+      "vision_depth": 32
+    },
+    "qwen3vl4b": {
+      "params_b": 4.438,
+      "hidden": 2560,
+      "layers": 36,
+      "vision_hidden": 1024,
+      "vision_depth": 24
+    }
+  },
+  "dataset_tokens": {
+    "blind_f1": 914,
+    "blind_f2": 1739,
+    "blind_f4": 3774,
+    "calib_f2": 4860
+  },
+  "data_sha256": "0a4fcf7e653e565a3c45a3dd90efd36342e42ab96f611ca5f90131d2668eefe4",
+  "n_observations": 144,
+  "memory_model": {
+    "coefficients": {
+      "const": 1942.2990634853322,
+      "weight_gib": 1060.6837255126966,
+      "mbs": 304.06855585870346,
+      "activation": 32.24404406923824,
+      "activation_gc_off": 3177.347687734287,
+      "is_4b_activation": 1835.251022492968,
+      "z2_optim_shard": 1373.3514970081399,
+      "z3_optim_shard": 588.1935408634878,
+      "z3_bias": 2477.2941061563283,
+      "z3_mbs": 2750.202945330813
+    },
+    "feature_names": [
+      "const",
+      "weight_gib",
+      "mbs",
+      "activation",
+      "activation_gc_off",
+      "is_4b_activation",
+      "z2_optim_shard",
+      "z3_optim_shard",
+      "z3_bias",
+      "z3_mbs"
+    ],
+    "alpha": 1,
+    "loo_mse": 1721560.8783942508,
+    "loo_rmse": 1312.0826492238402,
+    "loo_mae": 1087.7480292555294,
+    "safety_margin_mib": 2452.7988228558866,
+    "n_train": 44,
+    "oom_admission": {
+      "tp": 64,
+      "fn": 0,
+      "total_oom": 64
+    },
+    "false_reject_on_ok": 3
+  },
+  "throughput_model": {
+    "coefficients": {
+      "const": 6.635320800291082,
+      "log_mbs": 0.42933193089451943,
+      "log_gpu": 0.297956194914003,
+      "neg_gc": -0.3440288253736932,
+      "neg_log1p_tokens_kt": -0.5318573627161898,
+      "neg_log_param_scale": 0.33130447374302013,
+      "z3_pcie_penalty": 0.3616692435987413,
+      "z2_scaling": 0.6596254385016923
+    },
+    "feature_names": [
+      "const",
+      "log_mbs",
+      "log_gpu",
+      "neg_gc",
+      "neg_log1p_tokens_kt",
+      "neg_log_param_scale",
+      "z3_pcie_penalty",
+      "z2_scaling"
+    ],
+    "alpha": 0.01,
+    "loo_mse": 0.052003863891889664,
+    "loo_rmse_log": 0.2280435570058704,
+    "approx_mape": 0.18622960913515782,
+    "n_train": 44
+  },
+  "notes": "独立发布的 4090 VL 预测器；未与 H800/A100 数据混合。输入配置字段：model, mbs, gc, zero, gpu_count, dataset (或 tokens_per_sample)。cutoff_len 恒定 4096（VL 数据的实测背景），不作为变量入模。"
+}

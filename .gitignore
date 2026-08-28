@@ -62,10 +62,21 @@ offline_experiments/artifacts/*
 !offline_experiments/artifacts/*model_inventory*.json
 !offline_experiments/artifacts/*candidate_predictions*.json
 !offline_experiments/artifacts/model_inventory.json
+# 4090 预测器：冻结系数 JSON 属于发布产物，必须进库
+!offline_experiments/artifacts/rtx4090_*_predictor.json
 # 白名单里也要排掉体积过大的观测类文件
 offline_experiments/artifacts/*observations*
 offline_experiments/artifacts/*recovery*
 offline_experiments/artifacts/*.bak-*
+# 4090 观测数据是例外：全部 jsonl 合计 355KB，且是 4090 预测器唯一的
+# 可复算依据（拟合脚本直接读它们）。不进库的话别人 clone 下来无法复算。
+!offline_experiments/artifacts/rtx4090_vl_observations_20260823/
+!offline_experiments/artifacts/rtx4090_vl_observations_20260823/*.jsonl
+!offline_experiments/artifacts/rtx4090_qwen35_observations_20260825/
+!offline_experiments/artifacts/rtx4090_qwen35_observations_20260825/*.jsonl
+!offline_experiments/artifacts/rtx4090_qwen35_observations_20260825/*.py
+# 但备份文件仍然不进库
+offline_experiments/artifacts/**/*.bak_before_*
 
 # blind_data：只提交构建脚本与数据画像摘要，图片与数据集本体不进库
 offline_experiments/blind_data/vl/

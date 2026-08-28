@@ -1,0 +1,102 @@
+{
+  "name": "rtx4090_vl_v11",
+  "version": "1.1.0",
+  "created_at": "2026-08-26T02:46:25+00:00",
+  "card_memory_mib": 24564,
+  "model_meta": {
+    "qwen25vl3b": {
+      "params_b": 3.755,
+      "hidden": 2048,
+      "layers": 36,
+      "vision_hidden": 1280,
+      "vision_depth": 32
+    },
+    "qwen3vl4b": {
+      "params_b": 4.438,
+      "hidden": 2560,
+      "layers": 36,
+      "vision_hidden": 1024,
+      "vision_depth": 24
+    }
+  },
+  "dataset_tokens": {
+    "blind_f1": 914,
+    "blind_f2": 1739,
+    "blind_f4": 3774,
+    "calib_f2": 4860
+  },
+  "n_observations": 140,
+  "source_breakdown": {
+    "v1_matrix": 108,
+    "oos_v1": 10,
+    "supp_v11": 22
+  },
+  "memory_model": {
+    "coefficients": {
+      "const": 1788.061271420865,
+      "weight_gib": 1089.6572673665344,
+      "mbs": 132.5142608300802,
+      "activation": 185.13755512463877,
+      "activation_gc_off": 3161.7419566831145,
+      "is_4b_activation": 1852.424963731018,
+      "z2_optim_shard": 1202.0078513633498,
+      "z3_optim_shard": 553.2600229272116,
+      "z3_bias": 2477.2100821002155,
+      "z3_mbs": 2821.7346511948203
+    },
+    "feature_names": [
+      "const",
+      "weight_gib",
+      "mbs",
+      "activation",
+      "activation_gc_off",
+      "is_4b_activation",
+      "z2_optim_shard",
+      "z3_optim_shard",
+      "z3_bias",
+      "z3_mbs"
+    ],
+    "alpha": 1,
+    "loo_mse": 1271963.337440122,
+    "loo_rmse": 1127.8135206851007,
+    "loo_mae": 838.1212050708131,
+    "safety_margin_mib": 2341.6170840083964,
+    "n_train": 74,
+    "oom_admission": {
+      "tp": 66,
+      "fn": 0,
+      "total_oom": 66
+    },
+    "false_reject_on_ok": 3
+  },
+  "throughput_model": {
+    "coefficients": {
+      "const": 7.207228591875261,
+      "log_mbs": 0.32267824330059575,
+      "log_gpu": 0.1386521722890636,
+      "neg_gc": 0.02596446422734738,
+      "neg_log1p_tokens_kt": -0.42198733657308635,
+      "neg_log_param_scale": 0.32352261973950913,
+      "z3_pcie_penalty": 0.4557878686365002,
+      "z2_scaling": 0.5944400409096486,
+      "gc_x_log_gpu": -0.12860219842020917
+    },
+    "feature_names": [
+      "const",
+      "log_mbs",
+      "log_gpu",
+      "neg_gc",
+      "neg_log1p_tokens_kt",
+      "neg_log_param_scale",
+      "z3_pcie_penalty",
+      "z2_scaling",
+      "gc_x_log_gpu"
+    ],
+    "alpha": 0.01,
+    "loo_mse": 0.053119873272797616,
+    "loo_rmse_log": 0.2304774897312048,
+    "approx_mape": 0.16538044998696275,
+    "n_train": 74
+  },
+  "notes": "v1.1：合并 v1+OOS+补数，吞吐加 gc×log_gpu 交叉项"
+}

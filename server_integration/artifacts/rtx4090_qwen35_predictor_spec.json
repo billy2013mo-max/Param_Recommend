@@ -1,0 +1,178 @@
+{
+  "line": "rtx4090_qwen35_hybrid_attention",
+  "artifact_version": "1.0.0",
+  "card_memory_mib": 24564,
+  "admission_headroom_mib": 800,
+  "safety_margin_mib": 1831.6235745849142,
+  "formula": {
+    "memory": "center_mib = dot(memory_features, memory_coefficients)   # plain linear, NO standardisation, NO exp; unit is MiB\nupper_mib  = center_mib + safety_margin_mib\nadmitted   = (upper_mib + 800) < card_memory_mib",
+    "throughput": "log_tps = dot(throughput_features, throughput_coefficients)\ntokens_per_second = exp(log_tps)"
+  },
+  "infeasibility_gates": [
+    {
+      "when": "attn == 'sdpa' and pack_mode in {neat, pack}",
+      "reason": "sdpa + packing 必失败（注意力掩码尺寸不匹配），实测 12 组全挂"
+    },
+    {
+      "when": "gpu_count == 1 and zero in {z2, z3}",
+      "reason": "DeepSpeed 不支持单卡 zero-2/3"
+    },
+    {
+      "when": "attn == 'fa2' and mbs > 1",
+      "reason": "FA2 路径下 mbs 必须为 1：patcher 把 position_ids 转 cu_seqlens 后 fla 强制 batch=1，与 packing 无关。要更大 MBS 必须换 sdpa"
+    }
+  ],
+  "request_fields": [
+    "model (qwen35_0p8b | qwen35_4b | qwen35_9b)",
+    "attn  (fa2 | sdpa)",
+    "pack_mode (off | neat | pack)",
+    "cutoff (int; 注意字段名是 cutoff，不是 cutoff_len)",
+    "mbs, gc, zero, gpu_count",
+    "dataset (查 dataset_len / pack_token_ratio)"
+  ],
+  "lookups": {
+    "model_meta": {
+      "qwen35_0p8b": {
+        "params_b": 0.87,
+        "hidden": 1024,
+        "layers": 24,
+        "full_layers": 6,
+        "kv_heads": 2,
+        "head_dim": 256,
+        "intermediate": 3584
+      },
+      "qwen35_4b": {
+        "params_b": 4.66,
+        "hidden": 2560,
+        "layers": 32,
+        "full_layers": 8,
+        "kv_heads": 4,
+        "head_dim": 256,
+        "intermediate": 9216
+      },
+      "qwen35_9b": {
+        "params_b": 9.65,
+        "hidden": 4096,
+        "layers": 32,
+        "full_layers": 8,
+        "kv_heads": 4,
+        "head_dim": 256,
+        "intermediate": 12288
+      }
+    },
+    "dataset_len": {
+      "short_512": [
+        153.0,
+        445.0
+      ],
+      "multiturn_4096": [
+        1159.0,
+        4201.0
+      ],
+      "blind_f1": [
+        811.0,
+        811.0
+      ],
+      "blind_f2": [
+        1538.0,
+        1538.0
+      ]
+    },
+    "pack_token_ratio": 1.276
+  },
+  "critical_mechanisms": [
+    "cutoff_len 的作用随 packing 反转：packing 关时 cutoff 完全不影响显存；packing 开时每样本有效 token ≈ pack_token_ratio × cutoff（与数据集无关）。所以 cutoff 不能当普通连续变量，必须先按 pack_mode 分岔。",
+    "显存看长度尾部、吞吐看均值：峰值由批次里最长样本决定，吞吐由平均长度决定。两边都用均值会漏放真 OOM。",
+    "吞吐有三个 regime（中位 tok/s）：FA2 无 packing 1027 < sdpa 无 packing 1821 < FA2+packing 9887。"
+  ],
+  "memory_model": {
+    "feature_names": [
+      "const",
+      "weight_gib",
+      "hidden_scale",
+      "eff_mbs",
+      "activation_nogc",
+      "hidden_x_activation_nogc",
+      "activation_gc",
+      "hidden_x_activation_gc",
+      "gc_x_log_gpu",
+      "sdpa_x_activation",
+      "is_pack",
+      "z2_optim_shard",
+      "z3_optim_shard",
+      "z3_bias",
+      "z3_eff_mbs",
+      "z3_x_log_gpu",
+      "log_ga"
+    ],
+    "coefficients": {
+      "const": -274.356523257778,
+      "weight_gib": 841.9004866708946,
+      "hidden_scale": 1276.402398911644,
+      "eff_mbs": 592.8217185097012,
+      "activation_nogc": -532.2088783998853,
+      "hidden_x_activation_nogc": 1849.455053903791,
+      "activation_gc": -433.8163754074388,
+      "hidden_x_activation_gc": 111.51857483365562,
+      "gc_x_log_gpu": 949.021021971505,
+      "sdpa_x_activation": 378.94917044291697,
+      "is_pack": 220.27242012124137,
+      "z2_optim_shard": 1531.3472528429566,
+      "z3_optim_shard": 1072.1651553372521,
+      "z3_bias": 1370.315205139812,
+      "z3_eff_mbs": 939.5904527558174,
+      "z3_x_log_gpu": -177.71500592982292,
+      "log_ga": 250.68757322177962
+    }
+  },
+  "throughput_model": {
+    "feature_names": [
+      "const",
+      "log_gpu",
+      "z3_pcie_penalty",
+      "sdpa_x_log_mbs",
+      "log_ga",
+      "neg_gc",
+      "gc_x_log_gpu",
+      "log_eff_tokens_kt",
+      "neg_log_param_scale",
+      "is_sdpa",
+      "is_pack",
+      "is_neat"
+    ],
+    "coefficients": {
+      "const": 7.221775517947541,
+      "log_gpu": 0.7445145060739149,
+      "z3_pcie_penalty": 1.002408240089371,
+      "sdpa_x_log_mbs": 0.7149284380656913,
+      "log_ga": 0.10001665497200209,
+      "neg_gc": 0.17533143674419535,
+      "gc_x_log_gpu": -0.027010894377238533,
+      "log_eff_tokens_kt": 0.46034710956169556,
+      "neg_log_param_scale": 0.3440080992663781,
+      "is_sdpa": 0.0006976855345923673,
+      "is_pack": 0.34265634003974954,
+      "is_neat": 0.044419258872819174
+    }
+  },
+  "feature_recipe_source": "特征算法见 offline_experiments/scripts/fit_rtx4090_qwen35_v11.py 的 memory_features / throughput_features。逐条 recipe 未在此展开，以 test_vectors 里的 intermediates 为准 —— 每条向量都给出完整特征向量，Go 侧对齐特征向量即可，不必反推公式。",
+  "quality": {
+    "memory_loo_rmse_mib": 1150.7742931142004,
+    "throughput_loo_mape": 0.19504882279241034,
+    "n_observations": 552,
+    "oom_admission": {
+      "tp": 181,
+      "fn": 0,
+      "total_oom": 181
+    },
+    "false_reject_on_ok": 8
+  },
+  "limitations": [
+    "吞吐绝对值不可当预算数字（OOS MAPE 46%），但排序可用：Spearman 0.978、两两配对方向正确率 94.1%、11 组中 10 组命中第一名、平均 regret 3.9%。",
+    "多卡 + GC 只有 8 条数据，该象限吞吐绝对值不可靠（MAPE 36.7%）；4B/short_512 这一组已知排序失误，推荐配置比真最优慢 42.6%。",
+    "只有三个模型规模，留出 0.8B 后 OOM 召回掉到 0 —— 不能向下外推。"
+  ],
+  "generated_at_utc": "2026-08-31T02:39:27.371746+00:00",
+  "analysis_only": true,
+  "purpose": "供平台侧用 Go 重写：本文件给出公式、常量、门禁与按特征名索引的系数；配套 test_vectors 给出每条请求的完整中间特征向量，用于逐位对齐。"
+}

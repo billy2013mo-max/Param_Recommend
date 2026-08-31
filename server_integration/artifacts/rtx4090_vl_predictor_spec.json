@@ -1,0 +1,150 @@
+{
+  "line": "rtx4090_vl",
+  "artifact_version": "1.1.0",
+  "card_memory_mib": 24564,
+  "admission_headroom_mib": 800,
+  "safety_margin_mib": 2341.6170840083964,
+  "formula": {
+    "memory": "center_mib = dot(memory_features, memory_coefficients)   # plain linear, NO standardisation, NO exp; unit is MiB\nupper_mib  = center_mib + safety_margin_mib\nadmitted   = (upper_mib + 800) < card_memory_mib",
+    "throughput": "log_tps = dot(throughput_features, throughput_coefficients)\ntokens_per_second = exp(log_tps)"
+  },
+  "infeasibility_gates": [
+    {
+      "when": "gpu_count == 1 and zero in {z2, z3}",
+      "reason": "DeepSpeed 不支持单卡 zero-2/3；配置本身不可行（实测 7 秒框架崩溃，不是显存问题）"
+    }
+  ],
+  "request_fields": [
+    "model  (qwen25vl3b | qwen3vl4b)",
+    "mbs    (int)",
+    "gc     (bool)",
+    "zero   (none | z2 | z3)",
+    "gpu_count (int)",
+    "tokens_per_sample (float; if absent, look up dataset_tokens[dataset])"
+  ],
+  "lookups": {
+    "model_meta": {
+      "qwen25vl3b": {
+        "params_b": 3.755,
+        "hidden": 2048,
+        "layers": 36,
+        "vision_hidden": 1280,
+        "vision_depth": 32
+      },
+      "qwen3vl4b": {
+        "params_b": 4.438,
+        "hidden": 2560,
+        "layers": 36,
+        "vision_hidden": 1024,
+        "vision_depth": 24
+      }
+    },
+    "dataset_tokens": {
+      "blind_f1": 914,
+      "blind_f2": 1739,
+      "blind_f4": 3774,
+      "calib_f2": 4860
+    }
+  },
+  "memory_feature_recipe": {
+    "note": "顺序即 memory_model.feature_names 的顺序。param_gib = params_b * 2 / 1.024^3（BF16 权重）。",
+    "derived": {
+      "param_gib": "model_meta[model].params_b * 2 / 1.024**3",
+      "weight_gib": "param_gib / gpu_count if zero == 'z3' else param_gib",
+      "activation": "mbs * tokens_per_sample / 1000",
+      "activation_gc_off": "activation * (1 - gc)",
+      "optim_share": "1/gpu_count if (z2 or z3) else 1",
+      "is_4b": "1 if model == 'qwen3vl4b' else 0"
+    },
+    "features_in_order": [
+      "const              = 1",
+      "weight_gib",
+      "mbs",
+      "activation",
+      "activation_gc_off",
+      "is_4b_x_activation = is_4b * activation",
+      "z2_optim           = is_z2 * optim_share",
+      "z3_optim           = is_z3 * optim_share",
+      "is_z3",
+      "z3_x_mbs           = is_z3 * mbs"
+    ],
+    "feature_names": [
+      "const",
+      "weight_gib",
+      "mbs",
+      "activation",
+      "activation_gc_off",
+      "is_4b_activation",
+      "z2_optim_shard",
+      "z3_optim_shard",
+      "z3_bias",
+      "z3_mbs"
+    ],
+    "coefficients": {
+      "const": 1788.061271420865,
+      "weight_gib": 1089.6572673665344,
+      "mbs": 132.5142608300802,
+      "activation": 185.13755512463877,
+      "activation_gc_off": 3161.7419566831145,
+      "is_4b_activation": 1852.424963731018,
+      "z2_optim_shard": 1202.0078513633498,
+      "z3_optim_shard": 553.2600229272116,
+      "z3_bias": 2477.2100821002155,
+      "z3_mbs": 2821.7346511948203
+    }
+  },
+  "throughput_feature_recipe": {
+    "note": "param_scale = params_b / 4。多数项是负号形式，照抄符号。",
+    "features_in_order": [
+      "const                = 1",
+      "log_mbs              = log2(mbs)",
+      "log_gpu              = log2(gpu_count)",
+      "neg_gc               = -gc",
+      "neg_log1p_tokens_kt  = -log2(1 + tokens_per_sample/1000)",
+      "neg_log_param_scale  = -log2(param_scale + 1)",
+      "z3_pcie_penalty      = -is_z3 * log2(gpu_count)",
+      "z2_scaling           = is_z2 * log2(gpu_count)",
+      "gc_x_log_gpu         = gc * log2(gpu_count)"
+    ],
+    "feature_names": [
+      "const",
+      "log_mbs",
+      "log_gpu",
+      "neg_gc",
+      "neg_log1p_tokens_kt",
+      "neg_log_param_scale",
+      "z3_pcie_penalty",
+      "z2_scaling",
+      "gc_x_log_gpu"
+    ],
+    "coefficients": {
+      "const": 7.207228591875261,
+      "log_mbs": 0.32267824330059575,
+      "log_gpu": 0.1386521722890636,
+      "neg_gc": 0.02596446422734738,
+      "neg_log1p_tokens_kt": -0.42198733657308635,
+      "neg_log_param_scale": 0.32352261973950913,
+      "z3_pcie_penalty": 0.4557878686365002,
+      "z2_scaling": 0.5944400409096486,
+      "gc_x_log_gpu": -0.12860219842020917
+    }
+  },
+  "quality": {
+    "memory_loo_rmse_mib": 1127.8135206851007,
+    "throughput_approx_mape": 0.16538044998696275,
+    "n_observations": 140,
+    "oom_admission": {
+      "tp": 66,
+      "fn": 0,
+      "total_oom": 66
+    },
+    "false_reject_on_ok": 3
+  },
+  "limitations": [
+    "只覆盖 qwen25vl3b 与 qwen3vl4b 两个模型，cutoff_len 在观测里恒为 4096，不是自由变量。",
+    "显存是 MiB 线性模型，外推到远超观测范围的配置会给出无意义的数字，只有 admitted=False 这个方向可信。"
+  ],
+  "generated_at_utc": "2026-08-31T02:39:27.371746+00:00",
+  "analysis_only": true,
+  "purpose": "供平台侧用 Go 重写：本文件给出公式、常量、门禁与按特征名索引的系数；配套 test_vectors 给出每条请求的完整中间特征向量，用于逐位对齐。"
+}

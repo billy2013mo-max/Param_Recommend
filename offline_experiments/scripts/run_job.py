@@ -336,11 +336,24 @@ def capture_runtime_hardware_manifest(
             len({row[field] for row in selected}) == 1
             for field in homogeneous_fields
         ),
-        "declared_campaign_is_h800_140g": declared_hardware.get("gpu_id")
-        == "local_h800_140g"
-        and declared_name == "NVIDIA H800"
-        and "H800" in str((experiment.get("training_scope") or {}).get("gpu_type"))
-        and "140GB"
+        # Generic replacement for the former hard-coded
+        # "declared_campaign_is_h800_140g" execution gate.  That gate pinned
+        # the shared runner to one SKU, so RTX 4090 campaigns could not execute
+        # at all -- the 2026-07-17 4090 data predates this attestation and its
+        # status.json rows carry no runtime_hardware record.
+        #
+        # What actually needs guaranteeing is that a campaign cannot claim one
+        # card while its hardware.json declares another.  That is enforced here
+        # (the campaign must declare a concrete SKU, and its gpu_type label
+        # must name that SKU) together with live_sku_is_declared_<sku> and
+        # live_memory_matches_declared_sku, which compare the declaration
+        # against the live devices.  Whether the SKU happens to be an H800 is
+        # kept as an informational manifest field, not a gate.
+        "declared_campaign_declares_matching_sku": bool(
+            declared_hardware.get("gpu_id")
+        )
+        and bool(declared_name)
+        and declared_name
         in str((experiment.get("training_scope") or {}).get("gpu_type")),
         "live_sku_is_declared_h800": bool(selected)
         and all(row["name"] == declared_name for row in selected),
@@ -386,6 +399,16 @@ def capture_runtime_hardware_manifest(
             ),
         },
         "checks": checks,
+        # Informational only, never a gate.  Kept so H800 provenance stays
+        # greppable after the SKU gate was generalised.
+        "declared_campaign_is_h800_140g": (
+            declared_hardware.get("gpu_id") == "local_h800_140g"
+            and declared_name == "NVIDIA H800"
+            and "H800"
+            in str((experiment.get("training_scope") or {}).get("gpu_type"))
+            and "140GB"
+            in str((experiment.get("training_scope") or {}).get("gpu_type"))
+        ),
         "all_passed": all(checks.values()),
         "calibration_hardware_eligible": all(checks.values()),
     }

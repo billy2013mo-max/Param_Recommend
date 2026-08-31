@@ -64,6 +64,10 @@ offline_experiments/artifacts/*
 !offline_experiments/artifacts/model_inventory.json
 # 4090 预测器：冻结系数 JSON 属于发布产物，必须进库
 !offline_experiments/artifacts/rtx4090_*_predictor.json
+# 双卡联合显存模型的完整拟合+验证报告：它是「为什么选这套系数」的唯一完整记录
+# （40 个候选对比、跨卡外推、留模型验证、乘子重标定全过程）。打包进
+# server_integration 的是精简版，不含验证细节，丢了这份就无法复核。
+!offline_experiments/artifacts/joint_card_v3_memory_v*.json
 # 白名单里也要排掉体积过大的观测类文件
 offline_experiments/artifacts/*observations*
 offline_experiments/artifacts/*recovery*

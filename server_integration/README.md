@@ -192,9 +192,69 @@ python server_integration/build_test_vectors.py
 
 - **场景只覆盖 Qwen3 dense 纯文本 SFT**（1.7B / 8B / 14B）。VL、hybrid、Qwen2.5
   系列都不在本次覆盖里。
-- **只有 H800**。RTX 4090 的独立预测器（VL V1）在
-  `offline_experiments/artifacts/rtx4090_vl_v1_predictor.json`，未打包进此目录，
-  Go 侧当前只对接 H800。
+- **H800 与 RTX 4090 都已打包**（2026-08-29 起）。见下面「RTX 4090」一节。
+  4090 的 VL 与 Qwen3.5 独立预测器（`rtx4090_vl_v11_predictor.json`、
+  `rtx4090_qwen35_v11_predictor.json`）仍未打包，它们是另外两条线。
 - **候选集是静态枚举结果**，不是 Go 侧要复现的推荐结果 —— Go 侧的排序、准入、
   MBS 选择这些决策全由 predictor 报告里的 `final_report_row` 给出，`test_vectors`
   的角色只是"给同一份候选和请求，Go 应该算出和 Python 一样的中间量与结论"。
+
+## RTX 4090
+
+**吞吐不用改模型。** `artifacts/throughput_v5.json` 本来就是双卡的
+（`cards: ["h800", "rtx4090"]`），带 `card_component_raw_offsets`、
+`card_residual_coefficients`、`card_inverse_efficiency_multipliers` 三处 4090 条目。
+之前只是没有导出成向量、Go 侧没有按卡分派。Go 只需要把 `card_id` 传成
+`"rtx4090"`，其余公式完全一样。
+
+**显存要用联合模型。** 出厂的
+`h800_unified_bounded_memory_candidate_v3.json` 是 H800 专属
+（`gpu_family: H800`，全文 0 次提到 card）。双卡联合重拟合的产物打包在
+`artifacts/joint_card_v3_memory.json`。
+
+### ⚠ 准入乘子是「按卡两个值」，不是一个常量
+
+```json
+"per_card_upper_multiplier": {
+  "h800":    0.9189479086462471,
+  "rtx4090": 1.2535290332832412
+}
+```
+
+出厂那个 H800 单卡标定的 `1.0171` 用在 4090 上会**放行 168 个真 OOM 里的 18 个**
+—— 用户会被告知"可以跑"然后炸掉。Go 侧必须按 `card_id` 取乘子。
+
+准入规则本身不变：
+
+```
+admit iff max(centre_bytes, risk_bytes × upper_multiplier[card_id])
+          <= safe_limit_fraction × capacity_bytes
+```
+
+### 向量
+
+`testdata/test_vectors_rtx4090.json`，52 条，来自 `rtx4090_20260717` 实测活动，
+覆盖 26 种 `(训练模式, zero, 梯度检查点, packing, 卡数)` 组合、3 个模型规模
+（0.6B / 1.7B / 4B）、37 条成功 + 15 条 OOM。
+
+每条向量给出两个头的全部中间量（原始特征、基展开维度、raw_correction、
+correction、predicted_bytes；以及吞吐的 features、standardized、五个分量、
+multipliers、roof、step_base、correction、log_step、log_throughput），
+外加 `observed_outcome` / `observed_reserved_bytes` 作为真值对照。
+
+重新生成：
+
+```bash
+python server_integration/build_rtx4090_test_vectors.py
+```
+
+注意它**不能**用 `build_test_vectors.py` 生成 —— `H800UnifiedV3ThroughputV5Predictor`
+在构造时就断言运行时 H800 容量等于 V3 artifact 的容量，输出里硬编码
+`hardware_id: "h800"`，还叠了 VL / hybrid / packing release 三层 H800 专属逻辑。
+4090 的生成器直接跑那两个冻结模型，也正是 Go 要实现的那部分。
+
+### 状态
+
+`joint_card_v3_memory.json` 是 `analysis_only`，**没有**替换出厂的 H800 V3 artifact。
+它的已知短板：4090 侧误拒率 24.3%（H800 侧 4.06%），根因是 4090 只有 29 个 source、
+3 个模型规模。补数据是正解。

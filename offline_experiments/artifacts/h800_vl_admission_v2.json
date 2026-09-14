@@ -1,0 +1,750 @@
+{
+ "schema": "sft_h800_vl_admission/v2_additive_physical",
+ "generated_at_utc": "2026-09-13T17:30:00.371717+00:00",
+ "status": "candidate_only",
+ "production_admission_allowed": false,
+ "answers": "装不装得下（reserved 是否超安全线）",
+ "does_not_answer": "要多少显存——那是中心模型（学 allocated）的职责",
+ "form": "reserved = P_route + A_route * mbs * (tokens/4096)^delta",
+ "form_rationale": "显存 = 与 mbs 无关的部分（参数、优化器、碎片基底） + 激活部分（正比于 mbs，不被 ZeRO 分片）；mbs 翻倍激活翻倍是硬约束，不是待学系数",
+ "attribution": {
+  "what_fixed_it": "加法物理形式",
+  "what_did_not": "删失回归（Tobit）",
+  "ablation_leave_one_oom_out": {
+   "log_form_drop_oom": "22/27",
+   "log_form_censored": "22/27",
+   "additive_drop_oom": "27/27",
+   "additive_censored": "27/27"
+  },
+  "censoring_effect_on_log_form": "把 mbs=16 预测从 57.7 抬到 90.7 GiB（+57%），但未越过 132.8 GiB 安全线，拒绝数不变",
+  "why_censoring_inactive_here": "加法形式已预测 437 GiB，删失点 140 GiB，z=-6.4，似然贡献与梯度均约为 0"
+ },
+ "support_domain": {
+  "rule_1_data": "路由需 >=10 行成功样本且 >=2 个 mbs 档",
+  "why_1": "只有 2-6 行的路由 P 学成 0.0 或 98.1 GiB（权重才 4.0），不可辨识",
+  "rule_2_physical": "试拟后 P/权重每卡 >= 0.9",
+  "why_2": "P 含参数本身，P 装不下权重说明「mbs 翻倍则激活翻倍」这条硬约束在该路由不成立（反推 P 为负），形式不适用，留着会在外推时把需求预测得过低而放行会炸的配置",
+  "routes_in": [
+   "qwen2p5_vl_32b::g2_z3::gc1",
+   "qwen2p5_vl_32b::g4_z3::gc1",
+   "qwen2p5_vl_3b::g1_z0::gc0",
+   "qwen2p5_vl_3b::g1_z0::gc1",
+   "qwen2p5_vl_3b::g2_z2::gc0",
+   "qwen2p5_vl_3b::g2_z2::gc1",
+   "qwen2p5_vl_3b::g2_z3::gc0",
+   "qwen2p5_vl_3b::g2_z3::gc1",
+   "qwen2p5_vl_3b::g4_z2::gc0",
+   "qwen2p5_vl_3b::g4_z2::gc1",
+   "qwen2p5_vl_3b::g4_z3::gc0",
+   "qwen2p5_vl_3b::g4_z3::gc1",
+   "qwen2p5_vl_7b::g2_z2::gc1",
+   "qwen2p5_vl_7b::g2_z3::gc0",
+   "qwen2p5_vl_7b::g2_z3::gc1",
+   "qwen2p5_vl_7b::g4_z2::gc1",
+   "qwen2p5_vl_7b::g4_z3::gc0",
+   "qwen2p5_vl_7b::g4_z3::gc1",
+   "qwen3_vl_30b_a3b::g4_z3::gc1",
+   "qwen3_vl_4b::g1_z0::gc0",
+   "qwen3_vl_4b::g1_z0::gc1",
+   "qwen3_vl_4b::g2_z2::gc0",
+   "qwen3_vl_4b::g2_z2::gc1",
+   "qwen3_vl_4b::g2_z3::gc0",
+   "qwen3_vl_4b::g2_z3::gc1",
+   "qwen3_vl_4b::g4_z2::gc0",
+   "qwen3_vl_4b::g4_z2::gc1",
+   "qwen3_vl_4b::g4_z3::gc0",
+   "qwen3_vl_4b::g4_z3::gc1",
+   "qwen3_vl_8b::g2_z2::gc0",
+   "qwen3_vl_8b::g2_z2::gc1",
+   "qwen3_vl_8b::g2_z3::gc1",
+   "qwen3_vl_8b::g4_z2::gc1",
+   "qwen3_vl_8b::g4_z3::gc1",
+   "qwen3p5_27b::g2_z3::gc1",
+   "qwen3p5_27b::g4_z2::gc1",
+   "qwen3p5_27b::g4_z3::gc1",
+   "qwen3p5_4b::g1_z0::gc0",
+   "qwen3p5_4b::g1_z0::gc1",
+   "qwen3p5_4b::g2_z2::gc1",
+   "qwen3p5_4b::g2_z3::gc0",
+   "qwen3p5_4b::g2_z3::gc1",
+   "qwen3p5_4b::g4_z2::gc1",
+   "qwen3p5_4b::g4_z3::gc0",
+   "qwen3p5_4b::g4_z3::gc1",
+   "qwen3p5_9b::g2_z2::gc1",
+   "qwen3p5_9b::g2_z3::gc0",
+   "qwen3p5_9b::g2_z3::gc1",
+   "qwen3p5_9b::g4_z2::gc1",
+   "qwen3p5_9b::g4_z3::gc0",
+   "qwen3p5_9b::g4_z3::gc1"
+  ],
+  "routes_out": [
+   "qwen2p5_vl_32b::g2_z2::gc1",
+   "qwen2p5_vl_32b::g2_z3::gc0",
+   "qwen2p5_vl_32b::g4_z2::gc1",
+   "qwen2p5_vl_32b::g4_z3::gc0",
+   "qwen2p5_vl_7b::g1_z0::gc1",
+   "qwen2p5_vl_7b::g2_z2::gc0",
+   "qwen3_vl_2b::g1_z0::gc0",
+   "qwen3_vl_2b::g1_z0::gc1",
+   "qwen3_vl_32b::g4_z3::gc1",
+   "qwen3_vl_8b::g1_z0::gc1",
+   "qwen3_vl_8b::g2_z3::gc0",
+   "qwen3_vl_8b::g4_z3::gc0",
+   "qwen3p5_0p8b::g1_z0::gc0",
+   "qwen3p5_0p8b::g1_z0::gc1",
+   "qwen3p5_0p8b::g2_z3::gc1",
+   "qwen3p5_0p8b::g4_z3::gc1",
+   "qwen3p5_27b::g2_z2::gc1",
+   "qwen3p5_27b::g2_z3::gc0",
+   "qwen3p5_27b::g4_z3::gc0",
+   "qwen3p5_9b::g2_z2::gc0"
+  ],
+  "rejected_by_data_volume": [
+   "qwen2p5_vl_32b::g2_z2::gc1",
+   "qwen2p5_vl_32b::g2_z3::gc0",
+   "qwen2p5_vl_32b::g4_z2::gc1",
+   "qwen2p5_vl_32b::g4_z3::gc0",
+   "qwen2p5_vl_7b::g1_z0::gc1",
+   "qwen3_vl_2b::g1_z0::gc0",
+   "qwen3_vl_2b::g1_z0::gc1",
+   "qwen3_vl_32b::g4_z3::gc1",
+   "qwen3_vl_8b::g1_z0::gc1",
+   "qwen3_vl_8b::g2_z3::gc0",
+   "qwen3_vl_8b::g4_z3::gc0",
+   "qwen3p5_0p8b::g1_z0::gc0",
+   "qwen3p5_0p8b::g1_z0::gc1",
+   "qwen3p5_0p8b::g2_z3::gc1",
+   "qwen3p5_0p8b::g4_z3::gc1",
+   "qwen3p5_27b::g2_z2::gc1",
+   "qwen3p5_27b::g2_z3::gc0",
+   "qwen3p5_27b::g4_z3::gc0",
+   "qwen3p5_9b::g2_z2::gc0"
+  ],
+  "rejected_by_physical_check": [
+   "qwen2p5_vl_7b::g2_z2::gc0"
+  ],
+  "physical_check_unjudged_kept": [],
+  "probe_ratios_of_rejected": {
+   "qwen2p5_vl_7b::g2_z2::gc0": {
+    "P_gib": 1.4342194405104013e-09,
+    "A_gib": 64.05458599585664,
+    "weights_per_card_gib": 15.445363998413086,
+    "P_over_weights": 9.285760054976745e-11
+   }
+  }
+ },
+ "delta": 0.9854830140375951,
+ "sigma": 0.10481840269242354,
+ "converged": false,
+ "gradient_inf_norm": 4.950803914960389e-05,
+ "optimizer_exit": {
+  "message": "ABNORMAL: ",
+  "iterations": 221,
+  "restarts": 1,
+  "negative_log_likelihood": -1579.0787059171785,
+  "at_numerical_limit": true,
+  "note": "容差设为 ftol 1e-16 / gtol 1e-10，L-BFGS-B 逼近最优时会因线搜索走不动报 ABNORMAL。at_numerical_limit=true 表示已从该解重启优化且目标函数降不动（重启后迭代 0 次），即解已到数值极限，converged=false 是终止方式而非拟合质量问题。若 at_numerical_limit=false 而 converged=false，才是真没拟合好。"
+ },
+ "admission_rule": "reject if pred * exp(1.645 * sigma) > safe_limit",
+ "safe_limit_bytes": 142635080089.6,
+ "capacity_bytes": 150142189568.0,
+ "route_parameters": {
+  "qwen2p5_vl_32b::g2_z3::gc1": {
+   "P_bytes": 43544405061.71309,
+   "A_bytes": 6581104573.033273
+  },
+  "qwen2p5_vl_32b::g4_z3::gc1": {
+   "P_bytes": 24946024229.70878,
+   "A_bytes": 6751137311.7585535
+  },
+  "qwen2p5_vl_3b::g1_z0::gc0": {
+   "P_bytes": 8154775082.179284,
+   "A_bytes": 25923653499.437176
+  },
+  "qwen2p5_vl_3b::g1_z0::gc1": {
+   "P_bytes": 9451642325.82983,
+   "A_bytes": 2476689537.586372
+  },
+  "qwen2p5_vl_3b::g2_z2::gc0": {
+   "P_bytes": 9726725052.638287,
+   "A_bytes": 19438308023.529385
+  },
+  "qwen2p5_vl_3b::g2_z2::gc1": {
+   "P_bytes": 10355133028.997593,
+   "A_bytes": 1854651763.3542066
+  },
+  "qwen2p5_vl_3b::g2_z3::gc0": {
+   "P_bytes": 6648979474.791865,
+   "A_bytes": 33979212268.963203
+  },
+  "qwen2p5_vl_3b::g2_z3::gc1": {
+   "P_bytes": 8453213751.794944,
+   "A_bytes": 2272529280.2961507
+  },
+  "qwen2p5_vl_3b::g4_z2::gc0": {
+   "P_bytes": 9360142515.923683,
+   "A_bytes": 18943789344.218872
+  },
+  "qwen2p5_vl_3b::g4_z2::gc1": {
+   "P_bytes": 9534145956.61122,
+   "A_bytes": 2077486788.6349778
+  },
+  "qwen2p5_vl_3b::g4_z3::gc0": {
+   "P_bytes": 4448145198.251906,
+   "A_bytes": 33617566983.220142
+  },
+  "qwen2p5_vl_3b::g4_z3::gc1": {
+   "P_bytes": 6137708050.695777,
+   "A_bytes": 2225865251.6153245
+  },
+  "qwen2p5_vl_7b::g2_z2::gc1": {
+   "P_bytes": 19210256466.118355,
+   "A_bytes": 3314999694.7849107
+  },
+  "qwen2p5_vl_7b::g2_z3::gc0": {
+   "P_bytes": 10334226277.200373,
+   "A_bytes": 51727232415.681816
+  },
+  "qwen2p5_vl_7b::g2_z3::gc1": {
+   "P_bytes": 14812198963.116337,
+   "A_bytes": 3515741917.36327
+  },
+  "qwen2p5_vl_7b::g4_z2::gc1": {
+   "P_bytes": 18042474720.808895,
+   "A_bytes": 3548985402.7463923
+  },
+  "qwen2p5_vl_7b::g4_z3::gc0": {
+   "P_bytes": 6337629284.923956,
+   "A_bytes": 50739183479.3313
+  },
+  "qwen2p5_vl_7b::g4_z3::gc1": {
+   "P_bytes": 10252858534.26769,
+   "A_bytes": 3434834489.8937893
+  },
+  "qwen3_vl_30b_a3b::g4_z3::gc1": {
+   "P_bytes": 27411693240.500267,
+   "A_bytes": 39023398613.70745
+  },
+  "qwen3_vl_4b::g1_z0::gc0": {
+   "P_bytes": 10621197020.918184,
+   "A_bytes": 39693682669.478325
+  },
+  "qwen3_vl_4b::g1_z0::gc1": {
+   "P_bytes": 9217288599.213814,
+   "A_bytes": 23750841867.57439
+  },
+  "qwen3_vl_4b::g2_z2::gc0": {
+   "P_bytes": 10994777360.419123,
+   "A_bytes": 35222851806.14825
+  },
+  "qwen3_vl_4b::g2_z2::gc1": {
+   "P_bytes": 11198587248.319407,
+   "A_bytes": 10900023694.74225
+  },
+  "qwen3_vl_4b::g2_z3::gc0": {
+   "P_bytes": 8181403284.405959,
+   "A_bytes": 53871083940.87275
+  },
+  "qwen3_vl_4b::g2_z3::gc1": {
+   "P_bytes": 9828283426.554401,
+   "A_bytes": 12073958158.837095
+  },
+  "qwen3_vl_4b::g4_z2::gc0": {
+   "P_bytes": 10848106083.035603,
+   "A_bytes": 35474968791.02338
+  },
+  "qwen3_vl_4b::g4_z2::gc1": {
+   "P_bytes": 10943457739.976118,
+   "A_bytes": 10480309228.174517
+  },
+  "qwen3_vl_4b::g4_z3::gc0": {
+   "P_bytes": 5753482232.302359,
+   "A_bytes": 53485137600.44879
+  },
+  "qwen3_vl_4b::g4_z3::gc1": {
+   "P_bytes": 7478233031.272801,
+   "A_bytes": 11794996770.19334
+  },
+  "qwen3_vl_8b::g2_z2::gc0": {
+   "P_bytes": 27740817046.96222,
+   "A_bytes": 66277733846.85371
+  },
+  "qwen3_vl_8b::g2_z2::gc1": {
+   "P_bytes": 22991278230.53373,
+   "A_bytes": 10839316053.4996
+  },
+  "qwen3_vl_8b::g2_z3::gc1": {
+   "P_bytes": 25886721957.100037,
+   "A_bytes": 18187482927.26883
+  },
+  "qwen3_vl_8b::g4_z2::gc1": {
+   "P_bytes": 22286187367.342197,
+   "A_bytes": 10438943059.186682
+  },
+  "qwen3_vl_8b::g4_z3::gc1": {
+   "P_bytes": 11358008658.8264,
+   "A_bytes": 10771913551.387804
+  },
+  "qwen3p5_27b::g2_z3::gc1": {
+   "P_bytes": 42034587428.925064,
+   "A_bytes": 5518561168.389521
+  },
+  "qwen3p5_27b::g4_z2::gc1": {
+   "P_bytes": 58027513077.54916,
+   "A_bytes": 5990791465.444245
+  },
+  "qwen3p5_27b::g4_z3::gc1": {
+   "P_bytes": 25974356040.980927,
+   "A_bytes": 5310111915.863792
+  },
+  "qwen3p5_4b::g1_z0::gc0": {
+   "P_bytes": 10133827024.596992,
+   "A_bytes": 28878637754.90779
+  },
+  "qwen3p5_4b::g1_z0::gc1": {
+   "P_bytes": 10548863549.256754,
+   "A_bytes": 3638170102.5208907
+  },
+  "qwen3p5_4b::g2_z2::gc1": {
+   "P_bytes": 11000235165.515568,
+   "A_bytes": 2420854990.9394817
+  },
+  "qwen3p5_4b::g2_z3::gc0": {
+   "P_bytes": 8781414754.790968,
+   "A_bytes": 40881992328.46972
+  },
+  "qwen3p5_4b::g2_z3::gc1": {
+   "P_bytes": 12559633102.283852,
+   "A_bytes": 2157800881.3428354
+  },
+  "qwen3p5_4b::g4_z2::gc1": {
+   "P_bytes": 10740037062.391958,
+   "A_bytes": 2405617310.3736815
+  },
+  "qwen3p5_4b::g4_z3::gc0": {
+   "P_bytes": 5712310555.614253,
+   "A_bytes": 40301653310.510994
+  },
+  "qwen3p5_4b::g4_z3::gc1": {
+   "P_bytes": 9324801204.726162,
+   "A_bytes": 2097133102.0697746
+  },
+  "qwen3p5_9b::g2_z2::gc1": {
+   "P_bytes": 21559734659.43142,
+   "A_bytes": 3032651541.0172906
+  },
+  "qwen3p5_9b::g2_z3::gc0": {
+   "P_bytes": 14242546418.579483,
+   "A_bytes": 53079000432.19987
+  },
+  "qwen3p5_9b::g2_z3::gc1": {
+   "P_bytes": 19888389694.50664,
+   "A_bytes": 3017843406.765117
+  },
+  "qwen3p5_9b::g4_z2::gc1": {
+   "P_bytes": 20562210350.334095,
+   "A_bytes": 3075068429.0566673
+  },
+  "qwen3p5_9b::g4_z3::gc0": {
+   "P_bytes": 9675264549.155603,
+   "A_bytes": 50441416177.41872
+  },
+  "qwen3p5_9b::g4_z3::gc1": {
+   "P_bytes": 14630550011.450493,
+   "A_bytes": 2608222741.035683
+  }
+ },
+ "accuracy": {
+  "训练集": {
+   "rows": 900,
+   "mape": 0.05926618613446061,
+   "bias": 0.005519293766596378,
+   "p90": 0.12217380877269039,
+   "max_abs": 0.7938416301797542
+  },
+  "验收（分布外）": {
+   "rows": 27,
+   "mape": 0.05320843270945792,
+   "bias": -0.008354221384404423,
+   "p90": 0.1155812200366887,
+   "max_abs": 0.16957392843665584
+  }
+ },
+ "accuracy_by_mbs": {
+  "1": {
+   "rows": 530,
+   "median_actual_gib": 14.521484375,
+   "median_predicted_gib": 14.327936548107157,
+   "mape": 0.05785141191940342,
+   "bias": -0.004113839868801971
+  },
+  "2": {
+   "rows": 85,
+   "median_actual_gib": 26.24609375,
+   "median_predicted_gib": 27.205440603570505,
+   "mape": 0.061625232086027805,
+   "bias": 0.020264357270386845
+  },
+  "4": {
+   "rows": 162,
+   "median_actual_gib": 38.017578125,
+   "median_predicted_gib": 40.02637989021353,
+   "mape": 0.06807284189322747,
+   "bias": 0.03895875095776879
+  },
+  "8": {
+   "rows": 57,
+   "median_actual_gib": 42.359375,
+   "median_predicted_gib": 44.56056533236736,
+   "mape": 0.059857012232341626,
+   "bias": 0.008853537118426007
+  },
+  "16": {
+   "rows": 48,
+   "median_actual_gib": 51.4384765625,
+   "median_predicted_gib": 51.31448349802105,
+   "mape": 0.04052629846553207,
+   "bias": -0.017170577199641268
+  },
+  "32": {
+   "rows": 18,
+   "median_actual_gib": 78.0791015625,
+   "median_predicted_gib": 76.13464382841897,
+   "mape": 0.05862567034036134,
+   "bias": -0.03147513405039669
+  }
+ },
+ "admission_train": {
+  "z": 1.645,
+  "oom_rows": 37,
+  "false_admit": 0,
+  "success_rows": 900,
+  "coverage": 0.9566666666666667,
+  "rejected": 33,
+  "reject_rate": 0.03666666666666667,
+  "rejected_already_above_safe_line": 14,
+  "true_false_reject": 19,
+  "true_false_reject_rate": 0.021111111111111112
+ },
+ "acceptance_leave_one_oom_out": {
+  "held_out": 37,
+  "rejected": 37,
+  "reject_rate": 1.0,
+  "missed": []
+ },
+ "acceptance_leave_one_oom_out_without_censoring": {
+  "held_out": 37,
+  "rejected": 37,
+  "reject_rate": 1.0,
+  "missed": []
+ },
+ "physical_check": {
+  "qwen2p5_vl_32b::g2_z3::gc1": {
+   "P_gib": 40.55388743217391,
+   "A_gib": 6.129131254771047,
+   "weights_per_card_gib": 31.155271768569946,
+   "P_over_weights": 1.3016701550036058
+  },
+  "qwen2p5_vl_32b::g4_z3::gc1": {
+   "P_gib": 23.23279551203249,
+   "A_gib": 6.2874865827695965,
+   "weights_per_card_gib": 15.577635884284973,
+   "P_over_weights": 1.4914198588676855
+  },
+  "qwen2p5_vl_3b::g1_z0::gc0": {
+   "P_gib": 7.594726124945361,
+   "A_gib": 24.14328372053539,
+   "weights_per_card_gib": 6.9935302734375,
+   "P_over_weights": 1.0859645741137771
+  },
+  "qwen2p5_vl_3b::g1_z0::gc1": {
+   "P_gib": 8.802527865236467,
+   "A_gib": 2.306596876668159,
+   "weights_per_card_gib": 6.9935302734375,
+   "P_over_weights": 1.2586672997856057
+  },
+  "qwen2p5_vl_3b::g2_z2::gc0": {
+   "P_gib": 9.058718618599965,
+   "A_gib": 18.1033350746421,
+   "weights_per_card_gib": 6.9935302734375,
+   "P_over_weights": 1.2952998363367878
+  },
+  "qwen2p5_vl_3b::g2_z2::gc1": {
+   "P_gib": 9.643969153051817,
+   "A_gib": 1.7272790552621768,
+   "weights_per_card_gib": 6.9935302734375,
+   "P_over_weights": 1.378984400722635
+  },
+  "qwen2p5_vl_3b::g2_z3::gc0": {
+   "P_gib": 6.192344683028632,
+   "A_gib": 31.645607453736666,
+   "weights_per_card_gib": 3.49676513671875,
+   "P_over_weights": 1.7708780661315235
+  },
+  "qwen2p5_vl_3b::g2_z3::gc1": {
+   "P_gib": 7.872668795096636,
+   "A_gib": 2.1164578202144715,
+   "weights_per_card_gib": 3.49676513671875,
+   "P_over_weights": 2.251414804050606
+  },
+  "qwen2p5_vl_3b::g4_z2::gc0": {
+   "P_gib": 8.717312026697847,
+   "A_gib": 17.642778665031187,
+   "weights_per_card_gib": 6.9935302734375,
+   "P_over_weights": 1.2464823466636779
+  },
+  "qwen2p5_vl_3b::g4_z2::gc1": {
+   "P_gib": 8.879365359070915,
+   "A_gib": 1.93481034472117,
+   "weights_per_card_gib": 6.9935302734375,
+   "P_over_weights": 1.2696542392611219
+  },
+  "qwen2p5_vl_3b::g4_z3::gc0": {
+   "P_gib": 4.142658038299444,
+   "A_gib": 31.308799035120888,
+   "weights_per_card_gib": 1.748382568359375,
+   "P_over_weights": 2.3694230961057787
+  },
+  "qwen2p5_vl_3b::g4_z3::gc1": {
+   "P_gib": 5.716186064012141,
+   "A_gib": 2.072998556881514,
+   "weights_per_card_gib": 1.748382568359375,
+   "P_over_weights": 3.2694137813190522
+  },
+  "qwen2p5_vl_7b::g2_z2::gc1": {
+   "P_gib": 17.89094551104899,
+   "A_gib": 3.0873340505966085,
+   "weights_per_card_gib": 15.445363998413086,
+   "P_over_weights": 1.1583375770805513
+  },
+  "qwen2p5_vl_7b::g2_z3::gc0": {
+   "P_gib": 9.624498223141183,
+   "A_gib": 48.17473927110603,
+   "weights_per_card_gib": 7.722681999206543,
+   "P_over_weights": 1.2462636975250359
+  },
+  "qwen2p5_vl_7b::g2_z3::gc1": {
+   "P_gib": 13.794935274046228,
+   "A_gib": 3.2742898141623193,
+   "weights_per_card_gib": 7.722681999206543,
+   "P_over_weights": 1.7862881412783242
+  },
+  "qwen2p5_vl_7b::g4_z2::gc1": {
+   "P_gib": 16.803364009418427,
+   "A_gib": 3.305250222558521,
+   "weights_per_card_gib": 15.445363998413086,
+   "P_over_weights": 1.0879228233886147
+  },
+  "qwen2p5_vl_7b::g4_z3::gc0": {
+   "P_gib": 5.902377222593833,
+   "A_gib": 47.25454699185798,
+   "weights_per_card_gib": 3.8613409996032715,
+   "P_over_weights": 1.5285822265374296
+  },
+  "qwen2p5_vl_7b::g4_z3::gc1": {
+   "P_gib": 9.548718607302467,
+   "A_gib": 3.1989389005059277,
+   "weights_per_card_gib": 3.8613409996032715,
+   "P_over_weights": 2.472902188199265
+  },
+  "qwen3_vl_30b_a3b::g4_z3::gc1": {
+   "P_gib": 25.529128723312418,
+   "A_gib": 36.34337206716412,
+   "weights_per_card_gib": 14.46844732016325,
+   "P_over_weights": 1.7644691346897317
+  },
+  "qwen3_vl_4b::g1_z0::gc0": {
+   "P_gib": 9.891760555019774,
+   "A_gib": 36.967622739708354,
+   "weights_per_card_gib": 8.26607608795166,
+   "P_over_weights": 1.1966694293363274
+  },
+  "qwen3_vl_4b::g1_z0::gc1": {
+   "P_gib": 8.584268949193707,
+   "A_gib": 22.11969519739448,
+   "weights_per_card_gib": 8.26607608795166,
+   "P_over_weights": 1.038493821960559
+  },
+  "qwen3_vl_4b::g2_z2::gc0": {
+   "P_gib": 10.239684358629512,
+   "A_gib": 32.80383702940144,
+   "weights_per_card_gib": 8.26607608795166,
+   "P_over_weights": 1.2387599932154645
+  },
+  "qwen3_vl_4b::g2_z2::gc1": {
+   "P_gib": 10.429497108160897,
+   "A_gib": 10.151438130757073,
+   "weights_per_card_gib": 8.26607608795166,
+   "P_over_weights": 1.2617228534059302
+  },
+  "qwen3_vl_4b::g2_z3::gc0": {
+   "P_gib": 7.61952557080049,
+   "A_gib": 50.17135659314017,
+   "weights_per_card_gib": 4.13303804397583,
+   "P_over_weights": 1.843565311939589
+  },
+  "qwen3_vl_4b::g2_z3::gc1": {
+   "P_gib": 9.153302224869282,
+   "A_gib": 11.244749798287726,
+   "weights_per_card_gib": 4.13303804397583,
+   "P_over_weights": 2.2146668207448057
+  },
+  "qwen3_vl_4b::g4_z2::gc0": {
+   "P_gib": 10.103086086954551,
+   "A_gib": 33.03863926885964,
+   "weights_per_card_gib": 8.26607608795166,
+   "P_over_weights": 1.2222348281647748
+  },
+  "qwen3_vl_4b::g4_z2::gc1": {
+   "P_gib": 10.191889237590244,
+   "A_gib": 9.76054857314985,
+   "weights_per_card_gib": 8.26607608795166,
+   "P_over_weights": 1.232977912270319
+  },
+  "qwen3_vl_4b::g4_z3::gc0": {
+   "P_gib": 5.358347885592243,
+   "A_gib": 49.811916053713105,
+   "weights_per_card_gib": 2.066519021987915,
+   "P_over_weights": 2.592934218644506
+  },
+  "qwen3_vl_4b::g4_z3::gc1": {
+   "P_gib": 6.9646472402595,
+   "A_gib": 10.984946759597715,
+   "weights_per_card_gib": 2.066519021987915,
+   "P_over_weights": 3.3702313727360544
+  },
+  "qwen3_vl_8b::g2_z2::gc0": {
+   "P_gib": 25.83564915411381,
+   "A_gib": 61.72594972593124,
+   "weights_per_card_gib": 16.33004042506218,
+   "P_over_weights": 1.5820933985235641
+  },
+  "qwen3_vl_8b::g2_z2::gc1": {
+   "P_gib": 21.412296435361476,
+   "A_gib": 10.094899734016135,
+   "weights_per_card_gib": 16.33004042506218,
+   "P_over_weights": 1.311221275514996
+  },
+  "qwen3_vl_8b::g2_z3::gc1": {
+   "P_gib": 24.108888541441445,
+   "A_gib": 16.938413425599066,
+   "weights_per_card_gib": 8.16502021253109,
+   "P_over_weights": 2.9527040857095304
+  },
+  "qwen3_vl_8b::g4_z2::gc1": {
+   "P_gib": 20.75562939731609,
+   "A_gib": 9.72202332614612,
+   "weights_per_card_gib": 16.33004042506218,
+   "P_over_weights": 1.2710090640964875
+  },
+  "qwen3_vl_8b::g4_z3::gc1": {
+   "P_gib": 10.577969866643102,
+   "A_gib": 10.032126262213852,
+   "weights_per_card_gib": 4.082510106265545,
+   "P_over_weights": 2.5910456046168235
+  },
+  "qwen3p5_27b::g2_z3::gc1": {
+   "P_gib": 39.14776018720592,
+   "A_gib": 5.139560595517532,
+   "weights_per_card_gib": 25.87347100675106,
+   "P_over_weights": 1.5130463236645462
+  },
+  "qwen3p5_27b::g4_z2::gc1": {
+   "P_gib": 54.04233287791643,
+   "A_gib": 5.57935933158197,
+   "weights_per_card_gib": 51.74694201350212,
+   "P_over_weights": 1.0443580002044446
+  },
+  "qwen3p5_27b::g4_z3::gc1": {
+   "P_gib": 24.190504142065464,
+   "A_gib": 4.945427100978598,
+   "weights_per_card_gib": 12.93673550337553,
+   "P_over_weights": 1.8699079173222282
+  },
+  "qwen3p5_4b::g1_z0::gc0": {
+   "P_gib": 9.437861875255585,
+   "A_gib": 26.895327265288486,
+   "weights_per_card_gib": 8.679675102233887,
+   "P_over_weights": 1.087351976207792
+  },
+  "qwen3p5_4b::g1_z0::gc1": {
+   "P_gib": 9.824394759961175,
+   "A_gib": 3.3883099467688154,
+   "weights_per_card_gib": 8.679675102233887,
+   "P_over_weights": 1.1318850814395889
+  },
+  "qwen3p5_4b::g2_z2::gc1": {
+   "P_gib": 10.244767335723683,
+   "A_gib": 2.254596902932489,
+   "weights_per_card_gib": 8.679675102233887,
+   "P_over_weights": 1.1803169145221795
+  },
+  "qwen3p5_4b::g2_z3::gc0": {
+   "P_gib": 8.178329798198275,
+   "A_gib": 38.07432235076066,
+   "weights_per_card_gib": 4.339837551116943,
+   "P_over_weights": 1.8844783247920005
+  },
+  "qwen3p5_4b::g2_z3::gc1": {
+   "P_gib": 11.697069837044786,
+   "A_gib": 2.009608672319758,
+   "weights_per_card_gib": 4.339837551116943,
+   "P_over_weights": 2.6952782677393796
+  },
+  "qwen3p5_4b::g4_z2::gc1": {
+   "P_gib": 10.00243896841254,
+   "A_gib": 2.2404057070367798,
+   "weights_per_card_gib": 8.679675102233887,
+   "P_over_weights": 1.1523978548273326
+  },
+  "qwen3p5_4b::g4_z3::gc0": {
+   "P_gib": 5.320003773657841,
+   "A_gib": 37.53383952240552,
+   "weights_per_card_gib": 2.1699187755584717,
+   "P_over_weights": 2.451706411125288
+  },
+  "qwen3p5_4b::g4_z3::gc1": {
+   "P_gib": 8.684397865763085,
+   "A_gib": 1.9531073999309676,
+   "weights_per_card_gib": 2.1699187755584717,
+   "P_over_weights": 4.002176470189758
+  },
+  "qwen3p5_9b::g2_z2::gc1": {
+   "P_gib": 20.079067591048236,
+   "A_gib": 2.8243768410918215,
+   "weights_per_card_gib": 17.980308026075363,
+   "P_over_weights": 1.116725451083998
+  },
+  "qwen3p5_9b::g2_z3::gc0": {
+   "P_gib": 13.264404999631907,
+   "A_gib": 49.43367134053248,
+   "weights_per_card_gib": 8.990154013037682,
+   "P_over_weights": 1.4754369035720223
+  },
+  "qwen3p5_9b::g2_z3::gc1": {
+   "P_gib": 18.522506295243875,
+   "A_gib": 2.8105856913748357,
+   "weights_per_card_gib": 8.990154013037682,
+   "P_over_weights": 2.060310231435658
+  },
+  "qwen3p5_9b::g4_z2::gc1": {
+   "P_gib": 19.15005068325819,
+   "A_gib": 2.8638806464678304,
+   "weights_per_card_gib": 17.980308026075363,
+   "P_over_weights": 1.065056875304163
+  },
+  "qwen3p5_9b::g4_z3::gc0": {
+   "P_gib": 9.010792290005464,
+   "A_gib": 46.97722958160445,
+   "weights_per_card_gib": 4.495077006518841,
+   "P_over_weights": 2.0045913066534458
+  },
+  "qwen3p5_9b::g4_z3::gc1": {
+   "P_gib": 13.625761504704592,
+   "A_gib": 2.429096718351993,
+   "weights_per_card_gib": 4.495077006518841,
+   "P_over_weights": 3.0312631985935434
+  }
+ },
+ "censoring_kept_because": "免费，且在形式退化时是唯一信息来源；但本模型的拒绝能力不依赖它"
+}

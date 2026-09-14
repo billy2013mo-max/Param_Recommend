@@ -124,6 +124,12 @@ RUNTIME_MECHANISM_ENVIRONMENT_KEYS = (
     "LD_LIBRARY_PATH",
 )
 
+# 预加载的 NVIDIA 驱动库。走 libcuda.so.1 这个符号链接而不是带版本号的实体
+# （当前指向 libcuda.so.560.35.03），驱动升级后链接会跟着走、路径不用改。
+# 值会被记进 runtime_mechanism（LD_PRELOAD 本就在上面的记录字段里），
+# 冻结时另有一道门禁实测 FA3 能否导入。
+LIBCUDA_PRELOAD = "/lib/x86_64-linux-gnu/libcuda.so.1"
+
 
 def distribution_file_sha256(distribution_name: str, relative_path: str) -> str | None:
     try:
@@ -2209,6 +2215,15 @@ def main(*, _execution_gate_held: bool = False) -> None:
         "OMP_NUM_THREADS": "8",
         "TORCH_NCCL_ASYNC_ERROR_HANDLING": "1",
         "PYTHONUNBUFFERED": "1",
+        # flash_attn_3/_C.abi3.so 需要 cuDriverGetVersion，但它的 NEEDED 列表里
+        # 没有 libcuda——该符号本应由先加载的 torch 带进全局符号表。2026-09-01
+        # 之后这条链断了（.so 文件 6-25 起未变、两个 venv 同一份，libcuda 本身
+        # 也有该符号），FA3 在两个环境里都 ImportError，任何用 FA3 的作业直接
+        # 失败。显式预加载驱动库把符号放进全局符号表即可恢复。
+        #
+        # 只影响符号可见性，不改 FA3 内核与计算逻辑，因此与历史 440 个
+        # fa3_orig 作业的测量结果仍然可比。
+        "LD_PRELOAD": LIBCUDA_PRELOAD,
     }
     if fixed.get("fa3_variant"):
         job_environment["FA3_VARIANT"] = str(fixed["fa3_variant"])

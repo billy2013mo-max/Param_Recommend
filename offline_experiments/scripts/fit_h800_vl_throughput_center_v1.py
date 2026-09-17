@@ -71,7 +71,10 @@ def throughput_of(job_id: str) -> tuple[float, str] | tuple[None, None]:
     newest = max(attempts, key=os.path.getmtime)
     direct, derived = [], []
     for path in glob.glob(os.path.join(newest, "metrics", "summary.rank*.json")):
-        summary = read_json(Path(path))
+        try:
+            summary = read_json(Path(path))
+        except (json.JSONDecodeError, ValueError):
+            continue
         value = summary.get("effective_tokens_per_second")
         if isinstance(value, (int, float)) and value > 0:
             direct.append(float(value))
@@ -129,6 +132,7 @@ class RoutedThroughput:
         self.routes: dict[str, np.ndarray] = {}
         self.parents: dict[str, np.ndarray] = {}
         self.route_rows: dict[str, int] = {}
+        self.parent_rows: dict[str, int] = {}
 
         by_route, by_parent = defaultdict(list), defaultdict(list)
         for row in train:
@@ -142,6 +146,7 @@ class RoutedThroughput:
                 y = np.log([r["tokens_per_second"] for r in rows])
                 self.routes[name] = solve(x, y)
         for name, rows in by_parent.items():
+            self.parent_rows[name] = len(rows)
             if fittable(rows):
                 x = np.array([features(r) for r in rows])
                 y = np.log([r["tokens_per_second"] for r in rows])
@@ -160,6 +165,45 @@ class RoutedThroughput:
             return float(np.exp(np.dot(features(row), self.parents[parent]))), "parent"
         return float(np.exp(np.dot(global_features(row), self.global_weights))), "global"
 
+    def predict_with_mode(self, row: dict, mode: str) -> tuple[float | None, str]:
+        """按指定模式预测。无法覆盖返回 (None, "withheld")。"""
+        name = route_of(row)
+        if name in self.routes:
+            return float(np.exp(np.dot(features(row), self.routes[name]))), "route"
+        if mode == "route_only":
+            return None, "withheld"
+        parent = parent_route_of(row)
+        if parent in self.parents:
+            return float(np.exp(np.dot(features(row), self.parents[parent]))), "parent"
+        if mode == "parent_fallback":
+            return None, "withheld"
+        return float(np.exp(np.dot(global_features(row), self.global_weights))), "global"
+
+    def evaluate_mode(self, rows: list[dict], mode: str) -> dict:
+        """单模式评测：rows/mape/p90/max_abs/bias + withheld。"""
+        errors = []
+        answered = 0
+        for row in rows:
+            predicted, _ = self.predict_with_mode(row, mode)
+            if predicted is None:
+                continue
+            answered += 1
+            actual = row["tokens_per_second"]
+            errors.append((predicted - actual) / actual)
+        if not errors:
+            return {"mode": mode, "rows": 0, "mape": None, "p90": None,
+                    "max_abs": None, "bias": None, "withheld": len(rows)}
+        errors = np.array(errors)
+        return {
+            "mode": mode,
+            "rows": answered,
+            "mape": float(np.mean(np.abs(errors))),
+            "bias": float(np.mean(errors)),
+            "p90": float(np.percentile(np.abs(errors), 90)),
+            "max_abs": float(np.max(np.abs(errors))),
+            "withheld": len(rows) - answered,
+        }
+
     def evaluate(self, rows: list[dict]) -> dict:
         errors, levels = [], []
         for row in rows:
@@ -167,17 +211,30 @@ class RoutedThroughput:
             errors.append((predicted - row["tokens_per_second"]) / row["tokens_per_second"])
             levels.append(level)
         errors = np.array(errors)
-        by_level = defaultdict(list)
-        for error, level in zip(errors, levels):
-            by_level[level].append(abs(error))
+        by_level = {}
+        for level in ("route", "parent", "global"):
+            idx = [i for i, lv in enumerate(levels) if lv == level]
+            if not idx:
+                by_level[level] = {"rows": 0}
+                continue
+            lv_err = errors[idx]
+            by_level[level] = {
+                "rows": len(idx),
+                "mape": float(np.mean(np.abs(lv_err))),
+                "p90": float(np.percentile(np.abs(lv_err), 90)),
+                "max_abs": float(np.max(np.abs(lv_err))),
+                "bias": float(np.mean(lv_err)),
+            }
+        fit_levels = {lv: sum(1 for x in levels if x == lv)
+                      for lv in ("route", "parent", "global")}
         return {
             "rows": len(rows),
             "mape": float(np.mean(np.abs(errors))),
             "bias": float(np.mean(errors)),
             "p90": float(np.percentile(np.abs(errors), 90)),
             "max_abs": float(np.max(np.abs(errors))),
-            "by_fit_level": {k: {"rows": len(v), "mape": float(np.mean(v))}
-                             for k, v in sorted(by_level.items())},
+            "fit_levels": fit_levels,
+            "by_fit_level": by_level,
         }
 
 
@@ -307,11 +364,35 @@ def main() -> None:
                    "share": float(w[3])}
             for name, w in sorted(model.routes.items())
         },
+        "parent_coefficients": {
+            name: {"rows": model.parent_rows[name], "intercept": float(w[0]),
+                   "log_tokens": float(w[1]), "log_mbs": float(w[2]),
+                   "share": float(w[3])}
+            for name, w in sorted(model.parents.items())
+        },
+        "global_model": {
+            "feature_order": ["const", "log_params", "log_total_tokens",
+                             "log2_mbs", "gc", "log2_gpu_count",
+                             "is_zero2", "is_zero3", "share"],
+            "coefficients": [float(c) for c in model.global_weights],
+            "target": "log(tokens_per_second)",
+            "params_source": "language_parameters if present else total_parameters",
+            "fallback_policy": "route -> parent -> global",
+            "fitted_on_rows": len(train),
+        },
         "train": model.evaluate(train),
         "acceptance_source_isolated": {
             "test_source": "prospective_v3",
             "note": "该批吞吐在 V3 验收里全部返回「超出支持域」，从未被预测过",
             **model.evaluate(test),
+        },
+        "quality": {
+            "eval_set": "acceptance_source_isolated (prospective_v3, never used in any VL fit)",
+            "modes": [
+                model.evaluate_mode(test, "route_only"),
+                model.evaluate_mode(test, "parent_fallback"),
+                model.evaluate_mode(test, "global_fallback"),
+            ],
         },
         "acceptance_leave_one_route_out": leave_one_route_out(rows),
         "acceptance_leave_one_length_out": leave_one_length_out(rows),

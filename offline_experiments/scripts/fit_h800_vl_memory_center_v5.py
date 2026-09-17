@@ -113,6 +113,7 @@ class RoutedCenter:
         self.routes: dict[str, tuple[np.ndarray, bool]] = {}
         self.parents: dict[str, tuple[np.ndarray, bool]] = {}
         self.route_rows: dict[str, int] = {}
+        self.parent_rows: dict[str, int] = {}
         self.mbs_levels: dict[str, int] = {}
 
         by_route: dict[str, list[dict]] = defaultdict(list)
@@ -131,6 +132,7 @@ class RoutedCenter:
                 self.routes[name] = (solve(design, target), share)
 
         for name, rows in by_parent.items():
+            self.parent_rows[name] = len(rows)
             if fittable(rows, 3):
                 design = np.array([features(r, False) for r in rows])
                 target = np.log([r["allocated_bytes"] for r in rows])
@@ -152,6 +154,53 @@ class RoutedCenter:
         value = float(np.exp(np.dot(global_features(row), self.global_weights)))
         return value, "global"
 
+    def predict_with_mode(self, row: dict, mode: str) -> tuple[float | None, str]:
+        """按指定模式预测。无法覆盖返回 (None, "withheld")。
+
+        route_only: 只用本路由回归。
+        parent_fallback: 路由 -> 父级（model::gN_zN）。
+        global_fallback: 路由 -> 父级 -> 全局参数化层。
+        """
+        name = route_of(row)
+        if name in self.routes:
+            weights, share = self.routes[name]
+            return float(np.exp(np.dot(features(row, share), weights))), "route"
+        if mode == "route_only":
+            return None, "withheld"
+        parent = parent_route_of(row)
+        if parent in self.parents:
+            weights, share = self.parents[parent]
+            return float(np.exp(np.dot(features(row, share), weights))), "parent"
+        if mode == "parent_fallback":
+            return None, "withheld"
+        value = float(np.exp(np.dot(global_features(row), self.global_weights)))
+        return value, "global"
+
+    def evaluate_mode(self, rows: list[dict], mode: str) -> dict:
+        """单模式评测：rows/mape/p90/max_abs/bias + withheld。"""
+        errors = []
+        answered = 0
+        for row in rows:
+            predicted, _ = self.predict_with_mode(row, mode)
+            if predicted is None:
+                continue
+            answered += 1
+            actual = row["allocated_bytes"]
+            errors.append((predicted - actual) / actual)
+        if not errors:
+            return {"mode": mode, "rows": 0, "mape": None, "p90": None,
+                    "max_abs": None, "bias": None, "withheld": len(rows)}
+        errors = np.array(errors)
+        return {
+            "mode": mode,
+            "rows": answered,
+            "mape": float(np.mean(np.abs(errors))),
+            "bias": float(np.mean(errors)),
+            "p90": float(np.percentile(np.abs(errors), 90)),
+            "max_abs": float(np.max(np.abs(errors))),
+            "withheld": len(rows) - answered,
+        }
+
     def evaluate(self, rows: list[dict]) -> dict:
         errors = []
         levels = []
@@ -161,6 +210,20 @@ class RoutedCenter:
             errors.append((predicted - actual) / actual)
             levels.append(level)
         errors = np.array(errors)
+        by_level = {}
+        for level in ("route", "parent", "global"):
+            idx = [i for i, lv in enumerate(levels) if lv == level]
+            if not idx:
+                by_level[level] = {"rows": 0}
+                continue
+            lv_err = errors[idx]
+            by_level[level] = {
+                "rows": len(idx),
+                "mape": float(np.mean(np.abs(lv_err))),
+                "p90": float(np.percentile(np.abs(lv_err), 90)),
+                "max_abs": float(np.max(np.abs(lv_err))),
+                "bias": float(np.mean(lv_err)),
+            }
         return {
             "rows": len(rows),
             "mape": float(np.mean(np.abs(errors))),
@@ -169,6 +232,7 @@ class RoutedCenter:
             "max_abs": float(np.max(np.abs(errors))),
             "rows_over_50pct": int(np.sum(np.abs(errors) > 0.5)),
             "fit_levels": dict(Counter(levels)),
+            "by_fit_level": by_level,
         }
 
 
@@ -262,11 +326,38 @@ def main() -> None:
             }
             for name, (weights, share) in sorted(center.routes.items())
         },
+        "parent_coefficients": {
+            name: {
+                "rows": center.parent_rows[name],
+                "intercept": float(weights[0]),
+                "log_tokens": float(weights[1]),
+                "log_mbs": float(weights[2]),
+            }
+            for name, (weights, _) in sorted(center.parents.items())
+        },
+        "global_model": {
+            "feature_order": ["const", "log_params", "log_total_tokens",
+                             "log2_mbs", "gc", "log2_gpu_count",
+                             "is_zero2", "is_zero3", "share_x_gc"],
+            "coefficients": [float(c) for c in center.global_weights],
+            "target": "log(allocated_bytes)",
+            "params_source": "language_parameters if present else total_parameters",
+            "fallback_policy": "route -> parent -> global",
+            "fitted_on_rows": len(train),
+        },
         "train": center.evaluate(train),
         "acceptance": {
             "test_source": "prospective_v3",
             "never_used_in_any_vl_fit": True,
             **center.evaluate(test),
+        },
+        "quality": {
+            "eval_set": "acceptance (prospective_v3, never used in any VL fit)",
+            "modes": [
+                center.evaluate_mode(test, "route_only"),
+                center.evaluate_mode(test, "parent_fallback"),
+                center.evaluate_mode(test, "global_fallback"),
+            ],
         },
         "admission_upper": upper,
         "capacity_bytes": CAPACITY_BYTES,

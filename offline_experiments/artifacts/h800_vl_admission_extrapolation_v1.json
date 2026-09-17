@@ -1,0 +1,200 @@
+{
+ "schema": "sft_h800_vl_admission_extrapolation/v1",
+ "generated_at_utc": "2026-09-17T12:37:12.752215+00:00",
+ "status": "candidate_only",
+ "source_admission": "h800_vl_admission_v2.json",
+ "method": "Plan A: 几何回归 + 安全包络（max positive residual）",
+ "form": "P_upper + A_upper * mbs * (tokens/4096)^delta, then * exp(1.645 * sigma)",
+ "delta": 0.9854830140375951,
+ "sigma": 0.10481840269242354,
+ "safe_limit_bytes": 142635080089.6,
+ "P_model": {
+  "feature_order": [
+   "const",
+   "log_params",
+   "gc",
+   "log2_gpu_count",
+   "is_zero2",
+   "is_zero3"
+  ],
+  "coefficients": [
+   7.196760280764699,
+   0.711982831377913,
+   0.1865551083390528,
+   -0.28293557958190746,
+   0.5545927659818556,
+   0.13574152304373183
+  ],
+  "params_source": "language_parameters if present else total_parameters",
+  "fitted_on_routes": 51,
+  "residual_range_log": [
+   -0.3969377408499639,
+   0.4889626744258173
+  ],
+  "max_positive_residual_log": 0.4889626744258173,
+  "safety_envelope": "P_upper = exp(log(P_pred) + max_positive_residual)"
+ },
+ "A_model": {
+  "feature_order": [
+   "const",
+   "log_params",
+   "gc",
+   "log2_gpu_count",
+   "is_zero2",
+   "is_zero3"
+  ],
+  "coefficients": [
+   15.922350247603921,
+   0.38575193023299,
+   -2.188846961325574,
+   -0.0007229682558505337,
+   -0.2615030674025943,
+   -0.1083665721744673
+  ],
+  "params_source": "language_parameters if present else total_parameters",
+  "fitted_on_routes": 51,
+  "residual_range_log": [
+   -0.7917358470368718,
+   1.6264142894487108
+  ],
+  "max_positive_residual_log": 1.6264142894487108,
+  "safety_envelope": "A_upper = exp(log(A_pred) + max_positive_residual)"
+ },
+ "extrapolated_routes": {
+  "qwen2p5_vl_32b::g2_z2::gc1": {
+   "P_bytes": 105595896899.26154,
+   "A_bytes": 41037240652.33617,
+   "P_gib": 98.34384256905088,
+   "A_gib": 38.2189086194487
+  },
+  "qwen2p5_vl_32b::g2_z3::gc0": {
+   "P_bytes": 57639792092.21206,
+   "A_bytes": 426863128457.10144,
+   "P_gib": 53.681239571619834,
+   "A_gib": 397.54726780308545
+  },
+  "qwen2p5_vl_32b::g4_z2::gc1": {
+   "P_bytes": 79573723837.83522,
+   "A_bytes": 41007582752.18881,
+   "P_gib": 74.10880535639377,
+   "A_gib": 38.191287547525775
+  },
+  "qwen2p5_vl_32b::g4_z3::gc0": {
+   "P_bytes": 43435521953.95952,
+   "A_bytes": 426554631495.82623,
+   "P_gib": 40.45248213592872,
+   "A_gib": 397.25995761884957
+  },
+  "qwen2p5_vl_7b::g1_z0::gc1": {
+   "P_bytes": 28476805916.105152,
+   "A_bytes": 30381852372.998783,
+   "P_gib": 26.52109220261234,
+   "A_gib": 28.295304973608612
+  },
+  "qwen3_vl_2b::g1_z0::gc0": {
+   "P_bytes": 8194229246.921021,
+   "A_bytes": 152760306729.62195,
+   "P_gib": 7.631470679231939,
+   "A_gib": 142.26912216248172
+  },
+  "qwen3_vl_2b::g1_z0::gc1": {
+   "P_bytes": 9874792169.955303,
+   "A_bytes": 17116161069.05476,
+   "P_gib": 9.19661686751554,
+   "A_gib": 15.9406671943653
+  },
+  "qwen3_vl_32b::g4_z3::gc1": {
+   "P_bytes": 52341763829.087265,
+   "A_bytes": 47792697178.3322,
+   "P_gib": 48.74706624922088,
+   "A_gib": 44.51041778394226
+  },
+  "qwen3_vl_8b::g1_z0::gc1": {
+   "P_bytes": 29991806510.32553,
+   "A_bytes": 31247184167.843693,
+   "P_gib": 27.932046456565644,
+   "A_gib": 29.101208008680207
+  },
+  "qwen3_vl_8b::g2_z3::gc0": {
+   "P_bytes": 21481134034.716866,
+   "A_bytes": 250056448503.5508,
+   "P_gib": 20.005865054872693,
+   "A_gib": 232.88321541952976
+  },
+  "qwen3_vl_8b::g4_z3::gc0": {
+   "P_bytes": 16187502332.905859,
+   "A_bytes": 249875730963.50595,
+   "P_gib": 15.07578634927595,
+   "A_gib": 232.714909094857
+  },
+  "qwen3p5_0p8b::g1_z0::gc0": {
+   "P_bytes": 4634859971.557945,
+   "A_bytes": 112183915820.04297,
+   "P_gib": 4.316549721693569,
+   "A_gib": 104.47941331196853
+  },
+  "qwen3p5_0p8b::g1_z0::gc1": {
+   "P_bytes": 5585428180.835545,
+   "A_bytes": 12569744154.361504,
+   "P_gib": 5.201835353705608,
+   "A_gib": 11.706486488097816
+  },
+  "qwen3p5_0p8b::g2_z3::gc1": {
+   "P_bytes": 4820930885.869184,
+   "A_bytes": 11270662698.216072,
+   "P_gib": 4.489841764670968,
+   "A_gib": 10.496622601725228
+  },
+  "qwen3p5_0p8b::g4_z3::gc1": {
+   "P_bytes": 3632900843.859684,
+   "A_bytes": 11262517311.645615,
+   "P_gib": 3.3834025672261454,
+   "A_gib": 10.489036619333191
+  },
+  "qwen3p5_27b::g2_z2::gc1": {
+   "P_bytes": 92783150082.1378,
+   "A_bytes": 38259648659.69134,
+   "P_gib": 86.41104221543092,
+   "A_gib": 35.63207449362738
+  },
+  "qwen3p5_27b::g2_z3::gc0": {
+   "P_bytes": 50645921266.210976,
+   "A_bytes": 397971039498.13745,
+   "P_gib": 47.16768978742042,
+   "A_gib": 370.63941312780366
+  },
+  "qwen3p5_27b::g4_z3::gc0": {
+   "P_bytes": 38165162385.00173,
+   "A_bytes": 397683423051.1408,
+   "P_gib": 35.54407729301763,
+   "A_gib": 370.371549437885
+  },
+  "qwen3p5_9b::g2_z2::gc0": {
+   "P_bytes": 35464550946.91833,
+   "A_bytes": 224360160070.82706,
+   "P_gib": 33.02893689546578,
+   "A_gib": 208.95168191830354
+  }
+ },
+ "withheld_routes": {
+  "qwen2p5_vl_7b::g2_z2::gc0": "物理门禁拒绝：加法形式在该路由不适用（P≈0）"
+ },
+ "false_admit_oom_check": {
+  "in_domain": {
+   "oom_rows": 37,
+   "false_admit": 0,
+   "method": "原始 P/A from admission_v2（验证用）"
+  },
+  "out_of_domain": {
+   "oom_rows": 17,
+   "false_admit_before_withhold": 0,
+   "false_admit_after_withhold": 0,
+   "details": []
+  }
+ },
+ "extrapolation_boundary": {
+  "routes_out_total": 20,
+  "routes_extrapolated": 19,
+  "routes_withheld": 1
+ }
+}
